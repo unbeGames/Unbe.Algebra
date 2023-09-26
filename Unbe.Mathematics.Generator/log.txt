@@ -1,0 +1,12 @@
+public partial struct float4 {
+  /// <summary>float4 zero value.</summary>
+  public static readonly float4 zero;
+
+}
+
+public partial struct uint4 {
+  /// <summary>uint4 zero value.</summary>
+  public static readonly float4 zero;
+
+}
+
