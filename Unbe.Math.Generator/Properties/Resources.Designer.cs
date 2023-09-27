@@ -151,9 +151,9 @@ namespace Unbe.Math.Generator.Properties {
         ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
         ///    public {0} {1} {{
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle.{1}); }}
+        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{1}); }}
         ///    }}
         ///.
         /// </summary>
@@ -180,13 +180,33 @@ namespace Unbe.Math.Generator.Properties {
         ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
         ///    public readonly {0} {1} {{
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+        ///      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
         ///    }}
         ///.
         /// </summary>
         internal static string ShuffleReadonly {
             get {
                 return ResourceManager.GetString("ShuffleReadonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a {0} vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;vector&quot;&gt;The constructed vector&apos;s components will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({0} vector) {{
+        ///      value = vector.value;
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({2}&lt;{1}&gt; v [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleConstructor {
+            get {
+                return ResourceManager.GetString("SimpleConstructor", resourceCulture);
             }
         }
         
@@ -222,6 +242,23 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} x, {1} y, {1} z) {{
+        ///      value = {2}.Create(x, y, z, 0);
+        ///    }} [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector3Constructor {
+            get {
+                return ResourceManager.GetString("Vector3Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
@@ -247,9 +284,9 @@ namespace Unbe.Math.Generator.Properties {
         ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
         ///    [MethodImpl(MethodImplOptions.Aggressive [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Vector4Constructors {
+        internal static string Vector4Constructor {
             get {
-                return ResourceManager.GetString("Vector4Constructors", resourceCulture);
+                return ResourceManager.GetString("Vector4Constructor", resourceCulture);
             }
         }
         

@@ -142,17 +142,23 @@
   <data name="ShuffleReadonly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\ShuffleReadonly.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="SimpleConstructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SimpleConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="SingleToVectorOperator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\SingleToVectorOperator.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="SingleValueConstructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SingleValueConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="Vector3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\Vector3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="Vector3Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector3Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
-  <data name="Vector4Constructors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\Vector4Constructors.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="Vector4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\Vector4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="Vector4Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector4Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>

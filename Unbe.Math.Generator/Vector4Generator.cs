@@ -47,7 +47,19 @@ namespace Unbe.Math.Generator {
     }
 
     private void AddConstructors() {
-      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
+      string vectorNConstructorTemplate = string.Empty;
+      switch (dimensions) {
+        case 4:
+          vectorNConstructorTemplate = Resources.Vector4Constructor;
+          break;
+        case 3:
+          vectorNConstructorTemplate = Resources.Vector3Constructor;
+          break;
+      }
+
+      sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix));
+      
+      sb.Append(string.Format(Resources.SimpleConstructor, typeName, T, vectorPrefix));
 
       sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
       if (T != "int") {
