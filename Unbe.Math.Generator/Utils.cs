@@ -41,6 +41,9 @@ namespace Unbe.Math.Generator {
       { ("float", 3), "Vector128" },
       { ("uint", 3), "Vector128" },
       { ("int", 3), "Vector128" },
+      { ("float", 2), "Vector64" },
+      { ("uint", 2), "Vector64" },
+      { ("int", 2), "Vector64" },
     };
 
     // source => destination : type
@@ -50,7 +53,8 @@ namespace Unbe.Math.Generator {
       { ("bool", "float"), "explicit" },
       { ("uint", "float"), "implicit" },
       { ("double", "float"), "explicit" },
-      { ("Vector128<float>", "float"), "implicit" },      
+      { ("Vector128<float>", "float"), "implicit" },
+      { ("Vector64<float>", "float"), "implicit" },
       
       { ("uint", "uint"), "implicit" },
       { ("int", "uint"), "explicit" },
@@ -58,6 +62,7 @@ namespace Unbe.Math.Generator {
       { ("float", "uint"), "explicit" },
       { ("double", "uint"), "explicit" },
       { ("Vector128<uint>", "uint"), "implicit" },
+      { ("Vector64<uint>", "uint"), "implicit" },
 
       { ("uint", "int"), "explicit" },
       { ("int", "int"), "implicit" },
@@ -65,6 +70,7 @@ namespace Unbe.Math.Generator {
       { ("float", "int"), "explicit" },
       { ("double", "int"), "explicit" },
       { ("Vector128<int>", "int"), "implicit" },
+      { ("Vector64<int>", "int"), "implicit" },
     };
 
     internal static bool SupportsBitOps(string type) {

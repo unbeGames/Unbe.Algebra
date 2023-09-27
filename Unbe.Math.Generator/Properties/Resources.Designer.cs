@@ -246,6 +246,57 @@ namespace Unbe.Math.Generator.Properties {
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} x, {1} y) {{
+        ///      value = {2}.Create(x, y);
+        ///    }}    
+        ///.
+        /// </summary>
+        internal static string Vector2Constructor {
+            get {
+                return ResourceManager.GetString("Vector2Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///    public static readonly {0} zero;
+        ///
+        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
+        ///    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
+        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
+        ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
+        ///.
+        /// </summary>
+        internal static string Vector2Props {
+            get {
+                return ResourceManager.GetString("Vector2Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}&quot;, x.ToString(format, formatProvider), y.ToString(format, formatProvider));
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    [MethodImpl( [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector2StringMethods {
+            get {
+                return ResourceManager.GetString("Vector2StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public {0}({1} x, {1} y, {1} z) {{

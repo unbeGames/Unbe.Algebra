@@ -4,7 +4,7 @@ using Unbe.Math.Generator.Properties;
 using static Unbe.Math.Generator.Utils;
 
 namespace Unbe.Math.Generator { 
-  public class Vector4Generator { 
+  public class VectorGenerator { 
     private string typeName;
     private string T;
     private string vectorPrefix;
@@ -42,6 +42,9 @@ namespace Unbe.Math.Generator {
         case 3:
           propsTemplate = Resources.Vector3Props;
           break;
+        case 2:
+          propsTemplate = Resources.Vector2Props;
+          break;
       }
       sb.Append(string.Format(propsTemplate, typeName, T));
     }
@@ -54,6 +57,9 @@ namespace Unbe.Math.Generator {
           break;
         case 3:
           vectorNConstructorTemplate = Resources.Vector3Constructor;
+          break;
+        case 2:
+          vectorNConstructorTemplate = Resources.Vector2Constructor;
           break;
       }
 
@@ -105,6 +111,7 @@ namespace Unbe.Math.Generator {
     }
 
     private void AddShuffles() {
+      if (dimensions == 2) return;
       tmp.Clear();
 
       var shuffle = Resources.Shuffle;
@@ -133,6 +140,8 @@ $@"
         sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
       } else if(dimensions == 3) {
         sb.Append(string.Format(Resources.Vector3StringMethods, typeName));
+      } else if(dimensions == 2) {
+        sb.Append(string.Format(Resources.Vector2StringMethods, typeName));
       }
     }
 
