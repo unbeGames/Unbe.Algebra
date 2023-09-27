@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Unbe.Mathematics.Generator.Properties {
+namespace Unbe.Math.Generator.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Unbe.Mathematics.Generator.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Unbe.Mathematics.Generator.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Unbe.Math.Generator.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -141,13 +141,14 @@ namespace Unbe.Mathematics.Generator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
         ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
         ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
-        ///      return string.Format(&quot;{typeName}({{0}}, {{1}}, {{2}}, {{3}})&quot;, x.ToString(format, formatProvider), y.ToString(format, formatProvider), z.ToString(format, formatProvider), w.ToString(format, formatProvider));
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}})&quot;, x.ToString(format, formatProvider), y.ToString(format, formatProvider), z.ToString(format, formatProvider), w.ToString(format, formatProvider));
         ///    }}
         ///
-        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/su [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/sum [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4StringMethods {
             get {

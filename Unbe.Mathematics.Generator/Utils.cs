@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Unbe.Mathematics2.Generator {
+namespace Unbe.Math.Generator {
   internal static class Utils {
     internal static Dictionary<string, string> typeAliases = new () {
       { "SByte", "sbyte" },

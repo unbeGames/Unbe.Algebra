@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using Unbe.Mathematics.Generator.Properties;
-using static Unbe.Mathematics2.Generator.Utils;
+using Unbe.Math.Generator.Properties;
+using static Unbe.Math.Generator.Utils;
 
-namespace Unbe.Mathematics2.Generator { 
+namespace Unbe.Math.Generator { 
   public class TemplateType4 { 
     private string typeName;
     private string T;

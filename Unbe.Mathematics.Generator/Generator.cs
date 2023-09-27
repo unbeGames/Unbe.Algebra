@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace Unbe.Mathematics2.Generator {
+namespace Unbe.Math.Generator {
   [Generator]
   public class TypeGenerator : IIncrementalGenerator {
     private const string AttributeShortName = "MathType";

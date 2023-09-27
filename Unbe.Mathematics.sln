@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Mathematics2", "Unbe.Mathematics\Unbe.Mathematics2.csproj", "{1CD1725C-4A58-4737-B8AE-8271B7F9D4EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Math", "Unbe.Mathematics\Unbe.Math.csproj", "{1CD1725C-4A58-4737-B8AE-8271B7F9D4EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Mathematics.Generator", "Unbe.Mathematics.Generator\Unbe.Mathematics.Generator.csproj", "{EB552BD1-A138-46A3-83F8-AAE2624B8C92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Math.Generator", "Unbe.Mathematics.Generator\Unbe.Math.Generator.csproj", "{EB552BD1-A138-46A3-83F8-AAE2624B8C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
