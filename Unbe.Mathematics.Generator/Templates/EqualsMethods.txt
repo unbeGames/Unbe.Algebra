@@ -1,0 +1,18 @@
+    
+    /// <summary>Returns true if the {0} is equal to a given {0}, false otherwise.</summary>
+    /// <param name="rhs">Right hand side argument to compare equality with.</param>
+    /// <returns>The result of the equality comparison.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public readonly bool Equals({0} other) {{
+      return Vector128.EqualsAll(value, other.value);
+    }}
+
+    /// <summary>Returns true if the {0} is equal to a given {0}, false otherwise.</summary>
+    /// <param name="o">Right hand side argument to compare equality with.</param>
+    /// <returns>The result of the equality comparison.</returns>
+    public override bool Equals(object o) {{ return o is {0} converted && Equals(converted); }}
+
+    /// <summary>Returns a hash code for the {0}.</summary>
+    /// <returns>The computed hash code.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override int GetHashCode() {{ return value.GetHashCode(); }}

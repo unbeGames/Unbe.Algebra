@@ -61,6 +61,39 @@ namespace Unbe.Mathematics.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to using System.Runtime.CompilerServices;
+        ///using System.Runtime.Intrinsics;
+        ///
+        ///namespace Unbe.Math {{
+        ///	public partial struct {0} {{{1}
+        ///	}}
+        ///}}.
+        /// </summary>
+        internal static string BaseTemplate {
+            get {
+                return ResourceManager.GetString("BaseTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return Vector128.EqualsAll(value, other.value);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualsMethods {
+            get {
+                return ResourceManager.GetString("EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///		/// &lt;summary&gt;{4} converts a single {2} value to a {0} vector by {1}assigning it to every component.&lt;/summary&gt;
         ///		/// &lt;param name=&quot;v&quot;&gt;{2} to convert to {0}&lt;/param&gt;
@@ -78,11 +111,11 @@ namespace Unbe.Mathematics.Generator.Properties {
         /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;&quot;x&quot;&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;&quot;y&quot;&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;&quot;z&quot;&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;&quot;w&quot;&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.Ag [rest of string was truncated]&quot;;.
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.Aggressive [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Constructors {
             get {
@@ -91,8 +124,7 @@ namespace Unbe.Mathematics.Generator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
@@ -100,11 +132,26 @@ namespace Unbe.Mathematics.Generator.Properties {
         ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
         ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
         ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z {{ readonl [rest of string was truncated]&quot;;.
+        ///    public {1} z {{ readonly  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Props {
             get {
                 return ResourceManager.GetString("Vector4Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{typeName}({{0}}, {{1}}, {{2}}, {{3}})&quot;, x.ToString(format, formatProvider), y.ToString(format, formatProvider), z.ToString(format, formatProvider), w.ToString(format, formatProvider));
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/su [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector4StringMethods {
+            get {
+                return ResourceManager.GetString("Vector4StringMethods", resourceCulture);
             }
         }
     }

@@ -3,9 +3,9 @@ using System.Runtime.Intrinsics;
 
 #pragma warning disable 0660, 0661, IDE1006
 
-namespace Unbe.Mathematics2 {
+namespace Unbe.Math {
   [MathType(type: typeof(float), dimensions: 4)]
-  public partial struct float4 : IEquatable<float4>, IFormattable {
+  public partial struct float4 : IEquatable<float4>, IFormattable { 
     public Vector128<float> value; 
 
     /// <summary>Returns the result of a componentwise subtraction operation on a float4 vector and a float value.</summary>

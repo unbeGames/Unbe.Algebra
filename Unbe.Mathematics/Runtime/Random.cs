@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
-using static Unbe.Mathematics2.math;
+using static Unbe.Math.math;
 
-namespace Unbe.Mathematics2 {
+namespace Unbe.Math {
   public struct Random {
     /// <summary>
     /// The random number generator state. It should not be zero.

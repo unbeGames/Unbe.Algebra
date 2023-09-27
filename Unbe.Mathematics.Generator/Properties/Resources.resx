@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BaseTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\BaseTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="EqualsMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\EqualsMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="SingleToVectorOperator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\SingleToVectorOperator.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
@@ -126,5 +132,8 @@
   </data>
   <data name="Vector4Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector4Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Vector4StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\StringMethods\Vector4StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
 </root>

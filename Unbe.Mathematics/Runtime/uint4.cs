@@ -3,7 +3,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
 
-namespace Unbe.Mathematics2 {
+namespace Unbe.Math {
   [MathType(type: typeof(uint), dimensions: 4)] 
   public partial struct uint4 : IEquatable<uint4>, IFormattable {
     public Vector128<uint> value;

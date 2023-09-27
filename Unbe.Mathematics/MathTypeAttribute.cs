@@ -1,4 +1,4 @@
-﻿namespace Unbe.Mathematics2 {
+﻿namespace Unbe.Math {
   [AttributeUsage(AttributeTargets.Struct)]
   internal class MathTypeAttribute : Attribute {
     public Type type;

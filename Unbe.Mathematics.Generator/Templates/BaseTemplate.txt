@@ -1,0 +1,7 @@
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics;
+
+namespace Unbe.Math {{
+	public partial struct {0} {{{1}
+	}}
+}}

@@ -3,7 +3,7 @@ using System.Runtime.Intrinsics;
 
 #pragma warning disable 8981, IDE1006
 
-namespace Unbe.Mathematics2 {
+namespace Unbe.Math { 
   public static partial class math {
     /// <summary>Returns the bit pattern of a uint4 as a float4.</summary>
     /// <param name="x">The uint4 bits to copy.</param>
