@@ -7,6 +7,7 @@ namespace Unbe.Math.Generator {
   public class Vector4Generator { 
     private string typeName;
     private string T;
+    private string vectorPrefix;
 
     private readonly StringBuilder sb = new();
     private readonly StringBuilder tmp = new();
@@ -14,12 +15,14 @@ namespace Unbe.Math.Generator {
     public string Generate(string typeName, string targetType) {
       this.typeName = typeName;
       T = typeAliases[targetType];
+      vectorPrefix = VectorPrefix(T, 4);
+
       sb.Clear();
       
       sb.Append(string.Format(Resources.Vector4Props, typeName, T));
-      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, "Vector128"));
+      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
       AddAssingOperators();
-      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, "Vector128"));
+      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
       AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
@@ -29,7 +32,7 @@ namespace Unbe.Math.Generator {
 
     private void AddAssingOperators() {
       sb.Append(SingleToVectorOperator(typeName, T, T));
-      sb.Append(SingleToVectorOperator(typeName, T, $"Vector128<{T}>"));
+      sb.Append(SingleToVectorOperator(typeName, T, $"{vectorPrefix}<{T}>"));
       if (T != "bool") {
         sb.Append(SingleToVectorOperator(typeName, T, "bool"));
       }
@@ -57,7 +60,7 @@ namespace Unbe.Math.Generator {
         var name = shuffleNames[i];
         var uniqueMembers = name.Distinct().Count() == 4;
         var template = uniqueMembers ? shuffle : shuffleReadonly;
-        tmp.Append(string.Format(template, typeName, name, "Vector128"));
+        tmp.Append(string.Format(template, typeName, name, vectorPrefix));
       }
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 

@@ -5,7 +5,7 @@ namespace Unbe.Math.Generator {
   internal static class Utils {
     public static readonly string[] shuffleNames = Enum.GetNames(typeof(Shuffle));
 
-    internal static Dictionary<string, string> typeAliases = new () {
+    internal static readonly Dictionary<string, string> typeAliases = new () {
       { "SByte", "sbyte" },
       { "Byte", "byte" },
       { "Int16", "short" },
@@ -19,8 +19,14 @@ namespace Unbe.Math.Generator {
       { "Boolean", "bool" },
     };
 
+    internal static readonly Dictionary<ValueTuple<string, int>, string> vectorPrefix = new() {
+      { ("float", 4), "Vector128" },
+      { ("uint", 4), "Vector128" },
+      { ("iint", 4), "Vector128" },
+    };
+
     // source => destination : type
-    internal static Dictionary<ValueTuple<string, string>, string> conversions = new() {
+    internal static readonly Dictionary<ValueTuple<string, string>, string> conversions = new() {
       { ("float", "float"), "implicit" },
       { ("int", "float"), "implicit" },
       { ("bool", "float"), "explicit" },
@@ -36,6 +42,10 @@ namespace Unbe.Math.Generator {
       { ("double", "uint"), "explicit" },
       { ("Vector128<uint>", "uint"), "implicit" },
     };
+
+    internal static string VectorPrefix(string type, int dimensions) {
+      return vectorPrefix[(type, dimensions)];
+    }
 
     internal static string ConvertOperator(string source, string destination) {
       return conversions[(source, destination)];
