@@ -24,6 +24,7 @@ namespace Unbe.Math.Generator {
       { ("bool", "float"), "explicit" },
       { ("uint", "float"), "implicit" },
       { ("double", "float"), "explicit" },
+      { ("Vector128<float>", "float"), "implicit" },
       
       
       { ("uint", "uint"), "implicit" },
@@ -31,6 +32,7 @@ namespace Unbe.Math.Generator {
       { ("bool", "uint"), "explicit" },
       { ("float", "uint"), "explicit" },
       { ("double", "uint"), "explicit" },
+      { ("Vector128<uint>", "uint"), "implicit" },
     };
 
     internal static string ConvertOperator(string source, string destination) {

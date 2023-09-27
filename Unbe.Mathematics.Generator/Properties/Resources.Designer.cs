@@ -61,12 +61,14 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} vectors.&lt;/summary&gt;
+        ///   Looks up a localized string similar to         
+        ///    
+        ///    /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} operator *({0} lhs, {0} rhs) {{ return new [rest of string was truncated]&quot;;.
+        ///    public static {0} operator *({0} lhs, {0} rh [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BaseMathOperators {
             get {
@@ -97,10 +99,11 @@ namespace Unbe.Math.Generator.Properties {
         ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public readonly bool Equals({0} other) {{
-        ///      return Vector128.EqualsAll(value, other.value);
+        ///      return value == other.value;
         ///    }}
         ///
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param n [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EqualsMethods {
             get {

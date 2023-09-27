@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Unbe.Math.Generator.Properties;
 using static Unbe.Math.Generator.Utils;
 
@@ -18,15 +17,16 @@ namespace Unbe.Math.Generator {
       sb.Append(string.Format(Resources.Vector4Props, typeName, T));
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, "Vector128"));
       AddAssingOperators();
-      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T));
+      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, "Vector128"));
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
-
+       
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
     }
 
     private void AddAssingOperators() {
       sb.Append(SingleToVectorOperator(typeName, T, T));
+      sb.Append(SingleToVectorOperator(typeName, T, $"Vector128<{T}>"));
       if (T != "bool") {
         sb.Append(SingleToVectorOperator(typeName, T, "bool"));
       }
@@ -41,7 +41,7 @@ namespace Unbe.Math.Generator {
       }
       if (T != "double") {
         sb.Append(SingleToVectorOperator(typeName, T, "double"));
-      }
+      } 
     }
 
     private string Test() {

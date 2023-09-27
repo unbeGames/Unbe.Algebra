@@ -1,0 +1,77 @@
+        
+    
+    #region Multiplication
+    /// <summary>Returns the result of a componentwise multiplication operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise multiplication.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise multiplication.</param>
+    /// <returns>{0} result of the componentwise multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator *({0} lhs, {0} rhs) {{ return new {0}(lhs.value * rhs.value); }}
+
+    /// <summary>Returns the result of a componentwise multiplication operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise multiplication.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise multiplication.</param>
+    /// <returns>{0} result of the componentwise multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator *({0} lhs, {1} rhs) {{ return new {0}(lhs.value * rhs); }}
+
+    /// <summary>Returns the result of a componentwise multiplication operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise multiplication.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise multiplication.</param>
+    /// <returns>{0} result of the componentwise multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator *({1} lhs, {0} rhs) {{ return new {0}(lhs * rhs.value); }}
+
+    /// <summary>Returns the result of a componentwise multiplication operation on a {0} vector and a {2}<{1}> value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise multiplication.</param>
+    /// <param name="rhs">Right hand side {2}<{1}> to use to compute componentwise multiplication.</param>
+    /// <returns>{0} result of the componentwise multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator *({0} lhs, {2}<{1}> rhs) {{ return new {0}(lhs.value * rhs); }}
+
+    /// <summary>Returns the result of a componentwise multiplication operation on a {2}<{1}> value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {2}<{1}> to use to compute componentwise multiplication.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise multiplication.</param>
+    /// <returns>{0} result of the componentwise multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator *({2}<{1}> lhs, {0} rhs) {{ return new {0}(lhs * rhs.value); }}
+    #endregion
+
+
+    #region Addition
+    /// <summary>Returns the result of a componentwise addition operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise addition.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise addition.</param>
+    /// <returns>{0} result of the componentwise addition.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator + ({0} lhs, {0} rhs) {{ return new {0}(lhs.value + rhs.value); }}
+
+    /// <summary>Returns the result of a componentwise addition operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise addition.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise addition.</param>
+    /// <returns>{0} result of the componentwise addition.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator + ({0} lhs, {1} rhs) {{ return new {0}(lhs.value + {2}.Create(rhs)); }}
+
+    /// <summary>Returns the result of a componentwise addition operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise addition.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise addition.</param>
+    /// <returns>{0} result of the componentwise addition.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator + ({1} lhs, {0} rhs) {{ return new {0}({2}.Create(lhs) + rhs.value); }}
+    
+    /// <summary>Returns the result of a componentwise addition operation on a {0} vector and a {2}<{1}> value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise addition.</param>
+    /// <param name="rhs">Right hand side {2}<{1}> to use to compute componentwise addition.</param>
+    /// <returns>{0} result of the componentwise addition.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator + ({0} lhs, {2}<{1}> rhs) {{ return new {0}(lhs.value + rhs); }}
+
+    /// <summary>Returns the result of a componentwise addition operation on a {2}<{1}> value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {2}<{1}> to use to compute componentwise addition.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise addition.</param>
+    /// <returns>{0} result of the componentwise addition.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator + ({2}<{1}> lhs, {0} rhs) {{ return new {0}(lhs + rhs.value); }}
+    #endregion
+
