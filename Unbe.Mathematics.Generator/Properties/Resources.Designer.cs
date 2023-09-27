@@ -131,15 +131,14 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
+        ///   Looks up a localized string similar to 		
+        ///		#region Shift Operators
         ///		/// &lt;summary&gt;Returns the result of a componentwise left shift operation on an {0} vector by a number of bits specified by a single int.&lt;/summary&gt;
         ///		/// &lt;param name=&quot;v&quot;&gt;The vector to left shift.&lt;/param&gt;
         ///		/// &lt;param name=&quot;n&quot;&gt;The number of bits to left shift.&lt;/param&gt;
         ///		/// &lt;returns&gt;The result of the componentwise left shift.&lt;/returns&gt;
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} operator &lt;&lt; ({0} v, int n) {{ return new {0} ({2}.ShiftLeft(v.value, n)); }}
-        ///
-        ///		/// &lt;summary&gt; [rest of string was truncated]&quot;;.
+        ///		public static {0} operator &lt;&lt; ({0} v, int n) {{ return new {0} ({1}.ShiftLeft(v.valu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ShiftOperators {
             get {
@@ -203,6 +202,22 @@ namespace Unbe.Math.Generator.Properties {
         internal static string SingleToVectorOperator {
             get {
                 return ResourceManager.GetString("SingleToVectorOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single {3} value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{3} to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({3} v) {{
+        ///      value = {2}.Create(({1})v);
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string SingleValueConstructor {
+            get {
+                return ResourceManager.GetString("SingleValueConstructor", resourceCulture);
             }
         }
         

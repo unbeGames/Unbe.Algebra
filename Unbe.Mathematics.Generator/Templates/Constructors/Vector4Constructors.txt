@@ -36,17 +36,3 @@
     public {0}(bool v) {{
       value = {2}.Create(v ? ({1})1 : ({1})0);
     }}
-
-    /// <summary>Constructs a {0} vector from a single int value by converting it to {1} and assigning it to every component.</summary>
-    /// <param name="v">int to convert to {0}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {0}(int v) {{
-      value = {2}.Create(v).As<int, {1}>();
-    }}
-
-    /// <summary>Constructs a {0} vector from a single double value by converting it to {1} and assigning it to every component.</summary>
-    /// <param name="v">double to convert to float4</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {0}(double v) {{
-      value = {2}.Create(({1})v);
-    }}

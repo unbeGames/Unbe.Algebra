@@ -20,7 +20,7 @@ namespace Unbe.Math.Generator {
       sb.Clear();
       
       sb.Append(string.Format(Resources.Vector4Props, typeName, T));
-      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
+      AddConstructors();
       AddAssingOperators();
       sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
       AddBitOperators();
@@ -29,6 +29,23 @@ namespace Unbe.Math.Generator {
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
        
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
+    }
+
+    private void AddConstructors() {
+      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
+      
+      if (T != "int") {
+        sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, "int"));
+      }
+      if (T != "uint") {
+        sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, "uint"));
+      }
+      if (T != "float") {
+        sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, "float"));
+      }
+      if (T != "double") {
+        sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, "double"));
+      }
     }
 
     private void AddAssingOperators() {
@@ -82,6 +99,10 @@ $@"
 ";
     }
 
+
+    private string SingleValueConstructor(string typeName, string T, string vectorPrefix, string targetType) {
+      return string.Format(Resources.SingleValueConstructor, typeName, T, vectorPrefix, targetType);
+    }
 
     private string SingleToVectorOperator(string typeName, string T, string targetType) {
       return string.Format(Resources.SingleToVectorOperator, ConvertToSingleArgs(typeName, T, targetType));

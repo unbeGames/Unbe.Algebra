@@ -32,7 +32,7 @@ namespace Unbe.Math.Generator {
     private static readonly Dictionary<ValueTuple<string, int>, string> vectorPrefix = new() {
       { ("float", 4), "Vector128" },
       { ("uint", 4), "Vector128" },
-      { ("iint", 4), "Vector128" },
+      { ("int", 4), "Vector128" },
     };
 
     // source => destination : type
@@ -42,8 +42,7 @@ namespace Unbe.Math.Generator {
       { ("bool", "float"), "explicit" },
       { ("uint", "float"), "implicit" },
       { ("double", "float"), "explicit" },
-      { ("Vector128<float>", "float"), "implicit" },
-      
+      { ("Vector128<float>", "float"), "implicit" },      
       
       { ("uint", "uint"), "implicit" },
       { ("int", "uint"), "explicit" },
@@ -51,6 +50,13 @@ namespace Unbe.Math.Generator {
       { ("float", "uint"), "explicit" },
       { ("double", "uint"), "explicit" },
       { ("Vector128<uint>", "uint"), "implicit" },
+
+      { ("uint", "int"), "explicit" },
+      { ("int", "int"), "implicit" },
+      { ("bool", "int"), "explicit" },
+      { ("float", "int"), "explicit" },
+      { ("double", "int"), "explicit" },
+      { ("Vector128<int>", "int"), "implicit" },
     };
 
     internal static bool SupportsBitOps(string type) {

@@ -1,0 +1,7 @@
+    
+    /// <summary>Constructs a {0} vector from a single {3} value by converting it to {1} and assigning it to every component.</summary>
+    /// <param name="v">{3} to convert to {0}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({3} v) {{
+      value = {2}.Create(({1})v);
+    }}
