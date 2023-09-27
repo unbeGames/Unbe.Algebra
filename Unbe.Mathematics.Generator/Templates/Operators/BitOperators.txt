@@ -1,0 +1,74 @@
+
+    #region Bit Operators
+    /// <summary>Returns the result of a componentwise bitwise not operation on a {0} vector.</summary>
+    /// <param name="val">Value to use when computing the componentwise bitwise not.</param>
+    /// <returns>{0} result of the componentwise bitwise not.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator ~ ({0} val) {{ return new {0} (~val.value); }}
+
+
+    /// <summary>Returns the result of a componentwise bitwise and operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise and.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise and.</param>
+    /// <returns>{0} result of the componentwise bitwise and.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator & ({0} lhs, {0} rhs) {{ return new {0} (lhs & rhs); }}
+
+    /// <summary>Returns the result of a componentwise bitwise and operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise and.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise bitwise and.</param>
+    /// <returns>{0} result of the componentwise bitwise and.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator & ({0} lhs, {1} rhs) {{ return new {0} (lhs & {2}.Create(rhs)); }}
+
+    /// <summary>Returns the result of a componentwise bitwise and operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise bitwise and.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise and.</param>
+    /// <returns>{0} result of the componentwise bitwise and.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator & ({1} lhs, {0} rhs) {{ return new {0} ({2}.Create(lhs) & rhs); }}
+
+
+    /// <summary>Returns the result of a componentwise bitwise or operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise or.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise or.</param>
+    /// <returns>{0} result of the componentwise bitwise or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator | ({0} lhs, {0} rhs) {{ return new {0} (lhs | rhs); }}
+
+    /// <summary>Returns the result of a componentwise bitwise or operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise or.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise bitwise or.</param>
+    /// <returns>{0} result of the componentwise bitwise or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator | ({0} lhs, {1} rhs) {{ return new {0} (lhs | {2}.Create(rhs)); }}
+
+    /// <summary>Returns the result of a componentwise bitwise or operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise bitwise or.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise or.</param>
+    /// <returns>{0} result of the componentwise bitwise or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator | ({1} lhs, {0} rhs) {{ return new {0} ({2}.Create(lhs) | rhs); }}
+
+
+    /// <summary>Returns the result of a componentwise bitwise exclusive or operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise exclusive or.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise exclusive or.</param>
+    /// <returns>{0} result of the componentwise bitwise exclusive or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator ^ ({0} lhs, {0} rhs) {{ return new {0} (lhs ^ rhs); }}
+
+    /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise bitwise exclusive or.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise bitwise exclusive or.</param>
+    /// <returns>{0} result of the componentwise bitwise exclusive or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator ^ ({0} lhs, {1} rhs) {{ return new {0} (lhs ^ {2}.Create(rhs)); }}
+
+    /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise bitwise exclusive or.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise bitwise exclusive or.</param>
+    /// <returns>{0} result of the componentwise bitwise exclusive or.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator ^ ({1} lhs, {0} rhs) {{ return new {0} ({2}.Create(lhs) ^ rhs); }}
+    #endregion

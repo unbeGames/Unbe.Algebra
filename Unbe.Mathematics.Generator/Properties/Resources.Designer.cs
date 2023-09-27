@@ -94,6 +94,24 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to         
+        ///        #region Bit Operators
+        ///        /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
+        ///        /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise bitwise not.&lt;/param&gt;
+        ///        /// &lt;returns&gt;{0} result of the componentwise bitwise not.&lt;/returns&gt;
+        ///        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///        public static {0} operator ~ ({0} val) {{ return new {0} (~value); }}
+        ///
+        ///
+        ///        /// &lt;summary&gt;Returns the result of a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BitOperators {
+            get {
+                return ResourceManager.GetString("BitOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
@@ -131,8 +149,7 @@ namespace Unbe.Math.Generator.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    #region Shuffles{0}
-        ///    
+        ///    #region Shuffles{0}    
         ///    #endregion
         ///.
         /// </summary>

@@ -220,3 +220,4 @@
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {0} operator +({0} v) {{ return v; }}
     #endregion
+

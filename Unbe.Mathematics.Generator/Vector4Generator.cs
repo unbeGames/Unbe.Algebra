@@ -23,6 +23,9 @@ namespace Unbe.Math.Generator {
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
       AddAssingOperators();
       sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
+      if (SupportsBitOps(T)) {
+        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
+      }
       AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));

@@ -22,12 +22,5 @@ namespace Unbe.Math {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static uint4 operator >>(uint4 x, int n) { return new uint4(Vector128.ShiftRightLogical(x.value, n)); }
 
-    /// <summary>Returns the result of a componentwise bitwise or operation on a uint value and a uint4 vector.</summary>
-    /// <param name="lhs">Left hand side uint to use to compute componentwise bitwise or.</param>
-    /// <param name="rhs">Right hand side uint4 to use to compute componentwise bitwise or.</param>
-    /// <returns>uint4 result of the componentwise bitwise or.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint4 operator |(uint lhs, uint4 rhs) { return new uint4(Vector128.Create(lhs) | rhs.value); }
-
   }
 }
