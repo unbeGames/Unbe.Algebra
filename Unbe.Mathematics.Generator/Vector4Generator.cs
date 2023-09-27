@@ -4,33 +4,43 @@ using Unbe.Math.Generator.Properties;
 using static Unbe.Math.Generator.Utils;
 
 namespace Unbe.Math.Generator { 
-  public class TemplateType4 { 
+  public class Vector4Generator { 
     private string typeName;
     private string T;
-    private Type TAsType; 
 
     private readonly StringBuilder sb = new();
 
     public string Generate(string typeName, string targetType) {
       this.typeName = typeName;
       T = typeAliases[targetType];
-      TAsType = Type.GetType(T, false);
       sb.Clear();
+      
       sb.Append(string.Format(Resources.Vector4Props, typeName, T));
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, "Vector128"));
-      AddOperators();
+      AddAssingOperators();
+      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T));
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
+
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
     }
 
-    private void AddOperators() {
+    private void AddAssingOperators() {
       sb.Append(SingleToVectorOperator(typeName, T, T));
-      if (TAsType != typeof(bool)) {
+      if (T != "bool") {
         sb.Append(SingleToVectorOperator(typeName, T, "bool"));
       }
-      if (TAsType != typeof(int)) {
+      if (T != "int") {
         sb.Append(SingleToVectorOperator(typeName, T, "int"));
+      }
+      if (T != "uint") {
+        sb.Append(SingleToVectorOperator(typeName, T, "uint"));
+      } 
+      if (T != "float") {
+        sb.Append(SingleToVectorOperator(typeName, T, "float"));
+      }
+      if (T != "double") {
+        sb.Append(SingleToVectorOperator(typeName, T, "double"));
       }
     }
 

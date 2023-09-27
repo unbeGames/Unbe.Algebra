@@ -14,7 +14,7 @@ namespace Unbe.Math.Generator {
     private const string AttributeShortName = "MathType";
     private const string AttributeFullName = $"{AttributeShortName}Attribute";
 
-    private readonly TemplateType4 templateType4 = new();
+    private readonly Vector4Generator templateType4 = new();
 
     public void Initialize(IncrementalGeneratorInitializationContext context) {
       //Debugger.Launch();

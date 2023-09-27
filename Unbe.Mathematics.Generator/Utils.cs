@@ -22,11 +22,15 @@ namespace Unbe.Math.Generator {
       { ("float", "float"), "implicit" },
       { ("int", "float"), "implicit" },
       { ("bool", "float"), "explicit" },
+      { ("uint", "float"), "implicit" },
+      { ("double", "float"), "explicit" },
       
       
       { ("uint", "uint"), "implicit" },
       { ("int", "uint"), "explicit" },
       { ("bool", "uint"), "explicit" },
+      { ("float", "uint"), "explicit" },
+      { ("double", "uint"), "explicit" },
     };
 
     internal static string ConvertOperator(string source, string destination) {

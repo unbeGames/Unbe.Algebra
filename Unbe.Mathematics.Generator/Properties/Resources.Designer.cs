@@ -61,13 +61,28 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} operator *({0} lhs, {0} rhs) {{ return new [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BaseMathOperators {
+            get {
+                return ResourceManager.GetString("BaseMathOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to using System.Runtime.CompilerServices;
         ///using System.Runtime.Intrinsics;
         ///
         ///namespace Unbe.Math {{
         ///	public partial struct {0} {{{1}
         ///	}}
-        ///}}.
+        ///}}
+        ///.
         /// </summary>
         internal static string BaseTemplate {
             get {
