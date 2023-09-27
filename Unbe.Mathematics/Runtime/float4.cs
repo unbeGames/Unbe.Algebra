@@ -21,12 +21,5 @@ namespace Unbe.Math {
     /// <returns>Converted value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static implicit operator float4(half v) { return new float4(v); }
-
-    /// <summary>Returns the result of a componentwise subtraction operation on a float4 vector and a float value.</summary>
-    /// <param name="lhs">Left hand side float4 to use to compute componentwise subtraction.</param>
-    /// <param name="rhs">Right hand side float to use to compute componentwise subtraction.</param>
-    /// <returns>float4 result of the componentwise subtraction.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float4 operator -(float4 lhs, float rhs) { return new float4(Vector128.Subtract(lhs.value, Vector128.Create(rhs))); }
   }
 }

@@ -47,7 +47,7 @@ namespace Unbe.Math.Generator {
     private string Test() {
       return 
 $@"
-
+     
 ";
     }
 
