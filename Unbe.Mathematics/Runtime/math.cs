@@ -11,6 +11,6 @@ namespace Unbe.Math {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float4 asfloat(uint4 x) {
       return new float4(x.value.As<uint, float>());
-    }
+    }    
   }
 }
