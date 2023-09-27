@@ -7,7 +7,7 @@ namespace Unbe.Math.Generator {
   public class Vector4Generator { 
     private string typeName;
     private string T;
-    private string vectorPrefix;
+    private string vectorPrefix; 
 
     private readonly StringBuilder sb = new();
     private readonly StringBuilder tmp = new();
@@ -23,9 +23,7 @@ namespace Unbe.Math.Generator {
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
       AddAssingOperators();
       sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
-      if (SupportsBitOps(T)) {
-        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
-      }
+      AddBitOperators();
       AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
@@ -51,6 +49,14 @@ namespace Unbe.Math.Generator {
       if (T != "double") {
         sb.Append(SingleToVectorOperator(typeName, T, "double"));
       } 
+    }
+
+    private void AddBitOperators() {
+      if (SupportsBitOps(T)) {
+        var rightOp = IsSigned(T) ? "ShiftRightArithmetic" : "ShiftRightLogical";
+        sb.Append(string.Format(Resources.ShiftOperators, typeName, vectorPrefix, rightOp));
+        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
+      }
     }
 
     private void AddShuffles() {

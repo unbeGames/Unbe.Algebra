@@ -94,16 +94,16 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to         
-        ///        #region Bit Operators
-        ///        /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
-        ///        /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise bitwise not.&lt;/param&gt;
-        ///        /// &lt;returns&gt;{0} result of the componentwise bitwise not.&lt;/returns&gt;
-        ///        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///        public static {0} operator ~ ({0} val) {{ return new {0} (~value); }}
+        ///   Looks up a localized string similar to 
+        ///    #region Bit Operators
+        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise bitwise not.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} result of the componentwise bitwise not.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} operator ~ ({0} val) {{ return new {0} (~val.value); }}
         ///
         ///
-        ///        /// &lt;summary&gt;Returns the result of a [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and opera [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BitOperators {
             get {
@@ -127,6 +127,23 @@ namespace Unbe.Math.Generator.Properties {
         internal static string EqualsMethods {
             get {
                 return ResourceManager.GetString("EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///		/// &lt;summary&gt;Returns the result of a componentwise left shift operation on an {0} vector by a number of bits specified by a single int.&lt;/summary&gt;
+        ///		/// &lt;param name=&quot;v&quot;&gt;The vector to left shift.&lt;/param&gt;
+        ///		/// &lt;param name=&quot;n&quot;&gt;The number of bits to left shift.&lt;/param&gt;
+        ///		/// &lt;returns&gt;The result of the componentwise left shift.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} operator &lt;&lt; ({0} v, int n) {{ return new {0} ({2}.ShiftLeft(v.value, n)); }}
+        ///
+        ///		/// &lt;summary&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ShiftOperators {
+            get {
+                return ResourceManager.GetString("ShiftOperators", resourceCulture);
             }
         }
         
