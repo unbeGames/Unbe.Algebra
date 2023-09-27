@@ -38,7 +38,7 @@ namespace Unbe.Math.Generator {
       Debug.WriteLine("Build code generator");     
       
       foreach (var target in source) {      
-        var sourceCode = templateType4.Generate(target.Type.Name, target.TargetType);
+        var sourceCode = templateType4.Generate(target.Type.Name, target.TargetType, target.dimensions);
 
         context.AddSource($"{target.Type.Name}.g.cs", sourceCode);
       }

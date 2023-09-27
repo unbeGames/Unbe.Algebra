@@ -2,7 +2,7 @@
     /// <summary>Shuffles the vector.</summary>    
     public {0} {1} {{
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
-      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
-      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle.{1}); }}
+      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{1}); }}
     }}

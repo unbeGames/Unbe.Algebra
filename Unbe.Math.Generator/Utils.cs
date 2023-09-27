@@ -4,7 +4,12 @@ using System.Collections.Generic;
 namespace Unbe.Math.Generator {
   internal static class Utils {
 
-    internal static readonly string[] shuffleNames = Enum.GetNames(typeof(Shuffle));
+    internal static readonly string[] shuffle4Names = Enum.GetNames(typeof(Shuffle4));
+    internal static readonly string[] shuffle3Names = Enum.GetNames(typeof(Shuffle3));
+
+    internal static readonly Dictionary<int, string[]> shuffleByDimension = new() {
+      { 3, shuffle3Names }, { 4, shuffle4Names }
+    };
 
 
     internal static readonly Dictionary<string, string> typeAliases = new () {

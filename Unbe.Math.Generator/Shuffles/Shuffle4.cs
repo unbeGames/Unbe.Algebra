@@ -1,5 +1,5 @@
-﻿namespace Unbe.Math {
-  public enum Shuffle : byte {
+﻿namespace Unbe.Math.Generator {
+  public enum Shuffle4 : byte {
     xxxx = (0 << 6) | (0 << 4) | (0 << 2) | 0,
     yxxx = (0 << 6) | (0 << 4) | (0 << 2) | 1,
     zxxx = (0 << 6) | (0 << 4) | (0 << 2) | 2,

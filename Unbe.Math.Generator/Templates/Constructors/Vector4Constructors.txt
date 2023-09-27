@@ -23,13 +23,6 @@
       value = v;
     }}
 
-     /// <summary>Constructs a {0} vector from a single {1} value by assigning it to every component.</summary>
-    /// <param name="v">{1} to convert to {0}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {0}({1} v) {{
-      value = {2}.Create(v);
-    }}
-
     /// <summary>Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.</summary>
     /// <param name="v">bool to convert to {0}</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -7,19 +7,21 @@ namespace Unbe.Math.Generator {
   public class Vector4Generator { 
     private string typeName;
     private string T;
-    private string vectorPrefix; 
+    private string vectorPrefix;
+    private int dimensions;
 
     private readonly StringBuilder sb = new();
     private readonly StringBuilder tmp = new();
 
-    public string Generate(string typeName, string targetType) {
+    public string Generate(string typeName, string targetType, int dimensions) {
       this.typeName = typeName;
       T = typeAliases[targetType];
-      vectorPrefix = VectorPrefix(T, 4);
+      this.dimensions = dimensions;
+      vectorPrefix = VectorPrefix(T, dimensions);
 
       sb.Clear();
-      
-      sb.Append(string.Format(Resources.Vector4Props, typeName, T));
+
+      AddProps();
       AddConstructors();
       AddAssingOperators();
       sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
@@ -31,9 +33,23 @@ namespace Unbe.Math.Generator {
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
     }
 
+    private void AddProps() {
+      string propsTemplate = string.Empty;
+      switch (dimensions) {
+        case 4:
+          propsTemplate = Resources.Vector4Props;
+          break;
+        case 3:
+          propsTemplate = Resources.Vector3Props;
+          break;
+      }
+      sb.Append(string.Format(propsTemplate, typeName, T));
+    }
+
     private void AddConstructors() {
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, vectorPrefix));
-      
+
+      sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
       if (T != "int") {
         sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, "int"));
       }
@@ -81,12 +97,13 @@ namespace Unbe.Math.Generator {
 
       var shuffle = Resources.Shuffle;
       var shuffleReadonly = Resources.ShuffleReadonly;
+      var shuffleNames = shuffleByDimension[dimensions];
 
       for(int i = 0; i < shuffleNames.Length; i++) {
         var name = shuffleNames[i];
-        var uniqueMembers = name.Distinct().Count() == 4;
-        var template = uniqueMembers ? shuffle : shuffleReadonly;
-        tmp.Append(string.Format(template, typeName, name, vectorPrefix));
+        var uniqueMembers = name.Distinct().Count() == dimensions;
+        var template = uniqueMembers ? shuffle : shuffleReadonly; 
+        tmp.Append(string.Format(template, typeName, name, vectorPrefix, dimensions));
       }
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 

@@ -222,6 +222,23 @@ namespace Unbe.Math.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///    public static readonly {0} zero;
+        ///
+        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
+        ///    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
+        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
+        ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
+        ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
+        ///    public {1} z {{ readonly  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector3Props {
+            get {
+                return ResourceManager.GetString("Vector3Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;

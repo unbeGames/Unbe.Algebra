@@ -2,5 +2,5 @@
     /// <summary>Shuffles the vector.</summary>    
     public readonly {0} {1} {{
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
-      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
     }}
