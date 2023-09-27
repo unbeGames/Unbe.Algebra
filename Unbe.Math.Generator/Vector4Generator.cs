@@ -28,7 +28,7 @@ namespace Unbe.Math.Generator {
       AddBitOperators();
       AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
-      sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
+      AddStringMethods();
        
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
     }
@@ -128,6 +128,13 @@ $@"
 ";
     }
 
+    private void AddStringMethods() {
+      if (dimensions == 4) {
+        sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
+      } else if(dimensions == 3) {
+        sb.Append(string.Format(Resources.Vector3StringMethods, typeName));
+      }
+    }
 
     private string SingleValueConstructor(string typeName, string T, string vectorPrefix, string targetType) {
       return string.Format(Resources.SingleValueConstructor, typeName, T, vectorPrefix, targetType);

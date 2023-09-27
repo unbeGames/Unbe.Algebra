@@ -277,6 +277,23 @@ namespace Unbe.Math.Generator.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}&quot;, x.ToString(format, formatProvider), y.ToString(format, formatProvider), z.ToString(format, formatProvider));
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representatio [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector3StringMethods {
+            get {
+                return ResourceManager.GetString("Vector3StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
