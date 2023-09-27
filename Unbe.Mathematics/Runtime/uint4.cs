@@ -27,7 +27,7 @@ namespace Unbe.Math {
     /// <param name="rhs">Right hand side uint4 to use to compute componentwise bitwise or.</param>
     /// <returns>uint4 result of the componentwise bitwise or.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static uint4 operator |(uint lhs, uint4 rhs) { return new uint4(Vector128.BitwiseOr(Vector128.Create(lhs), rhs.value)); }
+    public static uint4 operator |(uint lhs, uint4 rhs) { return new uint4(Vector128.Create(lhs) | rhs.value); }
 
   }
 }

@@ -188,3 +188,35 @@
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {0} operator %({2}<{1}> lhs, {0} rhs) {{ return new {0}({2}Ext.Reminder(lhs, rhs.value)); }}
     #endregion
+
+
+    #region Increment/Decrement
+    /// <summary>Returns the result of a componentwise increment operation on a {0} vector.</summary>
+    /// <param name="v">Value to use when computing the componentwise increment.</param>
+    /// <returns>{0} result of the componentwise increment.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator ++({0} v) {{ return new {0}(v.value + {2}.Create(({1})1)); }}
+
+
+    /// <summary>Returns the result of a componentwise decrement operation on a {0} vector.</summary>
+    /// <param name="v">Value to use when computing the componentwise decrement.</param>
+    /// <returns>{0} result of the componentwise decrement.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator --({0} v) {{ return new {0}(v.value - {2}.Create(({1})1)); }}
+    #endregion
+
+
+    #region Unary
+    /// <summary>Returns the result of a componentwise unary minus operation on a {0} vector.</summary>
+    /// <param name="v">Value to use when computing the componentwise unary minus.</param>
+    /// <returns>{0} result of the componentwise unary minus.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator -({0} v) {{ return new {0}({2}.Negate(v.value)); }}
+
+
+    /// <summary>Returns the result of a componentwise unary plus operation on a {0} vector.</summary>
+    /// <param name="v">Value to use when computing the componentwise unary plus.</param>
+    /// <returns>{0} result of the componentwise unary plus.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} operator +({0} v) {{ return v; }}
+    #endregion
