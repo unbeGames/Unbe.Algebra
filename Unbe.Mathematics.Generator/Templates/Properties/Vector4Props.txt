@@ -1,0 +1,12 @@
+
+    /// <summary>{0} zero value.</summary>
+    public static readonly {0} zero;
+
+    /// <summary>x component of the vector.</summary>
+    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
+    /// <summary>y component of the vector.</summary>
+    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
+    /// <summary>z component of the vector.</summary>
+    public {1} z {{ readonly get {{ return value[2]; }} set {{ this.value = this.value.WithElement(2, value); }} }}
+    /// <summary>w component of the vector.</summary>
+    public {1} w {{ readonly get {{ return value[3]; }} set {{ this.value = this.value.WithElement(3, value); }} }}

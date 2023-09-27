@@ -1,28 +1,30 @@
-﻿using System.Text;
+﻿using System;
+using System.Diagnostics;
+using System.Text;
+using Unbe.Mathematics.Generator.Properties;
+using static Unbe.Mathematics2.Generator.Utils;
 
 namespace Unbe.Mathematics2.Generator {
   public class TemplateType4 {
     private string typeName;
     private string T;
+    private Type TAsType;
 
     private readonly StringBuilder sb = new();    
 
     public string Generate(string typeName, string targetType) {
       this.typeName = typeName;
-      this.T = Utils.typeAliases[targetType];
+      T = typeAliases[targetType];
+      TAsType = Type.GetType(T, false);
       sb.Clear();
       sb.AppendLine("using System.Runtime.CompilerServices;");
       sb.AppendLine("using System.Runtime.Intrinsics;");
       sb.AppendLine();
       sb.AppendLine("namespace Unbe.Mathematics2 {");
       sb.Append($"  public partial struct {typeName} {{");
-      sb.Append(GetZero());
-      sb.Append(PropertyGetters());
-      sb.Append(ConstructorBase());
-      sb.Append(ConstructorBase2());
-      sb.Append(ConstructorVector());
-      sb.Append(ConstructorSingle());
-      sb.Append(ConstructFromSingleBool());
+      sb.Append(string.Format(Resources.Vector4Props, typeName, T));
+      AddConstructors();
+      AddOperators();
       sb.Append(Equals());
       sb.Append(SimpleString());
       sb.Append(FormatString());
@@ -31,7 +33,24 @@ namespace Unbe.Mathematics2.Generator {
       return sb.ToString();
     }
 
-    private string ConstructorBase() {
+    private void AddConstructors() {
+      sb.Append(ConstructFrom4Components());
+      sb.Append(ConstructFromVector4());
+      sb.Append(ConstructFromVector128());
+      sb.Append(ConstructFromSingleValue());
+    }
+
+    private void AddOperators() {
+      sb.Append(SingleToVectorOperator(typeName, T, T));
+      if (TAsType != typeof(bool)) {
+        sb.Append(SingleToVectorOperator(typeName, T, "bool"));
+      }
+      if (TAsType != typeof(int)) {
+        sb.Append(SingleToVectorOperator(typeName, T, "int"));
+      }
+    }
+
+    private string ConstructFrom4Components() {
       return 
 $@"
     /// <summary>Constructs a {typeName} vector from four {T} values.</summary>
@@ -46,20 +65,8 @@ $@"
 ";
     }
 
-    private string ConstructorSingle() {
-      return 
-$@"
-    /// <summary>Constructs a {typeName} vector from a single {T} value by assigning it to every component.</summary>
-    /// <param name=""v"">{T} to convert to {typeName}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}({T} v) {{
-      value = Vector128.Create(v);
-    }}
-";
-    }
-
-    private string ConstructorBase2() {
-      return 
+    private string ConstructFromVector4() {
+      return
 $@"
     /// <summary>Constructs a {typeName} vector from a {typeName} vector.</summary>
     /// <param name=""vector"">The constructed vector's components will be set to this value.</param>
@@ -70,22 +77,8 @@ $@"
 ";
     }
 
-    private string PropertyGetters() {
+    private string ConstructFromVector128() {
       return
-$@"
-    /// <summary>x component of the vector.</summary>
-    public {T} x {{ readonly get {{ return value.GetElement(0); }} set {{ this.value = this.value.WithElement(0, value); }} }}
-    /// <summary>y component of the vector.</summary>
-    public {T} y {{ readonly get {{ return value.GetElement(1); }} set {{ this.value = this.value.WithElement(1, value); }} }}
-    /// <summary>z component of the vector.</summary>
-    public {T} z {{ readonly get {{ return value.GetElement(2); }} set {{ this.value = this.value.WithElement(2, value); }} }}
-    /// <summary>w component of the vector.</summary>
-    public {T} w {{ readonly get {{ return value.GetElement(3); }} set {{ this.value = this.value.WithElement(3, value); }} }}
-";
-    }
-
-    private string ConstructorVector() {
-      return 
 $@"
     /// <summary>Constructs a {typeName} vector from Vector128<{T}>.</summary>
     /// <param name=""v"">Vector128<{T}> to convert to {typeName}</param>
@@ -96,14 +89,35 @@ $@"
 ";
     }
 
-    private string ConstructFromSingleBool() {
+    private string ConstructFromSingleValue() {
       return 
 $@"
-    /// <summary>Constructs a {typeName} vector from a single bool value by converting it to float and assigning it to every component.</summary>
+    /// <summary>Constructs a {typeName} vector from a single {T} value by assigning it to every component.</summary>
+    /// <param name=""v"">{T} to convert to {typeName}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {typeName}({T} v) {{
+      value = Vector128.Create(v);
+    }}
+
+    /// <summary>Constructs a {typeName} vector from a single bool value by converting it to {T} and assigning it to every component.</summary>
     /// <param name=""v"">bool to convert to {typeName}</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public {typeName}(bool v) {{
-      value = Vector128.Create(v).As<bool, {T}>();
+      value = Vector128.Create(v ? ({T})1 : ({T})0);
+    }}
+
+    /// <summary>Constructs a {typeName} vector from a single int value by converting it to {T} and assigning it to every component.</summary>
+    /// <param name=""v"">int to convert to {typeName}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {typeName}(int v) {{
+      value = Vector128.Create(v).As<int, {T}>();
+    }}
+
+    /// <summary>Constructs a {typeName} vector from a single double value by converting it to {T} and assigning it to every component.</summary>
+    /// <param name=""v"">double to convert to float4</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {typeName}(double v) {{
+      value = Vector128.Create(({T})v);
     }}
 ";
     }
@@ -147,12 +161,15 @@ $@"
 ";
     }
 
-    private string GetZero() {
-      return
-$@"
-    /// <summary>{typeName} zero value.</summary>
-    public static readonly {typeName} zero;
-";
+    private string SingleToVectorOperator(string typeName, string T, string targetType) {
+      return string.Format(Resources.SingleToVectorOperator, ConvertToSingleArgs(typeName, T, targetType));
+    }
+
+    private string[] ConvertToSingleArgs(string typeName, string T, string targetType) {
+      var operatorKind = ConvertOperator(targetType, T);
+      var operatorSuffixed = AddSuffLyCap(operatorKind);
+      var hint = T == targetType ? string.Empty : $"converting it to {T} and ";
+      return new string[] { typeName, hint, targetType, operatorKind, operatorSuffixed };
     }
   }
 }

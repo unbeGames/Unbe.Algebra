@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Unbe.Mathematics2.Generator {
   internal static class Utils {
-    internal static Dictionary<string, string> typeAliases = new Dictionary<string, string>() {
+    internal static Dictionary<string, string> typeAliases = new () {
       { "SByte", "sbyte" },
       { "Byte", "byte" },
       { "Int16", "short" },
@@ -15,5 +16,25 @@ namespace Unbe.Mathematics2.Generator {
       { "Double", "double" },
       { "Boolean", "bool" },
     };
+
+    // source => destination : type
+    internal static Dictionary<ValueTuple<string, string>, string> conversions = new() {
+      { ("float", "float"), "implicit" },
+      { ("int", "float"), "implicit" },
+      { ("bool", "float"), "explicit" },
+      
+      
+      { ("uint", "uint"), "implicit" },
+      { ("int", "uint"), "explicit" },
+      { ("bool", "uint"), "explicit" },
+    };
+
+    internal static string ConvertOperator(string source, string destination) {
+      return conversions[(source, destination)];
+    }
+
+    internal static string AddSuffLyCap(string str) {
+      return $"{str[0].ToString().ToUpper()}{str.Substring(1)}ly";
+    }
   }
 }
