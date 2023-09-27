@@ -76,16 +76,31 @@ namespace Unbe.Mathematics.Generator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;&quot;x&quot;&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;&quot;y&quot;&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;&quot;z&quot;&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;&quot;w&quot;&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.Ag [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector4Constructors {
+            get {
+                return ResourceManager.GetString("Vector4Constructors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
-        ///    public {1} x { readonly get { return value[0]; } set { this.value = this.value.WithElement(0, value); } }
+        ///    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
         ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
-        ///    public {1} y { readonly get { return value[1]; } set { this.value = this.value.WithElement(1, value); } }
+        ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
         ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z { readonly get { retur [rest of string was truncated]&quot;;.
+        ///    public {1} z {{ readonl [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Props {
             get {

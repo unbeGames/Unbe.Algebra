@@ -23,7 +23,7 @@ namespace Unbe.Mathematics2.Generator {
       sb.AppendLine("namespace Unbe.Mathematics2 {");
       sb.Append($"  public partial struct {typeName} {{");
       sb.Append(string.Format(Resources.Vector4Props, typeName, T));
-      AddConstructors();
+      sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, "Vector128"));
       AddOperators();
       sb.Append(Equals());
       sb.Append(SimpleString());
@@ -31,13 +31,6 @@ namespace Unbe.Mathematics2.Generator {
       sb.AppendLine("  }");
       sb.Append('}');
       return sb.ToString();
-    }
-
-    private void AddConstructors() {
-      sb.Append(ConstructFrom4Components());
-      sb.Append(ConstructFromVector4());
-      sb.Append(ConstructFromVector128());
-      sb.Append(ConstructFromSingleValue());
     }
 
     private void AddOperators() {
@@ -48,78 +41,6 @@ namespace Unbe.Mathematics2.Generator {
       if (TAsType != typeof(int)) {
         sb.Append(SingleToVectorOperator(typeName, T, "int"));
       }
-    }
-
-    private string ConstructFrom4Components() {
-      return 
-$@"
-    /// <summary>Constructs a {typeName} vector from four {T} values.</summary>
-    /// <param name=""x"">The constructed vector's x component will be set to this value.</param>
-    /// <param name=""y"">The constructed vector's y component will be set to this value.</param>
-    /// <param name=""z"">The constructed vector's z component will be set to this value.</param>
-    /// <param name=""w"">The constructed vector's w component will be set to this value.</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}({T} x, {T} y, {T} z, {T} w) {{
-      value = Vector128.Create(x, y, z, w);
-    }}
-";
-    }
-
-    private string ConstructFromVector4() {
-      return
-$@"
-    /// <summary>Constructs a {typeName} vector from a {typeName} vector.</summary>
-    /// <param name=""vector"">The constructed vector's components will be set to this value.</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}({typeName} vector) {{
-      value = vector.value;
-    }}
-";
-    }
-
-    private string ConstructFromVector128() {
-      return
-$@"
-    /// <summary>Constructs a {typeName} vector from Vector128<{T}>.</summary>
-    /// <param name=""v"">Vector128<{T}> to convert to {typeName}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}(Vector128<{T}> v) {{
-      value = v;
-    }}
-";
-    }
-
-    private string ConstructFromSingleValue() {
-      return 
-$@"
-    /// <summary>Constructs a {typeName} vector from a single {T} value by assigning it to every component.</summary>
-    /// <param name=""v"">{T} to convert to {typeName}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}({T} v) {{
-      value = Vector128.Create(v);
-    }}
-
-    /// <summary>Constructs a {typeName} vector from a single bool value by converting it to {T} and assigning it to every component.</summary>
-    /// <param name=""v"">bool to convert to {typeName}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}(bool v) {{
-      value = Vector128.Create(v ? ({T})1 : ({T})0);
-    }}
-
-    /// <summary>Constructs a {typeName} vector from a single int value by converting it to {T} and assigning it to every component.</summary>
-    /// <param name=""v"">int to convert to {typeName}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}(int v) {{
-      value = Vector128.Create(v).As<int, {T}>();
-    }}
-
-    /// <summary>Constructs a {typeName} vector from a single double value by converting it to {T} and assigning it to every component.</summary>
-    /// <param name=""v"">double to convert to float4</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {typeName}(double v) {{
-      value = Vector128.Create(({T})v);
-    }}
-";
     }
 
     private string Equals() {
