@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using Unbe.Math.Generator.Properties;
 using static Unbe.Math.Generator.Utils;
 
@@ -8,6 +9,7 @@ namespace Unbe.Math.Generator {
     private string T;
 
     private readonly StringBuilder sb = new();
+    private readonly StringBuilder tmp = new();
 
     public string Generate(string typeName, string targetType) {
       this.typeName = typeName;
@@ -18,6 +20,7 @@ namespace Unbe.Math.Generator {
       sb.Append(string.Format(Resources.Vector4Constructors, typeName, T, "Vector128"));
       AddAssingOperators();
       sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, "Vector128"));
+      AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
        
@@ -44,10 +47,26 @@ namespace Unbe.Math.Generator {
       } 
     }
 
+    private void AddShuffles() {
+      tmp.Clear();
+
+      var shuffle = Resources.Shuffle;
+      var shuffleReadonly = Resources.ShuffleReadonly;
+
+      for(int i = 0; i < shuffleNames.Length; i++) {
+        var name = shuffleNames[i];
+        var uniqueMembers = name.Distinct().Count() == 4;
+        var template = uniqueMembers ? shuffle : shuffleReadonly;
+        tmp.Append(string.Format(template, typeName, name, "Vector128"));
+      }
+      sb.AppendLine();
+      sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
+    }   
+
     private string Test() {
       return 
 $@"
- 
+
 ";
     }
 

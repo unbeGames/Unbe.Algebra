@@ -63,12 +63,13 @@ namespace Unbe.Math.Generator.Properties {
         /// <summary>
         ///   Looks up a localized string similar to         
         ///    
+        ///    #region Multiplication
         ///    /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} operator *({0} lhs, {0} rh [rest of string was truncated]&quot;;.
+        ///    public static {0 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BaseMathOperators {
             get {
@@ -108,6 +109,51 @@ namespace Unbe.Math.Generator.Properties {
         internal static string EqualsMethods {
             get {
                 return ResourceManager.GetString("EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
+        ///    public {0} {1} {{
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle.{1}); }}
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string Shuffle {
+            get {
+                return ResourceManager.GetString("Shuffle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Shuffles{0}
+        ///    
+        ///    #endregion
+        ///.
+        /// </summary>
+        internal static string ShuffleBase {
+            get {
+                return ResourceManager.GetString("ShuffleBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
+        ///    public readonly {0} {1} {{
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle.{1})); }}
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string ShuffleReadonly {
+            get {
+                return ResourceManager.GetString("ShuffleReadonly", resourceCulture);
             }
         }
         

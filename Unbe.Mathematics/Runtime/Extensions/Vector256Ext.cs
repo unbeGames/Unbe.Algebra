@@ -5,7 +5,7 @@ using System.Runtime.Intrinsics.X86;
 namespace Unbe.Math {
   public static class Vector256Ext {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<double> Reminder(Vector256<double> left, Vector256<double> right) {
+    public static Vector256<double> Reminder(in Vector256<double> left, in Vector256<double> right) {
       var n = left / right;
       n = n.Truncate();
 
@@ -13,21 +13,21 @@ namespace Unbe.Math {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<long> Reminder(Vector256<long> left, Vector256<long> right) {
+    public static Vector256<long> Reminder(in Vector256<long> left, in Vector256<long> right) {
       var n = left / right;
 
       return left - n * right;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<ulong> Reminder(Vector256<ulong> left, Vector256<ulong> right) {
+    public static Vector256<ulong> Reminder(in Vector256<ulong> left, in Vector256<ulong> right) {
       var n = left / right;
 
       return left - n * right;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<double> Shuffle(Vector256<double> vector, byte control) {
+    public static Vector256<double> Shuffle(in Vector256<double> vector, byte control) {
       if (Avx2.IsSupported) {
         return Avx2.Permute4x64(vector, control);
       }
@@ -36,14 +36,14 @@ namespace Unbe.Math {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<double> Shuffle(Vector256<double> left, Vector256<double> right, byte control) {
+    public static Vector256<double> Shuffle(in Vector256<double> left, in Vector256<double> right, byte control) {
       if (Avx.IsSupported) {
         return Avx.Shuffle(left, right, control);
       }
 
       return ShuffleSoftware(left, right, control);
 
-      static Vector256<double> ShuffleSoftware(Vector256<double> left, Vector256<double> right, byte control) {
+      static Vector256<double> ShuffleSoftware(in Vector256<double> left, in Vector256<double> right, byte control) {
         const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
         int e0Selector = control & e0Mask;
@@ -74,7 +74,7 @@ namespace Unbe.Math {
 
       return SoftwareFallback(vector);
 
-      static Vector256<double> SoftwareFallback(Vector256<double> vector) {
+      static Vector256<double> SoftwareFallback(in Vector256<double> vector) {
         return Vector256.Create(
             System.Math.Truncate(vector[0]),
             System.Math.Truncate(vector[1]),
@@ -84,7 +84,7 @@ namespace Unbe.Math {
       }
     }
 
-    public static Vector256<T> FromLowHigh<T>(Vector128<T> low, Vector128<T> high) where T : struct {
+    public static Vector256<T> FromLowHigh<T>(in Vector128<T> low, in Vector128<T> high) where T : struct {
       return low.ToVector256Unsafe().WithUpper(high);
     }
   }

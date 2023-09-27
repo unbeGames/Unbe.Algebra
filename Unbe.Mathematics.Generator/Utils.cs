@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Unbe.Math.Generator {
   internal static class Utils {
+    public static readonly string[] shuffleNames = Enum.GetNames(typeof(Shuffle));
+
     internal static Dictionary<string, string> typeAliases = new () {
       { "SByte", "sbyte" },
       { "Byte", "byte" },
