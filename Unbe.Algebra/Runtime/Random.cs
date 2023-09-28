@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using static Unbe.Algebra.math;
+using static Unbe.Algebra.Math;
 
 namespace Unbe.Algebra {
   public struct Random {
