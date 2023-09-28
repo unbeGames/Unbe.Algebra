@@ -1,0 +1,31 @@
+﻿namespace Unbe.Algebra {
+  public enum Shuffle3 : byte {
+    xxx = Shuffle4.xxxw,
+    yxx = Shuffle4.yxxw,
+    zxx = Shuffle4.zxxw,
+    xyx = Shuffle4.xyxw,
+    yyx = Shuffle4.yyxw,
+    zyx = Shuffle4.zyxw,
+    xzx = Shuffle4.xzxw,
+    yzx = Shuffle4.yzxw,
+    zzx = Shuffle4.zzxw,
+    xxy = Shuffle4.xxyw,
+    yxy = Shuffle4.yxyw,
+    zxy = Shuffle4.zxyw,
+    xyy = Shuffle4.xyyw,
+    yyy = Shuffle4.yyyw,
+    zyy = Shuffle4.zyyw,
+    xzy = Shuffle4.xzyw,
+    yzy = Shuffle4.yzyw,
+    zzy = Shuffle4.zzyw,
+    xxz = Shuffle4.xxzw,
+    yxz = Shuffle4.yxzw,
+    zxz = Shuffle4.zxzw,
+    xyz = Shuffle4.xyzw,
+    yyz = Shuffle4.yyzw,
+    zyz = Shuffle4.zyzw,
+    xzz = Shuffle4.xzzw,
+    yzz = Shuffle4.yzzw,
+    zzz = Shuffle4.zzzw
+  }
+}

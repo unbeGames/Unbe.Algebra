@@ -1,0 +1,7 @@
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics;
+
+namespace Unbe.Algebra {{
+	public partial struct {0} {{{1}
+	}}
+}}
