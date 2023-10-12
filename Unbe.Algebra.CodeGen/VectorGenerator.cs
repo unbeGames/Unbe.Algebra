@@ -9,8 +9,10 @@ namespace Unbe.Algebra.Generator {
     private string T;
     private string vectorPrefix;
     private int dimensions;
+    private string typeNameBase;
 
     private readonly StringBuilder sb = new();
+    private readonly StringBuilder sbMath = new();
     private readonly StringBuilder tmp = new();
 
     public string Generate(string typeName, string targetType, int dimensions) {
@@ -18,8 +20,10 @@ namespace Unbe.Algebra.Generator {
       T = typeAliases[targetType];
       this.dimensions = dimensions;
       vectorPrefix = VectorPrefix(T, dimensions);
+      typeNameBase = typeName.Replace(dimensions.ToString(), string.Empty);
 
       sb.Clear();
+      sbMath.Clear();
 
       AddProps();
       AddConstructors();
@@ -29,8 +33,10 @@ namespace Unbe.Algebra.Generator {
       AddShuffles();
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       AddStringMethods();
+
+      AddAdditionalMath();
        
-      return string.Format(Resources.BaseTemplate, typeName, sb.ToString());
+      return string.Format(Resources.BaseTemplate, typeName, sb.ToString(), sbMath.ToString());
     }
 
     private void AddProps() {
@@ -63,7 +69,7 @@ namespace Unbe.Algebra.Generator {
           break;
       }
 
-      sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix));
+      sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix, typeNameBase));
       
       sb.Append(string.Format(Resources.SimpleConstructor, typeName, T, vectorPrefix));
 
@@ -126,7 +132,13 @@ namespace Unbe.Algebra.Generator {
       }
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
-    }   
+    }
+
+    private void AddAdditionalMath() {
+      if(dimensions == 4) {
+        sbMath.Append(string.Format(Resources.Vector4Factory, typeName, T, typeNameBase, dimensions));
+      }
+    }
 
     private string Test() {
       return 

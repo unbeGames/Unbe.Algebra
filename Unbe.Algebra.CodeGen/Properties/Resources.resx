@@ -172,6 +172,9 @@
   <data name="Vector4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\Vector4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="Vector4Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Factory\Vector4Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="Vector4Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector4Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

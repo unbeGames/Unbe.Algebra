@@ -81,8 +81,10 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to using System.Runtime.CompilerServices;
         ///using System.Runtime.Intrinsics;
         ///
-        ///namespace Unbe.Math {{
+        ///namespace Unbe.Algebra {{
         ///	public partial struct {0} {{{1}
+        ///	}}
+        ///	public static partial class Math {{{2}
         ///	}}
         ///}}
         ///.
@@ -355,6 +357,20 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Vector4Constructor {
             get {
                 return ResourceManager.GetString("Vector4Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a {{0}} vector constructed from four {{1}} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{{0}} constructed fr [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector4Factory {
+            get {
+                return ResourceManager.GetString("Vector4Factory", resourceCulture);
             }
         }
         
