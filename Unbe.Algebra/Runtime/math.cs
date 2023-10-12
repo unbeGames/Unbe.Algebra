@@ -9,8 +9,8 @@ namespace Unbe.Algebra {
     /// <param name="x">The uint4 bits to copy.</param>
     /// <returns>The float4 with the same bit pattern as the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float4 asfloat(uint4 x) {
-      return new float4(x.value.As<uint, float>());
+    public static Float4 asfloat(Uint4 x) {
+      return new Float4(x.value.As<uint, float>());
     }    
   }
 }

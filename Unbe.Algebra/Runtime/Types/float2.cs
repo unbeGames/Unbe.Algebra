@@ -6,13 +6,13 @@ using half = System.Half;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(float), dimensions: 2)]
-  public partial struct float2 : IEquatable<float2>, IFormattable { 
+  public partial struct Float2 : IEquatable<Float2>, IFormattable { 
     public Vector64<float> value;
 
     /// <summary>Constructs a float4 vector from a single half value by converting it to float and assigning it to every component.</summary>
     /// <param name="v">half to convert to float4</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float2(half v) {
+    public Float2(half v) {
       value = Vector64.Create((float)v);
     }
 
@@ -20,6 +20,6 @@ namespace Unbe.Algebra {
     /// <param name="v">half to convert to float4</param>
     /// <returns>Converted value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator float2(half v) { return new float2(v); }
+    public static implicit operator Float2(half v) { return new Float2(v); }
   }
 }

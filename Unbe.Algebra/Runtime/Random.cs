@@ -32,8 +32,8 @@ namespace Unbe.Algebra {
     /// <summary>Returns a uniformly random float4 value with all components in the interval [0, 1).</summary>
     /// <returns>A uniformly random float4 value in the range [0, 1).</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public float4 NextFloat4() {
-      return asfloat(0x3f800000 | (new uint4(NextState(), NextState(), NextState(), NextState()) >> 9)) - 1.0f;
+    public Float4 NextFloat4() {
+      return asfloat(0x3f800000 | (new Uint4(NextState(), NextState(), NextState(), NextState()) >> 9)) - 1.0f;
     }
 
     private readonly void CheckInitState() {
