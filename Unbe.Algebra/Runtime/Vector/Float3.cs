@@ -5,7 +5,7 @@ using System.Runtime.Intrinsics;
 using half = System.Half;
 
 namespace Unbe.Algebra {
-  [MathType(type: typeof(float), dimensions: 3)]
+  [MathType(type: typeof(float), dimensionX: 3)]
   public partial struct Float3 : IEquatable<Float3>, IFormattable { 
     public Vector128<float> value;
 

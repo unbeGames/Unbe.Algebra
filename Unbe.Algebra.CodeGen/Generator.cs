@@ -5,16 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
 
-namespace Unbe.Algebra.Generator {
+namespace Unbe.Algebra.CodeGen {
   [Generator]
   public class TypeGenerator : IIncrementalGenerator {
     private const string AttributeShortName = "MathType";
     private const string AttributeFullName = $"{AttributeShortName}Attribute";
 
-    private readonly VectorGenerator templateType4 = new();
+    private readonly VectorGenerator vectorGenerator = new();
+    private readonly MatrixGenerator matrixGenerator = new();
 
     public void Initialize(IncrementalGeneratorInitializationContext context) {
       //Debugger.Launch();
@@ -37,12 +39,21 @@ namespace Unbe.Algebra.Generator {
     private void Build(SourceProductionContext context, ImmutableArray<BuilderTarget> source) {
       Debug.WriteLine("Build code generator");     
       
-      foreach (var target in source) {      
-        var sourceCode = templateType4.Generate(target.Type.Name, target.TargetType, target.dimensions);
-
-        context.AddSource($"{target.Type.Name}.g.cs", sourceCode);
+      string sourceCode;
+      string folder;
+      foreach (var target in source) {
+        if(target.dimensionY <= 1) {
+          sourceCode = vectorGenerator.Generate(target.Type.Name, target.TargetType, target.dimensionX, target.dimensionY);
+          folder = "Vector";
+        } else if (target.dimensionY > 1 && target.dimensionY <= 4) {
+          sourceCode = matrixGenerator.Generate(target.Type.Name, target.TargetType, target.dimensionX, target.dimensionY);
+          folder = "Matrix";
+        } else {
+          sourceCode = string.Empty;
+          folder = "Failed";
+        }
+        context.AddSource(Path.Combine(folder, $"{target.Type.Name}.g.cs"), sourceCode);
       }
-      //File.WriteAllText("C:\\Unity\\Unbe.Mathematics.Generator\\log.txt", builder.ToString());
     }
 
     private static BuilderTarget TargetFactory(GeneratorSyntaxContext context, CancellationToken cancellationToken) {
@@ -53,10 +64,12 @@ namespace Unbe.Algebra.Generator {
 
       var arguments = attr.ArgumentList.Arguments.ToArray() ?? Array.Empty<AttributeArgumentSyntax>();
       var targetType = model.GetTypeInfo((GetArgument(arguments, "type") as TypeOfExpressionSyntax).Type).Type.MetadataName;
-      var dimensions = (int)(GetArgument(arguments, "dimensions") as LiteralExpressionSyntax).Token.Value;
+      var dimensionX = (int)(GetArgument(arguments, "dimensionX") as LiteralExpressionSyntax).Token.Value;
+      var yToken = (GetArgument(arguments, "dimensionY") as LiteralExpressionSyntax);
+      var dimensionY = yToken == null ? 1 : (int)yToken.Token.Value;
 
       return model.GetDeclaredSymbol(declaration, cancellationToken) is INamedTypeSymbol type
-          ? new(declaration, type, targetType, dimensions)
+          ? new(declaration, type, targetType, dimensionX, dimensionY)
           : null;
     }
 
@@ -83,7 +96,7 @@ namespace Unbe.Algebra.Generator {
            .GetDiagnostics()
            .Any(d => d.Severity == DiagnosticSeverity.Error);
 
-    private sealed record BuilderTarget(StructDeclarationSyntax Declaration, INamedTypeSymbol Type, string TargetType, int dimensions);
+    private sealed record BuilderTarget(StructDeclarationSyntax Declaration, INamedTypeSymbol Type, string TargetType, int dimensionX, int dimensionY);
 
     private sealed class TypeComparer : IEqualityComparer<BuilderTarget> {
       private TypeComparer() {

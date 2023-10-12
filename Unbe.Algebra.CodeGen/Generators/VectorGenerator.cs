@@ -1,30 +1,10 @@
 ﻿using System.Linq;
-using System.Text;
 using Unbe.Algebra.CodeGen.Properties;
-using static Unbe.Algebra.Generator.Utils;
+using static Unbe.Algebra.CodeGen.Utils;
 
-namespace Unbe.Algebra.Generator { 
-  public class VectorGenerator { 
-    private string typeName;
-    private string T;
-    private string vectorPrefix;
-    private int dimensions;
-    private string typeNameBase;
-
-    private readonly StringBuilder sb = new();
-    private readonly StringBuilder sbMath = new();
-    private readonly StringBuilder tmp = new();
-
-    public string Generate(string typeName, string targetType, int dimensions) {
-      this.typeName = typeName;
-      T = typeAliases[targetType];
-      this.dimensions = dimensions;
-      vectorPrefix = VectorPrefix(T, dimensions);
-      typeNameBase = typeName.Replace(dimensions.ToString(), string.Empty);
-
-      sb.Clear();
-      sbMath.Clear();
-
+namespace Unbe.Algebra.CodeGen {
+  internal class VectorGenerator : BaseTypeGenerator {     
+    protected override string GenerateInternal() {
       AddProps();
       AddConstructors();
       AddAssingOperators();
@@ -41,7 +21,7 @@ namespace Unbe.Algebra.Generator {
 
     private void AddProps() {
       string propsTemplate = string.Empty;
-      switch (dimensions) {
+      switch (dimensionX) {
         case 4:
           propsTemplate = Resources.Vector4Props;
           break;
@@ -57,7 +37,7 @@ namespace Unbe.Algebra.Generator {
 
     private void AddConstructors() {
       string vectorNConstructorTemplate = string.Empty;
-      switch (dimensions) {
+      switch (dimensionX) {
         case 4:
           vectorNConstructorTemplate = Resources.Vector4Constructor;
           break;
@@ -117,26 +97,26 @@ namespace Unbe.Algebra.Generator {
     }
 
     private void AddShuffles() {
-      if (dimensions == 2) return;
+      if (dimensionX == 2) return;
       tmp.Clear();
 
       var shuffle = Resources.Shuffle;
       var shuffleReadonly = Resources.ShuffleReadonly;
-      var shuffleNames = shuffleByDimension[dimensions];
+      var shuffleNames = shuffleByDimension[dimensionX];
 
       for(int i = 0; i < shuffleNames.Length; i++) {
         var name = shuffleNames[i];
-        var uniqueMembers = name.Distinct().Count() == dimensions;
+        var uniqueMembers = name.Distinct().Count() == dimensionX;
         var template = uniqueMembers ? shuffle : shuffleReadonly; 
-        tmp.Append(string.Format(template, typeName, name, vectorPrefix, dimensions));
+        tmp.Append(string.Format(template, typeName, name, vectorPrefix, dimensionX));
       }
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
     }
 
     private void AddAdditionalMath() {
-      if(dimensions == 4) {
-        sbMath.Append(string.Format(Resources.Vector4Factory, typeName, T, typeNameBase, dimensions));
+      if(dimensionX == 4) {
+        sbMath.Append(string.Format(Resources.Vector4Factory, typeName, T, typeNameBase, dimensionX));
       }
     }
 
@@ -148,11 +128,11 @@ $@"
     }
 
     private void AddStringMethods() {
-      if (dimensions == 4) {
+      if (dimensionX == 4) {
         sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
-      } else if(dimensions == 3) {
+      } else if(dimensionX == 3) {
         sb.Append(string.Format(Resources.Vector3StringMethods, typeName));
-      } else if(dimensions == 2) {
+      } else if(dimensionX == 2) {
         sb.Append(string.Format(Resources.Vector2StringMethods, typeName));
       }
     }

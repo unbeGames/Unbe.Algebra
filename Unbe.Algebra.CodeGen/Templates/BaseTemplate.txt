@@ -4,6 +4,7 @@ using System.Runtime.Intrinsics;
 namespace Unbe.Algebra {{
 	public partial struct {0} {{{1}
 	}}
+
 	public static partial class Math {{{2}
 	}}
 }}
