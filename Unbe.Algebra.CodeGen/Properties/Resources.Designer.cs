@@ -84,6 +84,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///namespace Unbe.Algebra {{
         ///	public partial struct {0} {{{1}
         ///	}}
+        ///
         ///	public static partial class Math {{{2}
         ///	}}
         ///}}
@@ -206,9 +207,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public {0}({2}&lt;{1}&gt; v [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleConstructor {
+        internal static string SimpleVectorConstructor {
             get {
-                return ResourceManager.GetString("SimpleConstructor", resourceCulture);
+                return ResourceManager.GetString("SimpleVectorConstructor", resourceCulture);
             }
         }
         
@@ -361,12 +362,12 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a {{0}} vector constructed from four {{1}} values.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{{0}} constructed fr [rest of string was truncated]&quot;;.
+        ///    /// &lt;returns&gt;{0} constructed from arg [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Factory {
             get {

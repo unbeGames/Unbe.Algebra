@@ -5,6 +5,8 @@ using static Unbe.Algebra.CodeGen.Utils;
 namespace Unbe.Algebra.CodeGen {
   internal class VectorGenerator : BaseTypeGenerator {     
     protected override string GenerateInternal() {
+      typeNameBase = typeName.Replace(dimensionX.ToString(), string.Empty);
+
       AddProps();
       AddConstructors();
       AddAssingOperators();
@@ -51,7 +53,7 @@ namespace Unbe.Algebra.CodeGen {
 
       sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix, typeNameBase));
       
-      sb.Append(string.Format(Resources.SimpleConstructor, typeName, T, vectorPrefix));
+      sb.Append(string.Format(Resources.SimpleVectorConstructor, typeName, T, vectorPrefix));
 
       sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
       if (T != "int") {

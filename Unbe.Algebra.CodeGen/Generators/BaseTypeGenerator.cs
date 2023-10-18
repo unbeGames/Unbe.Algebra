@@ -17,8 +17,7 @@ namespace Unbe.Algebra.CodeGen {
       this.typeName = typeName;
       T = typeAliases[targetType];
       this.dimensionX = dimensionX;
-      vectorPrefix = VectorPrefix(T, dimensionX, dimensionY);
-      typeNameBase = typeName.Replace(dimensionX.ToString(), string.Empty);
+      vectorPrefix = VectorPrefix(T, dimensionX, dimensionY); 
 
       this.dimensionX = dimensionX;
       this.dimensionY = dimensionY;
