@@ -1,0 +1,26 @@
+    
+    /// <summary>Constructs a {0} matrix from four {1} vectors.</summary>
+    /// <param name="c0">The matrix column c0 will be set to this value.</param>
+    /// <param name="c1">The matrix column c1 will be set to this value.</param>
+    /// <param name="c2">The matrix column c2 will be set to this value.</param>
+    /// <param name="c3">The matrix column c3 will be set to this value.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({1} c0, {1} c1, {1} c2, {1} c3){{
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }}
+
+    /// <summary>Constructs a {0} matrix from four {3}<{2}> vectors.</summary>
+    /// <param name="c0">The matrix column c0 will be set to this value.</param>
+    /// <param name="c1">The matrix column c1 will be set to this value.</param>
+    /// <param name="c2">The matrix column c2 will be set to this value.</param>
+    /// <param name="c3">The matrix column c3 will be set to this value.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({3}<{2}> c0, {3}<{2}> c1, {3}<{2}> c2, {3}<{2}> c3){{
+        this.c0 = c0;
+        this.c1 = c1;
+        this.c2 = c2;
+        this.c3 = c3;
+    }}

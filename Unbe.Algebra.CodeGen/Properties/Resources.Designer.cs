@@ -195,6 +195,22 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} matrix from four {1} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;c0&quot;&gt;The matrix column c0 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;c1&quot;&gt;The matrix column c1 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;c2&quot;&gt;The matrix column c2 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;c3&quot;&gt;The matrix column c3 will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} c0, {1} c1, {1} c2, {1} c3){ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleMatrix4Constructor {
+            get {
+                return ResourceManager.GetString("SimpleMatrix4Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} vector from a {0} vector.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;vector&quot;&gt;The constructed vector&apos;s components will be set to this value.&lt;/param&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
