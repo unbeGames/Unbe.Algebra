@@ -4,7 +4,7 @@ using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(uint), dimensionX: 3)] 
-  public partial struct Uint3 : IEquatable<Uint3>, IFormattable {
+  public partial struct UInt3 : IEquatable<UInt3>, IFormattable {
     public Vector128<uint> value;
   }
 }
