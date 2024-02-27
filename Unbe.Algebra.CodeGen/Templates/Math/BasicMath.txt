@@ -16,3 +16,9 @@
     /// <returns>The componentwise base-2 logarithm of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} log2({0} v) {{ return new {0}({1}Ext.Log2(v.value)); }}
+
+		/// <summary>Returns the componentwise base-10 logarithm of vector v.</summary>
+    /// <param name="v">Input value.</param>
+    /// <returns>The componentwise base-10 logarithm of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} log10({0} v) {{ return new {0}({1}Ext.Log10(v.value)); }}

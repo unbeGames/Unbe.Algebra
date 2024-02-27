@@ -39,6 +39,15 @@ namespace Unbe.Algebra {
     }
 
     /// <summary>
+    /// Computes log base 10's on each component of Vector128<float> using intrinsics. 
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Log10(Vector128<float> v) {
+      var log2 = Log2(v);
+      return Sse.Multiply(LogConsts.LOG10, log2);
+    }
+
+    /// <summary>
     /// Computes log base 2's on each component of Vector128<float> using intrinsics. 
     /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -97,6 +106,7 @@ namespace Unbe.Algebra {
       public static readonly Vector128<float> ONE_ELEVENTH = Vector128.Create(1.0f / 11.0f);
       public static readonly Vector128<float> ONE = Vector128.Create(1.0f);
       public static readonly Vector128<float> LN2 = Vector128.Create(0.69314718055994530941f);
+      public static readonly Vector128<float> LOG10 = Vector128.Create(0.30102999566398115676f);
       public static readonly Vector128<float> TWO = Vector128.Create(2.0f);
     }
   }
@@ -106,13 +116,22 @@ namespace Unbe.Algebra {
     /// Computes the natural log on each component of Vector256<double> using intrinsics. 
     /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<double> Ln(in Vector256<double> v) {     
+    public static Vector256<double> Log(in Vector256<double> v) {     
       var log2 = Log2(v);
       return Avx.Multiply(LogConsts.LN2, log2);
     }
 
     /// <summary>
-    /// Calculates 4 log base 2's on each component of Vector256<double> using intrinsics. 
+    /// Computes log base 10's on each component of Vector256<double> using intrinsics. 
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> Log10(in Vector256<double> v) {
+      var log2 = Log2(v);
+      return Avx.Multiply(LogConsts.LOG10, log2);
+    }
+
+    /// <summary>
+    /// Computes log base 2's on each component of Vector256<double> using intrinsics. 
     /// </summary>
     /// <param name="x">A reference to the 4 arguments</param>
     /// <param name="y">The 4 results</param>
@@ -172,6 +191,7 @@ namespace Unbe.Algebra {
       public static readonly Vector256<double> TWO = Vector256.Create(2.0);
       public static readonly Vector256<double> ONE = Vector256.Create(1.0);
       public static readonly Vector256<double> LN2 = Vector256.Create(0.6931471805599453094172321214581766);
+      public static readonly Vector256<double> LOG10 = Vector256.Create(0.30102999566398115676272048976704);
       public static readonly Vector256<double> L1 = Vector256.Create(0.6666666666598753418813);
       public static readonly Vector256<double> L2 = Vector256.Create(0.40000000155972106981);
       public static readonly Vector256<double> L3 = Vector256.Create(0.285714152842158938);
