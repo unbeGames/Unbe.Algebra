@@ -53,7 +53,7 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Log2(in Vector128<float> x) {
       var end = Sse.CompareLessThanOrEqual(x, LogConsts.ZERO);
-      end = Sse.Add(Sse.And(Avx.CompareEqual(x, LogConsts.POSITIVE_INFINITY), LogConsts.POSITIVE_INFINITY), end);
+      end = Sse.Add(Sse.And(Sse.CompareEqual(x, LogConsts.POSITIVE_INFINITY), LogConsts.POSITIVE_INFINITY), end);
       end = Sse.Add(Sse.CompareNotEqual(x, x), end);
 
       var xl = Vector128.AsInt32(Sse.Max(x, LogConsts.ZERO));
@@ -105,8 +105,8 @@ namespace Unbe.Algebra {
       public static readonly Vector128<float> ONE_NINTH = Vector128.Create(1.0f / 9.0f);
       public static readonly Vector128<float> ONE_ELEVENTH = Vector128.Create(1.0f / 11.0f);
       public static readonly Vector128<float> ONE = Vector128.Create(1.0f);
-      public static readonly Vector128<float> LN2 = Vector128.Create(0.69314718055994530941f);
-      public static readonly Vector128<float> LOG10 = Vector128.Create(0.30102999566398115676f);
+      public static readonly Vector128<float> LN2 = Vector128.Create(0.69314718055994530941f); // 1 / log2(e)
+      public static readonly Vector128<float> LOG10 = Vector128.Create(0.30102999566398115676f); // 1 / log2(10)
       public static readonly Vector128<float> TWO = Vector128.Create(2.0f);
     }
   }
@@ -190,8 +190,8 @@ namespace Unbe.Algebra {
       public static readonly Vector256<double> NEGATIVE_INFINITY = Vector256.Create(double.PositiveInfinity);
       public static readonly Vector256<double> TWO = Vector256.Create(2.0);
       public static readonly Vector256<double> ONE = Vector256.Create(1.0);
-      public static readonly Vector256<double> LN2 = Vector256.Create(0.6931471805599453094172321214581766);
-      public static readonly Vector256<double> LOG10 = Vector256.Create(0.30102999566398115676272048976704);
+      public static readonly Vector256<double> LN2 = Vector256.Create(0.6931471805599453094172321214581766); // 1 / log2(e)
+      public static readonly Vector256<double> LOG10 = Vector256.Create(0.30102999566398115676272048976704); // 1 / log2(10)
       public static readonly Vector256<double> L1 = Vector256.Create(0.6666666666598753418813);
       public static readonly Vector256<double> L2 = Vector256.Create(0.40000000155972106981);
       public static readonly Vector256<double> L3 = Vector256.Create(0.285714152842158938);
