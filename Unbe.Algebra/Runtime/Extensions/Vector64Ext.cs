@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
 
 namespace Unbe.Algebra {
   public static class Vector64Ext {
@@ -35,5 +36,15 @@ namespace Unbe.Algebra {
         );
       }
     }
+
+    /// <summary>
+    /// Calculates exponentials for each component of Vector64<float> using software fallback.
+    /// </summary>
+    public static Vector64<float> Exp(in Vector64<float> v) {
+      return Vector64.Create(
+          (float)System.Math.Exp(v[0]),
+          (float)System.Math.Exp(v[1])
+      );
+    }   
   }
 }

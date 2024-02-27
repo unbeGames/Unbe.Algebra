@@ -16,7 +16,8 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(Resources.EqualsMethods, typeName));
       AddStringMethods();
 
-      AddAdditionalMath();
+      AddAdditionalConstructors();
+      AddMath();
        
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString(), sbMath.ToString());
     }
@@ -116,7 +117,13 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
     }
 
-    private void AddAdditionalMath() {
+    private void AddMath() {
+      if (T == "float" || T == "double") {
+        sbMath.Append(string.Format(Resources.BasicMath, typeName, vectorPrefix));
+      }
+    }
+
+    private void AddAdditionalConstructors() {
       if(dimensionX == 4) {
         sbMath.Append(string.Format(Resources.Vector4Factory, typeName, T, typeNameBase, dimensionX));
       }

@@ -104,5 +104,77 @@ namespace Unbe.Algebra {
 
       return Vector128.Create<T>(array);
     }
+
+    /// <summary>
+    /// Calculates exponentials for each component of Vector128<float> using intrinsics.
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Exp(in Vector128<float> x) {
+      var xx = Sse.Multiply(x, ExpConsts.LOG2EF);
+      return TwoToThePowerOf(xx);
+    }
+
+    /// <summary>
+    /// Calculates 2 ^ x for each component of Vector128<float> using intrinsics.
+    /// </summary>
+    public static Vector128<float> TwoToThePowerOf(in Vector128<float> v) {
+      // Checks if x is greater than the highest acceptable argument. Stores the information for later to
+      // modify the result. If, for example, only x[1] > EXP_HIGH, then end[1] will be infinity, and the rest
+      // zero. We add this to the result at the end, which will force y[1] to be infinity.
+      var end = Sse.And(Sse.CompareGreaterThanOrEqual(v, ExpConsts.HIGH), ExpConsts.POSITIVE_INFINITY);
+
+      // Bound x by the maximum and minimum values this algorithm will handle.
+      var xx = Sse.Max(Sse.Min(v, ExpConsts.THIGH), ExpConsts.TLOW);
+
+      // Avx.CompareNotEqual(x, x) is a hack to determine which values of x are NaN, since NaN is the only
+      // value that doesn't equal itself. If any are NaN, we make the corresponding element of 'end' NaN, and
+      // it acts like the infinity adjustment.
+      end = Sse.Add(Sse.CompareNotEqual(v, v), end);
+
+      var fx = Sse41.RoundToNearestInteger(xx);
+
+      // This section gets a series approximation for exp(g) in (-0.5, 0.5) since that is g's range.
+      xx = Sse.Subtract(xx, fx);
+
+      var y = Fma.MultiplyAdd(ExpConsts.T7, xx, ExpConsts.T6);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T5);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T4);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T3);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T2);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T1);
+      y = Fma.MultiplyAdd(y, xx, ExpConsts.T0);
+                  
+      // Converts n to 2^n. There is no Avx2.ConvertToVector256Int64(fx) intrinsic, so we convert to int32's,
+      // since the exponent of a double will never be more than a max int32, then from int to long.
+      fx = Vector128.AsSingle(Sse2.ShiftLeftLogical(Sse2.Add(Sse2.ConvertToVector128Int32(fx), ExpConsts.ONE_HUNDRED_TWENTY_SEVEN), 23));
+
+      // Combines the two exponentials and the end adjustments into the result.
+      return Fma.MultiplyAdd(y, fx, end);
+    }
+
+    public static class ExpConsts {
+      public static readonly Vector128<int> ONE_HUNDRED_TWENTY_SEVEN = Vector128.Create(127);
+      public static readonly Vector128<float> HIGH = Vector128.Create(88.3762626647949f);
+      public static readonly Vector128<float> POSITIVE_INFINITY = Vector128.Create(float.PositiveInfinity);
+      public static readonly Vector128<float> LOW = Vector128.Create(-88.3762626647949f);
+      public static readonly Vector128<float> LOG2EF = Vector128.Create(1.4426950408889634f);
+      public static readonly Vector128<float> INVERSE_LOG2EF = Vector128.Create(0.693147180559945f);
+      public static readonly Vector128<float> P1 = Vector128.Create(1.3981999507E-3f);
+      public static readonly Vector128<float> P2 = Vector128.Create(8.3334519073E-3f);
+      public static readonly Vector128<float> P3 = Vector128.Create(4.1665795894E-2f);
+      public static readonly Vector128<float> P4 = Vector128.Create(1.6666665459E-1f);
+      public static readonly Vector128<float> P5 = Vector128.Create(5.0000001201E-1f);
+      public static readonly Vector128<float> ONE = Vector128.Create(1.0f);
+      public static readonly Vector128<float> THIGH = Vector128.Create(81.0f * 1.4426950408889634f);
+      public static readonly Vector128<float> TLOW = Vector128.Create(-81.0f * 1.4426950408889634f);
+      public static readonly Vector128<float> T0 = Vector128.Create(1.0f);
+      public static readonly Vector128<float> T1 = Vector128.Create(0.6931471805500692f);
+      public static readonly Vector128<float> T2 = Vector128.Create(0.240226509999339f);
+      public static readonly Vector128<float> T3 = Vector128.Create(0.05550410925060949f);
+      public static readonly Vector128<float> T4 = Vector128.Create(0.00961804886829518f);
+      public static readonly Vector128<float> T5 = Vector128.Create(0.0013333465742372899f);
+      public static readonly Vector128<float> T6 = Vector128.Create(0.000154631026827329f);
+      public static readonly Vector128<float> T7 = Vector128.Create(1.530610536076361E-05f);
+    }
   }
 }

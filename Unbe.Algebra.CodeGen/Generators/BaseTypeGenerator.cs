@@ -3,9 +3,9 @@ using static Unbe.Algebra.CodeGen.Utils;
 
 namespace Unbe.Algebra.CodeGen {
   internal abstract class BaseTypeGenerator {
-    protected string typeName;
-    protected string T;
-    protected string vectorPrefix;
+    protected string typeName; // algebra type we are generating code for
+    protected string T; // base type like float, int etc
+    protected string vectorPrefix; // Vector<T>XX that used in the algebra type
     protected string typeNameBase;
     protected int dimensionX, dimensionY;
 

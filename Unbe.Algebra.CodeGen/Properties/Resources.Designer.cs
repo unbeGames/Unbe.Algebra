@@ -97,6 +97,22 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		/// &lt;summary&gt;Returns the componentwise base-e exponential of x.&lt;/summary&gt;
+        ///		/// &lt;param name=&quot;v&quot;&gt;The vector to left shift.&lt;/param&gt;
+        ///		/// &lt;param name=&quot;n&quot;&gt;The number of bits to left shift.&lt;/param&gt;
+        ///		/// &lt;returns&gt;The result of the componentwise left shift.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} exp({0} v, int n) {{ return new {0} ({1}.Exp(v.value)); }}
+        ///.
+        /// </summary>
+        internal static string BasicMath {
+            get {
+                return ResourceManager.GetString("BasicMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 
         ///    #region Bit Operators
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
