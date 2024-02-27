@@ -1,9 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
-using System.Runtime.Intrinsics.X86;
 
 namespace Unbe.Algebra {
-  public static class Vector64Ext {
+  public static partial class Vector64Ext {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector64<int> Reminder(in Vector64<int> left, in Vector64<int> right) {
       var n = left / right;
@@ -35,16 +34,6 @@ namespace Unbe.Algebra {
           (float)System.Math.Truncate(vector[1])
         );
       }
-    }
-
-    /// <summary>
-    /// Calculates exponentials for each component of Vector64<float> using software fallback.
-    /// </summary>
-    public static Vector64<float> Exp(in Vector64<float> v) {
-      return Vector64.Create(
-          (float)System.Math.Exp(v[0]),
-          (float)System.Math.Exp(v[1])
-      );
     }   
   }
 }
