@@ -81,6 +81,24 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Round(Vector128<float> vector) {
+      if (Sse41.IsSupported) {
+        return Sse41.RoundToNearestInteger(vector);
+      }      
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {        
+        return Vector128.Create(
+            MathF.Round(vector[0]),
+            MathF.Round(vector[1]),
+            MathF.Round(vector[2]),
+            MathF.Round(vector[3])
+        );
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void GetLowHigh<T>(in Vector256<T> vector, out Vector128<T> low, out Vector128<T> high) where T : struct {
       low = vector.GetLower();
       high = vector.GetUpper();

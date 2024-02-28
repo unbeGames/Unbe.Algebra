@@ -64,6 +64,30 @@ namespace Unbe.Algebra {
       }
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> Round(Vector256<double> vector) {
+      if (Avx.IsSupported) {
+        return Avx.RoundToNearestInteger(vector);
+      }
+
+      if (Sse41.IsSupported) {
+        GetLowHigh(vector, out var low, out var high);
+        return FromLowHigh(Sse41.RoundToNearestInteger(low), Sse41.RoundToNearestInteger(high));
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector256<double> SoftwareFallback(Vector256<double> vector) {
+        // TODO is this semantically equivalent to 'roundps'?
+        return Vector256.Create(
+            System.Math.Round(vector[0]),
+            System.Math.Round(vector[1]),
+            System.Math.Round(vector[2]),
+            System.Math.Round(vector[3])
+        );
+      }
+    }
+
     public static Vector256<double> Truncate(this Vector256<double> vector) {
       if (Avx.IsSupported) {
         return Avx.RoundToZero(vector);
@@ -89,6 +113,12 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<T> FromLowHigh<T>(in Vector128<T> low, in Vector128<T> high) where T : struct {
       return low.ToVector256Unsafe().WithUpper(high);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void GetLowHigh<T>(Vector256<T> vector, out Vector128<T> low, out Vector128<T> high) where T : struct {
+      low = vector.GetLower();
+      high = vector.GetUpper();
     }
 
 

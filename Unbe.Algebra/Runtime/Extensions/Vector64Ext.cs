@@ -26,15 +26,20 @@ namespace Unbe.Algebra {
     }
 
     public static Vector64<float> Truncate(this Vector64<float> vector) {
-      return SoftwareFallback(vector);
-
-      static Vector64<float> SoftwareFallback(in Vector64<float> vector) {
-        return Vector64.Create(
-          MathF.Truncate(vector[0]),
-          MathF.Truncate(vector[1])
-        );
-      }
+      return Vector64.Create(
+        MathF.Truncate(vector[0]),
+        MathF.Truncate(vector[1])
+      );
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Round(Vector64<float> vector) { 
+      return Vector64.Create(
+        MathF.Round(vector[0]),
+        MathF.Round(vector[1])
+      );
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector64<float> Sign(Vector64<float> vector) {

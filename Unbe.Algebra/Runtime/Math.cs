@@ -283,6 +283,19 @@ namespace Unbe.Algebra {
     public static double ceil(double x) { return System.Math.Ceiling(x); }
 
 
+    /// <summary>Returns the result of rounding a float value to the nearest integral value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float round(float x) { return MathF.Round(x); }
+
+    /// <summary>Returns the result of rounding a double value to the nearest integral value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double round(double x) { return System.Math.Round(x); }
+
+
     /// <summary>Returns the base-e exponential of x.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-e exponential of the input.</returns>

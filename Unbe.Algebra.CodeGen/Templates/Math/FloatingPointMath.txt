@@ -12,6 +12,12 @@
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} ceil({0} v) {{ return new {0}({1}.Ceiling(v.value)); }}
 
+		/// <summary>Returns the result of rounding each component of a vector value to the nearest integral value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise round to nearest integral value of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} round({0} v) {{ return new {0}({1}Ext.Round(v.value)); }}
+
 	  /// <summary>Returns the resultof a componentwise conversion of vector v from radians to degrees.</summary>
     /// <param name="x">Angle in radians.</param>
     /// <returns>Angle converted to degrees.</returns>
