@@ -30,8 +30,8 @@ namespace Unbe.Algebra {
 
       static Vector64<float> SoftwareFallback(in Vector64<float> vector) {
         return Vector64.Create(
-          (float)System.Math.Truncate(vector[0]),
-          (float)System.Math.Truncate(vector[1])
+          MathF.Truncate(vector[0]),
+          MathF.Truncate(vector[1])
         );
       }
     }   

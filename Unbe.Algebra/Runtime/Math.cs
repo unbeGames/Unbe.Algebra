@@ -64,13 +64,6 @@ namespace Unbe.Algebra {
     public static Float4 radians(Float4 x) { return x * TO_RADIANS; }
 
 
-    /// <summary>Returns the result of converting a float value from degrees to radians.</summary>
-    /// <param name="x">Angle in degrees.</param>
-    /// <returns>Angle converted to radians.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static double radians(double x) { return x * TO_RADIANS_DBL; }
-
-
     /// <summary>Returns the result of converting a float value from radians to degrees.</summary>
     /// <param name="x">Angle in radians.</param>
     /// <returns>Angle converted to degrees.</returns>
@@ -94,7 +87,45 @@ namespace Unbe.Algebra {
     /// <returns>Vector containing angles converted to degrees.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Float4 degrees(Float4 x) { return x * TO_DEGREES; }
+    #endregion
 
+    #region Basic Math
+    /// <summary>Returns the base-e exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-e exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float exp(float x) { return MathF.Exp(x); }
+
+    /// <summary>Returns the base-2 exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-2 exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float exp2(float x) { return MathF.Exp(x * 0.69314718f); }
+
+    /// <summary>Returns the base-10 exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-10 exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float exp10(float x) { return MathF.Exp(x * 2.30258509f); }
+
+
+    /// <summary>Returns the natural logarithm of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The natural logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float log(float x) { return MathF.Log(x); }
+
+    /// <summary>Returns the base-2 logarithm of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-2 logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float log2(float x) { return MathF.Log(x, 2.0f); }
+
+    /// <summary>Returns the base-10 logarithm of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-10 logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float log10(float x) { return MathF.Log10(x); }
     #endregion
   }
 }

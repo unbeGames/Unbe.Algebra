@@ -5,30 +5,66 @@ using System.Runtime.Intrinsics.X86;
 namespace Unbe.Algebra {
   public static partial class Vector64Ext {
     /// <summary>
-    /// Calculates exponentials for each component of Vector64<float> using software fallback.
+    /// Calculates base-e exponential for each component of Vector64<float> using software fallback.
     /// </summary>
     public static Vector64<float> Exp(in Vector64<float> v) {
       return Vector64.Create(
-          (float)System.Math.Exp(v[0]),
-          (float)System.Math.Exp(v[1])
+          MathF.Exp(v[0]),
+          MathF.Exp(v[1])
       );
+    }
+
+    /// <summary>
+    /// Calculates base-2 exponential for each component of Vector64<float> using software fallback.
+    /// </summary>
+    public static Vector64<float> Exp2(in Vector64<float> v) {
+      var xx = v * ExpConsts.INVERSE_LOG2EF;
+      return Vector64.Create(
+          MathF.Exp(xx[0]),
+          MathF.Exp(xx[1])
+      );
+    }
+
+    /// <summary>
+    /// Calculates base-10 exponential for each component of Vector64<float> using software fallback.
+    /// </summary>
+    public static Vector64<float> Exp10(in Vector64<float> v) {
+      var xx = v * ExpConsts.EF2LOG10;
+      return Vector64.Create(
+          MathF.Exp(xx[0]),
+          MathF.Exp(xx[1])
+      );
+    }
+
+    internal static class ExpConsts {
+      public static readonly Vector64<float> INVERSE_LOG2EF = Vector64.Create(0.693147180559945f);
+      public static readonly Vector64<float> EF2LOG10 = Vector64.Create(2.30258509f);
     }
   }
 
   public static partial class Vector128Ext {
     /// <summary>
-    /// Calculates exponentials for each component of Vector128<float> using intrinsics.
+    /// Calculates base-e exponential for each component of Vector128<float> using intrinsics.
     /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Exp(in Vector128<float> x) {
       var xx = Sse.Multiply(x, ExpConsts.LOG2EF);
-      return TwoToThePowerOf(xx);
+      return Exp2(xx);
     }
 
     /// <summary>
-    /// Calculates 2 ^ x for each component of Vector128<float> using intrinsics.
+    /// Calculates base-10 exponential for each component of Vector128<float> using intrinsics.
     /// </summary>
-    public static Vector128<float> TwoToThePowerOf(in Vector128<float> v) {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Exp10(in Vector128<float> x) {
+      var xx = Sse.Multiply(x, ExpConsts.LOG2LOG10);
+      return Exp2(xx);
+    }
+
+    /// <summary>
+    /// Calculates base-2 exponential for each component of Vector128<float> using intrinsics.
+    /// </summary>
+    public static Vector128<float> Exp2(in Vector128<float> v) {
       // Checks if x is greater than the highest acceptable argument. Stores the information for later to
       // modify the result. If, for example, only x[1] > EXP_HIGH, then end[1] will be infinity, and the rest
       // zero. We add this to the result at the end, which will force y[1] to be infinity.
@@ -67,7 +103,8 @@ namespace Unbe.Algebra {
       public static readonly Vector128<float> HIGH = Vector128.Create(88.3762626647949f);
       public static readonly Vector128<float> POSITIVE_INFINITY = Vector128.Create(float.PositiveInfinity);
       public static readonly Vector128<float> LOW = Vector128.Create(-88.3762626647949f);
-      public static readonly Vector128<float> LOG2EF = Vector128.Create(1.4426950408889634f);
+      public static readonly Vector128<float> LOG2EF = Vector128.Create(1.4426950408889634f); // log2(e)
+      public static readonly Vector128<float> LOG2LOG10 = Vector128.Create(3.3219283f); // log2(10)
       public static readonly Vector128<float> INVERSE_LOG2EF = Vector128.Create(0.693147180559945f);
       public static readonly Vector128<float> P1 = Vector128.Create(1.3981999507E-3f);
       public static readonly Vector128<float> P2 = Vector128.Create(8.3334519073E-3f);
@@ -90,19 +127,28 @@ namespace Unbe.Algebra {
 
   public static partial class Vector256Ext {
     /// <summary>
-    /// Calculates exponentials for each component of Vector256<double> using intrinsics.
+    /// Calculates base-e exponential for each component of Vector256<double> using intrinsics.
     /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<double> Exp(in Vector256<double> x) {
       var xx = Avx.Multiply(x, ExpConsts.LOG2EF);
-      return TwoToThePowerOf(xx);
+      return Exp2(xx);
     }
 
     /// <summary>
-    /// Calculates 2 ^ x for each component of Vector256<double>
+    /// Calculates base-10 exponential for each component of Vector256<double> using intrinsics.
     /// </summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector256<double> TwoToThePowerOf(in Vector256<double> v) {
+    public static Vector256<double> Exp10(in Vector256<double> x) {
+      var xx = Avx.Multiply(x, ExpConsts.LOG2LOG10);
+      return Exp2(xx);
+    }
+
+    /// <summary>
+    /// Calculates base-2 exponential for each component of Vector256<double>  using intrinsics.
+    /// </summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> Exp2(in Vector256<double> v) {
       // Bound x by the maximum and minimum values this algorithm will handle.
       var xx = Avx.Max(Avx.Min(v, ExpConsts.THIGH), ExpConsts.TLOW);
       var fx = Avx.RoundToNearestInteger(xx);
@@ -143,6 +189,7 @@ namespace Unbe.Algebra {
       public static readonly Vector256<double> POSITIVE_INFINITY = Vector256.Create(double.PositiveInfinity);
       public static readonly Vector256<double> LOW = Vector256.Create(-709.0);
       public static readonly Vector256<double> LOG2EF = Vector256.Create(1.4426950408889634);
+      public static readonly Vector256<double> LOG2LOG10 = Vector256.Create(3.321928094887362); // log2(10)
       public static readonly Vector256<double> INVERSE_LOG2EF = Vector256.Create(0.693147180559945);
       public static readonly Vector256<double> ONE = Vector256.Create(1.0);
       public static readonly Vector256<double> MAGIC_LONG_DOUBLE_ADD = Vector256.Create(6755399441055744.0);

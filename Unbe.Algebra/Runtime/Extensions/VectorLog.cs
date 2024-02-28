@@ -7,23 +7,23 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector64<float> Log(in Vector64<float> v) {
       return Vector64.Create(
-        (float)System.Math.Log(v[0]),
-        (float)System.Math.Log(v[1])
+        MathF.Log(v[0]),
+        MathF.Log(v[1])
       );
     }
 
     public static Vector64<float> Log2(in Vector64<float> v) {
       return Vector64.Create(
-        (float)System.Math.Log2(v[0]),
-        (float)System.Math.Log2(v[1])
+        MathF.Log2(v[0]),
+        MathF.Log2(v[1])
       );
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector64<float> Log10(in Vector64<float> v) {
       return Vector64.Create(
-        (float)System.Math.Log10(v[0]),
-        (float)System.Math.Log10(v[1])
+        MathF.Log10(v[0]),
+        MathF.Log10(v[1])
       );
     }
   }
