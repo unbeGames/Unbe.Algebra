@@ -118,7 +118,12 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddMath() {
-      if (T == "float" || T == "double") {
+      bool isFloatingPoint = T == "float" || T == "double";
+      bool isIntegralNumeric = T == "int" || T == "long";
+      if(isIntegralNumeric || isFloatingPoint) {
+        sbMath.Append(string.Format(Resources.BasicMathOperators, typeName, vectorPrefix));
+      }
+      if (isFloatingPoint) {
         sbMath.Append(string.Format(Resources.BasicMath, typeName, vectorPrefix));
       }
     }

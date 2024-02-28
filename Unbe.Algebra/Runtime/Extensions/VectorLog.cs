@@ -57,11 +57,11 @@ namespace Unbe.Algebra {
       end = Sse.Add(Sse.CompareNotEqual(x, x), end);
 
       var xl = Vector128.AsInt32(Sse.Max(x, LogConsts.ZERO));
-      var m = Sse2.Subtract(Sse2.ShiftRightLogical(xl, 23), ONE_HUNDRED_TWENTY_SEVEN);
+      var m = Sse2.Subtract(Sse2.ShiftRightLogical(xl, 23), Int.ONE_HUNDRED_TWENTY_SEVEN);
 
       var y = Sse2.ConvertToVector128Single(m);
 
-      xl = Sse2.Or(Sse2.And(xl, DECIMAL_MASK_FOR_FLOAT), EXPONENT_MASK_FOR_FLOAT);
+      xl = Sse2.Or(Sse2.And(xl, Int.DECIMAL_MASK_FOR_FLOAT), Int.EXPONENT_MASK_FOR_FLOAT);
 
       var d = Sse.Multiply(Sse.Or(Vector128.AsSingle(xl), LogConsts.ONE), LogConsts.TWO_THIRDS);
 
@@ -142,12 +142,12 @@ namespace Unbe.Algebra {
       // the value in [1, 2]
 
       var xl = Vector256.AsInt64(Avx.Max(x, LogConsts.ZERO));
-      var mantissa = Avx2.Subtract(Avx2.ShiftRightLogical(xl, 52), ONE_THOUSAND_TWENTY_THREE);
+      var mantissa = Avx2.Subtract(Avx2.ShiftRightLogical(xl, 52), Long.ONE_THOUSAND_TWENTY_THREE);
 
       var y = Vector256.Create(0.0);
       ConvertLongToDouble(in mantissa, ref y);
 
-      xl = Avx2.Or(Avx2.And(xl, DECIMAL_MASK_FOR_DOUBLE), EXPONENT_MASK_FOR_DOUBLE);
+      xl = Avx2.Or(Avx2.And(xl, Long.DECIMAL_MASK_FOR_DOUBLE), Long.EXPONENT_MASK_FOR_DOUBLE);
 
       var d = Avx.Multiply(Avx.Or(Vector256.AsDouble(xl), LogConsts.ONE), LogConsts.TWO_THIRDS);
 

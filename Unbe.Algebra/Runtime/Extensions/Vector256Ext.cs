@@ -4,12 +4,7 @@ using System.Runtime.Intrinsics.X86;
 
 namespace Unbe.Algebra {
   public static partial class Vector256Ext {
-    public static readonly Vector256<long> ONE_THOUSAND_TWENTY_THREE = Vector256.Create(0x3ffL);
-    public static readonly Vector256<long> DECIMAL_MASK_FOR_DOUBLE = Vector256.Create(0xfffffffffffffL);
-    public static readonly Vector256<long> EXPONENT_MASK_FOR_DOUBLE = Vector256.Create(1023L << 52);
-    public static readonly Vector256<long> MAGIC_LONG_ADD = Vector256.AsInt64(MAGIC_DOUBLE_ADD);
-
-    public static readonly Vector256<double> MAGIC_DOUBLE_ADD = Vector256.Create(6755399441055744.0);
+    
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<double> Reminder(in Vector256<double> left, in Vector256<double> right) {
@@ -94,7 +89,37 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<T> FromLowHigh<T>(in Vector128<T> low, in Vector128<T> high) where T : struct {
       return low.ToVector256Unsafe().WithUpper(high);
-    }   
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> Sign(Vector256<double> vector) {
+      var v = Vector256.Min(vector, Double.ONE);
+      return Vector256.Max(v, Double.NEGATIVE_ONE);
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<long> Sign(Vector256<long> vector) {
+      var v = Vector256.Min(vector, Long.ONE);
+      return Vector256.Max(v, Long.NEGATIVE_ONE);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> ExtractSign(Vector256<double> vector) {
+      return vector & Double.MASK_NOT_SIGN;
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<long> ExtractSign(Vector256<long> vector) {
+      return vector & Long.MASK_NOT_SIGN;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> Pow(in Vector256<double> x, in Vector256<double> y) {
+      return Exp(y * Log(x));
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector256<double> IfElse(in Vector256<double> mask, in Vector256<double> trueval, in Vector256<double> falseval) {
@@ -103,7 +128,29 @@ namespace Unbe.Algebra {
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static void ConvertLongToDouble(in Vector256<long> x, ref Vector256<double> y) {
-      y = Avx.Subtract(Vector256.AsDouble(Avx2.Add(x, MAGIC_LONG_ADD)), MAGIC_DOUBLE_ADD);
+      y = Avx.Subtract(Vector256.AsDouble(Avx2.Add(x, Long.MAGIC_LONG_ADD)), Double.MAGIC_DOUBLE_ADD);
+    }
+
+    public static class Long {
+      public static readonly Vector256<long> ONE_THOUSAND_TWENTY_THREE = Vector256.Create(0x3ffL);
+      public static readonly Vector256<long> DECIMAL_MASK_FOR_DOUBLE = Vector256.Create(0xfffffffffffffL);
+      public static readonly Vector256<long> EXPONENT_MASK_FOR_DOUBLE = Vector256.Create(1023L << 52);
+      public static readonly Vector256<long> MAGIC_LONG_ADD = Vector256.AsInt64(Double.MAGIC_DOUBLE_ADD);
+
+      public static readonly Vector256<long> MASK_SIGN = Vector256.Create(long.MaxValue);
+      public static readonly Vector256<long> MASK_NOT_SIGN = Vector256.Create(~long.MaxValue);
+
+      public static readonly Vector256<long> ONE = Vector256.Create(1l);
+      public static readonly Vector256<long> NEGATIVE_ONE = Vector256.Create(-1l);
+    }
+
+    public static class Double {
+      public static readonly Vector256<double> MASK_SIGN = Vector256.Create(long.MaxValue).AsDouble();
+      public static readonly Vector256<double> MASK_NOT_SIGN = Vector256.Create(~long.MaxValue).AsDouble();
+      public static readonly Vector256<double> MAGIC_DOUBLE_ADD = Vector256.Create(6755399441055744.0);
+
+      public static readonly Vector256<double> ONE = Vector256.Create(1.0);
+      public static readonly Vector256<double> NEGATIVE_ONE = Vector256.Create(-1.0);
     }
   }
 }

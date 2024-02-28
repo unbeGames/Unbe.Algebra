@@ -1,5 +1,24 @@
 		
 		#region Basic Math
+	  /// <summary>Returns the resultof a componentwise conversion of vector v from radians to degrees.</summary>
+    /// <param name="x">Angle in radians.</param>
+    /// <returns>Angle converted to degrees.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
+
+    /// <summary>Returns the result of a componentwise conversion of vector v from degrees to radians.</summary>
+    /// <param name="x">Vector containing angles in degrees.</param>
+    /// <returns>Vector containing angles converted to radians.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} radians({0} v) {{ return v * TO_RADIANS; }}
+
+		/// <summary>Returns the componentwise result of raising x to the power y.</summary>
+    /// <param name="x">The exponent base.</param>
+    /// <param name="y">The exponent power.</param>
+    /// <returns>The componentwise result of raising x to the power y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} pow({0} x, {0} y) {{ return new {0}({1}Ext.Pow(x.value, y.value)); }}
+
 		/// <summary>Returns the componentwise base-e exponential of v.</summary>
 		/// <param name="v">Input value.</param>
     /// <returns>The base-e exponential of the input.</returns>

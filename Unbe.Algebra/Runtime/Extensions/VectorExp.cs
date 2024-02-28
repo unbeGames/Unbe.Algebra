@@ -93,7 +93,7 @@ namespace Unbe.Algebra {
 
       // Converts n to 2^n. There is no Avx2.ConvertToVector256Int64(fx) intrinsic, so we convert to int32's,
       // since the exponent of a double will never be more than a max int32, then from int to long.
-      fx = Vector128.AsSingle(Sse2.ShiftLeftLogical(Sse2.Add(Sse2.ConvertToVector128Int32(fx), ONE_HUNDRED_TWENTY_SEVEN), 23));
+      fx = Vector128.AsSingle(Sse2.ShiftLeftLogical(Sse2.Add(Sse2.ConvertToVector128Int32(fx), Int.ONE_HUNDRED_TWENTY_SEVEN), 23));
 
       // Combines the two exponentials and the end adjustments into the result.
       return Fma.MultiplyAdd(y, fx, end);
@@ -173,7 +173,7 @@ namespace Unbe.Algebra {
       // Converts n to 2^n. There is no Avx2.ConvertToVector256Int64(fx) intrinsic, so we convert to int32's,
       // since the exponent of a double will never be more than a max int32, then from int to long.
       fx = Avx.Add(fx, ExpConsts.MAGIC_LONG_DOUBLE_ADD);
-      fx = Avx2.ShiftLeftLogical(Avx2.Add(Vector256.AsInt64(fx), ONE_THOUSAND_TWENTY_THREE), 52).AsDouble();
+      fx = Avx2.ShiftLeftLogical(Avx2.Add(Vector256.AsInt64(fx), Long.ONE_THOUSAND_TWENTY_THREE), 52).AsDouble();
       y = Avx.Multiply(fx, y);
 
       // Checks if x is greater than the highest acceptable argument, and sets to infinity if so.

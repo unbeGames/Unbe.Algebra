@@ -34,6 +34,47 @@ namespace Unbe.Algebra {
           MathF.Truncate(vector[1])
         );
       }
-    }   
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Sign(Vector64<float> vector) {
+      var v = Vector64.Min(vector, Float.ONE);
+      return Vector64.Max(v, Float.NEGATIVE_ONE);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<int> Sign(Vector64<int> vector) {
+      var v = Vector64.Min(vector, Int.ONE);
+      return Vector64.Max(v, Int.NEGATIVE_ONE);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> ExtractSign(Vector64<float> vector) {
+      return vector & Float.MASK_NOT_SIGN;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<int> ExtractSign(Vector64<int> vector) {
+      return vector & Int.MASK_NOT_SIGN;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Pow(in Vector64<float> x, in Vector64<float> y) {
+      return Exp(y * Log(x));
+    }
+
+    internal static class Int {
+      public static readonly Vector64<int> MASK_SIGN = Vector64.Create(int.MinValue);
+      public static readonly Vector64<int> MASK_NOT_SIGN = Vector64.Create(~int.MaxValue);
+      public static readonly Vector64<int> ONE = Vector64.Create(1);
+      public static readonly Vector64<int> NEGATIVE_ONE = Vector64.Create(-1);
+    }
+
+    internal static class Float {
+      public static readonly Vector64<float> MASK_SIGN = Vector64.Create(int.MinValue).AsSingle();
+      public static readonly Vector64<float> MASK_NOT_SIGN = Vector64.Create(~int.MaxValue).AsSingle();
+      public static readonly Vector64<float> ONE = Vector64.Create(1f);
+      public static readonly Vector64<float> NEGATIVE_ONE = Vector64.Create(-1f);
+    }
   }
 }

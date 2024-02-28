@@ -98,17 +98,36 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 		
-        ///		/// &lt;summary&gt;Returns the componentwise base-e exponential of x.&lt;/summary&gt;
-        ///		/// &lt;param name=&quot;v&quot;&gt;The vector to left shift.&lt;/param&gt;
-        ///		/// &lt;param name=&quot;n&quot;&gt;The number of bits to left shift.&lt;/param&gt;
-        ///		/// &lt;returns&gt;The result of the componentwise left shift.&lt;/returns&gt;
+        ///		#region Basic Math
+        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} exp({0} v, int n) {{ return new {0} ({1}.Exp(v.value)); }}
-        ///.
+        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise conversion of vector v from degrees to radians.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Vector c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BasicMath {
             get {
                 return ResourceManager.GetString("BasicMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Basic Math Operators
+        ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
+        ///    #endregion
+        ///.
+        /// </summary>
+        internal static string BasicMathOperators {
+            get {
+                return ResourceManager.GetString("BasicMathOperators", resourceCulture);
             }
         }
         

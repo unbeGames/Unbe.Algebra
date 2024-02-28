@@ -1,0 +1,8 @@
+    
+    #region Basic Math Operators
+    /// <summary>Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.</summary>
+    /// <param name="v">Input value.</param>
+    /// <returns>The componentwise sign of the input.</returns>    
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
+    #endregion
