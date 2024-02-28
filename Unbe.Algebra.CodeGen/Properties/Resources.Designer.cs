@@ -97,24 +97,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 		
-        ///		#region Basic Math
-        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
-        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
-        ///
-        ///    /// &lt;summary&gt;Returns the result of a componentwise conversion of vector v from degrees to radians.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Vector c [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string BasicMath {
-            get {
-                return ResourceManager.GetString("BasicMath", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 
         ///    #region Bit Operators
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
@@ -133,13 +115,16 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 		#region Core Math
-        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
-        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
+        ///   Looks up a localized string similar to 		
+        ///		#region Core Math
+        ///		/// &lt;summary&gt;Returns the componentwise minimum of two vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The first input value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The second input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise minimum of the two input values.&lt;/returns&gt;
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
-        ///		#endregion.
+        ///		public static {0} min({0} x, {0} y) {{ return new {0}({1}.Min(x.value, y.value)); }}
+        ///
+        ///		/// &lt;summary&gt;Returns the componentwise maximum of two vectors.&lt;/summary&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CoreMath {
             get {
@@ -163,6 +148,24 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string EqualsMethods {
             get {
                 return ResourceManager.GetString("EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Basic Math
+        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise conversion of vector v from degrees to radians.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Vector c [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FloatingPointMath {
+            get {
+                return ResourceManager.GetString("FloatingPointMath", resourceCulture);
             }
         }
         
@@ -228,14 +231,16 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///
         ///    #region Sign
         ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
-        ///    #endregion
-        ///.
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise absolute value of a vector.&lt;/summary&gt;
+        ///    /// &lt;p [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SignMath {
             get {
@@ -428,12 +433,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from arg [rest of string was truncated]&quot;;.
+        ///    /// &lt;returns&gt;{0} constructed from a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Factory {
             get {

@@ -1,5 +1,17 @@
 		
-		#region Basic Math
+		#region Floating Point Math
+		/// <summary>Returns the result of rounding each component of a vector value down to the nearest value less or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise round down to nearest integral value of the input.</returns> 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} floor({0} v) {{ return new {0}({1}.Floor(v.value)); }}
+
+		/// <summary>Returns the result of rounding each component of a vector value up to the nearest value greater or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise round up to nearest integral value of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} ceil({0} v) {{ return new {0}({1}.Ceiling(v.value)); }}
+
 	  /// <summary>Returns the resultof a componentwise conversion of vector v from radians to degrees.</summary>
     /// <param name="x">Angle in radians.</param>
     /// <returns>Angle converted to degrees.</returns>

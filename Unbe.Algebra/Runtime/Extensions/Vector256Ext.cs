@@ -140,8 +140,8 @@ namespace Unbe.Algebra {
       public static readonly Vector256<long> MASK_SIGN = Vector256.Create(long.MaxValue);
       public static readonly Vector256<long> MASK_NOT_SIGN = Vector256.Create(~long.MaxValue);
 
-      public static readonly Vector256<long> ONE = Vector256.Create(1l);
-      public static readonly Vector256<long> NEGATIVE_ONE = Vector256.Create(-1l);
+      public static readonly Vector256<long> ONE = Vector256.Create(1L);
+      public static readonly Vector256<long> NEGATIVE_ONE = Vector256.Create(-1L);
     }
 
     public static class Double {

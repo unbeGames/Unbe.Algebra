@@ -193,7 +193,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Sign
+    #region Sign Math
     /// <summary>Returns the sign of a short value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The sign of the input.</returns>
@@ -223,9 +223,66 @@ namespace Unbe.Algebra {
     /// <returns>The sign of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double sign(double x) { return System.Math.Sign(x); }
+
+
+    /// <summary>Returns the absolute value of a short value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The absolute value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short abs(short x) { return System.Math.Abs(x); }
+
+    /// <summary>Returns the absolute value of a int value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The absolute value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int abs(int x) { return System.Math.Abs(x); }
+
+    /// <summary>Returns the absolute value of a long value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The absolute value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long abs(long x) { return System.Math.Abs(x); }
+
+    /// <summary>Returns the absolute value of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The absolute value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float abs(float x) { return System.Math.Abs(x); }
+
+    /// <summary>Returns the absolute value of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The absolute value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double abs(double x) { return System.Math.Abs(x); }
     #endregion
 
-    #region Basic Math
+    #region Floating Point Math
+    /// <summary>Returns the result of rounding a float value up to the nearest integral value less or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round down to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float floor(float x) { return System.MathF.Floor(x); }
+
+    /// <summary>Returns the result of rounding a double value up to the nearest integral value less or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round down to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double floor(double x) { return System.Math.Floor(x); }
+
+
+    /// <summary>Returns the result of rounding a float value up to the nearest integral value greater or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round up to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float ceil(float x) { return System.MathF.Ceiling(x); }
+
+    /// <summary>Returns the result of rounding a double value up to the nearest greater integral value greater or equal to the original value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The round up to nearest integral value of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double ceil(double x) { return System.Math.Ceiling(x); }
+
+
     /// <summary>Returns the base-e exponential of x.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-e exponential of the input.</returns>

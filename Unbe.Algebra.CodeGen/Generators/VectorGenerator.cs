@@ -119,13 +119,13 @@ namespace Unbe.Algebra.CodeGen {
 
     private void AddMath() {
       bool isFloatingPoint = T == "float" || T == "double";
-      bool isIntegralNumeric = T == "int" || T == "long";
+      bool isIntegralNumeric = T == "int" || T == "long" || T == "short";
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
       if(isIntegralNumeric || isFloatingPoint) {
         sbMath.Append(string.Format(Resources.SignMath, typeName, vectorPrefix));
       }
       if (isFloatingPoint) {
-        sbMath.Append(string.Format(Resources.BasicMath, typeName, vectorPrefix));
+        sbMath.Append(string.Format(Resources.FloatingPointMath, typeName, vectorPrefix));
       }
     }
 
