@@ -41,16 +41,165 @@ namespace Unbe.Algebra {
     /// <param name="x">Angle in degrees.</param>
     /// <returns>Angle converted to radians.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float radians(float x) { return x * TO_RADIANS; }   
+    public static float radians(float x) { return x * TO_RADIANS; }
+
+    /// <summary>Returns the result of converting a double value from degrees to radians.</summary>
+    /// <param name="x">Angle in degrees.</param>
+    /// <returns>Angle converted to radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double radians(double x) { return x * TO_RADIANS_DBL; }
 
     /// <summary>Returns the result of converting a float value from radians to degrees.</summary>
     /// <param name="x">Angle in radians.</param>
     /// <returns>Angle converted to degrees.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static float degrees(float x) { return x * TO_DEGREES; }   
+    public static float degrees(float x) { return x * TO_DEGREES; }
+
+    /// <summary>Returns the result of converting a double value from radians to degrees.</summary>
+    /// <param name="x">Angle in radians.</param>
+    /// <returns>Angle converted to degrees.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double degrees(double x) { return x * TO_DEGREES_DBL; }
     #endregion
 
-    #region Basic Math Operators
+    #region Core Math
+    /// <summary>Returns the minimum of two byte values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte min(byte x, byte y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two short values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short min(short x, short y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two ushort values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort min(ushort x, ushort y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two int values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int min(int x, int y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two uint values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint min(uint x, uint y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two long values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long min(long x, long y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two ulong values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong min(ulong x, ulong y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two float values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float min(float x, float y) { return System.Math.Min(x, y); }
+
+    /// <summary>Returns the minimum of two double values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The minimum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double min(double x, double y) { return System.Math.Min(x, y); }
+
+
+    /// <summary>Returns the maximum of two byte values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte max(byte x, byte y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two short values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short max(short x, short y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two ushort values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort max(ushort x, ushort y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two int values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int max(int x, int y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two uint values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint max(uint x, uint y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two long values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long max(long x, long y) { return System.Math.Max(x, y); }
+
+
+    /// <summary>Returns the maximum of two ulong values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong max(ulong x, ulong y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two float values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float max(float x, float y) { return System.Math.Max(x, y); }
+
+    /// <summary>Returns the maximum of two double values.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The maximum of the two input values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double max(double x, double y) { return System.Math.Max(x, y); }
+    #endregion
+
+
+    #region Sign
+    /// <summary>Returns the sign of a short value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The sign of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int sign(short x) { return System.Math.Sign(x); }
+
     /// <summary>Returns the sign of a int value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The sign of the input.</returns>
@@ -62,6 +211,12 @@ namespace Unbe.Algebra {
     /// <returns>The sign of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float sign(float x) { return MathF.Sign(x); }
+
+    /// <summary>Returns the sign of a long value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The sign of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int sign(long x) { return System.Math.Sign(x); }
 
     /// <summary>Returns the sign of a double value. -1.0 if it is less than zero, 0.0 if it is zero and 1.0 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>

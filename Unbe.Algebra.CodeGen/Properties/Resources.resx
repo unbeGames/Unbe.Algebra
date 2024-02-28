@@ -127,11 +127,11 @@
   <data name="BasicMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Math\BasicMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
-  <data name="BasicMathOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\BasicMathOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
   <data name="BitOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\BitOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="CoreMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Math\CoreMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="EqualsMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\EqualsMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
@@ -147,6 +147,9 @@
   </data>
   <data name="ShuffleReadonly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\ShuffleReadonly.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="SignMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="SimpleMatrix4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleMatrix4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>

@@ -1,0 +1,16 @@
+		
+		#region Core Math
+		/// <summary>Returns the componentwise minimum of two vectors.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The componentwise minimum of the two input values.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} min({0} x, {0} y) {{ return new {0}({1}.Min(x.value, y.value)); }}
+
+		/// <summary>Returns the componentwise maximum of two vectors.</summary>
+    /// <param name="x">The first input value.</param>
+    /// <param name="y">The second input value.</param>
+    /// <returns>The componentwise maximum of the two input values.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} max({0} x, {0} y) {{ return new {0}({1}.Max(x.value, y.value)); }}
+		#endregion

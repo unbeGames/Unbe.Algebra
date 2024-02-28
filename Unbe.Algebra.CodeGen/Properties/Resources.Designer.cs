@@ -115,23 +115,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    #region Basic Math Operators
-        ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
-        ///    #endregion
-        ///.
-        /// </summary>
-        internal static string BasicMathOperators {
-            get {
-                return ResourceManager.GetString("BasicMathOperators", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 
         ///    #region Bit Operators
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
@@ -146,6 +129,21 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string BitOperators {
             get {
                 return ResourceManager.GetString("BitOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		#region Core Math
+        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
+        ///		#endregion.
+        /// </summary>
+        internal static string CoreMath {
+            get {
+                return ResourceManager.GetString("CoreMath", resourceCulture);
             }
         }
         
@@ -225,6 +223,23 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string ShuffleReadonly {
             get {
                 return ResourceManager.GetString("ShuffleReadonly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Sign
+        ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
+        ///    #endregion
+        ///.
+        /// </summary>
+        internal static string SignMath {
+            get {
+                return ResourceManager.GetString("SignMath", resourceCulture);
             }
         }
         
