@@ -30,12 +30,6 @@
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} radians({0} v) {{ return v * TO_RADIANS; }}
 
-		/// <summary>Returns the componentwise result of raising x to the power y.</summary>
-    /// <param name="x">The exponent base.</param>
-    /// <param name="y">The exponent power.</param>
-    /// <returns>The componentwise result of raising x to the power y.</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static {0} pow({0} x, {0} y) {{ return new {0}({1}Ext.Pow(x.value, y.value)); }}
 
 		/// <summary>Returns the componentwise base-e exponential of v.</summary>
 		/// <param name="v">Input value.</param>
@@ -73,4 +67,18 @@
     /// <returns>The componentwise base-10 logarithm of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} log10({0} v) {{ return new {0}({1}Ext.Log10(v.value)); }}
+
+
+		/// <summary>Returns the componentwise result of raising x to the power y.</summary>
+    /// <param name="x">The exponent base.</param>
+    /// <param name="y">The exponent power.</param>
+    /// <returns>The componentwise result of raising x to the power y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} pow({0} x, {0} y) {{ return new {0}({1}Ext.Pow(x.value, y.value)); }}
+
+		/// <summary>Returns the componentwise square root of a vector.</summary>
+    /// <param name="x">Value to use when computing square root.</param>
+    /// <returns>The componentwise square root.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} sqrt({0} v) {{ return new {0}({1}.Sqrt(v.value)); }}
 		#endregion

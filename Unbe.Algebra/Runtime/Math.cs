@@ -429,6 +429,18 @@ namespace Unbe.Algebra {
     /// <returns>The result of raising x to the power y.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float pow(float x, float y) { return MathF.Pow(x, y); }
+
+    /// <summary>Returns the square root of a float value.</summary>
+    /// <param name="x">Value to use when computing square root.</param>
+    /// <returns>The square root.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float sqrt(float x) { return MathF.Sqrt(x); }
+
+    /// <summary>Returns the square root of a double value.</summary>
+    /// <param name="x">Value to use when computing square root.</param>
+    /// <returns>The square root.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double sqrt(double x) { return System.Math.Sqrt(x); }
     #endregion
   }
 }
