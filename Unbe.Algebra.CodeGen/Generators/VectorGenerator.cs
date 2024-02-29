@@ -122,7 +122,16 @@ namespace Unbe.Algebra.CodeGen {
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
       if (IsIntegralNumeric(numFlags)) {
         sbMath.Append(string.Format(Resources.IntegralNumericsMath, typeName, vectorPrefix));
-      }
+        if (IsBit16(numFlags)) {
+          sbMath.Append(string.Format(Resources.IntegralNumeric16, typeName, vectorPrefix));
+        }
+        if (IsBit32(numFlags)) {
+          sbMath.Append(string.Format(Resources.IntegralNumeric32, typeName, vectorPrefix));
+        }
+        if (IsBit64(numFlags)) {
+          sbMath.Append(string.Format(Resources.IntegralNumeric64, typeName, vectorPrefix));
+        }
+      }    
       if(IsSigned(numFlags)) {
         sbMath.Append(string.Format(Resources.SignMath, typeName, vectorPrefix));
       }

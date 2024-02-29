@@ -1,4 +1,5 @@
 
+
 		/// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The componentwise smallest power of two greater than or equal to the input.</returns>

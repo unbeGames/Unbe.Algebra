@@ -96,6 +96,18 @@ namespace Unbe.Algebra.CodeGen {
       return (flags & NumFlags.integralNum) != 0;
     }
 
+    internal static bool IsBit16(NumFlags flags) {
+      return (flags & NumFlags.bit16) != 0;
+    }
+
+    internal static bool IsBit32(NumFlags flags) {
+      return (flags & NumFlags.bit32) != 0;
+    }
+    
+    internal static bool IsBit64(NumFlags flags) {
+      return (flags & NumFlags.bit64) != 0;
+    }
+
     internal static bool IsFloatingPoint(NumFlags flags) {
       return (flags & NumFlags.floatingPoint) != 0;
     }
