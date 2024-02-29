@@ -152,6 +152,11 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> RSqrt(in Vector256<double> v) {
+      return Double.ONE / Vector256.Sqrt(v);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector256<double> IfElse(in Vector256<double> mask, in Vector256<double> trueval, in Vector256<double> falseval) {
       return Avx.BlendVariable(falseval, trueval, mask);
     }
@@ -161,7 +166,7 @@ namespace Unbe.Algebra {
       y = Avx.Subtract(Vector256.AsDouble(Avx2.Add(x, Long.MAGIC_LONG_ADD)), Double.MAGIC_DOUBLE_ADD);
     }
 
-    public static class Long {
+    internal static class Long {
       public static readonly Vector256<long> ONE_THOUSAND_TWENTY_THREE = Vector256.Create(0x3ffL);
       public static readonly Vector256<long> DECIMAL_MASK_FOR_DOUBLE = Vector256.Create(0xfffffffffffffL);
       public static readonly Vector256<long> EXPONENT_MASK_FOR_DOUBLE = Vector256.Create(1023L << 52);
@@ -174,7 +179,7 @@ namespace Unbe.Algebra {
       public static readonly Vector256<long> NEGATIVE_ONE = Vector256.Create(-1L);
     }
 
-    public static class Double {
+    internal static class Double {
       public static readonly Vector256<double> MASK_SIGN = Vector256.Create(long.MaxValue).AsDouble();
       public static readonly Vector256<double> MASK_NOT_SIGN = Vector256.Create(~long.MaxValue).AsDouble();
       public static readonly Vector256<double> MAGIC_DOUBLE_ADD = Vector256.Create(6755399441055744.0);

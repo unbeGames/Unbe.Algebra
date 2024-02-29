@@ -81,4 +81,10 @@
     /// <returns>The componentwise square root.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} sqrt({0} v) {{ return new {0}({1}.Sqrt(v.value)); }}
+
+		/// <summary>Returns the componentwise reciprocal square root of a vector.</summary>
+    /// <param name="x">Value to use when computing reciprocal square root.</param>
+    /// <returns>The componentwise reciprocal square root.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} rsqrt({0} v) {{ return new {0}({1}Ext.RSqrt(v.value)); }}
 		#endregion

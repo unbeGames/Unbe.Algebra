@@ -441,6 +441,19 @@ namespace Unbe.Algebra {
     /// <returns>The square root.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double sqrt(double x) { return System.Math.Sqrt(x); }
+
+
+    /// <summary>Returns the reciprocal square root of a float value.</summary>
+    /// <param name="x">Value to use when computing reciprocal square root.</param>
+    /// <returns>The reciprocal square root.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float rsqrt(float x) { return 1.0f / MathF.Sqrt(x); }
+
+    /// <summary>Returns the reciprocal square root of a double value.</summary>
+    /// <param name="x">Value to use when computing reciprocal square root.</param>
+    /// <returns>The reciprocal square root.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double rsqrt(double x) { return 1.0 / System.Math.Sqrt(x); }
     #endregion
   }
 }

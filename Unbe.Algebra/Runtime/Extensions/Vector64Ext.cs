@@ -68,6 +68,11 @@ namespace Unbe.Algebra {
       return Exp(y * Log(x));
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> RSqrt(in Vector64<float> v) {
+      return Float.ONE / Vector64.Sqrt(v);
+    }
+
     internal static class Int {
       public static readonly Vector64<int> MASK_SIGN = Vector64.Create(int.MinValue);
       public static readonly Vector64<int> MASK_NOT_SIGN = Vector64.Create(~int.MaxValue);

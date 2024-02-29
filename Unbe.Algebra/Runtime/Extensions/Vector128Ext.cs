@@ -131,6 +131,11 @@ namespace Unbe.Algebra {
       return Exp(y * Log(x));
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> RSqrt(in Vector128<float> v) {
+      return Float.ONE / Vector128.Sqrt(v);
+    }
+
     internal static Vector128<T> ShuffleSoftware<T>(Vector128<T> left, Vector128<T> right, byte control) where T : unmanaged {
       const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
