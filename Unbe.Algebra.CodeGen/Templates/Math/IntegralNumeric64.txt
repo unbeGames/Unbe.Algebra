@@ -1,0 +1,15 @@
+
+		/// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise smallest power of two greater than or equal to the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} ceilpow2({0} v) {{ 
+			v -= 1;
+      v |= v >> 1;
+      v |= v >> 2;
+      v |= v >> 4;
+      v |= v >> 8;
+      v |= v >> 16;
+      v |= v >> 32;
+      return v + 1;
+		}}

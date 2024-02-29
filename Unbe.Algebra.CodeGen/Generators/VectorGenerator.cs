@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Unbe.Algebra.CodeGen.Properties;
 using static Unbe.Algebra.CodeGen.Utils;
 
@@ -92,8 +93,8 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddBitOperators() {
-      if (SupportsBitOps(T)) {
-        var rightOp = IsSigned(T) ? "ShiftRightArithmetic" : "ShiftRightLogical";
+      if (SupportsBitOps(numFlags)) {
+        var rightOp = IsSigned(numFlags) ? "ShiftRightArithmetic" : "ShiftRightLogical";
         sb.Append(string.Format(Resources.ShiftOperators, typeName, vectorPrefix, rightOp));
         sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
       }
@@ -118,13 +119,14 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddMath() {
-      bool isFloatingPoint = T == "float" || T == "double";
-      bool isIntegralNumeric = T == "int" || T == "long" || T == "short";
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
-      if(isIntegralNumeric || isFloatingPoint) {
+      if (IsIntegralNumeric(numFlags)) {
+        sbMath.Append(string.Format(Resources.IntegralNumericsMath, typeName, vectorPrefix));
+      }
+      if(IsSigned(numFlags)) {
         sbMath.Append(string.Format(Resources.SignMath, typeName, vectorPrefix));
       }
-      if (isFloatingPoint) {
+      if (IsFloatingPoint(numFlags)) {
         sbMath.Append(string.Format(Resources.FloatingPointMath, typeName, vectorPrefix));
       }
     }

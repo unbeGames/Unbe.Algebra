@@ -193,6 +193,95 @@ namespace Unbe.Algebra {
     #endregion
 
 
+    #region Integral Numerics Math
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short ceilpow2(short x) {
+      int y = x - 1;
+      y |= y >> 1;
+      y |= y >> 2;
+      y |= y >> 4;
+      y |= y >> 8;
+      return (short)(y + 1);
+    }
+
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort ceilpow2(ushort x) {
+      int y = x - 1;
+      y |= y >> 1;
+      y |= y >> 2;
+      y |= y >> 4;
+      y |= y >> 8;
+      return (ushort)(y + 1);
+    }
+
+
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int ceilpow2(int x) {
+      x -= 1;
+      x |= x >> 1;
+      x |= x >> 2;
+      x |= x >> 4;
+      x |= x >> 8;
+      x |= x >> 16;
+      return x + 1;
+    }
+
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint ceilpow2(uint x) {
+      x -= 1;
+      x |= x >> 1;
+      x |= x >> 2;
+      x |= x >> 4;
+      x |= x >> 8;
+      x |= x >> 16;
+      return x + 1;
+    }
+
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long ceilpow2(long x) {
+      x -= 1;
+      x |= x >> 1;
+      x |= x >> 2;
+      x |= x >> 4;
+      x |= x >> 8;
+      x |= x >> 16;
+      x |= x >> 32;
+      return x + 1;
+    }
+
+
+    /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The smallest power of two greater than or equal to the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong ceilpow2(ulong x) {
+      x -= 1;
+      x |= x >> 1;
+      x |= x >> 2;
+      x |= x >> 4;
+      x |= x >> 8;
+      x |= x >> 16;
+      x |= x >> 32;
+      return x + 1;
+    }
+    #endregion
+
+
     #region Sign Math
     /// <summary>Returns the sign of a short value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>

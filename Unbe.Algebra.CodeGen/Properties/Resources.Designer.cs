@@ -153,19 +153,93 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 		
-        ///		#region Basic Math
-        ///	  /// &lt;summary&gt;Returns the resultof a componentwise conversion of vector v from radians to degrees.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Angle in radians.&lt;/param&gt;
-        ///    /// &lt;returns&gt;Angle converted to degrees.&lt;/returns&gt;
+        ///		#region Floating Point Math
+        ///		/// &lt;summary&gt;Returns the result of rounding each component of a vector value down to the nearest value less or equal to the original value.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise round down to nearest integral value of the input.&lt;/returns&gt; 
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} degrees({0} v) {{ return v * TO_DEGREES; }}
+        ///		public static {0} floor({0} v) {{ return new {0}({1}.Floor(v.value)); }}
         ///
-        ///    /// &lt;summary&gt;Returns the result of a componentwise conversion of vector v from degrees to radians.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Vector c [rest of string was truncated]&quot;;.
+        ///		/// &lt;summary&gt;Returns the result of rounding ea [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string FloatingPointMath {
             get {
                 return ResourceManager.GetString("FloatingPointMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} ceilpow2({0} v) {{ 
+        ///			v -= 1;
+        ///      v |= v &gt;&gt; 1;
+        ///      v |= v &gt;&gt; 2;
+        ///      v |= v &gt;&gt; 4;
+        ///      v |= v &gt;&gt; 8;
+        ///      return v + 1;
+        ///		}}
+        ///.
+        /// </summary>
+        internal static string IntegralNumeric16 {
+            get {
+                return ResourceManager.GetString("IntegralNumeric16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} ceilpow2({0} v) {{ 
+        ///			v -= 1;
+        ///      v |= v &gt;&gt; 1;
+        ///      v |= v &gt;&gt; 2;
+        ///      v |= v &gt;&gt; 4;
+        ///      v |= v &gt;&gt; 8;
+        ///      v |= v &gt;&gt; 16;
+        ///      retur [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string IntegralNumeric32 {
+            get {
+                return ResourceManager.GetString("IntegralNumeric32", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} ceilpow2({0} v) {{ 
+        ///			v -= 1;
+        ///      v |= v &gt;&gt; 1;
+        ///      v |= v &gt;&gt; 2;
+        ///      v |= v &gt;&gt; 4;
+        ///      v |= v &gt;&gt; 8;
+        ///      v |= v &gt;&gt; 16;
+        ///      v |=  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string IntegralNumeric64 {
+            get {
+                return ResourceManager.GetString("IntegralNumeric64", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Integral Numerics Math
+        ///		#endregion.
+        /// </summary>
+        internal static string IntegralNumericsMath {
+            get {
+                return ResourceManager.GetString("IntegralNumericsMath", resourceCulture);
             }
         }
         
