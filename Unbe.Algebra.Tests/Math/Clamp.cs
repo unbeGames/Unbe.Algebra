@@ -1,6 +1,6 @@
 ﻿namespace Unbe.Algebra.Tests {
   public class Clamp {
-    public static Float4[][] data = new[]{
+    public static readonly Float4[][] data = new[]{
       new Float4[] { new Float4(0f), new Float4(0f), new Float4(0f), new Float4(System.Math.Clamp(0f, 0f, 0f)) },
       new Float4[] { new Float4(1f), new Float4(0f), new Float4(1f), new Float4(System.Math.Clamp(1f, 0f, 1f)) },
       new Float4[] { new Float4(-3f), new Float4(-4f), new Float4(-2f), new Float4(System.Math.Clamp(-3f, -4f, -2f)) },

@@ -1,6 +1,6 @@
 ﻿namespace Unbe.Algebra.Tests {
   public class Add {
-    public static Float4[][] data = new[]{
+    public static readonly Float4[][] data = new[]{
       new Float4[] { new Float4(0f), new Float4(0f), new Float4(0f + 0f) },
       new Float4[] { new Float4(1f), new Float4(1f), new Float4(1f + 1f) },
       new Float4[] { new Float4(-1f), new Float4(1f), new Float4(-1f + 1f) },

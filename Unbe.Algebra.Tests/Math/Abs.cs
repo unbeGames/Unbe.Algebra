@@ -1,6 +1,6 @@
 ﻿namespace Unbe.Algebra.Tests {
   internal class Abs {
-    public static Float4[][] data = new[] {
+    public static readonly Float4[][] data = new[] {
       new Float4[] { new Float4(0f), new Float4(0f) },
       new Float4[] { new Float4(1f), new Float4(1f) },
       new Float4[] { new Float4(-1f), new Float4(1f) },
