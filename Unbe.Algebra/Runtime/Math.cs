@@ -190,6 +190,80 @@ namespace Unbe.Algebra {
     /// <returns>The maximum of the two input values.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double max(double x, double y) { return System.Math.Max(x, y); }
+
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte clamp(byte value, byte lower, byte upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short clamp(short value, short lower, short upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort clamp(ushort value, ushort lower, ushort upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int clamp(int value, int lower, int upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint clamp(uint value, uint lower, uint upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long clamp(long value, long lower, long upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong clamp(ulong value, ulong lower, ulong upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float clamp(float value, float lower, float upper) { return max(lower, min(upper, value)); }
+
+    /// <summary>Returns the result of clamping the vector into the interval (inclusive) [lower, upper], where value, lower and upper are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double clamp(double value, double lower, double upper) { return max(lower, min(upper, value)); }
+
     #endregion
 
 

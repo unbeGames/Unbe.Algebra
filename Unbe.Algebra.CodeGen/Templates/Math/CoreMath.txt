@@ -13,4 +13,12 @@
     /// <returns>The componentwise maximum of the two input values.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} max({0} x, {0} y) {{ return new {0}({1}.Max(x.value, y.value)); }}
+
+    /// <summary>Returns the result of a componentwise clamping of the vecotr value into the interval [a, b], where a and b are vectors of the same type.</summary>
+    /// <param name="value">Input value to be clamped.</param>
+    /// <param name="lower">Lower bound of the interval.</param>
+    /// <param name="upper">Upper bound of the interval.</param>
+    /// <returns>The componentwise clamping of the input value into the interval (inclusive) [lower, upper].</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} clamp({0} value, {0} lower, {0} upper) {{ return max(lower, min(upper, value)); }}
 		#endregion

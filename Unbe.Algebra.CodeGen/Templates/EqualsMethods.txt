@@ -4,7 +4,7 @@
     /// <returns>The result of the equality comparison.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public readonly bool Equals({0} other) {{
-      return value == other.value;
+      return value.Equals(other.value);
     }}
 
     /// <summary>Returns true if the {0} is equal to a given {0}, false otherwise.</summary>

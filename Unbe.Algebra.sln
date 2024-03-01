@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Algebra", "Unbe.Algebr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Algebra.CodeGen", "Unbe.Algebra.CodeGen\Unbe.Algebra.CodeGen.csproj", "{96127088-2D94-4EC5-AE86-58B13A6EBB9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unbe.Algebra.Tests", "Unbe.Algebra.Tests\Unbe.Algebra.Tests.csproj", "{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{96127088-2D94-4EC5-AE86-58B13A6EBB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96127088-2D94-4EC5-AE86-58B13A6EBB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96127088-2D94-4EC5-AE86-58B13A6EBB9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
