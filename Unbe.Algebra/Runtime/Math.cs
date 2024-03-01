@@ -584,5 +584,71 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double rsqrt(double x) { return 1.0 / System.Math.Sqrt(x); }
     #endregion
+
+
+    #region Vector Operations
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte dot(byte x, byte y) { return (byte)(x * y); }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short dot(short x, short y) { return (short)(x * y); }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort dot(ushort x, ushort y) { return (ushort)(x * y); }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int dot(int x, int y) { return x * y; }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint dot(uint x, uint y) { return x * y; }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long dot(long x, long y) { return x * y; }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong dot(ulong x, ulong y) { return x * y; }
+
+    /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float dot(float x, float y) { return x * y; }
+
+    /// <summary>Returns the dot product of two double values. Equivalent to multiplication.</summary>
+    /// <param name="x">The first value.</param>
+    /// <param name="y">The second value.</param>
+    /// <returns>The dot product of two values.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double dot(double x, double y) { return x * y; }
+    #endregion
   }
 }

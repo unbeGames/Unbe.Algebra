@@ -1,0 +1,9 @@
+		
+		#region Vector Operations
+    /// <summary>Returns the dot product of two vectors.</summary>
+    /// <param name="x">The first vector.</param>
+    /// <param name="y">The second vector.</param>
+    /// <returns>The dot product of two vectors.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} dot({0} x, {0} y) {{ return new {0}({1}.Dot(x.value, y.value)); }}
+		#endregion

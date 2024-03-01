@@ -139,11 +139,11 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public readonly bool Equals({0} other) {{
-        ///      return value == other.value;
+        ///      return value.Equals(other.value);
         ///    }}
         ///
         ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param n [rest of string was truncated]&quot;;.
+        ///    /// &lt;pa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EqualsMethods {
             get {
@@ -170,6 +170,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
+        ///
         ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
@@ -192,6 +193,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
+        ///
         ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
@@ -203,7 +205,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      v |= v &gt;&gt; 4;
         ///      v |= v &gt;&gt; 8;
         ///      v |= v &gt;&gt; 16;
-        ///      retur [rest of string was truncated]&quot;;.
+        ///      ret [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string IntegralNumeric32 {
             get {
@@ -213,6 +215,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
+        ///
         ///		/// &lt;summary&gt;Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise smallest power of two greater than or equal to the input.&lt;/returns&gt;
@@ -224,7 +227,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      v |= v &gt;&gt; 4;
         ///      v |= v &gt;&gt; 8;
         ///      v |= v &gt;&gt; 16;
-        ///      v |=  [rest of string was truncated]&quot;;.
+        ///      v | [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string IntegralNumeric64 {
             get {
@@ -235,7 +238,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 		
         ///		#region Integral Numerics Math
-        ///		#endregion.
+        ///		#endregion
+        ///.
         /// </summary>
         internal static string IntegralNumericsMath {
             get {
@@ -305,7 +309,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///
         ///    #region Sign
         ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
@@ -314,7 +317,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
         ///
         ///    /// &lt;summary&gt;Returns the componentwise absolute value of a vector.&lt;/summary&gt;
-        ///    /// &lt;p [rest of string was truncated]&quot;;.
+        ///    /// &lt;par [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SignMath {
             get {
@@ -551,6 +554,19 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Vector4StringMethods {
             get {
                 return ResourceManager.GetString("Vector4StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Vector Operations
+        ///
+        ///		#endregion
+        ///.
+        /// </summary>
+        internal static string VectorOperations {
+            get {
+                return ResourceManager.GetString("VectorOperations", resourceCulture);
             }
         }
     }
