@@ -40,6 +40,6 @@ namespace Unbe.Algebra {
     /// <param name="v">Vector4 to convert to Float3</param>
     /// <returns>Converted value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static implicit operator Vector3(Float3 v) { return new Vector3(v.x, v.y, v.z); }
+    public static implicit operator Vector3(Float3 v) { return v.value.AsVector3(); }
   }
 }
