@@ -1,5 +1,4 @@
     
-
     #region Sign
     /// <summary>Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.</summary>
     /// <param name="v">Input value.</param>

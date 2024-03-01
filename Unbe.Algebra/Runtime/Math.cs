@@ -62,6 +62,7 @@ namespace Unbe.Algebra {
     public static double degrees(double x) { return x * TO_DEGREES_DBL; }
     #endregion
 
+
     #region Core Math
     /// <summary>Returns the minimum of two byte values.</summary>
     /// <param name="x">The first input value.</param>
@@ -264,6 +265,60 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double clamp(double value, double lower, double upper) { return max(lower, min(upper, value)); }
 
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte saturate(byte x) { return clamp(x, (byte)0, (byte)1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short saturate(short x) { return clamp(x, (short)0, (short)1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort saturate(ushort x) { return clamp(x, (ushort)0, (ushort)1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int saturate(int x) { return clamp(x, 0, 1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint saturate(uint x) { return clamp(x, 0, 1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long saturate(long x) { return clamp(x, 0, 1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong saturate(ulong x) { return clamp(x, 0, 1); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float saturate(float x) { return clamp(x, 0.0f, 1.0f); }
+
+    /// <summary>Returns the result of clamping the value x into the interval [0, 1].</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The clamping of the input into the interval [0, 1].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double saturate(double x) { return clamp(x, 0.0, 1.0); }
     #endregion
 
 

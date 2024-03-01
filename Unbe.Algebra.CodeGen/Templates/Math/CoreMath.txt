@@ -21,4 +21,11 @@
     /// <returns>The componentwise clamping of the input value into the interval (inclusive) [lower, upper].</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} clamp({0} value, {0} lower, {0} upper) {{ return max(lower, min(upper, value)); }}
+		
+		/// <summary>Returns the result of a componentwise clamping of the vector v into the interval [0, 1].</summary>
+    /// <param name="v">Input value.</param>
+    /// <returns>The componentwise clamping of the input into the interval [0, 1].</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} saturate({0} v) {{ return clamp(v, 0, 1); }}
 		#endregion
+		
