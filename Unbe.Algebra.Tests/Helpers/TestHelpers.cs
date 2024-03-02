@@ -6,7 +6,7 @@
 
     public static bool IsAlmostZero(Float4 vector, float tolerance = 1e-7f) {
       bool result = true;
-      for (int index = 0; index < 4; index++) {
+      for (int index = 0; index < vector.count; index++) {
         var num = vector[index];
         result = result && (float.IsNaN(num) || num < tolerance);
       }
