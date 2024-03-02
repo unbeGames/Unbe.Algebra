@@ -23,7 +23,6 @@ namespace Unbe.Algebra.Tests {
     public void NormalizeTheory(Float4 vector) {
       Float4 result = Math.normalize(vector);
       Float4 expected = Vector4.Normalize(vector);
-
       Assert.That(AreApproxEqual(result, expected, 1e-7f), $"Expected {expected}, got {result}");
     }
   }

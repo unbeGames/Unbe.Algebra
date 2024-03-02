@@ -1,0 +1,19 @@
+    
+    /// <summary>Returns the {1} element at a specified index.</summary>
+    unsafe public {1} this[int index] {{
+      readonly get {{
+  #if !DISABLE_SAFETY_CHECKS
+        if ((uint)index >= {2})
+          throw new System.ArgumentException("index must be between [0...{2})");
+  #endif
+        fixed ({0}* array = &this) {{ return (({1}*)array)[index]; }}
+      }}
+      set {{
+  #if !DISABLE_SAFETY_CHECKS
+        if ((uint)index >= {2})
+          throw new System.ArgumentException("index must be between [0...{2})");
+  #endif
+        ref {1} e0 = ref Unsafe.As<{0}, {1}>(ref this);
+        Unsafe.Add(ref e0, index) = value;
+      }}
+    }}

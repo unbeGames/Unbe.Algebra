@@ -36,6 +36,7 @@ namespace Unbe.Algebra.CodeGen {
           break;
       }
       sb.Append(string.Format(propsTemplate, typeName, T));
+      sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
     }
 
     private void AddConstructors() {

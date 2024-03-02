@@ -410,7 +410,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
@@ -461,7 +462,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
@@ -469,7 +471,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
         ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
         ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z {{ readonly  [rest of string was truncated]&quot;;.
+        ///    public {1} z {{ rea [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector3Props {
             get {
@@ -525,15 +527,16 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} zero;
         ///
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
-        ///    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
+        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
         ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
-        ///    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
+        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
         ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z {{ readonly  [rest of string was truncated]&quot;;.
+        ///    public {1} z {{ readonly get {{ return this[2]; }} set {{ this[2] = value; }} }}        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Props {
             get {
@@ -554,6 +557,28 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Vector4StringMethods {
             get {
                 return ResourceManager.GetString("Vector4StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns the {1} element at a specified index.&lt;/summary&gt;
+        ///    unsafe public {1} this[int index] {{
+        ///      readonly get {{
+        ///  #if !DISABLE_SAFETY_CHECKS
+        ///        if ((uint)index &gt;= {2})
+        ///          throw new System.ArgumentException(&quot;index must be between[0...3]&quot;);
+        ///  #endif
+        ///        fixed ({0}* array = &amp;this) {{ return (({1}*)array)[index]; }}
+        ///      }}
+        ///      set {{
+        ///  #if !DISABLE_SAFETY_CHECKS
+        ///        if ((uint)index &gt;= {2})
+        ///          throw new System.ArgumentException(&quot;index must  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string VectorIndexer {
+            get {
+                return ResourceManager.GetString("VectorIndexer", resourceCulture);
             }
         }
         

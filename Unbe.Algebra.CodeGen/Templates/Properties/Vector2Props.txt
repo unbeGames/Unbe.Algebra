@@ -3,6 +3,9 @@
     public static readonly {0} zero;
 
     /// <summary>x component of the vector.</summary>
-    public {1} x {{ readonly get {{ return value[0]; }} set {{ this.value = this.value.WithElement(0, value); }} }}
+    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
     /// <summary>y component of the vector.</summary>
-    public {1} y {{ readonly get {{ return value[1]; }} set {{ this.value = this.value.WithElement(1, value); }} }}
+    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
+
+    /// <summary>Number of elements in the vector.</summary>
+    public readonly int count {{ get {{ return 2; }} }}
