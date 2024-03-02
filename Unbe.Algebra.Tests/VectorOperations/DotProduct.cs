@@ -18,7 +18,7 @@ namespace Unbe.Algebra.Tests {
     [Category("VectorOperations")]
     [TestCaseSource(nameof(data))]
     public void DotProductTheory(Float4 left, Float4 right) {
-      var result = Math.dot(left, right);
+      Float4 result = Math.dot(left, right);
       Float4 expected = Vector4.Dot(left, right);
 
       Assert.That(result, Is.EqualTo(expected), $"Expected {expected}, got {result}");

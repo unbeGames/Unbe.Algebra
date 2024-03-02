@@ -561,12 +561,38 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to 		
         ///		#region Vector Operations
         ///
+        ///    /// &lt;summary&gt;Returns the dot product of two vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The first vector.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The second vector.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The dot product of two vectors.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {2} dot({0} x, {0} y) {{ return {1}.Dot(x.value, y.value); }}
+        ///
         ///		#endregion
         ///.
         /// </summary>
         internal static string VectorOperations {
             get {
                 return ResourceManager.GetString("VectorOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Vector Operations Floating Point
+        ///
+        ///		/// &lt;summary&gt;Returns a normalized version of the vector v by scaling it by 1 / length(x).&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Vector to normalize.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The normalized vector.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
+        ///
+        ///		#endregion
+        ///.
+        /// </summary>
+        internal static string VectorOperationsFloatingPoint {
+            get {
+                return ResourceManager.GetString("VectorOperationsFloatingPoint", resourceCulture);
             }
         }
     }

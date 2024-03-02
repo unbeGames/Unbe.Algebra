@@ -137,7 +137,10 @@ namespace Unbe.Algebra.CodeGen {
       if (IsFloatingPoint(numFlags)) {
         sbMath.Append(string.Format(Resources.FloatingPointMath, typeName, vectorPrefix));
       }
-      sbMath.Append(string.Format(Resources.VectorOperations, typeName, vectorPrefix));
+      sbMath.Append(string.Format(Resources.VectorOperations, typeName, vectorPrefix, T));
+      if (IsFloatingPoint(numFlags)) { 
+        sbMath.Append(string.Format(Resources.VectorOperationsFloatingPoint, typeName, vectorPrefix));
+      }
     }
 
     private void AddAdditionalConstructors() {

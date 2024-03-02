@@ -1,0 +1,10 @@
+		
+		#region Vector Operations Floating Point
+
+		/// <summary>Returns a normalized version of the vector v by scaling it by 1 / length(x).</summary>
+    /// <param name="x">Vector to normalize.</param>
+    /// <returns>The normalized vector.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
+
+		#endregion
