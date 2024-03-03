@@ -1,0 +1,20 @@
+
+    /// <summary>Returns a {0} vector constructed from two {1} values.</summary>
+    /// <param name="x">The constructed vector's x component will be set to this value.</param>
+    /// <param name="y">The constructed vector's y component will be set to this value.</param>
+    /// <returns>{0} constructed from arguments.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} {1}{3}({1} x, {1} y) {{ return new {0}(x, y); }}   
+
+    /// <summary>Returns a {0} vector constructed from a {0} vector.</summary>
+    /// <param name="xy">The constructed vector's xy components will be set to this value.</param>
+    /// <returns>{0} constructed from arguments.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} {1}{3}({0} xy) {{ return new {0}(xy); }}
+
+    /// <summary>Returns a {0} vector constructed from a single {1} value by assigning it to every component.</summary>
+    /// <param name="v">{1} to convert to {0}</param>
+    /// <returns>Converted value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} {1}{3}({1} v) {{ return new {0}(v); }}
+ 

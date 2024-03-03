@@ -6,4 +6,22 @@
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public {0}({1} x, {1} y, {1} z) {{
       value = {2}.Create(x, y, z, 0);
-    }}    
+    }}
+
+    /// <summary>Returns a {0} vector constructed from a {3}2 vector and a {1} value.</summary>
+    /// <param name="xy">The constructed vector's xy components will be set to this value.</param>
+    /// <param name="z">The constructed vector's z component will be set to this value.</param>
+    /// <returns>{0} constructed from arguments.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({3}2 xy, {1} z) {{
+      value = {2}.Create(xy.x, xy.y, z, 0);
+    }}
+
+    /// <summary>Returns a {0} vector constructed from {1} value and a {3}2 vector.</summary>
+    /// <param name="x">The constructed vector's x component will be set to this value.</param>
+    /// <param name="yz">The constructed vector's yz components will be set to this value.</param>
+    /// <returns>{0} constructed from arguments.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({1} x, {3}2 yz) {{
+      value = {2}.Create(x, yz.x, yz.y, 0);
+    }}

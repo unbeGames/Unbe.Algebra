@@ -146,9 +146,19 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddAdditionalConstructors() {
-      if(dimensionX == 4) {
-        sbMath.Append(string.Format(Resources.Vector4Factory, typeName, T, typeNameBase, dimensionX));
+      string template = null;
+      switch (dimensionX) {
+        case 2:
+          template = Resources.Vector2Factory;
+          break;
+        case 3:
+          template = Resources.Vector3Factory;
+          break;
+        case 4:
+          template = Resources.Vector4Factory;
+          break;
       }
+      sbMath.Append(string.Format(template, typeName, T, typeNameBase, dimensionX));
     }
 
     private string Test() {

@@ -178,6 +178,9 @@
   <data name="Vector2Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\Vector2Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="Vector2Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Factory\Vector2Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="Vector2Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector2Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
@@ -186,6 +189,9 @@
   </data>
   <data name="Vector3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\Vector3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Vector3Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Factory\Vector3Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="Vector3Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector3Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>

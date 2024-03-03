@@ -80,6 +80,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to using System.Runtime.CompilerServices;
         ///using System.Runtime.Intrinsics;
+        ///using System.Numerics;
         ///
         ///namespace Unbe.Algebra {{
         ///	public partial struct {0} {{{1}
@@ -411,6 +412,23 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} {1}{3}({1} x, {1} y) {{ return new {0}(x, y); }}   
+        ///
+        ///    /// &lt;summary&gt;Returns a {0} vector co [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector2Factory {
+            get {
+                return ResourceManager.GetString("Vector2Factory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
         ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
         ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
         ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
@@ -458,6 +476,22 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Vector3Constructor {
             get {
                 return ResourceManager.GetString("Vector3Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Vector3Factory {
+            get {
+                return ResourceManager.GetString("Vector3Factory", resourceCulture);
             }
         }
         
@@ -630,7 +664,12 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///
         ///    /// &lt;summary&gt;{0} max value.&lt;/summary&gt;
         ///    public static readonly {0} MaxValue = new {0}({1}.MaxValue);
-        ///.
+        ///
+        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MinValue&quot; /&gt;
+        ///    static {0} IMinMaxValue&lt;{0}&gt;.MinValue =&gt; MinValue;
+        ///
+        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MaxValue&quot; /&gt;
+        ///    static {0} IMi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string VectorProperties {
             get {
