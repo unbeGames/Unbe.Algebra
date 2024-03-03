@@ -84,7 +84,7 @@ namespace Unbe.Algebra {
     public static Vector128<float> Round(Vector128<float> vector) {
       if (Sse41.IsSupported) {
         return Sse41.RoundToNearestInteger(vector);
-      }      
+      }
 
       return SoftwareFallback(vector);
 
@@ -136,6 +136,18 @@ namespace Unbe.Algebra {
       return Float.ONE / Vector128.Sqrt(v);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FillWithX(Vector128<float> vector) => Shuffle(vector, (byte)Shuffle4.xxxx);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FillWithY(Vector128<float> vector) => Shuffle(vector, (byte)Shuffle4.yyyy);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FillWithZ(Vector128<float> vector) => Shuffle(vector, (byte)Shuffle4.zzzz);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FillWithW(Vector128<float> vector) => Shuffle(vector, (byte)Shuffle4.wwww);
+
     internal static Vector128<T> ShuffleSoftware<T>(Vector128<T> left, Vector128<T> right, byte control) where T : unmanaged {
       const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
@@ -172,6 +184,10 @@ namespace Unbe.Algebra {
       public static readonly Vector128<float> MASK_NOT_SIGN = Vector128.Create(~int.MaxValue).AsSingle();
       public static readonly Vector128<float> ONE = Vector128.Create(1f);
       public static readonly Vector128<float> NEGATIVE_ONE = Vector128.Create(-1f);
+      public static readonly Vector128<float> NEGATIVE_TWO = Vector128.Create(-2f);
+
+      public static readonly Vector128<float> HIGH = Vector128.Create(float.MaxValue);
+      public static readonly Vector128<float> LOW = Vector128.Create(float.MinValue);
     }
   }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using System.Runtime.Intrinsics;
 using static Unbe.Algebra.Tests.TestHelpers;
 
 namespace Unbe.Algebra.Tests {

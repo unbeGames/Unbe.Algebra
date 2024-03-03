@@ -394,6 +394,15 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Trigonometry {
+            get {
+                return ResourceManager.GetString("Trigonometry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
@@ -412,14 +421,14 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from two {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {0} {1}{3}({1} x, {1} y) {{ return new {0}(x, y); }}   
         ///
-        ///    /// &lt;summary&gt;Returns a {0} vector co [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns a {0} vector con [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector2Factory {
             get {
@@ -481,13 +490,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from three {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0 [rest of string was truncated]&quot;;.
+        ///    public static { [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector3Factory {
             get {

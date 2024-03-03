@@ -10,7 +10,7 @@
     };
 
     [Theory]
-    [Category("Math")]
+    [Category("Basic Math")]
     [TestCaseSource(nameof(data))]
     public void AbsTheory(Float4 vector, Float4 expected) {
       var result = Math.abs(vector);

@@ -10,7 +10,7 @@
     };
 
     [Theory]
-    [Category("Math")]
+    [Category("Basic Math")]
     [TestCaseSource(nameof(data))]
     public void AddTheory(Float4 left, Float4 right, Float4 expected) {
       var result = left + right;

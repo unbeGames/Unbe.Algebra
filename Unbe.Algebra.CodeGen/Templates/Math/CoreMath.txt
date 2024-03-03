@@ -1,5 +1,6 @@
 		
 		#region Core Math
+
 		/// <summary>Returns the componentwise minimum of two vectors.</summary>
     /// <param name="x">The first input value.</param>
     /// <param name="y">The second input value.</param>
@@ -27,5 +28,6 @@
     /// <returns>The componentwise clamping of the input into the interval [0, 1].</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} saturate({0} v) {{ return clamp(v, 0, 1); }}
+
 		#endregion
 		

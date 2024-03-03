@@ -10,7 +10,7 @@
     };
 
     [Theory]
-    [Category("Math")]
+    [Category("Basic Math")]
     [TestCaseSource(nameof(data))]
     public void ClampTheory(Float4 vector, Float4 low, Float4 high, Float4 expected) {
       var result = Math.clamp(vector, low, high);

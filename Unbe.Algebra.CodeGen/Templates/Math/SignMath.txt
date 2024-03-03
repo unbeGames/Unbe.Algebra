@@ -1,5 +1,6 @@
     
     #region Sign
+
     /// <summary>Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.</summary>
     /// <param name="v">Input value.</param>
     /// <returns>The componentwise sign of the input.</returns>    
@@ -11,4 +12,5 @@
     /// <returns>The componentwise absolute value of the input.</returns>    
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} abs({0} v) {{ return new {0}({1}.Abs(v.value)); }}
+
     #endregion

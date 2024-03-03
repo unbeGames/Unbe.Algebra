@@ -5,30 +5,59 @@ using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra { 
   public static partial class Math {
-    /// <summary>
-    /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.
-    /// </summary>
+    /// <summary>The mathematical constant pi. Approximately 3.14. This is a double precision constant.</summary>
+    public const double PI_DBL = 3.14159265358979323846;
+
+    /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72. This is a double precision constant.</summary>
+    public const double E_DBL = 2.71828182845904523536;
+
+    /// <summary> /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.degrees(double)"/>.</remarks>
     public const double TO_DEGREES_DBL = 57.29577951308232;
 
-    /// <summary>
-    /// The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.
-    /// </summary>
+    /// <summary> The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(double)"/>.</remarks>
     public const double TO_RADIANS_DBL = 0.017453292519943296;
 
-
-    /// <summary>
-    /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.
-    /// </summary>
+    /// <summary> The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(float)" />.</ remarks >
     public const float TO_DEGREES = (float)TO_DEGREES_DBL;
 
-    /// <summary>
-    /// The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.
-    /// </summary>
+    /// <summary> The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(float)"/>.</remarks>
     public const float TO_RADIANS = (float)TO_RADIANS_DBL;
+
+
+    /// <summary>
+    /// The mathematical constant (2 * pi). Approximately 6.28. This is a f64/double precision constant. Also known as <see cref="TAU_DBL"/>.
+    /// </summary>
+    public const double PI2_DBL = PI_DBL * 2.0;
+
+    /// <summary>
+    /// The mathematical constant (pi / 2). Approximately 1.57. This is a f64/double precision constant.
+    /// </summary>
+    public const double PI_HALF_DBL = PI_DBL * 0.5;
+
+
+    /// <summary>The mathematical constant pi. Approximately 3.14.</summary>
+    public const float PI = (float)PI_DBL;
+
+    /// <summary>
+    /// The mathematical constant (2 * pi). Approximately 6.28. Also known as <see cref="TAU"/>.
+    /// </summary>
+    public const float PI2 = (float)PI2_DBL;
+
+    /// <summary>
+    /// The mathematical constant (pi / 2). Approximately 1.57.
+    /// </summary>
+    public const float PI_HALF = (float)PI_HALF_DBL;
+
+
+
+    /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72.</summary>
+    public const float E = (float)E_DBL;
+
+
 
     /// <summary>Returns the bit pattern of a uint4 as a float4.</summary>
     /// <param name="x">The uint4 bits to copy.</param>
@@ -36,7 +65,9 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Float4 asfloat(UInt4 x) { return new Float4(x.value.As<uint, float>()); }
 
+
     #region Degrees/Radians Conversion
+
     /// <summary>Returns the result of converting a float value from degrees to radians.</summary>
     /// <param name="x">Angle in degrees.</param>
     /// <returns>Angle converted to radians.</returns>
@@ -60,10 +91,12 @@ namespace Unbe.Algebra {
     /// <returns>Angle converted to degrees.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double degrees(double x) { return x * TO_DEGREES_DBL; }
+
     #endregion
 
 
     #region Core Math
+
     /// <summary>Returns the minimum of two byte values.</summary>
     /// <param name="x">The first input value.</param>
     /// <param name="y">The second input value.</param>
@@ -319,10 +352,12 @@ namespace Unbe.Algebra {
     /// <returns>The clamping of the input into the interval [0, 1].</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double saturate(double x) { return clamp(x, 0.0, 1.0); }
+
     #endregion
 
 
     #region Integral Numerics Math
+
     /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The smallest power of two greater than or equal to the input.</returns>
@@ -408,10 +443,12 @@ namespace Unbe.Algebra {
       x |= x >> 32;
       return x + 1;
     }
+
     #endregion
 
 
     #region Sign Math
+
     /// <summary>Returns the sign of a short value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The sign of the input.</returns>
@@ -472,9 +509,12 @@ namespace Unbe.Algebra {
     /// <returns>The absolute value of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double abs(double x) { return System.Math.Abs(x); }
+
     #endregion
 
+
     #region Floating Point Math
+
     /// <summary>Returns the result of rounding a float value up to the nearest integral value less or equal to the original value.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The round down to nearest integral value of the input.</returns>
@@ -631,10 +671,29 @@ namespace Unbe.Algebra {
     /// <returns>The reciprocal square root.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double rsqrt(double x) { return 1.0 / System.Math.Sqrt(x); }
+    
+    #endregion
+
+
+    #region Trigonometry
+
+    /// <summary>Returns the sine of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The sine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float sin(float x) { return MathF.Sin(x); }
+
+    /// <summary>Returns the sine of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The sine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double sin(double x) { return System.Math.Sin(x); }
+
     #endregion
 
 
     #region Vector Operations
+
     /// <summary>Returns the dot product of two values. Equivalent to multiplication.</summary>
     /// <param name="x">The first value.</param>
     /// <param name="y">The second value.</param>
@@ -697,6 +756,7 @@ namespace Unbe.Algebra {
     /// <returns>The dot product of two values.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double dot(double x, double y) { return x * y; }
+
     #endregion
   }
 }

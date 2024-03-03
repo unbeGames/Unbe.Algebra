@@ -9,7 +9,7 @@
     };
 
     [Theory]
-    [Category("Math")]
+    [Category("Basic Math")]
     [TestCaseSource(nameof(data))]
     public void SaturateTheory(Float4 vector, Float4 expected) {
       var result = Math.saturate(vector);
