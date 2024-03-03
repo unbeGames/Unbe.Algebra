@@ -1,6 +1,3 @@
-    
-    /// <summary>{0} zero value.</summary>
-    public static readonly {0} zero;
 
     /// <summary>x component of the vector.</summary>
     public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}

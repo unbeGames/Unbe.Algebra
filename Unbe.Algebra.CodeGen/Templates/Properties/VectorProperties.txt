@@ -1,0 +1,15 @@
+    
+    /// <summary>{0} zero value.</summary>
+    public static readonly {0} Zero;
+
+    /// <summary>{0} min value.</summary>
+    public static readonly {0} MinValue = new {0}({1}.MinValue);
+
+    /// <summary>{0} max value.</summary>
+    public static readonly {0} MaxValue = new {0}({1}.MaxValue);
+
+    /// <inheritdoc cref="IMinMaxValue{{TSelf}}.MinValue" />
+    static {0} IMinMaxValue<{0}>.MinValue => MinValue;
+
+    /// <inheritdoc cref="IMinMaxValue{{TSelf}}.MaxValue" />
+    static {0} IMinMaxValue<{0}>.MaxValue => MaxValue;

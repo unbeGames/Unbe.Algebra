@@ -7,7 +7,7 @@ using half = System.Half;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(float), dimensionX: 3)]
-  public partial struct Float3 : IEquatable<Float3>, IFormattable { 
+  public partial struct Float3 : IEquatable<Float3>, IFormattable, IMinMaxValue<Float3> { 
     public Vector128<float> value;
 
     /// <summary>Constructs a Float3 vector from a single half value by converting it to float and assigning it to every component.</summary>

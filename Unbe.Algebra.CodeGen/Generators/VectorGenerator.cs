@@ -35,6 +35,7 @@ namespace Unbe.Algebra.CodeGen {
           propsTemplate = Resources.Vector2Props;
           break;
       }
+      sb.Append(string.Format(Resources.VectorProperties, typeName, T));
       sb.Append(string.Format(propsTemplate, typeName, T));
       sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
     }

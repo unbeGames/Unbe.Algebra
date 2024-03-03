@@ -1,10 +1,11 @@
 ﻿#pragma warning disable IDE1006
 
+using System.Numerics;
 using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(uint), dimensionX: 3)] 
-  public partial struct UInt3 : IEquatable<UInt3>, IFormattable {
+  public partial struct UInt3 : IEquatable<UInt3>, IFormattable, IMinMaxValue<UInt3> {
     public Vector128<uint> value;
   }
 }

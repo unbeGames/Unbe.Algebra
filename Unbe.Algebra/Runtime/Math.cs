@@ -520,17 +520,37 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float exp(float x) { return MathF.Exp(x); }
 
+    /// <summary>Returns the base-e exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-e exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double exp(double x) { return System.Math.Exp(x); }
+
+
+    /// <summary>Returns the base-2 exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-2 exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double exp2(double x) { return System.Math.Exp(x * 0.693147180559945309); }
+
     /// <summary>Returns the base-2 exponential of x.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-2 exponential of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float exp2(float x) { return MathF.Exp(x * 0.69314718f); }
 
+
     /// <summary>Returns the base-10 exponential of x.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-10 exponential of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float exp10(float x) { return MathF.Exp(x * 2.30258509f); }
+
+    /// <summary>Returns the base-10 exponential of x.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-10 exponential of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double exp10(double x) { return System.Math.Exp(x * 2.302585092994045684); }
 
 
     /// <summary>Returns the natural logarithm of a float value.</summary>
@@ -539,17 +559,37 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float log(float x) { return MathF.Log(x); }
 
+    /// <summary>Returns the natural logarithm of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The natural logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double log(double x) { return System.Math.Log(x); }
+
+
     /// <summary>Returns the base-2 logarithm of a float value.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-2 logarithm of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float log2(float x) { return MathF.Log(x, 2.0f); }
 
+    /// <summary>Returns the base-2 logarithm of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-2 logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double log2(double x) { return System.Math.Log(x, 2.0); }
+
+
     /// <summary>Returns the base-10 logarithm of a float value.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The base-10 logarithm of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float log10(float x) { return MathF.Log10(x); }
+
+    /// <summary>Returns the base-10 logarithm of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The base-10 logarithm of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double log10(double x) { return System.Math.Log10(x); }
 
 
     /// <summary>Returns x raised to the power y.</summary>
@@ -558,6 +598,14 @@ namespace Unbe.Algebra {
     /// <returns>The result of raising x to the power y.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float pow(float x, float y) { return MathF.Pow(x, y); }
+
+    /// <summary>Returns x raised to the power y.</summary>
+    /// <param name="x">The exponent base.</param>
+    /// <param name="y">The exponent power.</param>
+    /// <returns>The result of raising x to the power y.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double pow(double x, double y) { return System.Math.Pow(x, y); }
+
 
     /// <summary>Returns the square root of a float value.</summary>
     /// <param name="x">Value to use when computing square root.</param>

@@ -214,4 +214,7 @@
   <data name="VectorOperationsFloatingPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\VectorOperations\VectorOperationsFloatingPoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="VectorProperties" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\VectorProperties.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>
