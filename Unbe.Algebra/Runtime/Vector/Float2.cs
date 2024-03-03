@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0660, 0661, 8981, IDE1006
+﻿#pragma warning disable 8981
 
 using System.Numerics;
 using System.Runtime.CompilerServices;

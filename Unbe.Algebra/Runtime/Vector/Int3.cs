@@ -1,6 +1,4 @@
-﻿#pragma warning disable 0660, 0661, IDE1006
-
-using System.Runtime.Intrinsics;
+﻿using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(int), dimensionX: 3)]

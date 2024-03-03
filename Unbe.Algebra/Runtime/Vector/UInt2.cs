@@ -1,4 +1,4 @@
-﻿#pragma warning disable 0660, 0661, IDE1006
+﻿#pragma warning disable IDE1006
 
 using System.Runtime.Intrinsics;
 
