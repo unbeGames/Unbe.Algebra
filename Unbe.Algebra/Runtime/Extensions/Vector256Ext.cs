@@ -157,6 +157,17 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<double> FastMultiplyAdd(Vector256<double> x, Vector256<double> y, Vector256<double> z) {
+      if (Fma.IsSupported) {
+        // FMA is faster than Add-Mul where it compiles to the native instruction, but it is not exactly semantically equivalent
+        return Fma.MultiplyAdd(x, y, z);
+      }
+
+      return x * y + z;
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector256<double> IfElse(in Vector256<double> mask, in Vector256<double> trueval, in Vector256<double> falseval) {
       return Avx.BlendVariable(falseval, trueval, mask);
     }

@@ -83,20 +83,20 @@ namespace Unbe.Algebra {
       // This section gets a series approximation for exp(g) in (-0.5, 0.5) since that is g's range.
       xx = Sse.Subtract(xx, fx);
 
-      var y = Fma.MultiplyAdd(ExpConsts.T7, xx, ExpConsts.T6);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T5);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T4);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T3);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T2);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T1);
-      y = Fma.MultiplyAdd(y, xx, ExpConsts.T0);
+      var y = FastMultiplyAdd(ExpConsts.T7, xx, ExpConsts.T6);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T5);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T4);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T3);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T2);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T1);
+      y = FastMultiplyAdd(y, xx, ExpConsts.T0);
 
       // Converts n to 2^n. There is no Avx2.ConvertToVector256Int64(fx) intrinsic, so we convert to int32's,
       // since the exponent of a double will never be more than a max int32, then from int to long.
       fx = Vector128.AsSingle(Sse2.ShiftLeftLogical(Sse2.Add(Sse2.ConvertToVector128Int32(fx), Int.ONE_HUNDRED_TWENTY_SEVEN), 23));
 
       // Combines the two exponentials and the end adjustments into the result.
-      return Fma.MultiplyAdd(y, fx, end);
+      return FastMultiplyAdd(y, fx, end);
     }
 
     internal static class ExpConsts {
@@ -157,18 +157,18 @@ namespace Unbe.Algebra {
       xx = Avx.Subtract(xx, fx);
 
       var xsq = Avx.Multiply(xx, xx);
-      var y = Fma.MultiplyAdd(ExpConsts.T11, xsq, ExpConsts.T9);
+      var y = FastMultiplyAdd(ExpConsts.T11, xsq, ExpConsts.T9);
 
-      var yo = Fma.MultiplyAdd(ExpConsts.T10, xsq, ExpConsts.T8);
-      y = Fma.MultiplyAdd(y, xsq, ExpConsts.T7);
-      yo = Fma.MultiplyAdd(yo, xsq, ExpConsts.T6);
-      y = Fma.MultiplyAdd(y, xsq, ExpConsts.T5);
-      yo = Fma.MultiplyAdd(yo, xsq, ExpConsts.T4);
-      y = Fma.MultiplyAdd(y, xsq, ExpConsts.T3);
-      yo = Fma.MultiplyAdd(yo, xsq, ExpConsts.T2);
-      y = Fma.MultiplyAdd(y, xsq, ExpConsts.T1);
-      yo = Fma.MultiplyAdd(yo, xsq, ExpConsts.T0);
-      y = Fma.MultiplyAdd(y, xx, yo);
+      var yo = FastMultiplyAdd(ExpConsts.T10, xsq, ExpConsts.T8);
+      y = FastMultiplyAdd(y, xsq, ExpConsts.T7);
+      yo = FastMultiplyAdd(yo, xsq, ExpConsts.T6);
+      y = FastMultiplyAdd(y, xsq, ExpConsts.T5);
+      yo = FastMultiplyAdd(yo, xsq, ExpConsts.T4);
+      y = FastMultiplyAdd(y, xsq, ExpConsts.T3);
+      yo = FastMultiplyAdd(yo, xsq, ExpConsts.T2);
+      y = FastMultiplyAdd(y, xsq, ExpConsts.T1);
+      yo = FastMultiplyAdd(yo, xsq, ExpConsts.T0);
+      y = FastMultiplyAdd(y, xx, yo);
 
       // Converts n to 2^n. There is no Avx2.ConvertToVector256Int64(fx) intrinsic, so we convert to int32's,
       // since the exponent of a double will never be more than a max int32, then from int to long.

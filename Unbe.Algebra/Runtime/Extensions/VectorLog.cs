@@ -153,7 +153,7 @@ namespace Unbe.Algebra {
 
       LogApprox(in d, ref d);
 
-      y = Avx.Add(Fma.MultiplyAdd(d, LogConsts.LOG2EF, LogConsts.LOG_ONE_POINT_FIVE), y);
+      y = Avx.Add(FastMultiplyAdd(d, LogConsts.LOG2EF, LogConsts.LOG_ONE_POINT_FIVE), y);
       
       y = IfElse(Avx.CompareEqual(x, LogConsts.ZERO), LogConsts.NEGATIVE_INFINITY, y);
       y = IfElse(Avx.CompareEqual(x, LogConsts.POSITIVE_INFINITY), LogConsts.POSITIVE_INFINITY, y);
@@ -168,14 +168,14 @@ namespace Unbe.Algebra {
       y = Avx.Divide(Avx.Subtract(x, LogConsts.ONE), Avx.Add(x, LogConsts.ONE));
       var ysq = Avx.Multiply(y, y);
 
-      var rx = Fma.MultiplyAdd(ysq, LogConsts.L8, LogConsts.L7);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L6);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L5);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L4);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L3);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L2);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.L1);
-      rx = Fma.MultiplyAdd(ysq, rx, LogConsts.TWO);
+      var rx = FastMultiplyAdd(ysq, LogConsts.L8, LogConsts.L7);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L6);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L5);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L4);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L3);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L2);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.L1);
+      rx = FastMultiplyAdd(ysq, rx, LogConsts.TWO);
 
       y = Avx.Multiply(y, rx);
     }

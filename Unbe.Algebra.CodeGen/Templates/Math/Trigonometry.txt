@@ -2,9 +2,15 @@
     #region Trigonometry
 
     /// <summary>Returns the componentwise sine of a vector.</summary>
-    /// <param name="x">Input value.</param>
+    /// <param name="v">Input vector in radians.</param>
     /// <returns>The componentwise sine of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} sin({0} v) {{ return new {0}({1}Ext.Sin(v.value)); }}
+
+    /// <summary>Returns the componentwise cosine of a vector.</summary>
+    /// <param name="v">Input vector in radians.</param>
+    /// <returns>The componentwise cossine of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} cos({0} v) {{ return new {0}({1}Ext.Cos(v.value)); }}
     
     #endregion

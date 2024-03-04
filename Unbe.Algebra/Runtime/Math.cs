@@ -14,16 +14,16 @@ namespace Unbe.Algebra {
     public const double TO_RADIANS_DBL = 0.017453292519943296;
 
     /// <summary>The mathematical constant pi. Approximately 3.14. This is a double precision constant.</summary>
-    public const double PI_DBL = 3.14159265358979323846;
+    public const double PI_DBL = System.Math.PI;
 
     /// <summary> The mathematical constant (2 * pi). Approximately 6.28. This is a double precision constant. Also known as <see cref="TAU_DBL"/>.</summary>
-    public const double PI2_DBL = PI_DBL * 2.0;
+    public const double PI2_DBL = System.Math.Tau;
 
     /// <summary> The mathematical constant (pi / 2). Approximately 1.57. This is a double precision constant. </summary>
     public const double PI_HALF_DBL = PI_DBL * 0.5;
 
     /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72. This is a double precision constant.</summary>
-    public const double E_DBL = 2.71828182845904523536;
+    public const double E_DBL = System.Math.E;
 
     /// <summary>The square root 2. Approximately 1.41. This is a double precision constant.</summary>
     public const double SQRT2_DBL = 1.41421356237309504880;
@@ -39,16 +39,16 @@ namespace Unbe.Algebra {
 
 
     /// <summary>The mathematical constant pi. Approximately 3.14.</summary>
-    public const float PI = (float)PI_DBL;
+    public const float PI = MathF.PI;
 
     /// <summary> The mathematical constant (2 * pi). Approximately 6.28. Also known as <see cref="TAU"/>.</summary>
-    public const float PI2 = (float)PI2_DBL;
+    public const float PI2 = MathF.Tau;
 
     /// <summary> The mathematical constant (pi / 2). Approximately 1.57. </summary>
     public const float PI_HALF = (float)PI_HALF_DBL;
 
     /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72.</summary>
-    public const float E = (float)E_DBL;
+    public const float E = MathF.E;
 
     /// <summary>The square root 2. Approximately 1.41.</summary>
     public const float SQRT2 = (float)SQRT2_DBL;
@@ -673,16 +673,28 @@ namespace Unbe.Algebra {
     #region Trigonometry
 
     /// <summary>Returns the sine of a float value.</summary>
-    /// <param name="x">Input value.</param>
+    /// <param name="x">Input value in radians.</param>
     /// <returns>The sine of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float sin(float x) { return MathF.Sin(x); }
 
     /// <summary>Returns the sine of a double value.</summary>
-    /// <param name="x">Input value.</param>
+    /// <param name="x">Input value in radians.</param>
     /// <returns>The sine of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double sin(double x) { return System.Math.Sin(x); }
+
+    /// <summary>Returns the cosine of a float value.</summary>
+    /// <param name="x">Input value in radians.</param>
+    /// <returns>The cosine cosine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float cos(float x) { return System.MathF.Cos(x); }
+
+    /// <summary>Returns the cosine of a double value.</summary>
+    /// <param name="x">Input value in radians.</param>
+    /// <returns>The cosine cosine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double cos(double x) { return System.Math.Cos(x); }
 
     #endregion
 

@@ -148,6 +148,16 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> FillWithW(Vector128<float> vector) => Shuffle(vector, (byte)Shuffle4.wwww);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FastMultiplyAdd(Vector128<float> x, Vector128<float> y, Vector128<float> z) {
+      if (Fma.IsSupported) {
+        // FMA is faster than Add-Mul where it compiles to the native instruction, but it is not exactly semantically equivalent
+        return Fma.MultiplyAdd(x, y, z);
+      }
+
+      return x * y + z;
+    }
+
     internal static Vector128<T> ShuffleSoftware<T>(Vector128<T> left, Vector128<T> right, byte control) where T : unmanaged {
       const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
