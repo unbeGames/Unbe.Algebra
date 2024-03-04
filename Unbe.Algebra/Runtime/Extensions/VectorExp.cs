@@ -177,11 +177,11 @@ namespace Unbe.Algebra {
       y = Avx.Multiply(fx, y);
 
       // Checks if x is greater than the highest acceptable argument, and sets to infinity if so.
-      y = IfElse(Avx.CompareGreaterThanOrEqual(v, ExpConsts.THIGH), ExpConsts.POSITIVE_INFINITY, y);
+      y = Select(Avx.CompareGreaterThanOrEqual(v, ExpConsts.THIGH), ExpConsts.POSITIVE_INFINITY, y);
 
       // Avx.CompareNotEqual(x, x) is a hack to determine which values of x are NaN, since NaN is the only
       // value that doesn't equal itself. 
-      return IfElse(Avx.CompareNotEqual(v, v), ExpConsts.NAN, y);
+      return Select(Avx.CompareNotEqual(v, v), ExpConsts.NAN, y);
     }
 
     internal static class ExpConsts { 

@@ -155,9 +155,9 @@ namespace Unbe.Algebra {
 
       y = Avx.Add(FastMultiplyAdd(d, LogConsts.LOG2EF, LogConsts.LOG_ONE_POINT_FIVE), y);
       
-      y = IfElse(Avx.CompareEqual(x, LogConsts.ZERO), LogConsts.NEGATIVE_INFINITY, y);
-      y = IfElse(Avx.CompareEqual(x, LogConsts.POSITIVE_INFINITY), LogConsts.POSITIVE_INFINITY, y);
-      return IfElse(Avx.CompareNotEqual(x, x), LogConsts.NAN, y);
+      y = Select(Avx.CompareEqual(x, LogConsts.ZERO), LogConsts.NEGATIVE_INFINITY, y);
+      y = Select(Avx.CompareEqual(x, LogConsts.POSITIVE_INFINITY), LogConsts.POSITIVE_INFINITY, y);
+      return Select(Avx.CompareNotEqual(x, x), LogConsts.NAN, y);
     }
 
     /// <summary>
