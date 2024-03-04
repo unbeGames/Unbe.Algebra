@@ -2,15 +2,26 @@
     #region Trigonometry
 
     /// <summary>Returns the componentwise sine of a vector.</summary>
-    /// <param name="v">Input vector in radians.</param>
+    /// <param name="v">Input vector containing angles in radians.</param>
     /// <returns>The componentwise sine of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} sin({0} v) {{ return new {0}({1}Ext.Sin(v.value)); }}
 
     /// <summary>Returns the componentwise cosine of a vector.</summary>
-    /// <param name="v">Input vector in radians.</param>
+    /// <param name="v">Input vector containing angles in radians.</param>
     /// <returns>The componentwise cossine of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} cos({0} v) {{ return new {0}({1}Ext.Cos(v.value)); }}
+
+    /// <summary>Returns the componentwise sine and cosine of the input vector v through the out parameters s and c.</summary>
+    /// <param name="v">Input vector containing angles in radians.</param>
+    /// <param name="s">Output vector containing the componentwise sine of the input.</param>
+    /// <param name="c">Output vector containing the componentwise cosine of the input.</param>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void sincos({0} v, out {0} s, out {0} c) {{ 
+      {1}Ext.SinCos(v.value, out var sin, out var cos);
+      s = new {0}(sin);
+      c = new {0}(cos);
+    }}
     
     #endregion

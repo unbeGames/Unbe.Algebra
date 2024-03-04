@@ -6,7 +6,7 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector64<float> Sin(in Vector64<float> vector) {
       return Vector64.Create(
-        MathF.Sin(vector[0]), 
+        MathF.Sin(vector[0]),
         MathF.Sin(vector[1])
       );
     }
@@ -18,5 +18,11 @@ namespace Unbe.Algebra {
         MathF.Cos(vector[1])
       );
     }
-  }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void SinCos(in Vector64<float> vector, out Vector64<float> sin, out Vector64<float> cos) {
+      sin = Sin(vector);
+      cos = Cos(vector);
+    }
+  } 
 }

@@ -119,6 +119,76 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void SinCos(Vector128<float> vector, out Vector128<float> sin, out Vector128<float> cos) {
+      if (Sse.IsSupported) {
+        var vec = Mod2PI(vector);
+        
+        var abs = Vector128.Abs(vec); // Gets the absolute of vector
+
+        var neg = (PI | ExtractSign(vec)) - vec;
+
+        var comp = Sse.CompareLessThanOrEqual(abs, PI_HALF);
+
+        vec = Sse41.BlendVariable(neg, vec, comp);
+
+        var vectorSquared = vec * vec;
+
+        var cosVec = Sse41.BlendVariable(Float.NEGATIVE_ONE, Float.ONE, comp);
+
+        // Polynomial approx
+        var sc0 = SinCoefficient0;
+
+        var constants = Vector128.Create(SinCoefficient1Scalar);
+        var result = FastMultiplyAdd(constants, vectorSquared, FillWithW(sc0));
+
+        constants = FillWithZ(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithY(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithX(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        result = FastMultiplyAdd(result, vectorSquared, Float.ONE);
+
+        result *= vec;
+
+        sin = result;
+
+        // Polynomial approx
+        var cc0 = CosCoefficient0;
+
+        constants = Vector128.Create(CosCoefficient1Scalar);
+        result = FastMultiplyAdd(constants, vectorSquared, FillWithW(cc0));
+
+        constants = FillWithZ(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithY(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithX(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        result = FastMultiplyAdd(result, vectorSquared, Float.ONE);
+
+        result *= cosVec;
+
+        cos = result;
+
+        return;
+      }
+
+      SoftwareFallback(vector, out sin, out cos);
+
+      static void SoftwareFallback(Vector128<float> vector, out Vector128<float> sin, out Vector128<float> cos) {
+        sin = Sin(vector);
+        cos = Cos(vector);
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Mod2PI(in Vector128<float> vector) {
       return vector - PI2 * Round(vector * ONE_DIV_PI2);
     }
@@ -206,7 +276,7 @@ namespace Unbe.Algebra {
 
         var neg = (PI | ExtractSign(vec)) - vec;
 
-        var comp = Avx.Compare(abs, PI_HALF, FloatComparisonMode.OrderedLessThanOrEqualSignaling); ;
+        var comp = Avx.Compare(abs, PI_HALF, FloatComparisonMode.OrderedLessThanOrEqualSignaling);
 
         vec = Avx.BlendVariable(neg, vec, comp);
 
@@ -245,6 +315,76 @@ namespace Unbe.Algebra {
             System.Math.Cos(vector[2]),
             System.Math.Cos(vector[3])
         );
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void SinCos(Vector256<double> vector, out Vector256<double> sin, out Vector256<double> cos) {
+      if (Avx.IsSupported) {
+        var vec = Mod2PI(vector);
+      
+        var abs = Vector256.Abs(vec); // Gets the absolute of vector
+
+        var neg = (PI | ExtractSign(vec)) - vec;
+
+        var comp = Avx.Compare(abs, PI_HALF, FloatComparisonMode.OrderedLessThanOrEqualSignaling);
+
+        vec = Avx.BlendVariable(neg, vec, comp);
+
+        var vectorSquared = vec * vec;
+
+        var cosVec = Avx.BlendVariable(Double.NEGATIVE_ONE, Double.ONE, comp);
+
+        // Polynomial approx
+        Vector256<double> sc0 = SinCoefficient0D;
+
+        Vector256<double> constants = Vector256.Create(SinCoefficient1DScalar);
+        Vector256<double> result = FastMultiplyAdd(constants, vectorSquared, FillWithW(sc0));
+
+        constants = FillWithZ(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithY(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithX(sc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        result = FastMultiplyAdd(result, vectorSquared, Double.ONE);
+
+        result *= vec;
+
+        sin = result;
+
+        // Polynomial approx
+        var cc0 = CosCoefficient0D;
+
+        constants = Vector256.Create(CosCoefficient1DScalar);
+        result = FastMultiplyAdd(constants, vectorSquared, FillWithW(cc0));
+
+        constants = FillWithZ(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithY(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        constants = FillWithX(cc0);
+        result = FastMultiplyAdd(result, vectorSquared, constants);
+
+        result = FastMultiplyAdd(result, vectorSquared, Double.ONE);
+
+        result *= cosVec;
+
+        cos = result;
+
+        return;
+      }
+
+      SoftwareFallback(vector, out sin, out cos);
+
+      static void SoftwareFallback(Vector256<double> vector, out Vector256<double> sin, out Vector256<double> cos) {
+        sin = Sin(vector);
+        cos = Cos(vector);
       }
     }
 

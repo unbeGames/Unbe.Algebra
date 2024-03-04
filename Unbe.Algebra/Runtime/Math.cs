@@ -696,6 +696,22 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double cos(double x) { return System.Math.Cos(x); }
 
+    /// <summary>Returns the sine and cosine of the input float value x through the out parameters s and c.</summary>
+    /// <remarks>When Burst compiled, his method is faster than calling sin() and cos() separately.</remarks>
+    /// <param name="x">Input angle in radians.</param>
+    /// <param name="s">Output sine of the input.</param>
+    /// <param name="c">Output cosine of the input.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void sincos(float x, out float s, out float c) { s = sin(x); c = cos(x); }
+
+    /// <summary>Returns the sine and cosine of the input double value x through the out parameters s and c.</summary>
+    /// <remarks>When Burst compiled, his method is faster than calling sin() and cos() separately.</remarks>
+    /// <param name="x">Input angle in radians.</param>
+    /// <param name="s">Output sine of the input.</param>
+    /// <param name="c">Output cosine of the input.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void sincos(double x, out double s, out double c) { s = sin(x); c = cos(x); }
+
     #endregion
 
 
