@@ -4,14 +4,10 @@ namespace Unbe.Algebra.Tests {
   internal class Sin {
     public static readonly Float4[][] data = new[] {
       new Float4[] { new Float4(0f) },
-      new Float4[] { new Float4(1f) },
-      new Float4[] { new Float4(-Math.E) },
-      new Float4[] { new Float4(MathF.Sqrt(2f)) },
-      new Float4[] { new Float4(55) },
-      new Float4[] { new Float4(Math.PI) },
-      new Float4[] { new Float4(Math.PI_HALF) },      
-      new Float4[] { new Float4(-Math.PI) },
-      new Float4[] { new Float4(-Math.PI2) },
+      new Float4[] { new Float4(-2f, -1f, 1f, 2f) },
+      new Float4[] { new Float4(Math.E, Math.SQRT2, 1 / Math.E, 1 / Math.SQRT2) },
+      new Float4[] { new Float4(-20.5323f, 10.7f, 55, 99) },
+      new Float4[] { new Float4(Math.PI, Math.PI_HALF, -Math.PI, -Math.PI2) },
     };
 
     [Theory]

@@ -5,12 +5,6 @@ using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra { 
   public static partial class Math {
-    /// <summary>The mathematical constant pi. Approximately 3.14. This is a double precision constant.</summary>
-    public const double PI_DBL = 3.14159265358979323846;
-
-    /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72. This is a double precision constant.</summary>
-    public const double E_DBL = 2.71828182845904523536;
-
     /// <summary> /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.degrees(double)"/>.</remarks>
     public const double TO_DEGREES_DBL = 57.29577951308232;
@@ -18,6 +12,22 @@ namespace Unbe.Algebra {
     /// <summary> The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(double)"/>.</remarks>
     public const double TO_RADIANS_DBL = 0.017453292519943296;
+
+    /// <summary>The mathematical constant pi. Approximately 3.14. This is a double precision constant.</summary>
+    public const double PI_DBL = 3.14159265358979323846;
+
+    /// <summary> The mathematical constant (2 * pi). Approximately 6.28. This is a double precision constant. Also known as <see cref="TAU_DBL"/>.</summary>
+    public const double PI2_DBL = PI_DBL * 2.0;
+
+    /// <summary> The mathematical constant (pi / 2). Approximately 1.57. This is a double precision constant. </summary>
+    public const double PI_HALF_DBL = PI_DBL * 0.5;
+
+    /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72. This is a double precision constant.</summary>
+    public const double E_DBL = 2.71828182845904523536;
+
+    /// <summary>The square root 2. Approximately 1.41. This is a double precision constant.</summary>
+    public const double SQRT2_DBL = 1.41421356237309504880;
+
 
     /// <summary> The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(float)" />.</ remarks >
@@ -28,35 +38,20 @@ namespace Unbe.Algebra {
     public const float TO_RADIANS = (float)TO_RADIANS_DBL;
 
 
-    /// <summary>
-    /// The mathematical constant (2 * pi). Approximately 6.28. This is a f64/double precision constant. Also known as <see cref="TAU_DBL"/>.
-    /// </summary>
-    public const double PI2_DBL = PI_DBL * 2.0;
-
-    /// <summary>
-    /// The mathematical constant (pi / 2). Approximately 1.57. This is a f64/double precision constant.
-    /// </summary>
-    public const double PI_HALF_DBL = PI_DBL * 0.5;
-
-
     /// <summary>The mathematical constant pi. Approximately 3.14.</summary>
     public const float PI = (float)PI_DBL;
 
-    /// <summary>
-    /// The mathematical constant (2 * pi). Approximately 6.28. Also known as <see cref="TAU"/>.
-    /// </summary>
+    /// <summary> The mathematical constant (2 * pi). Approximately 6.28. Also known as <see cref="TAU"/>.</summary>
     public const float PI2 = (float)PI2_DBL;
 
-    /// <summary>
-    /// The mathematical constant (pi / 2). Approximately 1.57.
-    /// </summary>
+    /// <summary> The mathematical constant (pi / 2). Approximately 1.57. </summary>
     public const float PI_HALF = (float)PI_HALF_DBL;
-
-
 
     /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72.</summary>
     public const float E = (float)E_DBL;
 
+    /// <summary>The square root 2. Approximately 1.41.</summary>
+    public const float SQRT2 = (float)SQRT2_DBL;
 
 
     /// <summary>Returns the bit pattern of a uint4 as a float4.</summary>
