@@ -3,6 +3,38 @@ using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.X86;
 
 namespace Unbe.Algebra {
+  public static partial class Vector64Ext {
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Sin(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Sin(vector[0]),
+        MathF.Sin(vector[1])
+      );
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Cos(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Cos(vector[0]),
+        MathF.Cos(vector[1])
+      );
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static void SinCos(in Vector64<float> vector, out Vector64<float> sin, out Vector64<float> cos) {
+      sin = Sin(vector);
+      cos = Cos(vector);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Tan(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Tan(vector[0]),
+        MathF.Tan(vector[1])
+      );
+    }
+  }
+
   public static partial class Vector128Ext {
     public static readonly Vector128<float> ONE_DIV_PI = Vector128.Create(1f / Math.PI);
     public static readonly Vector128<float> ONE_DIV_PI2 = Vector128.Create(1f / Math.PI2);
@@ -25,7 +57,7 @@ namespace Unbe.Algebra {
         var neg = (PI | ExtractSign(vec)) - vec;
 
         var comp = Sse.CompareLessThanOrEqual(abs, PI_HALF);
-        vec = Sse41.BlendVariable(neg, vec, comp);
+        vec = Select(comp, vec, neg);
 
         var vectorSquared = vec * vec;
 
@@ -78,11 +110,11 @@ namespace Unbe.Algebra {
         var neg = (PI | ExtractSign(vec)) - vec;
 
         var comp = Sse.CompareLessThanOrEqual(abs, PI_HALF);
-        vec = Sse41.BlendVariable(neg, vec, comp);
+        vec = Select(comp, vec, neg);
 
         var vectorSquared = vec * vec;
 
-        vec = Sse41.BlendVariable(Float.NEGATIVE_ONE, Float.ONE, comp);
+        vec = Select(comp, Float.ONE, Float.NEGATIVE_ONE);
 
         // Polynomial approx
         var cc0 = CosCoefficient0;
@@ -129,11 +161,11 @@ namespace Unbe.Algebra {
 
         var comp = Sse.CompareLessThanOrEqual(abs, PI_HALF);
 
-        vec = Sse41.BlendVariable(neg, vec, comp);
+        vec = Select(comp, vec, neg);
 
         var vectorSquared = vec * vec;
 
-        var cosVec = Sse41.BlendVariable(Float.NEGATIVE_ONE, Float.ONE, comp);
+        var cosVec = Select(comp, Float.ONE, Float.NEGATIVE_ONE);
 
         // Polynomial approx
         var sc0 = SinCoefficient0;
@@ -187,6 +219,86 @@ namespace Unbe.Algebra {
         cos = Cos(vector);
       }
     }
+
+    private static readonly Vector128<float> TanCoefficients0 = Vector128.Create(1.0f, -4.667168334e-1f, 2.566383229e-2f, -3.118153191e-4f);
+    private static readonly Vector128<float> TanCoefficients1 = Vector128.Create(4.981943399e-7f, -1.333835001e-1f, 3.424887824e-3f, -1.786170734e-5f);
+    private static readonly Vector128<float> TanConstants = Vector128.Create(1.570796371f, 6.077100628e-11f, 0.000244140625f, 0.63661977228f);
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Tan(Vector128<float> vector) {
+      if (Sse.IsSupported) {
+        var twoDivPi = FillWithW(TanConstants);
+
+        var tc0 = FillWithX(TanConstants);
+        var tc1 = FillWithY(TanConstants);
+        var epsilon = FillWithZ(TanConstants);
+
+        var va = vector * twoDivPi;
+        va = Round(va);
+
+        var vc = FastNegateMultiplyAdd(va, tc0, vector);
+
+        var vb = Vector128.Abs(va);
+
+        vc = FastNegateMultiplyAdd(va, tc1, vc);
+
+        vb = ConvertToInt32(vb).AsSingle();
+
+        var vc2 = vc * vc;
+
+        var t7 = FillWithW(TanCoefficients1);
+        var t6 = FillWithZ(TanCoefficients1);
+        var t4 = FillWithX(TanCoefficients1);
+        var t3 = FillWithW(TanCoefficients0);
+        var t5 = FillWithY(TanCoefficients1);
+        var t2 = FillWithZ(TanCoefficients0);
+        var t1 = FillWithY(TanCoefficients0);
+        var t0 = FillWithX(TanCoefficients0);
+
+        var vbIsEven = (vb & Float.EPSILON).AsInt32();
+        vbIsEven = CompareEqual(vbIsEven, Vector128<int>.Zero);
+
+        var n = FastMultiplyAdd(vc2, t7, t6);
+        var d = FastMultiplyAdd(vc2, t4, t3);
+        n = FastMultiplyAdd(vc2, n, t5);
+        d = FastMultiplyAdd(vc2, d, t2);
+        n = vc2 * n;
+        d = FastMultiplyAdd(vc2, d, t1);
+        n = FastMultiplyAdd(vc, n, vc);
+
+        var nearZero = InBounds(vc, epsilon);
+
+        d = FastMultiplyAdd(vc2, d, t0);
+
+        n = Select(nearZero, vc, n);
+        d = Select(nearZero, Float.ONE, d);
+
+        var r0 = -n;
+        var r1 = n / d;
+        r0 = d / r0;
+
+        var isZero = Sse.CompareEqual(vector, Vector128<float>.Zero);
+
+        var result = Select(vbIsEven.AsSingle(), r1, r0);
+
+        result = Select(isZero, Vector128<float>.Zero, result);
+
+        return result;
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Tan(vector[0]),
+            MathF.Tan(vector[1]),
+            MathF.Tan(vector[2]),
+            MathF.Tan(vector[3])
+        );
+      }
+    }
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Mod2PI(in Vector128<float> vector) {

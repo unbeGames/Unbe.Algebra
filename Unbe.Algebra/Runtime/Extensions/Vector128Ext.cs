@@ -158,6 +158,17 @@ namespace Unbe.Algebra {
       return x * y + z;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> FastNegateMultiplyAdd(Vector128<float> x, Vector128<float> y, Vector128<float> z) {
+      if (Fma.IsSupported) {
+        // FMA is faster than Add-Mul where it compiles to the native instruction, but it is not exactly semantically equivalent
+        return Fma.MultiplyAddNegated(x, y, z);
+      }
+
+      return z - (x * y);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<T> ShuffleSoftware<T>(Vector128<T> left, Vector128<T> right, byte control) where T : unmanaged {
       const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
@@ -176,6 +187,60 @@ namespace Unbe.Algebra {
       ReadOnlySpan<T> array = stackalloc T[] { e0, e1, e2, e3 };
 
       return Vector128.Create<T>(array);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<int> ConvertToInt32(Vector128<float> vector) {
+      if (Sse2.IsSupported) {
+        return Sse2.ConvertToVector128Int32WithTruncation(vector);
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<int> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            (int)vector[0],
+            (int)vector[1],
+            (int)vector[2],
+            (int)vector[3]
+        );
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<float> Select(Vector128<float> selector, Vector128<float> trueVal, Vector128<float> falseVal) {
+      if (Sse41.IsSupported) {
+        return Sse41.BlendVariable(falseVal, trueVal, selector);
+      }
+
+      return (selector & trueVal) | Vector128.AndNot(selector, falseVal);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<int> CompareEqual(Vector128<int> left, Vector128<int> right) {
+      if (Sse2.IsSupported) {
+        return Sse2.CompareEqual(left, right);
+      }
+
+      return SoftwareFallback(left, right);
+
+      static Vector128<int> SoftwareFallback(Vector128<int> left, Vector128<int> right) {
+        Vector128<int> result = default;
+
+        for (var i = 0; i < Vector128<int>.Count; i++) {
+          result = result.WithElement(i, left.GetElement(i) == right.GetElement(i) ? -1 : 0);
+        }
+
+        return result;
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<float> InBounds(Vector128<float> vector, Vector128<float> bound) {
+      var lessThan = Sse.CompareLessThanOrEqual(vector, bound);
+      var greaterThan = Sse.CompareGreaterThanOrEqual(vector, -bound);
+
+      return lessThan & greaterThan;
     }
 
     internal static class Int {
@@ -198,6 +263,8 @@ namespace Unbe.Algebra {
 
       public static readonly Vector128<float> HIGH = Vector128.Create(float.MaxValue);
       public static readonly Vector128<float> LOW = Vector128.Create(float.MinValue);
+
+      public static readonly Vector128<float> EPSILON = Vector128.Create(float.Epsilon);
     }
   }
 }

@@ -712,6 +712,18 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void sincos(double x, out double s, out double c) { s = sin(x); c = cos(x); }
 
+    /// <summary>Returns the tangent of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The tangent of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float tan(float x) { return (float)System.Math.Tan(x); }
+
+    /// <summary>Returns the tangent of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The tangent of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double tan(double x) { return System.Math.Tan(x); }
+
     #endregion
 
 

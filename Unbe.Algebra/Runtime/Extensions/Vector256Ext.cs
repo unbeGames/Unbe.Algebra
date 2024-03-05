@@ -179,8 +179,12 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static Vector256<double> Select(in Vector256<double> mask, in Vector256<double> trueval, in Vector256<double> falseval) {
-      return Avx.BlendVariable(falseval, trueval, mask);
+    internal static Vector256<double> Select(in Vector256<double> selector, in Vector256<double> trueVal, in Vector256<double> falseVal) {
+      if (Avx.IsSupported) {
+        return Avx.BlendVariable(falseVal, trueVal, selector);
+      }
+
+      return (selector & trueVal) | Vector256.AndNot(selector, falseVal);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

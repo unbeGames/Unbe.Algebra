@@ -23,5 +23,11 @@
       s = new {0}(sin);
       c = new {0}(cos);
     }}
+
+    /// <summary>Returns the componentwise tangent of a vector.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise tangent of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} tan({0} v) {{ return new {0}({1}Ext.Tan(v.value)); }}
     
     #endregion
