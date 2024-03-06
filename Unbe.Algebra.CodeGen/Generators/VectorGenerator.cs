@@ -103,21 +103,42 @@ namespace Unbe.Algebra.CodeGen {
 
     private void AddShuffles() {
       if (dimensionX == 2) return;
+
       tmp.Clear();
 
-      var shuffle = Resources.Shuffle;
-      var shuffleReadonly = Resources.ShuffleReadonly;
+      var shuffleTemplate = Resources.Shuffle;
+      var shuffleReadonlyTemplate = Resources.ShuffleReadonly;
       var shuffleNames = shuffleByDimension[dimensionX];
 
       for(int i = 0; i < shuffleNames.Length; i++) {
-        var name = shuffleNames[i];
-        var uniqueMembers = name.Distinct().Count() == dimensionX;
-        var template = uniqueMembers ? shuffle : shuffleReadonly; 
-        tmp.Append(string.Format(template, typeName, name, vectorPrefix, dimensionX));
+        var shuffle = shuffleNames[i];
+        var uniqueMembers = shuffle.Distinct().Count() == dimensionX;
+        if (uniqueMembers) {
+          string writeShuffle;
+          if(!shuffleInverse.TryGetValue(shuffle, out writeShuffle)) {
+            writeShuffle = $"kkk{shuffle}";
+          }
+          tmp.Append(string.Format(shuffleTemplate, typeName, shuffle, vectorPrefix, dimensionX, writeShuffle));
+        } else {
+          tmp.Append(string.Format(shuffleReadonlyTemplate, typeName, shuffle, vectorPrefix, dimensionX));
+        }
       }
+      /*
+      if(dimensionX == 4) {// IN PROGRESS
+        shuffleNames = shuffle4To3Names;
+
+        for (int i = 0; i < shuffleNames.Length; i++) {
+          var name = shuffleNames[i];
+          var uniqueMembers = name.Distinct().Count() == dimensionX;
+          var template = uniqueMembers ? shuffleTemplate : shuffleReadonlyTemplate;
+          tmp.Append(string.Format(template, typeName, name, vectorPrefix, dimensionX));
+        }
+      }
+      */
+
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
-    }
+    } 
 
     private void AddMath() {
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));

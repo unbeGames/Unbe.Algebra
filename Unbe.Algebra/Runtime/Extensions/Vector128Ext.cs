@@ -52,6 +52,7 @@ namespace Unbe.Algebra {
       return ShuffleSoftware(vector, vector, control);
     }
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<uint> Shuffle(in Vector128<uint> vector, byte control) {
       if (Sse2.IsSupported) {
@@ -70,6 +71,13 @@ namespace Unbe.Algebra {
 
       return Shuffle(vector, vector, control);
     }
+
+    /*
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> ShuffleMasked(in Vector128<float> vector, byte control) {
+      
+    }
+    */
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Shuffle(in Vector128<float> left, in Vector128<float> right, byte control) {
@@ -255,6 +263,11 @@ namespace Unbe.Algebra {
     }
 
     internal static class Float {
+      public static readonly Vector128<float> MASK_X = Vector128.Create(int.MinValue, 0, 0, 0).AsSingle();
+      public static readonly Vector128<float> MASK_Y = Vector128.Create(0, int.MinValue, 0, 0).AsSingle();
+      public static readonly Vector128<float> MASK_Z = Vector128.Create(0, 0, int.MinValue, 0).AsSingle();
+      public static readonly Vector128<float> MASK_W = Vector128.Create(0, 0, 0, int.MinValue).AsSingle();
+
       public static readonly Vector128<float> MASK_SIGN = Vector128.Create(int.MinValue).AsSingle();
       public static readonly Vector128<float> MASK_NOT_SIGN = Vector128.Create(~int.MaxValue).AsSingle();
       public static readonly Vector128<float> ONE = Vector128.Create(1f);

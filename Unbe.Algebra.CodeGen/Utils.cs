@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Unbe.Algebra.CodeGen {
   [Flags]
@@ -9,9 +10,19 @@ namespace Unbe.Algebra.CodeGen {
   }
 
   internal static class Utils {
+    static Utils() {
+      GenerateShuffle4Inverse(shuffle4Names, 4);
+      GenerateShuffle4Inverse(shuffle3Names, 3);
+    }
+
+    internal static readonly Dictionary<string, string> shuffleInverse = new();
 
     internal static readonly string[] shuffle4Names = new string[] { "xxxx", "yxxx", "zxxx", "wxxx", "xyxx", "yyxx", "zyxx", "wyxx", "xzxx", "yzxx", "zzxx", "wzxx", "xwxx", "ywxx", "zwxx", "wwxx", "xxyx", "yxyx", "zxyx", "wxyx", "xyyx", "yyyx", "zyyx", "wyyx", "xzyx", "yzyx", "zzyx", "wzyx", "xwyx", "ywyx", "zwyx", "wwyx", "xxzx", "yxzx", "zxzx", "wxzx", "xyzx", "yyzx", "zyzx", "wyzx", "xzzx", "yzzx", "zzzx", "wzzx", "xwzx", "ywzx", "zwzx", "wwzx", "xxwx", "yxwx", "zxwx", "wxwx", "xywx", "yywx", "zywx", "wywx", "xzwx", "yzwx", "zzwx", "wzwx", "xwwx", "ywwx", "zwwx", "wwwx", "xxxy", "yxxy", "zxxy", "wxxy", "xyxy", "yyxy", "zyxy", "wyxy", "xzxy", "yzxy", "zzxy", "wzxy", "xwxy", "ywxy", "zwxy", "wwxy", "xxyy", "yxyy", "zxyy", "wxyy", "xyyy", "yyyy", "zyyy", "wyyy", "xzyy", "yzyy", "zzyy", "wzyy", "xwyy", "ywyy", "zwyy", "wwyy", "xxzy", "yxzy", "zxzy", "wxzy", "xyzy", "yyzy", "zyzy", "wyzy", "xzzy", "yzzy", "zzzy", "wzzy", "xwzy", "ywzy", "zwzy", "wwzy", "xxwy", "yxwy", "zxwy", "wxwy", "xywy", "yywy", "zywy", "wywy", "xzwy", "yzwy", "zzwy", "wzwy", "xwwy", "ywwy", "zwwy", "wwwy", "xxxz", "yxxz", "zxxz", "wxxz", "xyxz", "yyxz", "zyxz", "wyxz", "xzxz", "yzxz", "zzxz", "wzxz", "xwxz", "ywxz", "zwxz", "wwxz", "xxyz", "yxyz", "zxyz", "wxyz", "xyyz", "yyyz", "zyyz", "wyyz", "xzyz", "yzyz", "zzyz", "wzyz", "xwyz", "ywyz", "zwyz", "wwyz", "xxzz", "yxzz", "zxzz", "wxzz", "xyzz", "yyzz", "zyzz", "wyzz", "xzzz", "yzzz", "zzzz", "wzzz", "xwzz", "ywzz", "zwzz", "wwzz", "xxwz", "yxwz", "zxwz", "wxwz", "xywz", "yywz", "zywz", "wywz", "xzwz", "yzwz", "zzwz", "wzwz", "xwwz", "ywwz", "zwwz", "wwwz", "xxxw", "yxxw", "zxxw", "wxxw", "xyxw", "yyxw", "zyxw", "wyxw", "xzxw", "yzxw", "zzxw", "wzxw", "xwxw", "ywxw", "zwxw", "wwxw", "xxyw", "yxyw", "zxyw", "wxyw", "xyyw", "yyyw", "zyyw", "wyyw", "xzyw", "yzyw", "zzyw", "wzyw", "xwyw", "ywyw", "zwyw", "wwyw", "xxzw", "yxzw", "zxzw", "wxzw", "xyzw", "yyzw", "zyzw", "wyzw", "xzzw", "yzzw", "zzzw", "wzzw", "xwzw", "ywzw", "zwzw", "wwzw", "xxww", "yxww", "zxww", "wxww", "xyww", "yyww", "zyww", "wyww", "xzww", "yzww", "zzww", "wzww", "xwww", "ywww", "zwww", "wwww" };
+    internal static readonly string[] shuffle4To3Names = new string[] { "xxx", "yxx", "zxx", "wxx", "xyx", "yyx", "zyx", "wyx", "xzx", "yzx", "zzx", "wzx", "xwx", "ywx", "zwx", "wwx", "xxy", "yxy", "zxy", "wxy", "xyy", "yyy", "zyy", "wyy", "xzy", "yzy", "zzy", "wzy", "xwy", "ywy", "zwy", "wwy", "xxz", "yxz", "zxz", "wxz", "xyz", "yyz", "zyz", "wyz", "xzz", "yzz", "zzz", "wzz", "xwz", "ywz", "zwz", "wwz", "xxw", "yxw", "zxw", "wxw", "xyw", "yyw", "zyw", "wyw", "xzw", "yzw", "zzw", "wzw", "xww", "yww", "zww", "www" };
+    internal static readonly string[] shuffle4To2Names = new string[] { "xx", "yx", "zx", "wx", "xy", "yy", "zy", "wy", "xz", "yz", "zz", "wz", "xw", "yw", "zw", "ww" };
+
     internal static readonly string[] shuffle3Names = new string[] { "xxx", "yxx", "zxx", "xyx", "yyx", "zyx", "xzx", "yzx", "zzx", "xxy", "yxy", "zxy", "xyy", "yyy", "zyy", "xzy", "yzy", "zzy", "xxz", "yxz", "zxz", "xyz", "yyz", "zyz", "xzz", "yzz", "zzz" };
+    internal static readonly string[] shuffle3To2Names = new string[] { "xx", "yx", "zx", "xy", "yy", "zy", "xz", "yz", "zz" };
 
     internal static readonly Dictionary<int, string[]> shuffleByDimension = new() {
       { 3, shuffle3Names }, { 4, shuffle4Names }
@@ -122,6 +133,35 @@ namespace Unbe.Algebra.CodeGen {
 
     internal static string AddSuffLyCap(string str) {
       return $"{str[0].ToString().ToUpper()}{str.Substring(1)}ly";
+    }
+
+    private static void GenerateShuffle4Inverse(string[] shuffleNames, int uniqueCount) {
+      for(int i = 0; i < shuffleNames.Length; i++) {
+        var shuffle = shuffleNames[i];
+        if(shuffle.Distinct().Count() == uniqueCount) {
+          var inverse = GenerateShuffle4Inverse(shuffle);
+          shuffleInverse.Add(shuffle, inverse);
+        }
+      }
+    }
+
+    private static readonly Dictionary<char, int> shufflePositions = new() { { 'x', 0 }, { 'y', 1 }, { 'z', 2 }, { 'w', 3 } };
+    private static readonly char[] xyzw = new[] { 'x', 'y', 'z', 'w' };
+    private static string GenerateShuffle4Inverse(string shuffle) {
+      var arr = shuffle.ToCharArray();  
+      char[] result = new char[arr.Length];
+
+      // we basically doing
+      // zxwy = xyzw
+      // z = x, x = y, w = z, y = w
+      // and then ordering it
+
+      for(int i = 0; i < arr.Length; i++) {
+        var next = arr[i];
+        var letterPosition = shufflePositions[next];
+        result[letterPosition] = xyzw[i];
+      }
+      return new string(result);
     }
   }
 }
