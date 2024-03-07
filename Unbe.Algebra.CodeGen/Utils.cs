@@ -21,8 +21,12 @@ namespace Unbe.Algebra.CodeGen {
     internal static readonly string[] shuffle4To3Names = new string[] { "xxx", "yxx", "zxx", "wxx", "xyx", "yyx", "zyx", "wyx", "xzx", "yzx", "zzx", "wzx", "xwx", "ywx", "zwx", "wwx", "xxy", "yxy", "zxy", "wxy", "xyy", "yyy", "zyy", "wyy", "xzy", "yzy", "zzy", "wzy", "xwy", "ywy", "zwy", "wwy", "xxz", "yxz", "zxz", "wxz", "xyz", "yyz", "zyz", "wyz", "xzz", "yzz", "zzz", "wzz", "xwz", "ywz", "zwz", "wwz", "xxw", "yxw", "zxw", "wxw", "xyw", "yyw", "zyw", "wyw", "xzw", "yzw", "zzw", "wzw", "xww", "yww", "zww", "www" };
     internal static readonly string[] shuffle4To2Names = new string[] { "xx", "yx", "zx", "wx", "xy", "yy", "zy", "wy", "xz", "yz", "zz", "wz", "xw", "yw", "zw", "ww" };
 
+    internal static readonly Dictionary<string, char> shuffle4To3Missing = new() { { "zyx", 'w' }, { "wyx", 'z' }, { "yzx", 'w' }, { "wzx", 'y' }, { "ywx", 'z' }, { "zwx", 'y' }, { "zxy", 'w' }, { "wxy", 'z' }, { "xzy", 'w' }, { "wzy", 'x' }, { "xwy", 'z' }, { "zwy", 'x' }, { "yxz", 'w' }, { "wxz", 'y' }, { "xyz", 'w' }, { "wyz", 'x' }, { "xwz", 'y' }, { "ywz", 'x' }, { "yxw", 'z' }, { "zxw", 'y' }, { "xyw", 'z' }, { "zyw", 'x' }, { "xzw", 'y' }, { "yzw", 'x' } };
+
     internal static readonly string[] shuffle3Names = new string[] { "xxx", "yxx", "zxx", "xyx", "yyx", "zyx", "xzx", "yzx", "zzx", "xxy", "yxy", "zxy", "xyy", "yyy", "zyy", "xzy", "yzy", "zzy", "xxz", "yxz", "zxz", "xyz", "yyz", "zyz", "xzz", "yzz", "zzz" };
     internal static readonly string[] shuffle3To2Names = new string[] { "xx", "yx", "zx", "xy", "yy", "zy", "xz", "yz", "zz" };
+
+    
 
     internal static readonly Dictionary<int, string[]> shuffleByDimension = new() {
       { 3, shuffle3Names }, { 4, shuffle4Names }
@@ -145,17 +149,17 @@ namespace Unbe.Algebra.CodeGen {
       }
     }
 
-    private static readonly Dictionary<char, int> shufflePositions = new() { { 'x', 0 }, { 'y', 1 }, { 'z', 2 }, { 'w', 3 } };
+    public static readonly Dictionary<char, int> shufflePositions = new() { { 'x', 0 }, { 'y', 1 }, { 'z', 2 }, { 'w', 3 } };
     private static readonly char[] xyzw = new[] { 'x', 'y', 'z', 'w' };
+    
     private static string GenerateShuffle4Inverse(string shuffle) {
       var arr = shuffle.ToCharArray();  
       char[] result = new char[arr.Length];
 
-      // we basically doing
-      // zxwy = xyzw
+      // to get the inverse we are basically doing
+      // zxwy = xyzw 
       // z = x, x = y, w = z, y = w
       // and then ordering it
-
       for(int i = 0; i < arr.Length; i++) {
         var next = arr[i];
         var letterPosition = shufflePositions[next];

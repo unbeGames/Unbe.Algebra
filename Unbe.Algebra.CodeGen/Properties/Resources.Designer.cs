@@ -118,6 +118,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 		
         ///		#region Core Math
+        ///
         ///		/// &lt;summary&gt;Returns the componentwise minimum of two vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The first input value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The second input value.&lt;/param&gt;
@@ -125,7 +126,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///		public static {0} min({0} x, {0} y) {{ return new {0}({1}.Min(x.value, y.value)); }}
         ///
-        ///		/// &lt;summary&gt;Returns the componentwise maximum of two vectors.&lt;/summary&gt;        /// [rest of string was truncated]&quot;;.
+        ///		/// &lt;summary&gt;Returns the componentwise maximum of two vectors.&lt;/summary [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CoreMath {
             get {
@@ -271,7 +272,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{1}); }}
+        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{4}); }}
         ///    }}
         ///.
         /// </summary>
@@ -298,7 +299,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
         ///    public readonly {0} {1} {{
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
+        ///      get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
         ///    }}
         ///.
         /// </summary>
@@ -310,7 +311,29 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
+        ///    public {0} {1} {{
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      set {{
+        ///        var original = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
+        ///        original[{6}] = this.value[{6}];
+        ///        this.value = orignal; 
+        ///      }}
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string ShuffleReduced {
+            get {
+                return ResourceManager.GetString("ShuffleReduced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    #region Sign
+        ///
         ///    /// &lt;summary&gt;Returns the componentwise sign of v. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;v&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
@@ -318,7 +341,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///		public static {0} sign({0} v) {{ return new {0}({1}Ext.Sign(v.value)); }}
         ///
         ///    /// &lt;summary&gt;Returns the componentwise absolute value of a vector.&lt;/summary&gt;
-        ///    /// &lt;par [rest of string was truncated]&quot;;.
+        ///    /// &lt;p [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SignMath {
             get {
@@ -394,7 +417,17 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to     
+        ///    #region Trigonometry
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise sine of a vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in radians.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sine of the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sin({0} v) {{ return new {0}({1}Ext.Sin(v.value)); }}
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise cosine of a vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in ra [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Trigonometry {
             get {
