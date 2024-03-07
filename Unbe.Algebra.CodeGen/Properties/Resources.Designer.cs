@@ -317,12 +317,10 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///      set {{
-        ///        var original = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
-        ///        original[{6}] = this.value[{6}];
-        ///        this.value = orignal; 
-        ///      }}
-        ///    }}
-        ///.
+        ///        var original = this.value[{6}];
+        ///        this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
+        ///        ref var e0 = ref Unsafe.As&lt;{2}&lt;{8}&gt;, {8}&gt;(ref this.value);
+        ///        Unsafe.Add(ref e0, {6}) [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ShuffleReduced {
             get {
@@ -374,14 +372,46 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      value = vector.value;
         ///    }}
         ///
-        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({2}&lt;{1}&gt; v [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
+        ///    [MethodImp [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SimpleVectorConstructor {
             get {
                 return ResourceManager.GetString("SimpleVectorConstructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({2}&lt;{1}&gt; v) {{
+        ///      value = v;
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string SimpleVectorConstructorEven {
+            get {
+                return ResourceManager.GetString("SimpleVectorConstructorEven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({2}&lt;{1}&gt; v) {{
+        ///      value = v;
+        ///      this[{3}] = 0;
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string SimpleVectorConstructorOdd {
+            get {
+                return ResourceManager.GetString("SimpleVectorConstructorOdd", resourceCulture);
             }
         }
         

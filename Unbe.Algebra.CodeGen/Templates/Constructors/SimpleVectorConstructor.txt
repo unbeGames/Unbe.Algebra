@@ -6,13 +6,6 @@
       value = vector.value;
     }}
 
-    /// <summary>Constructs a {0} vector from {2}<{1}>.</summary>
-    /// <param name="v">{2}<{1}> to convert to {0}</param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public {0}({2}<{1}> v) {{
-      value = v;
-    }}
-
     /// <summary>Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.</summary>
     /// <param name="v">bool to convert to {0}</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

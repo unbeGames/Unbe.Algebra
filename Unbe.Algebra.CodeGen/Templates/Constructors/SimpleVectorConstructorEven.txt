@@ -1,0 +1,7 @@
+    
+    /// <summary>Constructs a {0} vector from {2}<{1}>.</summary>
+    /// <param name="v">{2}<{1}> to convert to {0}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({2}<{1}> v) {{
+      value = v;
+    }}

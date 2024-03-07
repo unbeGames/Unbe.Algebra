@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using System.Numerics;
+﻿using System;
+using System.Linq;
 using Unbe.Algebra.CodeGen.Properties;
 using static Unbe.Algebra.CodeGen.Utils;
 
@@ -58,6 +58,12 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix, typeNameBase));
       
       sb.Append(string.Format(Resources.SimpleVectorConstructor, typeName, T, vectorPrefix));
+
+      if (dimensionX == 2 || dimensionX == 4) {
+        sb.Append(string.Format(Resources.SimpleVectorConstructorEven, typeName, T, vectorPrefix));
+      } else {
+        sb.Append(string.Format(Resources.SimpleVectorConstructorOdd, typeName, T, vectorPrefix, dimensionX));
+      }
 
       sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
       if (T != "int") {
@@ -137,7 +143,7 @@ namespace Unbe.Algebra.CodeGen {
             var index = shufflePositions[missingLetter];
             var shuffle4 = $"{shuffle3}{missingLetter}";
             var writeShuffle = shuffleInverse[shuffle4];
-            tmp.Append(string.Format(shuffle4To3Template, reducedTypeName, shuffle3, vectorPrefix, dimensionX, shuffle4, writeShuffle, index));
+            tmp.Append(string.Format(shuffle4To3Template, reducedTypeName, shuffle3, vectorPrefix, dimensionX, shuffle4, writeShuffle, index, dimensionX - 1, T));
           } else {
             var shuffle4 = $"{shuffle3}w";
             tmp.Append(string.Format(shuffleReadonlyTemplate, reducedTypeName, shuffle3, vectorPrefix, dimensionX, shuffle4));

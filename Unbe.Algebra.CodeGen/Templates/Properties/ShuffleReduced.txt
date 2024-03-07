@@ -5,7 +5,9 @@
       readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
       [MethodImpl(MethodImplOptions.AggressiveInlining)]
       set {{
-        var original = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
-        this.value = original.WithElement({6}, this.value[{6}]); 
+        var original = this.value[{6}];
+        this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
+        ref var e0 = ref Unsafe.As<{2}<{8}>, {8}>(ref this.value);
+        Unsafe.Add(ref e0, {6}) = original;
       }}
     }}

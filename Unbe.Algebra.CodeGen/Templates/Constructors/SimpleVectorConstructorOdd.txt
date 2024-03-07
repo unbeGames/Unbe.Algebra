@@ -1,0 +1,9 @@
+    
+    /// <summary>Constructs a {0} vector from {2}<{1}>.</summary>
+    /// <param name="v">{2}<{1}> to convert to {0}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({2}<{1}> v) {{
+      value = v;
+      ref var e0 = ref Unsafe.As<{0}, {1}>(ref this);
+      Unsafe.Add(ref e0, {3}) = 0; // forth component should be always zero
+    }}
