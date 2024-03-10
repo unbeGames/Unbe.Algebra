@@ -58,10 +58,10 @@ namespace Unbe.Algebra.CodeGen {
       
       sb.Append(string.Format(Resources.SimpleVectorConstructor, typeName, T, vectorPrefix));
 
-      if (dimensionX == 2 || dimensionX == 4) {
-        sb.Append(string.Format(Resources.SimpleVectorConstructorEven, typeName, T, vectorPrefix));
+      if (dimensionX == 3) {
+        sb.Append(string.Format(Resources.SimpleVectorConstructorOdd, typeName, T, vectorPrefix));
       } else {
-        sb.Append(string.Format(Resources.SimpleVectorConstructorOdd, typeName, T, vectorPrefix, dimensionX));
+        sb.Append(string.Format(Resources.SimpleVectorConstructorEven, typeName, T, vectorPrefix));
       }
 
       sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
@@ -114,14 +114,14 @@ namespace Unbe.Algebra.CodeGen {
 
       var shuffleTemplate = Resources.Shuffle;
       var shuffleReadonlyTemplate = Resources.ShuffleReadonly;
-      var shuffleNames = shuffleByDimension[dimensionX];
+      var shuffleNames = dimensionX == 3 ? shuffle3Names : shuffle4Names;
 
-      for(int i = 0; i < shuffleNames.Length; i++) {
+      for (int i = 0; i < shuffleNames.Length; i++) {
         var shuffle = shuffleNames[i];
         var uniqueMembers = shuffle.Distinct().Count() == dimensionX;
         if (uniqueMembers) {
           var writeShuffle = shuffleInverse[shuffle];
-          tmp.Append(string.Format(shuffleTemplate, typeName, shuffle, vectorPrefix, dimensionX, writeShuffle));
+          tmp.Append(string.Format(shuffleTemplate, typeName, shuffle, vectorPrefix, dimensionX, writeShuffle, T));
         } else {
           tmp.Append(string.Format(shuffleReadonlyTemplate, typeName, shuffle, vectorPrefix, dimensionX, shuffle, typeName));
         }
@@ -129,7 +129,7 @@ namespace Unbe.Algebra.CodeGen {
       
       // generate 4 -> 3 shuffles
       if(dimensionX == 4) {
-        var shuffle4To3Template = Resources.ShuffleReduced;
+        var shuffle4To3Template = Resources.ShuffleToVector3;
         var reducedTypeName = $"{typeNameBase}{dimensionX - 1}";
         shuffleNames = shuffle4To3Names;
 
@@ -149,27 +149,33 @@ namespace Unbe.Algebra.CodeGen {
           }
         }
 
-        var shuffleToVector2 = Resources.ShuffleToVector2;
-        reducedTypeName = $"{typeNameBase}{dimensionX - 2}";
-        shuffleNames = shuffle4To2Names;
-
-        for (int i = 0; i < shuffleNames.Length; i++) {
-          var shuffle2 = shuffleNames[i];
-          var uniqueMembers = shuffle2.Distinct().Count() == dimensionX - 2;
-          var shuffle4 = $"{shuffle2}zw";
-          if (uniqueMembers) {
-            var indexes = shuffle4To2Indexes[shuffle2];
-            tmp.Append(string.Format(shuffleToVector2, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4, indexes[0], indexes[1]));
-          } else {
-            tmp.Append(string.Format(shuffleReadonlyTemplate, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4));
-          }
-        }
-      }      
+        // Vector 4 to 2
+        ShuffleToVector2(shuffleReadonlyTemplate, shuffle4To2Names, 2);
+      } else if(dimensionX == 3) {
+        // Vector 3 to 2
+        ShuffleToVector2(shuffleReadonlyTemplate, shuffle3To2Names, 1);
+      }  
 
 
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
     } 
+
+    private void ShuffleToVector2(string shuffleReadonlyTemplate, string[] shuffleNames, int reduce) {
+      var shuffleToVector2 = Resources.ShuffleToVector2;
+      var reducedTypeName = $"{typeNameBase}{dimensionX - reduce}";
+      for (int i = 0; i < shuffleNames.Length; i++) {
+        var shuffle2 = shuffleNames[i];
+        var uniqueMembers = shuffle2.Distinct().Count() == dimensionX - reduce;
+        var shuffle4 = dimensionX == 3 ? $"{shuffle2}z" : $"{shuffle2}zw";
+        if (uniqueMembers) {
+          var indexes = shuffle2Indexes[shuffle2];
+          tmp.Append(string.Format(shuffleToVector2, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4, indexes[0], indexes[1]));
+        } else {
+          tmp.Append(string.Format(shuffleReadonlyTemplate, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4));
+        }
+      }
+    }
 
     private void AddMath() {
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
@@ -232,7 +238,13 @@ $@"
     }
 
     private string SingleValueConstructor(string typeName, string T, string vectorPrefix, string targetType) {
-      return string.Format(Resources.SingleValueConstructor, typeName, T, vectorPrefix, targetType);
+      string result;
+      if(dimensionX == 3) {
+        result = string.Format(Resources.SingleValueConstructorOdd, typeName, T, vectorPrefix, targetType);
+      } else {
+        result = string.Format(Resources.SingleValueConstructorEven, typeName, T, vectorPrefix, targetType);
+      }
+      return result;
     }
 
     private string SingleToVectorOperator(string typeName, string T, string targetType) {

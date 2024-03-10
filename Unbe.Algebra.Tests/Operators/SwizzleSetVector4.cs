@@ -1,5 +1,5 @@
 ﻿namespace Unbe.Algebra.Tests.Operators {
-  internal class SwizzleSet {
+  internal class SwizzleSetVector4 {
     public static readonly Float4[][] data = new[] {
       new Float4[] { new Float4(5f), new Float4(0f, 1f, 2f, 3f) },
     };

@@ -119,123 +119,126 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BaseMathOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Operators\BaseMathOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Operators\BaseMathOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="BaseTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\BaseTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\BaseTemplate.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="BitOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Operators\BitOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Operators\BitOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="CoreMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\CoreMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\CoreMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="EqualsMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\EqualsMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\EqualsMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="FloatingPointMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\FloatingPointMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\FloatingPointMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="IntegralNumeric16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\IntegralNumeric16.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\IntegralNumeric16.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="IntegralNumeric32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\IntegralNumeric32.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\IntegralNumeric32.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="IntegralNumeric64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\IntegralNumeric64.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\IntegralNumeric64.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="IntegralNumericsMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\IntegralNumericsMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\IntegralNumericsMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="ShiftOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Operators\ShiftOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Operators\ShiftOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Shuffle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Shuffle.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="ShuffleBase" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\ShuffleBase.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\ShuffleBase.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="ShuffleReadonly" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\ShuffleReadonly.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="ShuffleReduced" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\ShuffleReduced.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\ShuffleReadonly.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="ShuffleToVector2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\ShuffleToVector2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\ShuffleToVector2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
+  </data>
+  <data name="ShuffleToVector3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\ShuffleToVector3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SignMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SimpleMatrix4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\SimpleMatrix4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\SimpleMatrix4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SimpleVectorConstructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\SimpleVectorConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\SimpleVectorConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SimpleVectorConstructorEven" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\SimpleVectorConstructorEven.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\SimpleVectorConstructorEven.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SimpleVectorConstructorOdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\SimpleVectorConstructorOdd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\SimpleVectorConstructorOdd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="SingleToVectorOperator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Operators\SingleToVectorOperator.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Operators\SingleToVectorOperator.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
-  <data name="SingleValueConstructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\SingleValueConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="SingleValueConstructorEven" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SingleValueConstructorEven.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="SingleValueConstructorOdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SingleValueConstructorOdd.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="Trigonometry" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Math\Trigonometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Math\Trigonometry.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector2Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\Vector2Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\Vector2Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector2Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Factory\Vector2Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Factory\Vector2Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector2Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\Vector2Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\Vector2Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector2StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\StringMethods\Vector2StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\StringMethods\Vector2StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\Vector3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\Vector3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector3Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Factory\Vector3Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Factory\Vector3Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector3Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\Vector3Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\Vector3Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector3StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\StringMethods\Vector3StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\StringMethods\Vector3StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Constructors\Vector4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Constructors\Vector4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector4Factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Factory\Vector4Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Factory\Vector4Factory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="Vector4Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\Vector4Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="Vector4StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\StringMethods\Vector4StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\StringMethods\Vector4StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="VectorIndexer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\VectorIndexer.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\VectorIndexer.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="VectorOperations" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\VectorOperations\VectorOperations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\VectorOperations\VectorOperations.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="VectorOperationsFloatingPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\VectorOperations\VectorOperationsFloatingPoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\VectorOperations\VectorOperationsFloatingPoint.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
   <data name="VectorProperties" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Templates\Properties\VectorProperties.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+    <value>..\Templates\Properties\VectorProperties.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
 </root>

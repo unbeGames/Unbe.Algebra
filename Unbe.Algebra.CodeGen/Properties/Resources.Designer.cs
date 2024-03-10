@@ -272,10 +272,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      set {{ 
-        ///        this[{4}] = value[0];
-        ///        this[{5}] = value[1];
-        ///      }}
+        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{4}); }}
         ///    }}
         ///.
         /// </summary>
@@ -320,14 +317,15 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///      set {{
-        ///        var original = this.value[{6}];
-        ///        this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
-        ///        ref var e0 = ref Unsafe.As&lt;{2}&lt;{8}&gt;, {8}&gt;(ref this.value);
-        ///        Unsafe.Add(ref e0, {6}) [rest of string was truncated]&quot;;.
+        ///        this[{5}] = value[0];
+        ///        this[{6}] = value[1];
+        ///      }}
+        ///    }}
+        ///.
         /// </summary>
-        internal static string ShuffleReduced {
+        internal static string ShuffleToVector2 {
             get {
-                return ResourceManager.GetString("ShuffleReduced", resourceCulture);
+                return ResourceManager.GetString("ShuffleToVector2", resourceCulture);
             }
         }
         
@@ -336,15 +334,17 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
         ///    public {0} {1} {{
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
+        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{4})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{4}); }}
-        ///    }}
-        ///.
+        ///      set {{
+        ///        var original = this.value[{6}];
+        ///        this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{5});
+        ///        ref var e0 = ref Unsafe.As&lt;{2}&lt;{8}&gt;, {8}&gt;(ref this.value);
+        ///        Unsafe.Add(ref e0, {6}) [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ShuffleToVector2 {
+        internal static string ShuffleToVector3 {
             get {
-                return ResourceManager.GetString("ShuffleToVector2", resourceCulture);
+                return ResourceManager.GetString("ShuffleToVector3", resourceCulture);
             }
         }
         
@@ -391,10 +391,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public {0}({0} vector) {{
         ///      value = vector.value;
         ///    }}
-        ///
-        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
-        ///    [MethodImp [rest of string was truncated]&quot;;.
+        ///.
         /// </summary>
         internal static string SimpleVectorConstructor {
             get {
@@ -410,7 +407,11 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public {0}({2}&lt;{1}&gt; v) {{
         ///      value = v;
         ///    }}
-        ///.
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0} [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SimpleVectorConstructorEven {
             get {
@@ -426,9 +427,10 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public {0}({2}&lt;{1}&gt; v) {{
         ///      value = v;
         ///      ref var e0 = ref Unsafe.As&lt;{0}, {1}&gt;(ref this);
-        ///      Unsafe.Add(ref e0, {3}) = 0; // forth component should be always zero
+        ///      Unsafe.Add(ref e0, 3) = 0; // forth component should be always zero
         ///    }}
-        ///.
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summar [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SimpleVectorConstructorOdd {
             get {
@@ -461,9 +463,26 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    }}
         ///.
         /// </summary>
-        internal static string SingleValueConstructor {
+        internal static string SingleValueConstructorEven {
             get {
-                return ResourceManager.GetString("SingleValueConstructor", resourceCulture);
+                return ResourceManager.GetString("SingleValueConstructorEven", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single {3} value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{3} to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({3} v) {{
+        ///      var res = ({1})v;
+        ///      value = {2}.Create(res, res, res, 0);
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string SingleValueConstructorOdd {
+            get {
+                return ResourceManager.GetString("SingleValueConstructorOdd", resourceCulture);
             }
         }
         
