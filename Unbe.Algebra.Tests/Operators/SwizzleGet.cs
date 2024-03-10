@@ -31,5 +31,20 @@
     public void TestZXY(Float4 source) {
       Assert.That(source.zwy, Is.EqualTo(new Float3(2f, 3f, 1f)));
     }
+
+    [Test]
+    [Category("Swizzles")]
+    [TestCaseSource(nameof(data))]
+    public void TestXX(Float4 source) {
+      Assert.That(source.yy, Is.EqualTo(new Float2(1f, 1f)));
+    }
+
+
+    [Test]
+    [Category("Swizzles")]
+    [TestCaseSource(nameof(data))]
+    public void TestWZ(Float4 source) {
+      Assert.That(source.wz, Is.EqualTo(new Float2(3f, 2f)));
+    }
   }
 }

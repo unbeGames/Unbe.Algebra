@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Unbe.Algebra.CodeGen.Properties;
 using static Unbe.Algebra.CodeGen.Utils;
 
@@ -149,8 +148,24 @@ namespace Unbe.Algebra.CodeGen {
             tmp.Append(string.Format(shuffleReadonlyTemplate, reducedTypeName, shuffle3, vectorPrefix, dimensionX, shuffle4));
           }
         }
-      }
-      
+
+        var shuffleToVector2 = Resources.ShuffleToVector2;
+        reducedTypeName = $"{typeNameBase}{dimensionX - 2}";
+        shuffleNames = shuffle4To2Names;
+
+        for (int i = 0; i < shuffleNames.Length; i++) {
+          var shuffle2 = shuffleNames[i];
+          var uniqueMembers = shuffle2.Distinct().Count() == dimensionX - 2;
+          var shuffle4 = $"{shuffle2}zw";
+          if (uniqueMembers) {
+            var indexes = shuffle4To2Indexes[shuffle2];
+            tmp.Append(string.Format(shuffleToVector2, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4, indexes[0], indexes[1]));
+          } else {
+            tmp.Append(string.Format(shuffleReadonlyTemplate, reducedTypeName, shuffle2, vectorPrefix, dimensionX, shuffle4));
+          }
+        }
+      }      
+
 
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 

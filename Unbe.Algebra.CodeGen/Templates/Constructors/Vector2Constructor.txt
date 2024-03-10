@@ -6,3 +6,10 @@
     public {0}({1} x, {1} y) {{
       value = {2}.Create(x, y);
     }}    
+
+    /// <summary>Constructs a {0} vector from Vector128<{1}> by taking its first half.</summary>
+    /// <param name="v">{2}<{1}> to convert to {0}</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}(Vector128<{1}> v) {{
+      value = v.GetLower();
+    }}

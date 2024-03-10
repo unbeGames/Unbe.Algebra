@@ -35,5 +35,23 @@
       result.zwy = target.xyz;
       Assert.That(result, Is.EqualTo(new Float4(5f, 2f, 0f, 1f)));
     }
+
+
+    [Test]
+    [Category("Swizzles")]
+    [TestCaseSource(nameof(data))]
+    public void TestYX(Float4 result, Float4 target) {
+      result.yx = target.xy;
+      Assert.That(result, Is.EqualTo(new Float4(1f, 0f, 5f, 5f)));
+    }
+
+
+    [Test]
+    [Category("Swizzles")]
+    [TestCaseSource(nameof(data))]
+    public void TestWZ(Float4 result, Float4 target) {
+      result.wz = target.xy;
+      Assert.That(result, Is.EqualTo(new Float4(5f, 5f, 1f, 0f)));
+    }
   }
 }

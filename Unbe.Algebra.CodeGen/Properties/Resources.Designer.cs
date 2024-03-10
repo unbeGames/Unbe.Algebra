@@ -272,7 +272,10 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
         ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{4}); }}
+        ///      set {{ 
+        ///        this[{4}] = value[0];
+        ///        this[{5}] = value[1];
+        ///      }}
         ///    }}
         ///.
         /// </summary>
@@ -325,6 +328,23 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string ShuffleReduced {
             get {
                 return ResourceManager.GetString("ShuffleReduced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Shuffles the vector.&lt;/summary&gt;    
+        ///    public {0} {1} {{
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      readonly get {{ return new {0}({2}Ext.Shuffle(value, (byte)Shuffle{3}.{1})); }}
+        ///      [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///      set {{ this.value = {2}Ext.Shuffle(value.value, (byte)Shuffle{3}.{4}); }}
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string ShuffleToVector2 {
+            get {
+                return ResourceManager.GetString("ShuffleToVector2", resourceCulture);
             }
         }
         
@@ -405,7 +425,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public {0}({2}&lt;{1}&gt; v) {{
         ///      value = v;
-        ///      this[{3}] = 0;
+        ///      ref var e0 = ref Unsafe.As&lt;{0}, {1}&gt;(ref this);
+        ///      Unsafe.Add(ref e0, {3}) = 0; // forth component should be always zero
         ///    }}
         ///.
         /// </summary>
@@ -474,7 +495,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public {0}({1} x, {1} y) {{
         ///      value = {2}.Create(x, y);
         ///    }}    
-        ///.
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector from Vector128&lt;{1}&gt; by taking its first half.&lt;/summary&gt;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector2Constructor {
             get {

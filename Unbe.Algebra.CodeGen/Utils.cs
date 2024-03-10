@@ -22,11 +22,11 @@ namespace Unbe.Algebra.CodeGen {
     internal static readonly string[] shuffle4To2Names = new string[] { "xx", "yx", "zx", "wx", "xy", "yy", "zy", "wy", "xz", "yz", "zz", "wz", "xw", "yw", "zw", "ww" };
 
     internal static readonly Dictionary<string, char> shuffle4To3Missing = new() { { "zyx", 'w' }, { "wyx", 'z' }, { "yzx", 'w' }, { "wzx", 'y' }, { "ywx", 'z' }, { "zwx", 'y' }, { "zxy", 'w' }, { "wxy", 'z' }, { "xzy", 'w' }, { "wzy", 'x' }, { "xwy", 'z' }, { "zwy", 'x' }, { "yxz", 'w' }, { "wxz", 'y' }, { "xyz", 'w' }, { "wyz", 'x' }, { "xwz", 'y' }, { "ywz", 'x' }, { "yxw", 'z' }, { "zxw", 'y' }, { "xyw", 'z' }, { "zyw", 'x' }, { "xzw", 'y' }, { "yzw", 'x' } };
+    internal static readonly Dictionary<string, int[]> shuffle4To2Indexes = new() { { "yx", new[] { 1, 0 }  }, { "zx", new[] { 2, 0 } }, { "wx", new[] { 3, 0 } }, { "xy", new[] { 0, 1 } }, { "zy", new[] { 2, 1 } }, { "wy", new[] { 3, 1 } }, { "xz", new[] { 0, 2 } }, { "yz", new[] { 1, 2 } }, { "wz", new[] { 3, 2 } }, { "xw", new[] { 0, 3 } }, { "yw", new[] { 1, 3 } }, { "zw", new[] { 2, 3 } } };
 
     internal static readonly string[] shuffle3Names = new string[] { "xxx", "yxx", "zxx", "xyx", "yyx", "zyx", "xzx", "yzx", "zzx", "xxy", "yxy", "zxy", "xyy", "yyy", "zyy", "xzy", "yzy", "zzy", "xxz", "yxz", "zxz", "xyz", "yyz", "zyz", "xzz", "yzz", "zzz" };
     internal static readonly string[] shuffle3To2Names = new string[] { "xx", "yx", "zx", "xy", "yy", "zy", "xz", "yz", "zz" };
 
-    
 
     internal static readonly Dictionary<int, string[]> shuffleByDimension = new() {
       { 3, shuffle3Names }, { 4, shuffle4Names }

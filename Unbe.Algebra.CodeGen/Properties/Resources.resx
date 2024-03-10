@@ -163,6 +163,9 @@
   <data name="ShuffleReduced" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\ShuffleReduced.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="ShuffleToVector2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\ShuffleToVector2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="SignMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
