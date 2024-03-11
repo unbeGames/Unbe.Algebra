@@ -1,4 +1,7 @@
-﻿namespace Unbe.Algebra.Tests.Operators {
+﻿using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+
+namespace Unbe.Algebra.Tests.Operators {
   internal class SwizzleGetVector3 {
     public static readonly Float3[][] data = new[] {
       new Float3[] { new Float3(0f, 1f, 2f) },

@@ -215,6 +215,23 @@ namespace Unbe.Algebra {
       }
     }
 
+    internal static Vector128<float> ConvertToSingle(Vector128<int> vector) {
+      if (Sse2.IsSupported) {
+        return Sse2.ConvertToVector128Single(vector);
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<int> vector) {
+        return Vector128.Create(
+          (float)vector[0],
+          (float)vector[1],
+          (float)vector[2],
+          (float)vector[3]
+        );
+      }
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<float> Select(Vector128<float> selector, Vector128<float> trueVal, Vector128<float> falseVal) {
       if (Sse41.IsSupported) {

@@ -24,6 +24,7 @@ namespace Unbe.Algebra {
       value = Vector128.Create(vector.X, vector.Y, vector.Z, vector.W);
     }
 
+
     /// <summary>Implicitly converts a single half value to a Float4 vector by converting it to float and assigning it to every component.</summary>
     /// <param name="v">half to convert to Float4</param>
     /// <returns>Converted value.</returns>
