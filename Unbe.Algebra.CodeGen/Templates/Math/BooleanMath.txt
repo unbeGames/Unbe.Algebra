@@ -1,0 +1,5 @@
+		
+		#region Boolean Math
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} select({0} falseValue, {0} trueValue, bool selector) {{ return new {0}({1}Ext.Sign(v.value)); }}
+		#endregion

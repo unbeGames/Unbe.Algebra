@@ -148,6 +148,12 @@
   <data name="IntegralNumericsMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Math\IntegralNumericsMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
+  <data name="Matrix3Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\Matrix3Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Matrix4Props" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\Matrix4Props.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="ShiftOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\ShiftOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>

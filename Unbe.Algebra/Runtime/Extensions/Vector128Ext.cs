@@ -231,7 +231,7 @@ namespace Unbe.Algebra {
         );
       }
     }
-
+    #region Select
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<float> Select(Vector128<float> selector, Vector128<float> trueVal, Vector128<float> falseVal) {
       if (Sse41.IsSupported) {
@@ -240,6 +240,26 @@ namespace Unbe.Algebra {
 
       return (selector & trueVal) | Vector128.AndNot(selector, falseVal);
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<int> Select(Vector128<int> selector, Vector128<int> trueVal, Vector128<int> falseVal) {
+      if (Sse41.IsSupported) {
+        return Sse41.BlendVariable(falseVal, trueVal, selector);
+      }
+
+      return (selector & trueVal) | Vector128.AndNot(selector, falseVal);
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<uint> Select(Vector128<uint> selector, Vector128<uint> trueVal, Vector128<uint> falseVal) {
+      if (Sse41.IsSupported) {
+        return Sse41.BlendVariable(falseVal, trueVal, selector);
+      }
+
+      return (selector & trueVal) | Vector128.AndNot(selector, falseVal);
+    }
+    #endregion
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<int> CompareEqual(Vector128<int> left, Vector128<int> right) {

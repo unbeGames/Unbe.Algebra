@@ -250,6 +250,30 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Identity = new {0}(1.0f, 0.0f, 0.0f,   0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 1.0f);
+        ///.
+        /// </summary>
+        internal static string Matrix3Props {
+            get {
+                return ResourceManager.GetString("Matrix3Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Identity = new {0}(1.0f, 0.0f, 0.0f, 0.0f,   0.0f, 1.0f, 0.0f, 0.0f,   0.0f, 0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 0.0f, 1.0f);
+        ///.
+        /// </summary>
+        internal static string Matrix4Props {
+            get {
+                return ResourceManager.GetString("Matrix4Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 		
         ///		#region Shift Operators
         ///		/// &lt;summary&gt;Returns the result of a componentwise left shift operation on an {0} vector by a number of bits specified by a single int.&lt;/summary&gt;
