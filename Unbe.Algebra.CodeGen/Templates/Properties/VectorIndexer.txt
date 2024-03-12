@@ -1,6 +1,6 @@
     
     /// <summary>Returns the {1} element at a specified index.</summary>
-    unsafe public {1} this[int index] {{
+    public unsafe {1} this[int index] {{
       readonly get {{
   #if !DISABLE_SAFETY_CHECKS
         if ((uint)index >= {2})

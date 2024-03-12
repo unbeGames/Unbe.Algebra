@@ -8,10 +8,11 @@ namespace Unbe.Algebra.CodeGen {
       typeNameBase = typeName.Replace(dimensionX.ToString(), string.Empty);
 
       if(IsBoolean(numFlags)) {
-        AddProps();
+        AddIndexer("int");
         AddEquality();
       } else {
         AddProps();
+        AddIndexer(T);
         AddConstructors();
         AddAssingOperators();
         AddBaseMath();
@@ -40,10 +41,12 @@ namespace Unbe.Algebra.CodeGen {
           propsTemplate = Resources.Vector2Props;
           break;
       }
-      if (!IsBoolean(numFlags)) {
-        sb.Append(string.Format(Resources.VectorProperties, typeName, T));
-      }
+      
+      sb.Append(string.Format(Resources.VectorProperties, typeName, T));
       sb.Append(string.Format(propsTemplate, typeName, T));
+    }
+
+    private void AddIndexer(string T) {
       sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
     }
 

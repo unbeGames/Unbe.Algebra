@@ -1,26 +1,41 @@
-﻿using System.Runtime.Intrinsics;
+﻿#pragma warning disable IDE1006, CA1822
+
+using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics;
+using static Unbe.Algebra.Math;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(bool), dimensionX: 2)]
   public partial struct Bool2 : IEquatable<Bool2> {
     public Vector64<int> value;
 
-    /// <summary>Constructs a Bool3 vector from a UInt3 vector.</summary>
-    /// <param name="v">The constructed vector's components will be set to this value.</param>
-    public Bool2(UInt2 v) {
-      value = v.value.AsInt32();
+    /// <summary>x component of the vector.</summary>
+    public unsafe bool x { readonly get { return this[0] == TRUE; } set { this[0] = TRUE * *(byte*)&value; } }
+    /// <summary>y component of the vector.</summary>
+    public unsafe bool y { readonly get { return this[1] == TRUE; } set { this[1] = TRUE * *(byte*)&value; } }
+
+    /// <summary>Number of elements in the vector.</summary>
+    public readonly int count { get { return 2; } }
+
+    /// <summary>Constructs a Bool4 vector from a single bool value.</summary>
+    /// <param name="v">bool to convert to Bool4</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public unsafe Bool2(bool v) {
+      value = Vector64.Create(TRUE * *(byte*)&v);
     }
 
-    /// <summary>Constructs a Bool3 vector from a Int3 vector.</summary>
-    /// <param name="v">The constructed vector's components will be set to this value.</param>
-    public Bool2(Int2 v) {
-      value = v.value;
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal Bool2(Vector64<int> v) {
+      value = v;
     }
 
-    /// <summary>Constructs a Bool3 vector from a Float3 vector.</summary>
-    /// <param name="v">The constructed vector's components will be set to this value.</param>
-    public Bool2(Float2 v) {
-      value = Vector64.Create((int)v[0], (int)v[1]);
+    /// <summary>Constructs a Bool2 vector from two bool values.</summary>
+    /// <param name="x">The constructed vector's x component will be set to this value.</param>
+    /// <param name="y">The constructed vector's y component will be set to this value.</param>
+    /// <returns>Bool2 constructed from arguments.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public unsafe Bool2(bool x, bool y) {
+      value = Vector64.Create(TRUE) * Vector64.Create(*(byte*)&x, *(byte*)&y);
     }
   }
 }

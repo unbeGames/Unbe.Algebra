@@ -4,6 +4,7 @@
     /// <param name="y">The constructed vector's y component will be set to this value.</param>
     /// <param name="z">The constructed vector's z component will be set to this value.</param>
     /// <param name="w">The constructed vector's w component will be set to this value.</param>
+    /// <returns>{0} constructed from arguments.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public {0}({1} x, {1} y, {1} z, {1} w) {{
       value = {2}.Create(x, y, z, w);

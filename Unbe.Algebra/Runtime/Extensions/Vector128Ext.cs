@@ -234,19 +234,9 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static unsafe void Convert(bool v, out Vector128<float> result) {
-      result = (Int.MASK_TRUE * *(byte*)&v).AsSingle();
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static unsafe void Convert(bool v, out Vector128<int> result) {
-      result = Int.MASK_TRUE * *(byte*)&v;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static unsafe void Convert(bool v, out Vector128<uint> result) {
-      result = UInt.MASK_TRUE * *(byte*)&v;
-    }
+    internal static unsafe void Convert<T>(bool v, out Vector128<T> result) where T : unmanaged {
+      result = (Int.MASK_TRUE * *(byte*)&v).As<int, T>();
+    }   
 
     #region Select
 

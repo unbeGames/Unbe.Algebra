@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Algebra", "Unbe.Algebr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Algebra.CodeGen", "Unbe.Algebra.CodeGen\Unbe.Algebra.CodeGen.csproj", "{96127088-2D94-4EC5-AE86-58B13A6EBB9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unbe.Algebra.Tests", "Unbe.Algebra.Tests\Unbe.Algebra.Tests.csproj", "{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unbe.Algebra.Tests", "Unbe.Algebra.Tests\Unbe.Algebra.Tests.csproj", "{48132EB5-CA98-46DB-B0DB-6EA51F94FC72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9926BD95-4A68-4034-BA3A-324C804AE28A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

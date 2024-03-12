@@ -1,0 +1,6 @@
+    
+    /// <summary>{0} false value.</summary>
+    public static readonly {0} True = new {0}(true);
+    
+    /// <summary>{0} false value.</summary>
+    public static readonly {0} False = new {0}(false);

@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra { 
   public static partial class Math {
+    public const int TRUE = -1;
+    public const int FALSE = 0;
+
     /// <summary> /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
     /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.degrees(double)"/>.</remarks>
     public const double TO_DEGREES_DBL = 57.29577951308232;
