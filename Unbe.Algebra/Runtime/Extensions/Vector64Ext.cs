@@ -73,6 +73,11 @@ namespace Unbe.Algebra {
       return Float.ONE / Vector64.Sqrt(v);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector64<T> Select<T>(Vector64<T> falseVal, Vector64<T> trueVal, bool selector) where T : unmanaged {
+      return selector ? trueVal : falseVal;
+    }   
+
     internal static class Int {
       public static readonly Vector64<int> MASK_SIGN = Vector64.Create(int.MinValue);
       public static readonly Vector64<int> MASK_NOT_SIGN = Vector64.Create(~int.MaxValue);

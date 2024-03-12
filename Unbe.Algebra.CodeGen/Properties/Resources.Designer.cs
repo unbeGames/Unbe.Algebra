@@ -117,6 +117,24 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 		
+        ///		#region Boolean Math
+        ///
+        ///		/// &lt;summary&gt;Returns trueValue if test is true, falseValue otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;falseValue&quot;&gt;Value to use if test is false.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;trueValue&quot;&gt;Value to use if test is true.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;test&quot;&gt;Bool value to choose between falseValue and trueValue.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The selection between falseValue and trueValue according to bool test.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public st [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BooleanMath {
+            get {
+                return ResourceManager.GetString("BooleanMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
         ///		#region Core Math
         ///
         ///		/// &lt;summary&gt;Returns the componentwise minimum of two vectors.&lt;/summary&gt;
@@ -252,7 +270,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Identity = new {0}(1.0f, 0.0f, 0.0f,   0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 1.0f);
+        ///    public static readonly {0} Identity = new {0}(1, 0, 0,   0, 1, 0,   0, 0, 1);
         ///.
         /// </summary>
         internal static string Matrix3Props {
@@ -264,7 +282,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Identity = new {0}(1.0f, 0.0f, 0.0f, 0.0f,   0.0f, 1.0f, 0.0f, 0.0f,   0.0f, 0.0f, 1.0f, 0.0f,   0.0f, 0.0f, 0.0f, 1.0f);
+        ///    public static readonly {0} Identity = new {0}(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1);
         ///.
         /// </summary>
         internal static string Matrix4Props {
@@ -435,7 +453,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0} [rest of string was truncated]&quot;;.
+        ///    public uns [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string SimpleVectorConstructorEven {
             get {

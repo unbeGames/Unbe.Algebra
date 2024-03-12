@@ -1,5 +1,12 @@
 		
 		#region Boolean Math
+
+		/// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static {0} select({0} falseValue, {0} trueValue, bool selector) {{ return new {0}({1}Ext.Sign(v.value)); }}
+		public static {0} select({0} falseValue, {0} trueValue, bool selector) {{ return new {0}({1}Ext.Select(falseValue.value, trueValue.value, selector)); }}
+		
 		#endregion

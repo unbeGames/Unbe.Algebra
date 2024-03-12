@@ -215,6 +215,7 @@ namespace Unbe.Algebra {
       }
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<float> ConvertToSingle(Vector128<int> vector) {
       if (Sse2.IsSupported) {
         return Sse2.ConvertToVector128Single(vector);
@@ -225,13 +226,49 @@ namespace Unbe.Algebra {
       static Vector128<float> SoftwareFallback(Vector128<int> vector) {
         return Vector128.Create(
           (float)vector[0],
-          (float)vector[1],
-          (float)vector[2],
-          (float)vector[3]
+          vector[1],
+          vector[2],
+          vector[3]
         );
       }
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static unsafe void Convert(bool v, out Vector128<float> result) {
+      result = (Int.MASK_TRUE * *(byte*)&v).AsSingle();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static unsafe void Convert(bool v, out Vector128<int> result) {
+      result = Int.MASK_TRUE * *(byte*)&v;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static unsafe void Convert(bool v, out Vector128<uint> result) {
+      result = UInt.MASK_TRUE * *(byte*)&v;
+    }
+
     #region Select
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<float> Select(Vector128<float> falseVal, Vector128<float> trueVal, bool selector) {
+      Convert(selector, out Vector128<float> s);
+      return Select(s, trueVal, falseVal);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<int> Select(Vector128<int> falseVal, Vector128<int> trueVal, bool selector) {
+      Convert(selector, out Vector128<int> s);
+      return Select(s, trueVal, falseVal);
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<uint> Select(Vector128<uint> falseVal, Vector128<uint> trueVal, bool selector) {
+      Convert(selector, out Vector128<uint> s);
+      return Select(s, trueVal, falseVal);
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<float> Select(Vector128<float> selector, Vector128<float> trueVal, Vector128<float> falseVal) {
       if (Sse41.IsSupported) {
@@ -259,6 +296,7 @@ namespace Unbe.Algebra {
 
       return (selector & trueVal) | Vector128.AndNot(selector, falseVal);
     }
+
     #endregion
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -291,12 +329,18 @@ namespace Unbe.Algebra {
     internal static class Int {
       public static readonly Vector128<int> MASK_SIGN = Vector128.Create(int.MinValue);
       public static readonly Vector128<int> MASK_NOT_SIGN = Vector128.Create(~int.MaxValue);
+      public static readonly Vector128<int> MASK_TRUE = Vector128.Create(-1);
+      
       public static readonly Vector128<int> ONE = Vector128.Create(1);
       public static readonly Vector128<int> NEGATIVE_ONE = Vector128.Create(-1);
 
       public static readonly Vector128<int> ONE_HUNDRED_TWENTY_SEVEN = Vector128.Create(127);
       public static readonly Vector128<int> DECIMAL_MASK_FOR_FLOAT = Vector128.Create(8388607);
       public static readonly Vector128<int> EXPONENT_MASK_FOR_FLOAT = Vector128.Create(127 << 23);
+    }
+
+    internal static class UInt {
+      public static readonly Vector128<uint> MASK_TRUE = Vector128.Create(uint.MaxValue);
     }
 
     internal static class Float {
@@ -307,6 +351,8 @@ namespace Unbe.Algebra {
 
       public static readonly Vector128<float> MASK_SIGN = Vector128.Create(int.MinValue).AsSingle();
       public static readonly Vector128<float> MASK_NOT_SIGN = Vector128.Create(~int.MaxValue).AsSingle();
+      public static readonly Vector128<float> MASK_TRUE = Vector128.Create(-1).AsSingle();
+
       public static readonly Vector128<float> ONE = Vector128.Create(1f);
       public static readonly Vector128<float> NEGATIVE_ONE = Vector128.Create(-1f);
       public static readonly Vector128<float> NEGATIVE_TWO = Vector128.Create(-2f);

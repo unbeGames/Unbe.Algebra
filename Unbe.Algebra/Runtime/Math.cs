@@ -793,5 +793,75 @@ namespace Unbe.Algebra {
     public static double dot(double x, double y) { return x * y; }
 
     #endregion
+
+
+    #region Boolean Math
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static short select(short falseValue, short trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ushort select(ushort falseValue, ushort trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int select(int falseValue, int trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint select(uint falseValue, uint trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long select(long falseValue, long trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong select(ulong falseValue, ulong trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float select(float falseValue, float trueValue, bool test) { return test ? trueValue : falseValue; }
+
+    /// <summary>Returns trueValue if test is true, falseValue otherwise.</summary>
+    /// <param name="falseValue">Value to use if test is false.</param>
+    /// <param name="trueValue">Value to use if test is true.</param>
+    /// <param name="test">Bool value to choose between falseValue and trueValue.</param>
+    /// <returns>The selection between falseValue and trueValue according to bool test.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double select(double falseValue, double trueValue, bool test) { return test ? trueValue : falseValue; }
+
+
+    #endregion
   }
 }
