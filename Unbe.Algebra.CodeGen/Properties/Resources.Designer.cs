@@ -790,5 +790,20 @@ namespace Unbe.Algebra.CodeGen.Properties {
                 return ResourceManager.GetString("VectorProperties", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///		/// &lt;summary&gt;{3} converts a {1} vector to a {0} vector by converting and assigning its value.&lt;/summary&gt;
+        ///		/// &lt;param name=&quot;v&quot;&gt;{1} to convert to {0}&lt;/param&gt;
+        ///		/// &lt;returns&gt;Converted value.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {2} operator {0}({1} v) {{ return new {0}(v); }}
+        ///.
+        /// </summary>
+        internal static string VectorToVectorOperator {
+            get {
+                return ResourceManager.GetString("VectorToVectorOperator", resourceCulture);
+            }
+        }
     }
 }

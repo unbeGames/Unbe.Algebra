@@ -24,6 +24,18 @@ namespace Unbe.Algebra {
       value = Vector64.Create(vector.X, vector.Y);
     }
 
+    /// <summary>Constructs a Float2 vector from a Int3 vector.</summary>
+    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    public Float2(Int2 v) {
+      value = Vector64.Create((float)v[0], v[1]);
+    }
+
+    /// <summary>Constructs a Float2 vector from a UInt2 vector.</summary>
+    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    public Float2(UInt2 v) {
+      value = Vector64.Create((float)v[0], v[1]);
+    }
+
     /// <summary>Implicitly converts a single half value to a Float2 vector by converting it to float and assigning it to every component.</summary>
     /// <param name="v">half to convert to Float2</param>
     /// <returns>Converted value.</returns>

@@ -80,23 +80,18 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddAssingOperators() {
-      sb.Append(SingleToVectorOperator(typeName, T, T));
-      sb.Append(SingleToVectorOperator(typeName, T, $"{vectorPrefix}<{T}>"));
-      if (T != "bool") {
-        sb.Append(SingleToVectorOperator(typeName, T, "bool"));
+      for(int i = 0; i < conversionBaseTypes.Length; i++) {
+        sb.Append(SingleToVectorOperator(typeName, T, conversionBaseTypes[i]));
       }
-      if (T != "int") {
-        sb.Append(SingleToVectorOperator(typeName, T, "int"));
-      }
-      if (T != "uint") {
-        sb.Append(SingleToVectorOperator(typeName, T, "uint"));
-      } 
-      if (T != "float") {
-        sb.Append(SingleToVectorOperator(typeName, T, "float"));
-      }
-      if (T != "double") {
-        sb.Append(SingleToVectorOperator(typeName, T, "double"));
-      } 
+      sb.Append(SingleToVectorOperator(typeName, T, vectorType));      
+  
+      var conversionVectorTypes = Utils.conversionVectorTypes[dimensionX];
+      for (int i = 0; i < conversionVectorTypes.Length; i++) {
+        var nextType = conversionVectorTypes[i];
+        if (nextType != typeName) {
+          sb.Append(VectorToVectorOperator(typeName, nextType));
+        }
+      }      
     }
 
     private void AddBitOperators() {
@@ -251,11 +246,21 @@ $@"
       return string.Format(Resources.SingleToVectorOperator, ConvertToSingleArgs(typeName, T, targetType));
     }
 
+    private string VectorToVectorOperator(string typeName, string targetType) {
+      return string.Format(Resources.VectorToVectorOperator, ConvertToVectorArgs(typeName, targetType));
+    }
+
     private string[] ConvertToSingleArgs(string typeName, string T, string targetType) {
       var operatorKind = ConvertOperator(targetType, T);
-      var operatorSuffixed = AddSuffLyCap(operatorKind);
+      var operatorSuffixed = AddSuffixLyCap(operatorKind);
       var hint = T == targetType ? string.Empty : $"converting it to {T} and ";
       return new string[] { typeName, hint, targetType, operatorKind, operatorSuffixed };
+    }
+
+    private string[] ConvertToVectorArgs(string typeName, string targetType) {
+      var operatorKind = ConvertOperator(targetType, typeName);
+      var operatorSuffixed = AddSuffixLyCap(operatorKind);
+      return new string[] { typeName, targetType, operatorKind, operatorSuffixed };
     }
   }
 }

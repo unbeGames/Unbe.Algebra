@@ -1,0 +1,6 @@
+
+		/// <summary>{3} converts a {1} vector to a {0} vector by converting and assigning its value.</summary>
+		/// <param name="v">{1} to convert to {0}</param>
+		/// <returns>Converted value.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {2} operator {0}({1} v) {{ return new {0}(v); }}

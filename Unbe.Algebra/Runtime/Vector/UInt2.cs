@@ -1,6 +1,4 @@
-﻿#pragma warning disable IDE1006
-
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.Intrinsics;
 
 namespace Unbe.Algebra {
@@ -9,13 +7,13 @@ namespace Unbe.Algebra {
     public Vector64<uint> value;
 
     /// <summary>Constructs a UInt2 vector from a Int2 vector.</summary>
-    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
     public UInt2(Int2 v) {
       value = v.value.AsUInt32();
     }
 
     /// <summary>Constructs a UInt2 vector from a Float2 vector.</summary>
-    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
     public UInt2(Float2 v) {
       value = Vector64.Create((uint)v[0], (uint)v[1]);
     }

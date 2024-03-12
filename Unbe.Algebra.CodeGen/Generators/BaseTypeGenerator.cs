@@ -7,7 +7,8 @@ namespace Unbe.Algebra.CodeGen {
     protected string typeName; // algebra type we are generating code for
     protected string T; // base type like float, int etc
     protected NumFlags numFlags;
-    protected string vectorPrefix; // Vector<T>XX that used in the algebra type
+    protected string vectorPrefix; // Vector64/128 that used in the algebra type
+    protected string vectorType; // Vector64<T> / Vector128<T>
     protected string typeNameBase;
     protected int dimensionX, dimensionY;
 
@@ -20,7 +21,8 @@ namespace Unbe.Algebra.CodeGen {
       T = typeAliases[targetType];
       numFlags = typeToFlags[T];
       this.dimensionX = dimensionX;
-      vectorPrefix = VectorPrefix(T, dimensionX, dimensionY); 
+      vectorPrefix = VectorPrefix(T, dimensionX, dimensionY);
+      vectorType = $"{vectorPrefix}<{T}>";
 
       this.dimensionX = dimensionX;
       this.dimensionY = dimensionY;
