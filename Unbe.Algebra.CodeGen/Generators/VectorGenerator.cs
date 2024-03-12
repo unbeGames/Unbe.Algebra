@@ -3,22 +3,27 @@ using Unbe.Algebra.CodeGen.Properties;
 using static Unbe.Algebra.CodeGen.Utils;
 
 namespace Unbe.Algebra.CodeGen {
-  internal class VectorGenerator : BaseTypeGenerator {     
+  internal class VectorGenerator : BaseTypeGenerator {
     protected override string GenerateInternal() {
       typeNameBase = typeName.Replace(dimensionX.ToString(), string.Empty);
 
-      AddProps();
-      AddConstructors();
-      AddAssingOperators();
-      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
-      AddBitOperators();
-      AddShuffles();
-      sb.Append(string.Format(Resources.EqualsMethods, typeName));
-      AddStringMethods();
+      if(IsBoolean(numFlags)) {
+        AddProps();
+        AddEquality();
+      } else {
+        AddProps();
+        AddConstructors();
+        AddAssingOperators();
+        AddBaseMath();
+        AddBitOperators();
+        AddShuffles();
+        AddEquality();
+        AddStringMethods();
 
-      AddAdditionalConstructors();
-      AddMath();
-       
+        AddAdditionalConstructors();
+        AddMath();
+      }
+
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString(), sbMath.ToString());
     }
 
@@ -35,7 +40,9 @@ namespace Unbe.Algebra.CodeGen {
           propsTemplate = Resources.Vector2Props;
           break;
       }
-      sb.Append(string.Format(Resources.VectorProperties, typeName, T));
+      if (!IsBoolean(numFlags)) {
+        sb.Append(string.Format(Resources.VectorProperties, typeName, T));
+      }
       sb.Append(string.Format(propsTemplate, typeName, T));
       sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
     }
@@ -55,7 +62,7 @@ namespace Unbe.Algebra.CodeGen {
       }
 
       sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix, typeNameBase));
-      
+
       sb.Append(string.Format(Resources.SimpleVectorConstructor, typeName, T, vectorPrefix));
 
       if (dimensionX == 3) {
@@ -83,15 +90,15 @@ namespace Unbe.Algebra.CodeGen {
       for(int i = 0; i < conversionBaseTypes.Length; i++) {
         sb.Append(SingleToVectorOperator(typeName, T, conversionBaseTypes[i]));
       }
-      sb.Append(SingleToVectorOperator(typeName, T, vectorType));      
-  
+      sb.Append(SingleToVectorOperator(typeName, T, vectorType));
+
       var conversionVectorTypes = Utils.conversionVectorTypes[dimensionX];
       for (int i = 0; i < conversionVectorTypes.Length; i++) {
         var nextType = conversionVectorTypes[i];
         if (nextType != typeName) {
           sb.Append(VectorToVectorOperator(typeName, nextType));
         }
-      }      
+      }
     }
 
     private void AddBitOperators() {
@@ -121,7 +128,7 @@ namespace Unbe.Algebra.CodeGen {
           tmp.Append(string.Format(shuffleReadonlyTemplate, typeName, shuffle, vectorPrefix, dimensionX, shuffle, typeName));
         }
       }
-      
+
       // generate 4 -> 3 shuffles
       if(dimensionX == 4) {
         var shuffle4To3Template = Resources.ShuffleToVector3;
@@ -149,12 +156,12 @@ namespace Unbe.Algebra.CodeGen {
       } else if(dimensionX == 3) {
         // Vector 3 to 2
         ShuffleToVector2(shuffleReadonlyTemplate, shuffle3To2Names, 1);
-      }  
+      }
 
 
       sb.AppendLine();
-      sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString())); 
-    } 
+      sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString()));
+    }
 
     private void ShuffleToVector2(string shuffleReadonlyTemplate, string[] shuffleNames, int reduce) {
       var shuffleToVector2 = Resources.ShuffleToVector2;
@@ -172,6 +179,10 @@ namespace Unbe.Algebra.CodeGen {
       }
     }
 
+    private void AddBaseMath() {
+      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
+    }
+
     private void AddMath() {
       sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
       if (IsIntegralNumeric(numFlags)) {
@@ -185,8 +196,8 @@ namespace Unbe.Algebra.CodeGen {
         if (IsBit64(numFlags)) {
           sbMath.Append(string.Format(Resources.IntegralNumeric64, typeName, vectorPrefix));
         }
-      }    
-      if(IsSigned(numFlags)) {
+      }
+      if (IsSigned(numFlags)) {
         sbMath.Append(string.Format(Resources.SignMath, typeName, vectorPrefix));
       }
       if (IsFloatingPoint(numFlags)) {
@@ -194,7 +205,7 @@ namespace Unbe.Algebra.CodeGen {
         sbMath.Append(string.Format(Resources.Trigonometry, typeName, vectorPrefix));
       }
       sbMath.Append(string.Format(Resources.VectorOperations, typeName, vectorPrefix, T));
-      if (IsFloatingPoint(numFlags)) { 
+      if (IsFloatingPoint(numFlags)) {
         sbMath.Append(string.Format(Resources.VectorOperationsFloatingPoint, typeName, vectorPrefix));
       }
       sbMath.Append(string.Format(Resources.BooleanMath, typeName, vectorPrefix, T));
@@ -217,25 +228,29 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private string Test() {
-      return 
+      return
 $@"
 
 ";
     }
 
+    private void AddEquality() {
+      sb.Append(string.Format(Resources.EqualsMethods, typeName));
+    }
+
     private void AddStringMethods() {
       if (dimensionX == 4) {
         sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
-      } else if(dimensionX == 3) {
+      } else if (dimensionX == 3) {
         sb.Append(string.Format(Resources.Vector3StringMethods, typeName));
-      } else if(dimensionX == 2) {
+      } else if (dimensionX == 2) {
         sb.Append(string.Format(Resources.Vector2StringMethods, typeName));
       }
     }
 
     private string SingleValueConstructor(string typeName, string T, string vectorPrefix, string targetType) {
       string result;
-      if(dimensionX == 3) {
+      if (dimensionX == 3) {
         result = string.Format(Resources.SingleValueConstructorOdd, typeName, T, vectorPrefix, targetType);
       } else {
         result = string.Format(Resources.SingleValueConstructorEven, typeName, T, vectorPrefix, targetType);

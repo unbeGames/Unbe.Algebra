@@ -34,6 +34,5 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     protected abstract string GenerateInternal();
-
   }
 }

@@ -6,7 +6,8 @@ namespace Unbe.Algebra.CodeGen {
   [Flags]
   internal enum NumFlags {
     none = 0, bitOps = 4, bit8 = 8, bit16 = 16, bit32 = 32, bit64 = 64, 
-    integralNum = 128, floatingPoint = 256, signed = 512, unsigned = 1024
+    integralNum = 128, floatingPoint = 256, signed = 512, unsigned = 1024,
+    isBoolean = 2048
   }
 
   internal static partial class Utils {
@@ -53,19 +54,27 @@ namespace Unbe.Algebra.CodeGen {
       { "long", NumFlags.integralNum | NumFlags.signed | NumFlags.bit64 | NumFlags.bitOps },
       { "ulong", NumFlags.integralNum | NumFlags.unsigned | NumFlags.bit64 | NumFlags.bitOps },
       { "double", NumFlags.floatingPoint | NumFlags.signed | NumFlags.bit64 },
+      { "bool", NumFlags.isBoolean },
     };
 
     private static readonly Dictionary<ValueTuple<string, int>, string> vectorPrefix = new() {
       { ("float", 4), "Vector128" },
       { ("uint", 4), "Vector128" },
       { ("int", 4), "Vector128" },
+      { ("bool", 4), "Vector128" },
       { ("float", 3), "Vector128" },
       { ("uint", 3), "Vector128" },
       { ("int", 3), "Vector128" },
+      { ("bool", 3), "Vector128" },
       { ("float", 2), "Vector64" },
       { ("uint", 2), "Vector64" },
       { ("int", 2), "Vector64" },
+      { ("bool", 2), "Vector64" },
     };    
+
+    internal static bool IsBoolean(NumFlags flags) {
+      return (flags & NumFlags.isBoolean) != 0;
+    }
 
     internal static bool SupportsBitOps(NumFlags flags) {
       return (flags & NumFlags.bitOps) != 0;
