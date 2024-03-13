@@ -10,17 +10,24 @@ namespace Unbe.Algebra {
     public Vector128<uint> value;
 
     /// <summary>Constructs a UInt4 vector from a Int4 vector.</summary>
-    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
     /// <returns>Constructed value.</returns>
     public UInt4(Int4 v) {
       value = v.value.AsUInt32();
     }
 
     /// <summary>Constructs a UInt4 vector from a Float4 vector.</summary>
-    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
     /// <returns>Constructed value.</returns>
     public UInt4(Float4 v) {
       value = Vector128Ext.ConvertToInt32(v.value).AsUInt32();
+    }
+
+    /// <summary>Constructs a UInt4 vector from a Bool4 vector.</summary>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
+    public UInt4(Bool4 v) {
+      value = Vector128.Abs(v.value).AsUInt32();
     }
   }
 }

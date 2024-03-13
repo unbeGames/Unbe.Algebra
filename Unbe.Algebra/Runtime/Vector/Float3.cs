@@ -40,6 +40,13 @@ namespace Unbe.Algebra {
       value = Vector128Ext.ConvertToSingle(v.value.AsInt32());
     }
 
+    /// <summary>Constructs a Float3 vector from a Bool3 vector.</summary>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
+    public Float3(Bool3 v) {
+      value = Vector128Ext.ConvertToSingle(Vector128.Abs(v.value));
+    }
+
     /// <summary>Implicitly converts a single half value to a Float3 vector by converting it to float and assigning it to every component.</summary>
     /// <param name="v">half to convert to Float3</param>
     /// <returns>Converted value.</returns>

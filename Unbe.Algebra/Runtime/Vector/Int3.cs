@@ -19,5 +19,12 @@ namespace Unbe.Algebra {
     public Int3(Float3 v) {
       value = Vector128Ext.ConvertToInt32(v.value);
     }
+
+    /// <summary>Constructs a Int3 vector from a Bool3 vector.</summary>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
+    public Int3(Bool3 v) {
+      value = Vector128.Abs(v.value);
+    }
   }
 }

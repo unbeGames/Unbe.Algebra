@@ -19,5 +19,12 @@ namespace Unbe.Algebra {
     public Int2(Float2 v) {
       value = Vector64.Create((int)v[0], (int)v[1]);
     }
+
+    /// <summary>Constructs a Int2 vector from a Bool2 vector.</summary>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
+    public Int2(Bool2 v) {
+      value = Vector64.Abs(v.value);
+    }
   }
 }

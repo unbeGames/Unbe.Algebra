@@ -34,10 +34,17 @@ namespace Unbe.Algebra {
     }
 
     /// <summary>Constructs a Float4 vector from a UInt4 vector.</summary>
-    /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
     /// <returns>Constructed value.</returns>
     public Float4(UInt4 v) {
       value = Vector128Ext.ConvertToSingle(v.value.AsInt32());
+    }
+
+    /// <summary>Constructs a Float4 vector from a Bool4 vector.</summary>
+    /// <param name="v">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
+    public Float4(Bool4 v) {
+      value = Vector128Ext.ConvertToSingle(Vector128.Abs(v.value));
     }
 
     /// <summary>Implicitly converts a single half value to a Float4 vector by converting it to float and assigning it to every component.</summary>
