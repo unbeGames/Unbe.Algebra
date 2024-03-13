@@ -113,7 +113,7 @@ namespace Unbe.Algebra.CodeGen {
       if (SupportsBitOps(numFlags)) {
         var rightOp = IsSigned(numFlags) ? "ShiftRightArithmetic" : "ShiftRightLogical";
         sb.Append(string.Format(Resources.ShiftOperators, typeName, vectorPrefix, rightOp));
-        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
+        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix, dimensionX));
       }
     }
 
