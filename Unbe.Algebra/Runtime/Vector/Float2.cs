@@ -19,6 +19,7 @@ namespace Unbe.Algebra {
 
     /// <summary>Constructs a Float2 vector from a Vector4.</summary>
     /// <param name="v">Vector2 to convert to Float2</param>
+    /// <returns>Constructed value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Float2(Vector2 vector) {
       value = Vector64.Create(vector.X, vector.Y);
@@ -26,12 +27,14 @@ namespace Unbe.Algebra {
 
     /// <summary>Constructs a Float2 vector from a Int3 vector.</summary>
     /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
     public Float2(Int2 v) {
       value = Vector64.Create((float)v[0], v[1]);
     }
 
     /// <summary>Constructs a Float2 vector from a UInt2 vector.</summary>
     /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
     public Float2(UInt2 v) {
       value = Vector64.Create((float)v[0], v[1]);
     }

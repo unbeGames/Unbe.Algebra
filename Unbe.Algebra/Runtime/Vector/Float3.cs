@@ -12,6 +12,7 @@ namespace Unbe.Algebra {
 
     /// <summary>Constructs a Float3 vector from a single half value by converting it to float and assigning it to every component.</summary>
     /// <param name="v">half to convert to Float3</param>
+    /// <returns>Constructed value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Float3(half v) {
       value = Vector128.Create((float)v);
@@ -19,6 +20,7 @@ namespace Unbe.Algebra {
 
     /// <summary>Constructs a Float3 vector from a Vector4.</summary>
     /// <param name="v">Vector3 to convert to Float3</param>
+    /// <returns>Constructed value.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Float3(Vector3 vector) {
       value = Vector128.Create(vector.X, vector.Y, vector.Z, 0);
@@ -26,12 +28,14 @@ namespace Unbe.Algebra {
 
     /// <summary>Constructs a Float3 vector from a Int3 vector.</summary>
     /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
     public Float3(Int3 v) {
       value = Vector128Ext.ConvertToSingle(v.value);
     }
 
     /// <summary>Constructs a Float3 vector from a UInt3 vector.</summary>
     /// <param name="vector">The constructed vector's components will be set to this value.</param>
+    /// <returns>Constructed value.</returns>
     public Float3(UInt3 v) {
       value = Vector128Ext.ConvertToSingle(v.value.AsInt32());
     }
