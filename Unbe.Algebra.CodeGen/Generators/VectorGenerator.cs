@@ -9,6 +9,7 @@ namespace Unbe.Algebra.CodeGen {
 
       if(IsBoolean(numFlags)) {
         AddIndexer("int", "uint", "internal");
+        AddBoolBitOperators();
         AddEquality();
       } else {
         AddProps();
@@ -102,6 +103,10 @@ namespace Unbe.Algebra.CodeGen {
           sb.Append(VectorToVectorOperator(typeName, nextType));
         }
       }
+    }
+
+    private void AddBoolBitOperators() {
+      sb.Append(string.Format(Resources.BoolBitOperators, typeName, T, vectorPrefix));
     }
 
     private void AddBitOperators() {

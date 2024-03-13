@@ -24,8 +24,4 @@
 	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
-	
-	<ItemGroup>
-	  <Folder Include="Templates\Boolean\" />
-	</ItemGroup>
 </Project>

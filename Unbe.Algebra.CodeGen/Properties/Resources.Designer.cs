@@ -100,6 +100,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 
         ///    #region Bit Operators
+        ///
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise bitwise not.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} result of the componentwise bitwise not.&lt;/returns&gt;
@@ -107,11 +108,30 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public static {0} operator ~ ({0} val) {{ return new {0} (~val.value); }}
         ///
         ///
-        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and opera [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and ope [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BitOperators {
             get {
                 return ResourceManager.GetString("BitOperators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    #region Bit Operators
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise not operation on a bool4 vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise not.&lt;/param&gt;
+        ///    /// &lt;returns&gt;bool4 result of the componentwise not.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} operator ! ({0} v) {{ return new {0} (!v.value); }}
+        ///    
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and operation on two {0} ve [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BoolBitOperators {
+            get {
+                return ResourceManager.GetString("BoolBitOperators", resourceCulture);
             }
         }
         
@@ -552,13 +572,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public {0}({1} x, {1} y) {{
         ///      value = {2}.Create(x, y);
         ///    }}    
         ///
-        ///    /// &lt;summary&gt;Constructs a {0} vector from Vector128&lt;{1}&gt; by taking its first half.&lt;/summary&gt;
-        ///     [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Constructs a {0} vector f [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector2Constructor {
             get {
@@ -624,10 +644,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({1} x, {1} y, {1} z) {{
-        ///      value = {2}.Create(x, y, z, 0);
-        ///    }} [rest of string was truncated]&quot;;.
+        ///    public {0}({1} x, {1} [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector3Constructor {
             get {
@@ -693,7 +712,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.Aggressive [rest of string was truncated]&quot;;.
+        ///    /// &lt;returns&gt;{0} constructed from argume [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Vector4Constructor {
             get {
@@ -752,7 +771,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Returns the {1} element at a specified index.&lt;/summary&gt;
-        ///    unsafe public {1} this[int index] {{
+        ///    {4} unsafe {1} this[{3} index] {{
         ///      readonly get {{
         ///  #if !DISABLE_SAFETY_CHECKS
         ///        if ((uint)index &gt;= {2})
@@ -763,7 +782,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      set {{
         ///  #if !DISABLE_SAFETY_CHECKS
         ///        if ((uint)index &gt;= {2})
-        ///          throw new System.ArgumentException(&quot;index mu [rest of string was truncated]&quot;;.
+        ///          throw new System.ArgumentException(&quot;index must  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string VectorIndexer {
             get {
