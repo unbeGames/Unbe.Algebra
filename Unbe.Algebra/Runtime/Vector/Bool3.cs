@@ -10,14 +10,19 @@ namespace Unbe.Algebra {
     public Vector128<int> value;
 
     /// <summary>x component of the vector.</summary>
-    public unsafe bool x { readonly get { return this[0] == TRUE; } set { this[0] = TRUE * *(byte*)&value; } }
+    public unsafe bool x { readonly get { return this[(uint)0] == TRUE; } set { this[(uint)0] = TRUE * *(byte*)&value; } }
     /// <summary>y component of the vector.</summary>
-    public unsafe bool y { readonly get { return this[1] == TRUE; } set { this[1] = TRUE * *(byte*)&value; } }
+    public unsafe bool y { readonly get { return this[(uint)1] == TRUE; } set { this[(uint)1] = TRUE * *(byte*)&value; } }
     /// <summary>z component of the vector.</summary>
-    public unsafe bool z { readonly get { return this[2] == TRUE; } set { this[2] = TRUE * *(byte*)&value; } }
+    public unsafe bool z { readonly get { return this[(uint)2] == TRUE; } set { this[(uint)2] = TRUE * *(byte*)&value; } }
 
     /// <summary>Number of elements in the vector.</summary>
     public readonly int count { get { return 3; } }
+
+    public unsafe bool this[int index] {
+      readonly get { return this[(uint)index] == TRUE; }
+      set { this[(uint)index] = TRUE * *(byte*)&value; }
+    }
 
     /// <summary>Constructs a Bool4 vector from a single bool value.</summary>
     /// <param name="v">bool to convert to Bool4</param>
@@ -48,7 +53,7 @@ namespace Unbe.Algebra {
     /// <returns>Bool3 constructed from arguments.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public unsafe Bool3(Bool2 xy, bool z) {
-      value = Vector128.Create(xy[0], xy[1], TRUE * *(byte*)&z, 0);
+      value = Vector128.Create(xy[(uint)0], xy[(uint)1], TRUE * *(byte*)&z, 0);
     }
 
     /// <summary>Returns a Bool3 vector constructed from bool value and a Bool2 vector.</summary>
@@ -57,7 +62,7 @@ namespace Unbe.Algebra {
     /// <returns>Bool3 constructed from arguments.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public unsafe Bool3(bool x, Bool2 yz) {
-      value = Vector128.Create(TRUE * *(byte*)&x, yz[0], yz[1], 0);
+      value = Vector128.Create(TRUE * *(byte*)&x, yz[(uint)0], yz[(uint)1], 0);
     }
   }
 }

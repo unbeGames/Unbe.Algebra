@@ -8,7 +8,7 @@ namespace Unbe.Algebra.CodeGen {
       typeNameBase = typeName.Replace(dimensionX.ToString(), string.Empty);
 
       if(IsBoolean(numFlags)) {
-        AddIndexer("int");
+        AddIndexer("int", "uint", "internal");
         AddEquality();
       } else {
         AddProps();
@@ -46,8 +46,8 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(propsTemplate, typeName, T));
     }
 
-    private void AddIndexer(string T) {
-      sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
+    private void AddIndexer(string T, string index = "int", string modifier = "public") {
+      sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX, index, modifier));
     }
 
     private void AddConstructors() {

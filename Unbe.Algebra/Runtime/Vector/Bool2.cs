@@ -10,12 +10,17 @@ namespace Unbe.Algebra {
     public Vector64<int> value;
 
     /// <summary>x component of the vector.</summary>
-    public unsafe bool x { readonly get { return this[0] == TRUE; } set { this[0] = TRUE * *(byte*)&value; } }
+    public unsafe bool x { readonly get { return this[(uint)0] == TRUE; } set { this[(uint)0] = TRUE * *(byte*)&value; } }
     /// <summary>y component of the vector.</summary>
-    public unsafe bool y { readonly get { return this[1] == TRUE; } set { this[1] = TRUE * *(byte*)&value; } }
+    public unsafe bool y { readonly get { return this[(uint)1] == TRUE; } set { this[(uint)1] = TRUE * *(byte*)&value; } }
 
     /// <summary>Number of elements in the vector.</summary>
     public readonly int count { get { return 2; } }
+
+    public unsafe bool this[int index] {
+      readonly get { return this[(uint)index] == TRUE; }
+      set { this[(uint)index] = TRUE * *(byte*)&value; }
+    }
 
     /// <summary>Constructs a Bool4 vector from a single bool value.</summary>
     /// <param name="v">bool to convert to Bool4</param>
