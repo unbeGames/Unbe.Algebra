@@ -1,0 +1,135 @@
+    
+    #region Equality Operators
+    
+    /// <summary>Returns the result of a componentwise less than operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise less than.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise less than.</param>
+    /// <returns>Bool{3} result of the componentwise less than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator < ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.LessThan(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise less than operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise less than.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise less than.</param>
+    /// <returns>Bool{3} result of the componentwise less than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator < ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.LessThan(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise less than operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise less than.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise less than.</param>
+    /// <returns>Bool{3} result of the componentwise less than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator < ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.LessThan(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+
+
+    /// <summary>Returns the result of a componentwise less or equal  operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise less or equal.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise less or equal.</param>
+    /// <returns>Bool{3} result of the componentwise less or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator <= ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.LessThanOrEqual(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise less or equal operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise less or equal.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise less or equal.</param>
+    /// <returns>Bool{3} result of the componentwise less or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator <= ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.LessThanOrEqual(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise less or equal operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise less or equal.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise less or equal.</param>
+    /// <returns>Bool{3} result of the componentwise less or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator <= ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.LessThanOrEqual(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+
+
+    /// <summary>Returns the result of a componentwise greater than operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise greater than.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise greater than.</param>
+    /// <returns>Bool{3} result of the componentwise greater than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator > ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.GreaterThan(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise greater than operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise greater than.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise greater than.</param>
+    /// <returns>Bool{3} result of the componentwise greater than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator > ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.GreaterThan(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise greater than operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise greater than.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise greater than.</param>
+    /// <returns>Bool{3} result of the componentwise greater than.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator > ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.GreaterThan(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+    
+
+    /// <summary>Returns the result of a componentwise greater or equal operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise greater or equal.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise greater or equal.</param>
+    /// <returns>Bool{3} result of the componentwise greater or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator >= ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.GreaterThanOrEqual(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise greater or equal operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise greater or equal.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise greater or equal.</param>
+    /// <returns>Bool{3} result of the componentwise greater or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator >= ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.GreaterThanOrEqual(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise greater or equal operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise greater or equal.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise greater or equal.</param>
+    /// <returns>Bool{3} result of the componentwise greater or equal.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator >= ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.GreaterThanOrEqual(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+
+
+    /// <summary>Returns the result of a componentwise equality operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise equality.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise equality.</param>
+    /// <returns>Bool{3} result of the componentwise equality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator == ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.Equals(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise equality operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise equality.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise equality.</param>
+    /// <returns>Bool{3} result of the componentwise equality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator == ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.Equals(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise equality operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise equality.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise equality.</param>
+    /// <returns>Bool{3} result of the componentwise equality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator == ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.Equals(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+
+
+    /// <summary>Returns the result of a componentwise inequality operation on two {0} vectors.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise inequality.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise inequality.</param>
+    /// <returns>Bool{3} result of the componentwise inequality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator != ({0} lhs, {0} rhs) {{ return new Bool{3}(~{2}.Equals(lhs.value, rhs.value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise inequality operation on a {0} vector and a {1} value.</summary>
+    /// <param name="lhs">Left hand side {0} to use to compute componentwise inequality.</param>
+    /// <param name="rhs">Right hand side {1} to use to compute componentwise inequality.</param>
+    /// <returns>Bool{3} result of the componentwise inequality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator != ({0} lhs, {1} rhs) {{ return new Bool{3}(~{2}.Equals(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
+
+    /// <summary>Returns the result of a componentwise inequality operation on a {1} value and a {0} vector.</summary>
+    /// <param name="lhs">Left hand side {1} to use to compute componentwise inequality.</param>
+    /// <param name="rhs">Right hand side {0} to use to compute componentwise inequality.</param>
+    /// <returns>Bool{3} result of the componentwise inequality.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Bool{3} operator != ({1} lhs, {0} rhs) {{ return new Bool{3}(~{2}.Equals(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
+
+    #endregion

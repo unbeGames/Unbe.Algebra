@@ -110,10 +110,11 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddBitOperators() {
+      sb.Append(string.Format(Resources.EqualityOperators, typeName, T, vectorPrefix, dimensionX));
       if (SupportsBitOps(numFlags)) {
         var rightOp = IsSigned(numFlags) ? "ShiftRightArithmetic" : "ShiftRightLogical";
         sb.Append(string.Format(Resources.ShiftOperators, typeName, vectorPrefix, rightOp));
-        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix, dimensionX));
+        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
       }
     }
 

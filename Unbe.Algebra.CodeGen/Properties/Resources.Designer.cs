@@ -99,13 +99,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    #region Bit Operators
+        ///    #region Bit Operators 
         ///
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise not operation on a {0} vector.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise bitwise not.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} result of the componentwise bitwise not.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} operator ~ ({0} val) {{ return new {0} (~val.value); }}
+        ///    public static {0} operator ~ ({0} val) {{ return new {0}(~val.value); }}
         ///
         ///
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and ope [rest of string was truncated]&quot;;.
@@ -118,16 +118,14 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    #region Bit Operators
+        ///    #region Equality and Bit Operators
         ///
-        ///    /// &lt;summary&gt;Returns the result of a componentwise not operation on a bool4 vector.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;val&quot;&gt;Value to use when computing the componentwise not.&lt;/param&gt;
-        ///    /// &lt;returns&gt;bool4 result of the componentwise not.&lt;/returns&gt;
+        ///    /// &lt;summary&gt;Returns the result of a componentwise equality operation on two {0} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise equality.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise equality.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} result of the componentwise equality.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} operator ! ({0} v) {{ return new {0} (!v.value); }}
-        ///    
-        ///
-        ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and operation on two {0} ve [rest of string was truncated]&quot;;.
+        ///    public static {0} operator == ({0} lhs,  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BoolBitOperators {
             get {
@@ -169,6 +167,23 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string CoreMath {
             get {
                 return ResourceManager.GetString("CoreMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Equality Operators
+        ///    
+        ///    /// &lt;summary&gt;Returns the result of a componentwise less than operation on two {0} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise less than.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise less than.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Bool{3} result of the componentwise less than.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static Bool{3} operator &lt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualityOperators {
+            get {
+                return ResourceManager.GetString("EqualityOperators", resourceCulture);
             }
         }
         

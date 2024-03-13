@@ -1,50 +1,5 @@
 
-    #region Equality and Bit Operators
-
-    /// <summary>Returns the result of a componentwise equality operation on two {0} vectors.</summary>
-    /// <param name="lhs">Left hand side {0} to use to compute componentwise equality.</param>
-    /// <param name="rhs">Right hand side {0} to use to compute componentwise equality.</param>
-    /// <returns>Bool{3} result of the componentwise equality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator == ({0} lhs, {0} rhs) {{ return new Bool{3}({2}.Equals(lhs.value, rhs.value).As<{1}, int>()); }}
-
-    /// <summary>Returns the result of a componentwise equality operation on a {0} vector and a {1} value.</summary>
-    /// <param name="lhs">Left hand side {0} to use to compute componentwise equality.</param>
-    /// <param name="rhs">Right hand side {1} to use to compute componentwise equality.</param>
-    /// <returns>Bool{3} result of the componentwise equality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator == ({0} lhs, {1} rhs) {{ return new Bool{3}({2}.Equals(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
-
-    /// <summary>Returns the result of a componentwise equality operation on a {1} value and a {0} vector.</summary>
-    /// <param name="lhs">Left hand side {1} to use to compute componentwise equality.</param>
-    /// <param name="rhs">Right hand side {0} to use to compute componentwise equality.</param>
-    /// <returns>Bool{3} result of the componentwise equality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator == ({1} lhs, {0} rhs) {{ return new Bool{3}({2}.Equals(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
-
-
-    /// <summary>Returns the result of a componentwise inequality operation on two {0} vectors.</summary>
-    /// <param name="lhs">Left hand side {0} to use to compute componentwise inequality.</param>
-    /// <param name="rhs">Right hand side {0} to use to compute componentwise inequality.</param>
-    /// <returns>Bool{3} result of the componentwise inequality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator != ({0} lhs, {0} rhs) {{ return new Bool{3}(~{2}.Equals(lhs.value, rhs.value).As<{1}, int>()); }}
-
-    /// <summary>Returns the result of a componentwise inequality operation on a {0} vector and a {1} value.</summary>
-    /// <param name="lhs">Left hand side {0} to use to compute componentwise inequality.</param>
-    /// <param name="rhs">Right hand side {1} to use to compute componentwise inequality.</param>
-    /// <returns>Bool{3} result of the componentwise inequality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator != ({0} lhs, {1} rhs) {{ return new Bool{3}(~{2}.Equals(lhs.value, new {0}(rhs).value).As<{1}, int>()); }}
-
-    /// <summary>Returns the result of a componentwise inequality operation on a {1} value and a {0} vector.</summary>
-    /// <param name="lhs">Left hand side {1} to use to compute componentwise inequality.</param>
-    /// <param name="rhs">Right hand side {0} to use to compute componentwise inequality.</param>
-    /// <returns>Bool{3} result of the componentwise inequality.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Bool{3} operator != ({1} lhs, {0} rhs) {{ return new Bool{3}(~{2}.Equals(new {0}(lhs).value, rhs.value).As<{1}, int>()); }}
-
-
+    #region Bit Operators 
 
     /// <summary>Returns the result of a componentwise bitwise not operation on a {0} vector.</summary>
     /// <param name="val">Value to use when computing the componentwise bitwise not.</param>
