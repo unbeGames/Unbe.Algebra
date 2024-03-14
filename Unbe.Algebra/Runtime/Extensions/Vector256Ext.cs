@@ -184,7 +184,7 @@ namespace Unbe.Algebra {
         return Avx.BlendVariable(falseVal, trueVal, selector);
       }
 
-      return (selector & trueVal) | Vector256.AndNot(selector, falseVal);
+      return (selector & trueVal) | (~selector & falseVal);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

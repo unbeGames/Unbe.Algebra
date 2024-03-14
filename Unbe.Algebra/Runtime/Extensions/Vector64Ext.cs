@@ -76,7 +76,12 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector64<T> Select<T>(Vector64<T> falseVal, Vector64<T> trueVal, bool selector) where T : unmanaged {
       return selector ? trueVal : falseVal;
-    }   
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector64<T> Select<T>(Vector64<T> selector, Vector64<T> trueVal, Vector64<T> falseVal) where T : unmanaged {
+      return (selector & trueVal) | (~selector & falseVal);
+    }
 
     internal static class Int {
       public static readonly Vector64<int> MASK_SIGN = Vector64.Create(int.MinValue);
