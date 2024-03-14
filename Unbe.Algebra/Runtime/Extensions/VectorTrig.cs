@@ -21,6 +21,14 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> Asin(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Asin(vector[0]),
+        MathF.Asin(vector[1])
+      );
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void SinCos(in Vector64<float> vector, out Vector64<float> sin, out Vector64<float> cos) {
       sin = Sin(vector);
       cos = Cos(vector);
@@ -298,7 +306,66 @@ namespace Unbe.Algebra {
       }
     }
 
+    private static readonly Vector128<float> ArcCoefficients0 = Vector128.Create(+1.5707963050f, -0.2145988016f, +0.0889789874f, -0.0501743046f);
+    private static readonly Vector128<float> ArcCoefficients1 = Vector128.Create(+0.0308918810f, -0.0170881256f, +0.0066700901f, -0.0012624911f);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Asin(Vector128<float> vector) {
+      if (Sse.IsSupported) {
+        var nonnegative = Sse.CompareGreaterThanOrEqual(vector, Float.ZERO);
+
+        var x = Vector128.Abs(vector);
+
+        // Compute (1-|V|), clamp to zero to avoid sqrt of negative number.
+        var oneMValue = Float.ONE - x;
+        var clampOneMValue = Vector128.Max(Float.ZERO, oneMValue);
+        var root = Vector128.Sqrt(clampOneMValue);  // sqrt(1-|V|)
+
+        // Compute polynomial approximation
+        var AC1 = ArcCoefficients1;
+        var vConstantsB = FillWithW(AC1);
+        var vConstants = FillWithZ(AC1);
+        var t0 = FastMultiplyAdd(vConstantsB, x, vConstants);
+
+        vConstants = FillWithY(AC1);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+
+        vConstants = FillWithX(AC1);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+
+        var AC0 = ArcCoefficients0;
+        vConstants = FillWithW(AC0);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+
+        vConstants = FillWithZ(AC0);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+
+        vConstants = FillWithY(AC0);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+
+        vConstants = FillWithX(AC0);
+        t0 = FastMultiplyAdd(t0, x, vConstants);
+        t0 *= root;
+
+        var t1 = PI - t0;
+        t0 = nonnegative + t0;
+        t1 = Sse.AndNot(nonnegative, t1);
+        t0 |= t1;
+        t0 = PI_HALF - t0;
+        return t0;
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Asin(vector[0]),
+            MathF.Asin(vector[1]),
+            MathF.Asin(vector[2]),
+            MathF.Asin(vector[3])
+        );
+      }
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> Mod2PI(in Vector128<float> vector) {

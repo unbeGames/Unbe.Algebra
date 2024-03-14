@@ -193,7 +193,7 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddMath() {
-      sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix));
+      sbMath.Append(string.Format(Resources.CoreMath, typeName, vectorPrefix, T));
       if (IsIntegralNumeric(numFlags)) {
         sbMath.Append(string.Format(Resources.IntegralNumericsMath, typeName, vectorPrefix));
         if (IsBit16(numFlags)) {

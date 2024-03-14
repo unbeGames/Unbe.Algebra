@@ -24,6 +24,12 @@
       c = new {0}(cos);
     }}
 
+    /// <summary>Returns the componentwise arcsine of a vector.</summary>
+    /// <param name="v">Input vector containing angles in radians.</param>
+    /// <returns>The componentwise arcsine of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} asin({0} v) {{ return new {0}({1}Ext.Asin(v.value)); }}
+
     /// <summary>Returns the componentwise tangent of a vector.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The componentwise tangent of the input.</returns>

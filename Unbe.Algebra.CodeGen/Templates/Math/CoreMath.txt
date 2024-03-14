@@ -1,6 +1,11 @@
 		
 		#region Core Math
 
+		/// <summary>Returns the horizontal sum of components of a vector.</summary>
+    /// <param name="v">The vector to use when computing the horizontal sum.</param>
+    /// <returns>The horizontal sum of of components of the vector.</returns>
+		public static {2} csum({0} v) {{ return {1}.Sum(v.value); }}
+
 		/// <summary>Returns the componentwise minimum of two vectors.</summary>
     /// <param name="x">The first input value.</param>
     /// <param name="y">The second input value.</param>

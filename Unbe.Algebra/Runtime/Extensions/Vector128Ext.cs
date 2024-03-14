@@ -334,6 +334,8 @@ namespace Unbe.Algebra {
     }
 
     internal static class Float {
+      public static readonly Vector128<float> ZERO = Vector128.Create(0f);
+
       public static readonly Vector128<float> MASK_X = Vector128.Create(int.MinValue, 0, 0, 0).AsSingle();
       public static readonly Vector128<float> MASK_Y = Vector128.Create(0, int.MinValue, 0, 0).AsSingle();
       public static readonly Vector128<float> MASK_Z = Vector128.Create(0, 0, int.MinValue, 0).AsSingle();
