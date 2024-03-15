@@ -366,48 +366,61 @@ namespace Unbe.Algebra {
     // 17-degree minimax approximation
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> ATan(Vector128<float> vector) {
-      var absV = Vector128.Abs(vector);
-      var invV = Float.ONE / vector; 
-      var sign = Select(Vector128.GreaterThan(vector, Float.ONE), Float.ONE, Float.NEGATIVE_ONE);
-      var comp = Vector128.LessThanOrEqual(absV, Float.ONE);
-      sign = Select(comp, Float.ZERO, sign);
-      var x = Select(comp, vector, invV);
+      if (Sse.IsSupported) {
+        var absV = Vector128.Abs(vector);
+        var invV = Float.ONE / vector;
+        var sign = Select(Vector128.GreaterThan(vector, Float.ONE), Float.ONE, Float.NEGATIVE_ONE);
+        var comp = Vector128.LessThanOrEqual(absV, Float.ONE);
+        sign = Select(comp, Float.ZERO, sign);
+        var x = Select(comp, vector, invV);
 
-      var x2 = x * x;
+        var x2 = x * x;
 
-      // Compute polynomial approximation
-      var TC1 = ATanCoefficients1;
-      var vConstantsB = FillWithW(TC1);
-      var vConstants = FillWithZ(TC1);
-      var result = FastMultiplyAdd(vConstantsB, x2, vConstants);
+        // Compute polynomial approximation
+        var TC1 = ATanCoefficients1;
+        var vConstantsB = FillWithW(TC1);
+        var vConstants = FillWithZ(TC1);
+        var result = FastMultiplyAdd(vConstantsB, x2, vConstants);
 
-      vConstants = FillWithY(TC1);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        vConstants = FillWithY(TC1);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      vConstants = FillWithX(TC1);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        vConstants = FillWithX(TC1);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      var TC0 = ATanCoefficients0;
-      vConstants = FillWithW(TC0);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        var TC0 = ATanCoefficients0;
+        vConstants = FillWithW(TC0);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      vConstants = FillWithZ(TC0);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        vConstants = FillWithZ(TC0);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      vConstants = FillWithY(TC0);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        vConstants = FillWithY(TC0);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      vConstants = FillWithX(TC0);
-      result = FastMultiplyAdd(result, x2, vConstants);
+        vConstants = FillWithX(TC0);
+        result = FastMultiplyAdd(result, x2, vConstants);
 
-      result = FastMultiplyAdd(result, x2, Float.ONE);
+        result = FastMultiplyAdd(result, x2, Float.ONE);
 
-      result *= x;
-      var result1 = sign * PI_HALF;
-      result1 -= result;
+        result *= x;
+        var result1 = sign * PI_HALF;
+        result1 -= result;
 
-      result = Select(Vector128.Equals(sign, Float.ZERO), result, result1);
-      return result;
+        result = Select(Vector128.Equals(sign, Float.ZERO), result, result1);
+        return result;
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Atan(vector[0]),
+            MathF.Atan(vector[1]),
+            MathF.Atan(vector[2]),
+            MathF.Atan(vector[3])
+        );
+      }
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
