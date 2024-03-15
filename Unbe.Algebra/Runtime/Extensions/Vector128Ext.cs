@@ -176,6 +176,14 @@ namespace Unbe.Algebra {
       return z - (x * y);
     }
 
+    private static readonly Vector128<float> FiniteComparison0 = Vector128.Create(0x7FFFFFFF).AsSingle();
+    private static readonly Vector128<float> FiniteComparison1 = Vector128.Create(0x7F800000).AsSingle();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector128<float> IsInfinite(Vector128<float> vector) {
+      return Vector128.Equals(vector & FiniteComparison0, FiniteComparison1);
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector128<T> ShuffleSoftware<T>(Vector128<T> left, Vector128<T> right, byte control) where T : unmanaged {
       const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
@@ -346,6 +354,7 @@ namespace Unbe.Algebra {
       public static readonly Vector128<float> MASK_TRUE = Vector128.Create(-1).AsSingle();
 
       public static readonly Vector128<float> ONE = Vector128.Create(1f);
+      public static readonly Vector128<float> NEGATIVE_ZERO = Vector128.Create(-0f);
       public static readonly Vector128<float> NEGATIVE_ONE = Vector128.Create(-1f);
       public static readonly Vector128<float> NEGATIVE_TWO = Vector128.Create(-2f);
 

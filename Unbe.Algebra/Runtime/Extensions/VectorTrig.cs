@@ -5,7 +5,7 @@ using System.Runtime.Intrinsics.X86;
 namespace Unbe.Algebra {
   public static partial class Vector64Ext {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> Sin(in Vector64<float> vector) {
+    public static Vector64<float> Sin(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Sin(vector[0]),
         MathF.Sin(vector[1])
@@ -13,7 +13,7 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> Cos(in Vector64<float> vector) {
+    public static Vector64<float> Cos(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Cos(vector[0]),
         MathF.Cos(vector[1])
@@ -21,7 +21,7 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> ASin(in Vector64<float> vector) {
+    public static Vector64<float> ASin(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Asin(vector[0]),
         MathF.Asin(vector[1])
@@ -29,7 +29,7 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> ACos(in Vector64<float> vector) {
+    public static Vector64<float> ACos(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Acos(vector[0]),
         MathF.Acos(vector[1])
@@ -37,13 +37,13 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void SinCos(in Vector64<float> vector, out Vector64<float> sin, out Vector64<float> cos) {
+    public static void SinCos(Vector64<float> vector, out Vector64<float> sin, out Vector64<float> cos) {
       sin = Sin(vector);
       cos = Cos(vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> Tan(in Vector64<float> vector) {
+    public static Vector64<float> Tan(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Tan(vector[0]),
         MathF.Tan(vector[1])
@@ -51,10 +51,18 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> ATan(in Vector64<float> vector) {
+    public static Vector64<float> ATan(Vector64<float> vector) {
       return Vector64.Create(
         MathF.Atan(vector[0]),
         MathF.Atan(vector[1])
+      );
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> ATan2(Vector64<float> y, Vector64<float> x) {
+      return Vector64.Create(
+        MathF.Atan2(y[0], x[0]),
+        MathF.Atan2(y[1], x[1])
       );
     }
   }
@@ -65,6 +73,8 @@ namespace Unbe.Algebra {
     public static readonly Vector128<float> PI2 = Vector128.Create(Math.PI2);
     public static readonly Vector128<float> PI = Vector128.Create(Math.PI);
     public static readonly Vector128<float> PI_HALF = Vector128.Create(Math.PI_HALF);
+    public static readonly Vector128<float> PI_QUARTER = Vector128.Create(Math.PI * 0.25f);
+    public static readonly Vector128<float> PI_THREE_QUARTERS = Vector128.Create(3 * Math.PI / 4);
 
     private static readonly Vector128<float> SinCoefficient0 = Vector128.Create(-0.16666667f, +0.0083333310f, -0.00019840874f, +2.7525562e-06f);
     private static readonly Vector128<float> SinCoefficient1 = Vector128.Create(-2.3889859e-08f, -0.16665852f, +0.0083139502f, -0.00018524670f);
@@ -419,6 +429,71 @@ namespace Unbe.Algebra {
             MathF.Atan(vector[1]),
             MathF.Atan(vector[2]),
             MathF.Atan(vector[3])
+        );
+      }
+    }
+
+    private static readonly Vector128<float> ATan2Constants = Vector128.Create(Math.PI, Math.PI_HALF, Math.PI * 0.25f, Math.PI * 3.0f / 4.0f);
+
+    // Return the inverse tangent of Y / X in the range of -Pi to Pi with the following exceptions:
+
+    //     Y == 0 and X is Negative         -> Pi with the sign of Y
+    //     y == 0 and x is positive         -> 0 with the sign of y
+    //     Y != 0 and X == 0                -> Pi / 2 with the sign of Y
+    //     Y != 0 and X is Negative         -> atan(y/x) + (PI with the sign of Y)
+    //     X == -Infinity and Finite Y      -> Pi with the sign of Y
+    //     X == +Infinity and Finite Y      -> 0 with the sign of Y
+    //     Y == Infinity and X is Finite    -> Pi / 2 with the sign of Y
+    //     Y == Infinity and X == -Infinity -> 3Pi / 4 with the sign of Y
+    //     Y == Infinity and X == +Infinity -> Pi / 4 with the sign of Y
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> ATan2(Vector128<float> Y, Vector128<float> X) {
+      if (Sse.IsSupported) {
+        var aTanResultValid = Float.MASK_TRUE;
+
+        var pi = PI;
+        var piDiv2 = PI_HALF;
+        var piDiv4 = PI_QUARTER;
+        var threePiDiv4 = PI_THREE_QUARTERS;
+
+        var yEqualsZero = Vector128.Equals(Y, Float.ZERO);
+        var xEqualsZero = Vector128.Equals(X, Float.ZERO);
+        var rightIsPositive = ExtractSign(X);
+        rightIsPositive = CompareEqual(rightIsPositive.AsInt32(), Vector128<int>.Zero).AsSingle();
+        var yEqualsInfinity = IsInfinite(Y);
+        var xEqualsInfinity = IsInfinite(X);
+
+        var ySign = Y & Float.NEGATIVE_ZERO;
+        pi |= ySign;
+        piDiv2 |= ySign;
+        piDiv4 |= ySign;
+        threePiDiv4 |= ySign;
+
+        var r1 = Select(rightIsPositive, ySign, pi);
+        var r2 = Select(xEqualsZero, piDiv2, aTanResultValid);
+        var r3 = Select(yEqualsZero, r1, r2);
+        var r4 = Select(rightIsPositive, piDiv4, threePiDiv4);
+        var r5 = Select(xEqualsInfinity, r4, piDiv2);
+        var result = Select(yEqualsInfinity, r5, r3);
+        aTanResultValid = CompareEqual(result.AsInt32(), aTanResultValid.AsInt32()).AsSingle();
+
+        var v = Y / X;
+        var r0 = ATan(v);
+
+        r1 = Select(rightIsPositive, Float.NEGATIVE_ZERO, pi);
+        r2 = r0 + r1;
+
+        return Select(aTanResultValid, r2, result);
+      }
+
+      return SoftwareFallback(Y, X);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> Y, Vector128<float> X) {
+        return Vector128.Create(
+            MathF.Atan2(Y[0], X[0]),
+            MathF.Atan2(Y[1], X[1]),
+            MathF.Atan2(Y[2], X[2]),
+            MathF.Atan2(Y[3], X[3])
         );
       }
     }

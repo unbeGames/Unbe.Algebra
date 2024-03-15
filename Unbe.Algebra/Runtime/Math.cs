@@ -763,6 +763,20 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double atan(double x) { return System.Math.Atan(x); }
 
+    /// <summary>Returns the 2-argument arctangent of a pair of float values.</summary>
+    /// <param name="y">Numerator of the ratio y/x, usually the y component on the unit circle.</param>
+    /// <param name="x">Denominator of the ratio y/x, usually the x component on the unit circle.</param>
+    /// <returns>The arctangent of the ratio y/x, in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float atan2(float y, float x) { return MathF.Atan2(y, x); }
+
+    /// <summary>Returns the 2-argument arctangent of a pair of double values.</summary>
+    /// <param name="y">Numerator of the ratio y/x, usually the y component on the unit circle.</param>
+    /// <param name="x">Denominator of the ratio y/x, usually the x component on the unit circle.</param>
+    /// <returns>The arctangent of the ratio y/x, in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double atan2(double y, double x) { return System.Math.Atan2(y, x); }
+
     #endregion
 
 

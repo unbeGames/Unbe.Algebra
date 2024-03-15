@@ -47,5 +47,12 @@
     /// <returns>The componentwise arctangent of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} atan({0} v) {{ return new {0}({1}Ext.ATan(v.value)); }}
+
+    /// <summary>Returns the 2-argument arctangent of a pair of vectors.</summary>
+    /// <param name="y">Numerator of the ratio y/x, usually the y component on the unit circle.</param>
+    /// <param name="x">Denominator of the ratio y/x, usually the x component on the unit circle.</param>
+    /// <returns>The arctangent of the ratio y/x, in radians.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} atan2({0} y, {0} x) {{ return new {0}({1}Ext.ATan2(y.value, x.value)); }}
     
     #endregion
