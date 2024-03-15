@@ -49,6 +49,14 @@ namespace Unbe.Algebra {
         MathF.Tan(vector[1])
       );
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> ATan(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Atan(vector[0]),
+        MathF.Atan(vector[1])
+      );
+    }
   }
 
   public static partial class Vector128Ext {
@@ -234,6 +242,46 @@ namespace Unbe.Algebra {
       }
     }
 
+    private static readonly Vector128<float> ArcCoefficients0 = Vector128.Create(+1.5707963050f, -0.2145988016f, +0.0889789874f, -0.0501743046f);
+    private static readonly Vector128<float> ArcCoefficients1 = Vector128.Create(+0.0308918810f, -0.0170881256f, +0.0066700901f, -0.0012624911f);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> ASin(Vector128<float> vector) {
+      if (Sse.IsSupported) {
+        return PI_HALF - ArcTrigMinimaxApprox(vector);
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Asin(vector[0]),
+            MathF.Asin(vector[1]),
+            MathF.Asin(vector[2]),
+            MathF.Asin(vector[3])
+        );
+      }
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> ACos(Vector128<float> vector) {
+      if (Sse.IsSupported) {
+        return ArcTrigMinimaxApprox(vector);
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Acos(vector[0]),
+            MathF.Acos(vector[1]),
+            MathF.Acos(vector[2]),
+            MathF.Acos(vector[3])
+        );
+      }
+    }
+
     private static readonly Vector128<float> TanCoefficients0 = Vector128.Create(1.0f, -4.667168334e-1f, 2.566383229e-2f, -3.118153191e-4f);
     private static readonly Vector128<float> TanCoefficients1 = Vector128.Create(4.981943399e-7f, -1.333835001e-1f, 3.424887824e-3f, -1.786170734e-5f);
     private static readonly Vector128<float> TanConstants = Vector128.Create(1.570796371f, 6.077100628e-11f, 0.000244140625f, 0.63661977228f);
@@ -312,44 +360,54 @@ namespace Unbe.Algebra {
       }
     }
 
-    private static readonly Vector128<float> ArcCoefficients0 = Vector128.Create(+1.5707963050f, -0.2145988016f, +0.0889789874f, -0.0501743046f);
-    private static readonly Vector128<float> ArcCoefficients1 = Vector128.Create(+0.0308918810f, -0.0170881256f, +0.0066700901f, -0.0012624911f);
-      
+    private static readonly Vector128<float> ATanCoefficients0 = Vector128.Create(-0.3333314528f, +0.1999355085f, -0.1420889944f, +0.1065626393f);
+    private static readonly Vector128<float> ATanCoefficients1 = Vector128.Create(-0.0752896400f, +0.0429096138f, -0.0161657367f, +0.0028662257f);
+
+    // 17-degree minimax approximation
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> ASin(Vector128<float> vector) {
-      if (Sse.IsSupported) {
-        return PI_HALF - ArcTrigMinimaxApprox(vector);
-      }
+    public static Vector128<float> ATan(Vector128<float> vector) {
+      var absV = Vector128.Abs(vector);
+      var invV = Float.ONE / vector; 
+      var sign = Select(Vector128.GreaterThan(vector, Float.ONE), Float.ONE, Float.NEGATIVE_ONE);
+      var comp = Vector128.LessThanOrEqual(absV, Float.ONE);
+      sign = Select(comp, Float.ZERO, sign);
+      var x = Select(comp, vector, invV);
 
-      return SoftwareFallback(vector);
+      var x2 = x * x;
 
-      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
-        return Vector128.Create(
-            MathF.Asin(vector[0]),
-            MathF.Asin(vector[1]),
-            MathF.Asin(vector[2]),
-            MathF.Asin(vector[3])
-        );
-      }
-    }
+      // Compute polynomial approximation
+      var TC1 = ATanCoefficients1;
+      var vConstantsB = FillWithW(TC1);
+      var vConstants = FillWithZ(TC1);
+      var result = FastMultiplyAdd(vConstantsB, x2, vConstants);
 
+      vConstants = FillWithY(TC1);
+      result = FastMultiplyAdd(result, x2, vConstants);
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> ACos(Vector128<float> vector) {
-      if (Sse.IsSupported) {
-        return ArcTrigMinimaxApprox(vector);
-      }
+      vConstants = FillWithX(TC1);
+      result = FastMultiplyAdd(result, x2, vConstants);
 
-      return SoftwareFallback(vector);
+      var TC0 = ATanCoefficients0;
+      vConstants = FillWithW(TC0);
+      result = FastMultiplyAdd(result, x2, vConstants);
 
-      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
-        return Vector128.Create(
-            MathF.Acos(vector[0]),
-            MathF.Acos(vector[1]),
-            MathF.Acos(vector[2]),
-            MathF.Acos(vector[3])
-        );
-      }
+      vConstants = FillWithZ(TC0);
+      result = FastMultiplyAdd(result, x2, vConstants);
+
+      vConstants = FillWithY(TC0);
+      result = FastMultiplyAdd(result, x2, vConstants);
+
+      vConstants = FillWithX(TC0);
+      result = FastMultiplyAdd(result, x2, vConstants);
+
+      result = FastMultiplyAdd(result, x2, Float.ONE);
+
+      result *= x;
+      var result1 = sign * PI_HALF;
+      result1 -= result;
+
+      result = Select(Vector128.Equals(sign, Float.ZERO), result, result1);
+      return result;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

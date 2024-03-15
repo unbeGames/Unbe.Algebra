@@ -41,5 +41,11 @@
     /// <returns>The componentwise tangent of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} tan({0} v) {{ return new {0}({1}Ext.Tan(v.value)); }}
+
+    /// <summary>Returns the componentwise arctangent of a vector.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The componentwise arctangent of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} atan({0} v) {{ return new {0}({1}Ext.ATan(v.value)); }}
     
     #endregion

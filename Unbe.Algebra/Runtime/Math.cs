@@ -751,6 +751,18 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double tan(double x) { return System.Math.Tan(x); }
 
+    /// <summary>Returns the arctangent of a float value.</summary>
+    /// <param name="x">A tangent value, usually the ratio y/x on the unit circle.</param>
+    /// <returns>The arctangent of the input, in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float atan(float x) { return MathF.Atan(x); }
+
+    /// <summary>Returns the arctangent of a double value.</summary>
+    /// <param name="x">A tangent value, usually the ratio y/x on the unit circle.</param>
+    /// <returns>The arctangent of the input, in radians.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double atan(double x) { return System.Math.Atan(x); }
+
     #endregion
 
 
