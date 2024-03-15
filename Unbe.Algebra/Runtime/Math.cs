@@ -721,13 +721,23 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float asin(float x) { return MathF.Asin((float)x); }
 
-
     /// <summary>Returns the arcsine of a double value.</summary>
     /// <param name="x">Input value.</param>
     /// <returns>The arcsine of the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double asin(double x) { return System.Math.Asin(x); }
 
+    /// <summary>Returns the arccosine of a float value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The arccosine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float acos(float x) { return MathF.Acos(x); }
+
+    /// <summary>Returns the arccosine of a double value.</summary>
+    /// <param name="x">Input value.</param>
+    /// <returns>The arccosine of the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double acos(double x) { return System.Math.Acos(x); }
 
     /// <summary>Returns the tangent of a float value.</summary>
     /// <param name="x">Input value.</param>
@@ -877,7 +887,6 @@ namespace Unbe.Algebra {
     /// <returns>Returns trueValue if test is true, falseValue otherwise.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double select(double falseValue, double trueValue, bool test) { return test ? trueValue : falseValue; }
-
 
     #endregion
   }

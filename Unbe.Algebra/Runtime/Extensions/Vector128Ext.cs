@@ -265,7 +265,7 @@ namespace Unbe.Algebra {
         return Sse41.BlendVariable(falseVal, trueVal, selector);
       }
 
-      return (selector & trueVal) | (~selector & falseVal);
+      return (trueVal & selector) | Vector128.AndNot(falseVal, selector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

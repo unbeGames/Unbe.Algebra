@@ -28,7 +28,13 @@
     /// <param name="v">Input vector containing angles in radians.</param>
     /// <returns>The componentwise arcsine of the input.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static {0} asin({0} v) {{ return new {0}({1}Ext.Asin(v.value)); }}
+		public static {0} asin({0} v) {{ return new {0}({1}Ext.ASin(v.value)); }}
+
+    /// <summary>Returns the componentwise arccosine of a vector.</summary>
+    /// <param name="v">Input vector containing angles in radians.</param>
+    /// <returns>The componentwise arccosine of the input.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} acos({0} v) {{ return new {0}({1}Ext.ACos(v.value)); }}
 
     /// <summary>Returns the componentwise tangent of a vector.</summary>
     /// <param name="x">Input value.</param>

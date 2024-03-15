@@ -21,10 +21,18 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector64<float> Asin(in Vector64<float> vector) {
+    public static Vector64<float> ASin(in Vector64<float> vector) {
       return Vector64.Create(
         MathF.Asin(vector[0]),
         MathF.Asin(vector[1])
+      );
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> ACos(in Vector64<float> vector) {
+      return Vector64.Create(
+        MathF.Acos(vector[0]),
+        MathF.Acos(vector[1])
       );
     }
 
@@ -306,51 +314,11 @@ namespace Unbe.Algebra {
 
     private static readonly Vector128<float> ArcCoefficients0 = Vector128.Create(+1.5707963050f, -0.2145988016f, +0.0889789874f, -0.0501743046f);
     private static readonly Vector128<float> ArcCoefficients1 = Vector128.Create(+0.0308918810f, -0.0170881256f, +0.0066700901f, -0.0012624911f);
-
+      
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> Asin(Vector128<float> vector) {
+    public static Vector128<float> ASin(Vector128<float> vector) {
       if (Sse.IsSupported) {
-        var nonnegative = Sse.CompareGreaterThanOrEqual(vector, Float.ZERO);
-
-        var x = Vector128.Abs(vector);
-
-        // Compute (1-|V|), clamp to zero to avoid sqrt of negative number.
-        var oneMValue = Float.ONE - x;
-        var clampOneMValue = Vector128.Max(Float.ZERO, oneMValue);
-        var root = Vector128.Sqrt(clampOneMValue);  // sqrt(1-|V|)
-
-        // Compute polynomial approximation
-        var AC1 = ArcCoefficients1;
-        var vConstantsB = FillWithW(AC1);
-        var vConstants = FillWithZ(AC1);
-        var t0 = FastMultiplyAdd(vConstantsB, x, vConstants);
-
-        vConstants = FillWithY(AC1);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-
-        vConstants = FillWithX(AC1);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-
-        var AC0 = ArcCoefficients0;
-        vConstants = FillWithW(AC0);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-
-        vConstants = FillWithZ(AC0);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-
-        vConstants = FillWithY(AC0);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-
-        vConstants = FillWithX(AC0);
-        t0 = FastMultiplyAdd(t0, x, vConstants);
-        t0 *= root;
-
-        var t1 = PI - t0;
-        t0 = nonnegative + t0;
-        t1 = Sse.AndNot(nonnegative, t1);
-        t0 |= t1;
-        t0 = PI_HALF - t0;
-        return t0;
+        return PI_HALF - ArcTrigMinimaxApprox(vector);
       }
 
       return SoftwareFallback(vector);
@@ -365,9 +333,74 @@ namespace Unbe.Algebra {
       }
     }
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Vector128<float> Mod2PI(in Vector128<float> vector) {
+    public static Vector128<float> ACos(Vector128<float> vector) {
+      if (Sse.IsSupported) {
+        return ArcTrigMinimaxApprox(vector);
+      }
+
+      return SoftwareFallback(vector);
+
+      static Vector128<float> SoftwareFallback(Vector128<float> vector) {
+        return Vector128.Create(
+            MathF.Acos(vector[0]),
+            MathF.Acos(vector[1]),
+            MathF.Acos(vector[2]),
+            MathF.Acos(vector[3])
+        );
+      }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<float> Mod2PI(Vector128<float> vector) {
       return vector - PI2 * Round(vector * ONE_DIV_PI2);
+    }
+
+    // 7-degree minimax approximation
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static Vector128<float> ArcTrigMinimaxApprox(Vector128<float> vector) {
+      var nonnegative = Sse.CompareGreaterThanOrEqual(vector, Float.ZERO);
+
+      var x = Vector128.Abs(vector);
+
+      // Compute (1-|V|), clamp to zero to avoid sqrt of negative number.
+      var oneMValue = Float.ONE - x;
+      var clampOneMValue = Vector128.Max(Float.ZERO, oneMValue);
+      var root = Vector128.Sqrt(clampOneMValue);  // sqrt(1-|V|)
+
+      // Compute polynomial approximation
+      var AC1 = ArcCoefficients1;
+      var vConstantsB = FillWithW(AC1);
+      var vConstants = FillWithZ(AC1);
+      var t0 = FastMultiplyAdd(vConstantsB, x, vConstants);
+
+      vConstants = FillWithY(AC1);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+
+      vConstants = FillWithX(AC1);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+
+      var AC0 = ArcCoefficients0;
+      vConstants = FillWithW(AC0);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+
+      vConstants = FillWithZ(AC0);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+
+      vConstants = FillWithY(AC0);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+
+      vConstants = FillWithX(AC0);
+      t0 = FastMultiplyAdd(t0, x, vConstants);
+      t0 *= root;
+
+      var t1 = PI - t0;
+      t0 = nonnegative + t0;
+      t1 = Vector128.AndNot(t1, nonnegative);
+      t0 |= t1;
+
+      return t0;
     }
   }
 
@@ -380,8 +413,7 @@ namespace Unbe.Algebra {
 
     private static readonly Vector256<double> SinCoefficient0D = Vector256.Create(-0.16666667d, +0.0083333310d, -0.00019840874d, +2.7525562e-06d);
     private static readonly Vector256<double> SinCoefficient1D = Vector256.Create(-2.3889859e-08d, -0.16665852d, +0.0083139502d, -0.00018524670d);
-    private const double SinCoefficient1DScalar = -2.3889859e-08d;
-
+    
     /// <summary>
     /// Returns the sine of the specified angle.
     /// </summary>
@@ -404,7 +436,7 @@ namespace Unbe.Algebra {
         // Polynomial approx
         var sc0 = SinCoefficient0D;
 
-        var constants = Vector256.Create(SinCoefficient1DScalar);
+        var constants = FillWithX(SinCoefficient1D);
         var result = FastMultiplyAdd(constants, vectorSquared, FillWithW(sc0));
 
         constants = FillWithZ(sc0);
@@ -437,7 +469,6 @@ namespace Unbe.Algebra {
 
     private static readonly Vector256<double> CosCoefficient0D = Vector256.Create(-0.5d, +0.041666638d, -0.0013888378d, +2.4760495e-05d);
     private static readonly Vector256<double> CosCoefficient1D = Vector256.Create(-2.6051615e-07d, -0.49992746d, +0.041493919d, -0.0012712436d);
-    private const double CosCoefficient1DScalar = -2.6051615e-07d;
 
     /// <summary>
     /// Returns the cosine of the specified angle.
@@ -464,7 +495,7 @@ namespace Unbe.Algebra {
         // Polynomial approx
         var cc0 = CosCoefficient0D;
 
-        var constants = Vector256.Create(CosCoefficient1DScalar);
+        var constants =FillWithX(CosCoefficient1D);
         var result = FastMultiplyAdd(constants, vectorSquared, FillWithW(cc0));
 
         constants = FillWithZ(cc0);
@@ -513,10 +544,10 @@ namespace Unbe.Algebra {
         var cosVec = Avx.BlendVariable(Double.NEGATIVE_ONE, Double.ONE, comp);
 
         // Polynomial approx
-        Vector256<double> sc0 = SinCoefficient0D;
+        var sc0 = SinCoefficient0D;
 
-        Vector256<double> constants = Vector256.Create(SinCoefficient1DScalar);
-        Vector256<double> result = FastMultiplyAdd(constants, vectorSquared, FillWithW(sc0));
+        var constants = FillWithX(SinCoefficient1D);
+        var result = FastMultiplyAdd(constants, vectorSquared, FillWithW(sc0));
 
         constants = FillWithZ(sc0);
         result = FastMultiplyAdd(result, vectorSquared, constants);
@@ -536,7 +567,7 @@ namespace Unbe.Algebra {
         // Polynomial approx
         var cc0 = CosCoefficient0D;
 
-        constants = Vector256.Create(CosCoefficient1DScalar);
+        constants = FillWithX(CosCoefficient1D);
         result = FastMultiplyAdd(constants, vectorSquared, FillWithW(cc0));
 
         constants = FillWithZ(cc0);

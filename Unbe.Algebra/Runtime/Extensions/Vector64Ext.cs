@@ -80,7 +80,7 @@ namespace Unbe.Algebra {
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector64<T> Select<T>(Vector64<T> selector, Vector64<T> trueVal, Vector64<T> falseVal) where T : unmanaged {
-      return (selector & trueVal) | (~selector & falseVal);
+      return (trueVal & selector) | Vector64.AndNot(falseVal, selector);
     }
 
     internal static class Int {
