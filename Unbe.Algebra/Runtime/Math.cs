@@ -915,5 +915,52 @@ namespace Unbe.Algebra {
     public static double select(double falseValue, double trueValue, bool test) { return test ? trueValue : falseValue; }
 
     #endregion
+
+
+    #region Default Vectors
+
+    /// <summary>
+    /// Up axis (0, 1, 0).
+    /// </summary>
+    /// <returns>The up axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 up() { return float3(0.0f, 1.0f, 0.0f); }  // for compatibility
+
+    /// <summary>
+    /// Down axis (0, -1, 0).
+    /// </summary>
+    /// <returns>The down axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 down() { return float3(0.0f, -1.0f, 0.0f); }
+
+    /// <summary>
+    /// Forward axis (0, 0, 1).
+    /// </summary>
+    /// <returns>The forward axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 forward() { return float3(0.0f, 0.0f, 1.0f); }
+
+    /// <summary>
+    /// Back axis (0, 0, -1).
+    /// </summary>
+    /// <returns>The back axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 back() { return float3(0.0f, 0.0f, -1.0f); }
+
+    /// <summary>
+    /// Left axis (-1, 0, 0).
+    /// </summary>
+    /// <returns>The left axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 left() { return float3(-1.0f, 0.0f, 0.0f); }
+
+    /// <summary>
+    /// Right axis (1, 0, 0).
+    /// </summary>
+    /// <returns>The right axis.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 right() { return float3(1.0f, 0.0f, 0.0f); }
+
+    #endregion
   }
 }
