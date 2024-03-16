@@ -32,8 +32,13 @@ namespace Unbe.Algebra.CodeGen {
     private void AddConstructors() {
       string template = string.Empty;
 
-      if(dimensionY == 4) {
-        template = Resources.SimpleMatrix4Constructor;
+      switch (dimensionY) {
+        case 4:
+          template = Resources.SimpleMatrix4Constructor;
+          break;
+        case 3:
+          template = Resources.SimpleMatrix3Constructor;
+          break;
       }
 
       sb.Append(string.Format(template, typeName, underlyingType, T, vectorPrefix));
@@ -42,7 +47,6 @@ namespace Unbe.Algebra.CodeGen {
     private string Test() {
       return
 $@"
-
 ";
     }
   }

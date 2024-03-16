@@ -234,6 +234,17 @@ namespace Unbe.Algebra.CodeGen {
           break;
       }
       sbMath.Append(string.Format(template, typeName, T, typeNameBase, dimensionX));
+      for(int i = 0; i < conversionBaseTypes.Length; i++) {
+        sbMath.Append(string.Format(Resources.VectorFactory, typeName, T, conversionBaseTypes[i], dimensionX));
+      }
+
+      var conversionVectorTypes = Utils.conversionVectorTypes[dimensionX];
+      for (int i = 0; i < conversionVectorTypes.Length; i++) {
+        var nextType = conversionVectorTypes[i];
+        if (nextType != typeName) {
+          sbMath.Append(string.Format(Resources.VectorFactory, typeName, T, nextType, dimensionX));
+        }
+      }
     }
 
     private string Test() {

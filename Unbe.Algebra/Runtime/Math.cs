@@ -3,7 +3,7 @@ using System.Runtime.Intrinsics;
 
 #pragma warning disable 8981, IDE1006
 
-namespace Unbe.Algebra { 
+namespace Unbe.Algebra {
   public static partial class Math {
     public const int TRUE = -1;
     public const int FALSE = 0;
@@ -56,12 +56,69 @@ namespace Unbe.Algebra {
     /// <summary>The square root 2. Approximately 1.41.</summary>
     public const float SQRT2 = (float)SQRT2_DBL;
 
+    #region Conversions
 
-    /// <summary>Returns the bit pattern of a uint4 as a float4.</summary>
-    /// <param name="x">The uint4 bits to copy.</param>
-    /// <returns>The float4 with the same bit pattern as the input.</returns>
+    /// <summary>Returns the bit pattern of a uint as an int.</summary>
+    /// <param name="x">The uint bits to copy.</param>
+    /// <returns>The int with the same bit pattern as the input.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Float4 asfloat(UInt4 x) { return new Float4(x.value.As<uint, float>()); }
+    public static unsafe int asint(uint x) { return *(int*)&x; }
+
+    /// <summary>Returns the bit pattern of a float as an int.</summary>
+    /// <param name="x">The float bits to copy.</param>
+    /// <returns>The int with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static unsafe int asint(float x) { return *(int*)&x; }
+
+    /// <summary>Returns the bit pattern of a Float4 as an Int4.</summary>
+    /// <param name="v">The Float4 bits to copy.</param>
+    /// <returns>The Int4 with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Int4 asint(Float4 v) { return new Int4(v.value.As<float, int>()); }
+
+    /// <summary>Returns the bit pattern of an int as a uint.</summary>
+    /// <param name="x">The int bits to copy.</param>
+    /// <returns>The uint with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint asuint(int x) { return (uint)x; }
+
+    /// <summary>Returns the bit pattern of a float as a uint.</summary>
+    /// <param name="x">The float bits to copy.</param>
+    /// <returns>The uint with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public unsafe static uint asuint(float x) { return *(uint*)&x; }
+
+    /// <summary>Returns the bit pattern of a float3 as a uint3.</summary>
+    /// <param name="v">The float3 bits to copy.</param>
+    /// <returns>The uint3 with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static UInt3 asuint(Float3 v) { return new UInt3(v.value.As<float, uint>()); }     
+
+    /// <summary>Returns the bit pattern of an Float4 as a UInt4.</summary>
+    /// <param name="v">The UInt4 bits to copy.</param>
+    /// <returns>The UInt4 with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static UInt4 asuint(Float4 v) { return new UInt4(v.value.As<float, uint>()); }
+
+    /// <summary>Returns the bit pattern of a uint as a float.</summary>
+    /// <param name="x">The uint bits to copy.</param>
+    /// <returns>The float with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static unsafe float asfloat(uint x) { return *(float*)&x; }
+
+    /// <summary>Returns the bit pattern of a uint3 as a float3.</summary>
+    /// <param name="v">The uint3 bits to copy.</param>
+    /// <returns>The float3 with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 asfloat(UInt3 v) { return new Float3(v.value.As<uint, float>()); }
+
+    /// <summary>Returns the bit pattern of a UInt4 as a Float4.</summary>
+    /// <param name="v">The UInt4 bits to copy.</param>
+    /// <returns>The Float4 with the same bit pattern as the input.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float4 asfloat(UInt4 v) { return new Float4(v.value.As<uint, float>()); }
+
+    #endregion
 
 
     #region Degrees/Radians Conversion
@@ -924,7 +981,7 @@ namespace Unbe.Algebra {
     /// </summary>
     /// <returns>The up axis.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static Float3 up() { return float3(0.0f, 1.0f, 0.0f); }  // for compatibility
+    public static Float3 up() { return float3(0.0f, 1.0f, 0.0f); }
 
     /// <summary>
     /// Down axis (0, -1, 0).

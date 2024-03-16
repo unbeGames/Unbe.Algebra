@@ -1,0 +1,6 @@
+    
+    /// <summary>Returns a {0} vector constructed from a single {2} value.</summary>
+    /// <param name="v">{1} to convert to {0}</param>
+    /// <returns>Converted value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {0} {1}{3}({2} v) {{ return new {0}(v); }}

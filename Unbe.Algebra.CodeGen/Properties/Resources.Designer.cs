@@ -137,11 +137,11 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to 		
         ///		#region Boolean Math
         ///
-        ///		/// &lt;summary&gt;Returns trueValue if test is true, falseValue otherwise.&lt;/summary&gt;
+        ///		/// &lt;summary&gt;The selection between falseValue and trueValue according to bool test.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;falseValue&quot;&gt;Value to use if test is false.&lt;/param&gt;
         ///    /// &lt;param name=&quot;trueValue&quot;&gt;Value to use if test is true.&lt;/param&gt;
         ///    /// &lt;param name=&quot;test&quot;&gt;Bool value to choose between falseValue and trueValue.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The selection between falseValue and trueValue according to bool test.&lt;/returns&gt;
+        ///    /// &lt;returns&gt;Returns trueValue if test is true, falseValue otherwise.&lt;/returns&gt;
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///		public st [rest of string was truncated]&quot;;.
         /// </summary>
@@ -155,14 +155,14 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to 		
         ///		#region Core Math
         ///
+        ///		/// &lt;summary&gt;Returns the horizontal sum of components of a vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;The vector to use when computing the horizontal sum.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The horizontal sum of of components of the vector.&lt;/returns&gt;
+        ///		public static {2} csum({0} v) {{ return {1}.Sum(v.value); }}
+        ///
         ///		/// &lt;summary&gt;Returns the componentwise minimum of two vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;x&quot;&gt;The first input value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The second input value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The componentwise minimum of the two input values.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} min({0} x, {0} y) {{ return new {0}({1}.Min(x.value, y.value)); }}
-        ///
-        ///		/// &lt;summary&gt;Returns the componentwise maximum of two vectors.&lt;/summary [rest of string was truncated]&quot;;.
+        ///    /// &lt;param name=&quot;y&quot;&gt;The second input v [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CoreMath {
             get {
@@ -361,7 +361,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    #region Shuffles{0}    
+        ///    #region Shuffles
+        ///    {0} 
         ///    #endregion
         ///.
         /// </summary>
@@ -441,6 +442,27 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string SignMath {
             get {
                 return ResourceManager.GetString("SignMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} matrix from four {1} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;c0&quot;&gt;The matrix column c0 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;c1&quot;&gt;The matrix column c1 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;c2&quot;&gt;The matrix column c2 will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} c0, {1} c1, {1} c2){{
+        ///        this.c0 = c0;
+        ///        this.c1 = c1;
+        ///        this.c2 = c2;
+        ///    }}
+        ///
+        ///    ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleMatrix3Constructor {
+            get {
+                return ResourceManager.GetString("SimpleMatrix3Constructor", resourceCulture);
             }
         }
         
@@ -780,6 +802,21 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Vector4StringMethods {
             get {
                 return ResourceManager.GetString("Vector4StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from a single {1} value by assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{1} to convert to {0}&lt;/param&gt;
+        ///    /// &lt;returns&gt;Converted value.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} {1}{3}({1} v) {{ return new {0}(v); }}
+        ///.
+        /// </summary>
+        internal static string VectorFactory {
+            get {
+                return ResourceManager.GetString("VectorFactory", resourceCulture);
             }
         }
         

@@ -184,6 +184,9 @@
   <data name="SignMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
+  <data name="SimpleMatrix3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SimpleMatrix3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="SimpleMatrix4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleMatrix4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
@@ -243,6 +246,9 @@
   </data>
   <data name="Vector4StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\StringMethods\Vector4StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
+  </data>
+  <data name="VectorFactory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Factory\VectorFactory.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="VectorIndexer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Properties\VectorIndexer.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>

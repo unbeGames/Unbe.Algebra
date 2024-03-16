@@ -58,10 +58,4 @@
     /// <returns>{0} constructed from arguments.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {0} {1}{3}({0} xyzw) {{ return new {0}(xyzw); }}
-
-    /// <summary>Returns a {0} vector constructed from a single {1} value by assigning it to every component.</summary>
-    /// <param name="v">{1} to convert to {0}</param>
-    /// <returns>Converted value.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static {0} {1}{3}({1} v) {{ return new {0}(v); }}
- 
+     

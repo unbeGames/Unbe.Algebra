@@ -1,5 +1,5 @@
 ﻿namespace Unbe.Algebra.Tests {
-  internal class Float {
+  internal class FloatVector {
     public static readonly Float4[][] lessGreater = new[] {
       new [] { new (5), new (14), (Float4)new Bool4(true) },
       new [] { new (-200), new (-200), (Float4)new Bool4(false) },

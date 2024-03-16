@@ -1,5 +1,5 @@
 ﻿namespace Unbe.Algebra.Tests {
-  internal class Bool {
+  internal class BoolVector {
     public static readonly Bool4[][] data = new[] {
       new Bool4[] { new Bool4(false, true, true, false), new Bool4(false, true, true, false), new Bool4(true) },
       new Bool4[] { new Bool4(false, true, true, false), new Bool4(true, false, false, true), new Bool4(false) },
