@@ -255,7 +255,7 @@ $@"
     }
 
     private void AddEquality() {
-      sb.Append(string.Format(Resources.EqualsMethods, typeName));
+      sb.Append(string.Format(Resources.VectorEqualsMethods, typeName));
     }
 
     private void AddStringMethods() {

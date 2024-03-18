@@ -1,0 +1,13 @@
+    
+    /// <summary>Returns a string representation of the {0}.</summary>
+    /// <returns>String representation of the value.</returns>
+    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+      return string.Format("{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})", c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c0.y.ToString(format, formatProvider), c1.y.ToString(format, formatProvider), c2.y.ToString(format, formatProvider), c0.z.ToString(format, formatProvider), c1.z.ToString(format, formatProvider), c2.z.ToString(format, formatProvider));
+    }}
+
+    /// <summary>Returns a string representation of the {0}.</summary>
+    /// <returns>String representation of the value.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public override readonly string ToString() {{
+      return $"{0}({{c0.x}}, {{c1.x}}, {{c2.x}},  {{c0.y}}, {{c1.y}}, {{c2.y}},  {{c0.z}}, {{c1.z}}, {{c2.z}})"; 
+    }}

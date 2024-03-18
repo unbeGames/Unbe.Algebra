@@ -188,25 +188,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public readonly bool Equals({0} other) {{
-        ///      return value.Equals(other.value);
-        ///    }}
-        ///
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;pa [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string EqualsMethods {
-            get {
-                return ResourceManager.GetString("EqualsMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 		
         ///		#region Floating Point Math
         ///		/// &lt;summary&gt;Returns the result of rounding each component of a vector value down to the nearest value less or equal to the original value.&lt;/summary&gt;
@@ -304,6 +285,42 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Matrix2EqualsMethods {
+            get {
+                return ResourceManager.GetString("Matrix2EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Matrix3EqualsMethods {
+            get {
+                return ResourceManager.GetString("Matrix3EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
         ///    public static readonly {0} Identity = new {0}(1, 0, 0,   0, 1, 0,   0, 0, 1);
         ///.
@@ -316,6 +333,37 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})&quot;, c0.x.ToString(ormat, ormatProvider), c1.x.ToString(ormat, ormatProvider), c2.x.ToString(ormat, ormatProvider), c0.y.ToString(ormat, ormatProvider), c1.y.ToString(ormat, ormatProvider), [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Matrix3x3StringMethods {
+            get {
+                return ResourceManager.GetString("Matrix3x3StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2) &amp;&amp; c3.Equals(other.c3);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} i [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Matrix4EqualsMethods {
+            get {
+                return ResourceManager.GetString("Matrix4EqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
         ///    public static readonly {0} Identity = new {0}(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1);
         ///.
@@ -323,6 +371,19 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string Matrix4Props {
             get {
                 return ResourceManager.GetString("Matrix4Props", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}},  {{4}}, {{5}}, {{6}}, {{7}},  {{8}}, {{9}}, {{10}}, {{11}},  {{12}}, {{13}}, {{14}}, {{15}})&quot;, c0.x.ToString(ormat, ormatProvider), c1.x.ToString(ormat, ormatProvider), c2.x.ToString(ormat, ormatProvider), c3.x.ToString(orm [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Matrix4x4StringMethods {
+            get {
+                return ResourceManager.GetString("Matrix4x4StringMethods", resourceCulture);
             }
         }
         
@@ -807,11 +868,30 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from a single {1} value by assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return value.Equals(other.value);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string VectorEqualsMethods {
+            get {
+                return ResourceManager.GetString("VectorEqualsMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from a single {2} value.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;v&quot;&gt;{1} to convert to {0}&lt;/param&gt;
         ///    /// &lt;returns&gt;Converted value.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} {1}{3}({1} v) {{ return new {0}(v); }}
+        ///    public static {0} {1}{3}({2} v) {{ return new {0}(v); }}
         ///.
         /// </summary>
         internal static string VectorFactory {

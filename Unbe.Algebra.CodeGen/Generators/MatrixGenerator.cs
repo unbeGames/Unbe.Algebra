@@ -10,6 +10,8 @@ namespace Unbe.Algebra.CodeGen {
 
       AddProps();
       AddConstructors();
+      AddEquality();
+      AddStringMethods();
 
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString(), sbMath.ToString());
     }
@@ -42,6 +44,37 @@ namespace Unbe.Algebra.CodeGen {
       }
 
       sb.Append(string.Format(template, typeName, underlyingType, T, vectorPrefix));
+    }
+
+    private void AddEquality() {
+      string template = string.Empty;
+      switch (dimensionY) {
+        case 4:
+          template = Resources.Matrix4EqualsMethods;
+          break;
+        case 3:
+          template = Resources.Matrix3EqualsMethods;
+          break;
+      }
+      sb.Append(string.Format(template, typeName));
+    }
+
+    private void AddStringMethods() {
+      string template = string.Empty;
+      if (dimensionX == 4) {
+        switch (dimensionY) {
+          case 4:
+            template = Resources.Matrix4x4StringMethods;
+            break;
+        }
+      } else if(dimensionX == 3) {
+        switch (dimensionY) {
+          case 3:
+            template = Resources.Matrix3x3StringMethods;
+            break;
+        }
+      }
+      sb.Append(string.Format(template, typeName));
     }
 
     private string Test() {

@@ -32,12 +32,12 @@ namespace Unbe.Algebra {
 
   public partial struct Float4x4 {
     /// <summary>
-    /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians.
-    /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
+    /// Returns a Float4x4 matrix representing a rotation around a unit axis by an angle in radians.
+    /// The rotation direction is clockwise when looking along the rotation axis towards the origin i.e. left-handed coordinate system.
     /// </summary>
     /// <param name="axis">The axis of rotation.</param>
     /// <param name="angle">The angle of rotation in radians.</param>
-    /// <returns>The float4x4 matrix representing the rotation about an axis.</returns>
+    /// <returns>The Float4x4 matrix representing the rotation about an axis.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Float4x4 AxisAngle(Float3 axis, float angle) {    
       sincos(angle, out var sina, out var cosa);

@@ -14,7 +14,8 @@ namespace Unbe.Algebra.Tests {
     [TestCaseSource(nameof(quaternion))]
     public void Test(Float4 axisAngle) {
       var actual = Float4x4.AxisAngle(axisAngle.xyz, axisAngle.w);
-      var expected = Matrix4x4.CreateFromAxisAngle(axisAngle.xyz, axisAngle.w);
+      // Matrix4x4 is right-handed
+      var expected = Matrix4x4.CreateFromAxisAngle(-axisAngle.xyz, axisAngle.w);
       Assert.That(actual, Is.EqualTo((Float4x4)expected));
     }
   }
