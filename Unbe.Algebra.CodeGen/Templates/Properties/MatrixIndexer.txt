@@ -1,0 +1,11 @@
+    
+    /// <summary>Returns the {1}{2} element at a specified index.</summary>
+    public unsafe readonly {1}{2} this[int index] {{
+      get {{
+  #if !DISABLE_SAFETY_CHECKS
+        if ((uint)index >= {3})
+          throw new System.ArgumentException("index must be between [0...{3})");
+  #endif
+        fixed ({0}* array = &this) {{ return (({1}{2}*)array)[index]; }}
+      }}
+    }}

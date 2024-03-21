@@ -1,0 +1,16 @@
+    
+    #region Sign
+
+    /// <summary>Returns the componentwise sign of m. 1 for positive components, 0 for zero components and -1 for negative components.</summary>
+    /// <param name="m">Input value.</param>
+    /// <returns>The componentwise sign of the input.</returns>    
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} sign({0} m) {{ return new {0}(Math.sign(m.c0), Math.sign(m.c1), Math.sign(m.c2)); }}
+
+    /// <summary>Returns the componentwise absolute value of a matrix.</summary>
+    /// <param name="m">Input value.</param>
+    /// <returns>The componentwise absolute value of the input.</returns>    
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} abs({0} m) {{ return new {0}(Math.abs(m.c0), Math.abs(m.c1), Math.abs(m.c2)); }}
+
+    #endregion

@@ -1,6 +1,4 @@
-﻿using System.Runtime.Intrinsics;
-using System.Runtime.Intrinsics.X86;
-using static Unbe.Algebra.Tests.TestHelpers;
+﻿using static Unbe.Algebra.Tests.TestHelpers;
 
 namespace Unbe.Algebra.Tests {
   internal class Sin {

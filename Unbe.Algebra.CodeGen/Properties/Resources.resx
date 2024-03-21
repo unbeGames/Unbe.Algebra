@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BaseMathMatrix3Operators" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Operators\BaseMathMatrix3Operators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="BaseMathMatrix4Operators" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Operators\BaseMathMatrix4Operators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="BaseMathOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\BaseMathOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
@@ -175,6 +181,9 @@
   <data name="Matrix4x4StringMethods" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\StringMethods\Matrix4x4StringMethods.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="MatrixIndexer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Properties\MatrixIndexer.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="ShiftOperators" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Operators\ShiftOperators.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
@@ -195,6 +204,12 @@
   </data>
   <data name="SignMath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Math\SignMath.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
+  </data>
+  <data name="SignMathMatrix3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Math\SignMathMatrix3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="SignMathMatrix4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Math\SignMathMatrix4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="SimpleMatrix3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleMatrix3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>

@@ -1,4 +1,5 @@
 ﻿using Unbe.Algebra.CodeGen.Properties;
+using static Unbe.Algebra.CodeGen.Utils;
 
 namespace Unbe.Algebra.CodeGen {
   internal class MatrixGenerator : BaseTypeGenerator {
@@ -10,6 +11,9 @@ namespace Unbe.Algebra.CodeGen {
 
       AddProps();
       AddConstructors();
+      AddIndexer();
+      AddBaseMath();
+      AddMath();
       AddEquality();
       AddStringMethods();
 
@@ -28,7 +32,6 @@ namespace Unbe.Algebra.CodeGen {
       }
       //sb.Append(string.Format(Resources.VectorProperties, typeName, T));
       sb.Append(string.Format(propsTemplate, typeName));
-      //sb.Append(string.Format(Resources.VectorIndexer, typeName, T, dimensionX));
     }
 
     private void AddConstructors() {
@@ -44,6 +47,21 @@ namespace Unbe.Algebra.CodeGen {
       }
 
       sb.Append(string.Format(template, typeName, underlyingType, T, vectorPrefix));
+    }
+
+    private void AddMath() {
+      string template = string.Empty;
+      if (IsSigned(numFlags)) {
+        switch (dimensionY) {
+          case 4:
+            template = Resources.SignMathMatrix4;
+            break;
+          case 3:
+            template = Resources.SignMathMatrix3;
+            break;
+        }
+        sbMath.Append(string.Format(template, typeName, vectorPrefix));
+      }
     }
 
     private void AddEquality() {
@@ -75,6 +93,23 @@ namespace Unbe.Algebra.CodeGen {
         }
       }
       sb.Append(string.Format(template, typeName));
+    }
+
+    private void AddIndexer() {
+      sb.Append(string.Format(Resources.MatrixIndexer, typeName, typeNameBase, dimensionX, dimensionY));
+    }
+
+    private void AddBaseMath() {
+      string template = string.Empty;
+      switch (dimensionY) {
+        case 4:
+          template = Resources.BaseMathMatrix4Operators;
+          break;
+        case 3:
+          template = Resources.BaseMathMatrix3Operators;
+          break;
+      }
+      sb.Append(string.Format(template, typeName, T, vectorPrefix));
     }
 
     private string Test() {

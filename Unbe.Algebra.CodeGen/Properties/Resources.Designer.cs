@@ -61,15 +61,49 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to         
-        ///    
+        ///   Looks up a localized string similar to     
         ///    #region Multiplication
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} matrices.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} opera [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BaseMathMatrix3Operators {
+            get {
+                return ResourceManager.GetString("BaseMathMatrix3Operators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Multiplication
+        ///
+        ///    /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} matrices.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} opera [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BaseMathMatrix4Operators {
+            get {
+                return ResourceManager.GetString("BaseMathMatrix4Operators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to         
+        ///    #region Multiplication
+        ///
         ///    /// &lt;summary&gt;Returns the result of a componentwise multiplication operation on two {0} vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;lhs&quot;&gt;Left hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side {0} to use to compute componentwise multiplication.&lt;/param&gt;
         ///    /// &lt;returns&gt;{0} result of the componentwise multiplication.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0 [rest of string was truncated]&quot;;.
+        ///    public static {0} op [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BaseMathOperators {
             get {
@@ -336,7 +370,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
         ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
         ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
-        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})&quot;, c0.x.ToString(ormat, ormatProvider), c1.x.ToString(ormat, ormatProvider), c2.x.ToString(ormat, ormatProvider), c0.y.ToString(ormat, ormatProvider), c1.y.ToString(ormat, ormatProvider), [rest of string was truncated]&quot;;.
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c0.y.ToString(format, formatProvider), c1.y.ToString(format, format [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Matrix3x3StringMethods {
             get {
@@ -379,11 +413,31 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
         ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
         ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
-        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}},  {{4}}, {{5}}, {{6}}, {{7}},  {{8}}, {{9}}, {{10}}, {{11}},  {{12}}, {{13}}, {{14}}, {{15}})&quot;, c0.x.ToString(ormat, ormatProvider), c1.x.ToString(ormat, ormatProvider), c2.x.ToString(ormat, ormatProvider), c3.x.ToString(orm [rest of string was truncated]&quot;;.
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}},  {{4}}, {{5}}, {{6}}, {{7}},  {{8}}, {{9}}, {{10}}, {{11}},  {{12}}, {{13}}, {{14}}, {{15}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c3.x.ToStri [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Matrix4x4StringMethods {
             get {
                 return ResourceManager.GetString("Matrix4x4StringMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns the {1}{2} element at a specified index.&lt;/summary&gt;
+        ///    public unsafe readonly {1}{2} this[int index] {{
+        ///      get {{
+        ///  #if !DISABLE_SAFETY_CHECKS
+        ///        if ((uint)index &gt;= {3})
+        ///          throw new System.ArgumentException(&quot;index must be between [0...{3})&quot;);
+        ///  #endif
+        ///        fixed ({0}* array = &amp;this) {{ return (({1}{2}*)array)[index]; }}
+        ///      }}
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string MatrixIndexer {
+            get {
+                return ResourceManager.GetString("MatrixIndexer", resourceCulture);
             }
         }
         
@@ -503,6 +557,42 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string SignMath {
             get {
                 return ResourceManager.GetString("SignMath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Sign
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise sign of m. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sign({0} m) {{ return new {0}(Math.sign(m.c0), Math.sign(m.c1), Math.sign(m.c2)); }}
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise absolute value of a  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SignMathMatrix3 {
+            get {
+                return ResourceManager.GetString("SignMathMatrix3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Sign
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise sign of m. 1 for positive components, 0 for zero components and -1 for negative components.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Input value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sign({0} m) {{ return new {0}(Math.sign(m.c0), Math.sign(m.c1), Math.sign(m.c2), Math.sign(m.c3)); }}
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise abs [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SignMathMatrix4 {
+            get {
+                return ResourceManager.GetString("SignMathMatrix4", resourceCulture);
             }
         }
         
