@@ -55,4 +55,22 @@
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} lerp({0} start, {0} end, {0} t) {{ return start + t * (end - start); }}
 
+		/// <summary>Returns the componentwise result of normalizing a floating point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+    /// <param name="start">The start point of the range.</param>
+    /// <param name="end">The end point of the range.</param>
+    /// <param name="x">The value to normalize to the range.</param>
+    /// <returns>The componentwise interpolation parameter of x with respect to the input range [a, b].</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} unlerp({0} start, {0} end, {0} x) {{ return (x - start) / (end - start); }}
+
+    /// <summary>Returns the result of a non-clamping linear remapping of a value x from source range [srcStart, srcEnd] to the destination range [dstStart, dstEnd].</summary>
+    /// <param name="srcStart">The start point of the source range [srcStart, srcEnd].</param>
+    /// <param name="srcEnd">The end point of the source range [srcStart, srcEnd].</param>
+    /// <param name="dstStart">The start point of the destination range [dstStart, dstEnd].</param>
+    /// <param name="dstEnd">The end point of the destination range [dstStart, dstEnd].</param>
+    /// <param name="x">The value to remap from the source to destination range.</param>
+    /// <returns>The remap of input x from the source range to the destination range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} remap({0} srcStart, {0} srcEnd, {0} dstStart, {0} dstEnd, {0} x) {{ return lerp(dstStart, dstEnd, unlerp(srcStart, srcEnd, x)); }}
+
 		#endregion

@@ -902,17 +902,65 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double dot(double x, double y) { return x * y; }
 
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 int values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static int mad(int mulA, int mulB, int addC) { return mulA * mulB + addC; }
+
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 uint values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static uint mad(uint mulA, uint mulB, uint addC) { return mulA * mulB + addC; }
+
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 long values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static long mad(long mulA, long mulB, long addC) { return mulA * mulB + addC; }
+
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 ulong values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static ulong mad(ulong mulA, ulong mulB, ulong addC) { return mulA * mulB + addC; }
+
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 float values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float mad(float mulA, float mulB, float addC) { return MathF.FusedMultiplyAdd(mulA, mulB, addC); }
+
+    /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 double values.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The multiply-add of the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double mad(double mulA, double mulB, double addC) { return System.Math.FusedMultiplyAdd(mulA, mulB, addC); }
+
+    #endregion
+
+
+    #region Vector Operations Floating Point
+
     /// <summary>Returns the cross product of two Float3 vectors.</summary>
     /// <param name="x">First vector to use in cross product.</param>
     /// <param name="y">Second vector to use in cross product.</param>
     /// <returns>The cross product of x and y.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Float3 cross(Float3 x, Float3 y) { return (x * y.yzx - x.yzx * y).yzx; }
-
-    #endregion
-
-
-    #region Vector Operations Floating Point
 
     /// <summary>Returns the result of linearly interpolating from start to end using the interpolation parameter t.</summary>
     /// <remarks>
@@ -951,6 +999,16 @@ namespace Unbe.Algebra {
     /// <returns>The interpolation parameter of x with respect to the input range [a, b].</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double unlerp(double start, double end, double x) { return (x - start) / (end - start); }
+
+    /// <summary>Returns the result of a non-clamping linear remapping of a value x from source range [srcStart, srcEnd] to the destination range [dstStart, dstEnd].</summary>
+    /// <param name="srcStart">The start point of the source range [srcStart, srcEnd].</param>
+    /// <param name="srcEnd">The end point of the source range [srcStart, srcEnd].</param>
+    /// <param name="dstStart">The start point of the destination range [dstStart, dstEnd].</param>
+    /// <param name="dstEnd">The end point of the destination range [dstStart, dstEnd].</param>
+    /// <param name="x">The value to remap from the source to destination range.</param>
+    /// <returns>The remap of input x from the source range to the destination range.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float remap(float srcStart, float srcEnd, float dstStart, float dstEnd, float x) { return lerp(dstStart, dstEnd, unlerp(srcStart, srcEnd, x)); }
 
     #endregion
 

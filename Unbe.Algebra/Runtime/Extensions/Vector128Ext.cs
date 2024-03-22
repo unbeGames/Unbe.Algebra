@@ -167,6 +167,16 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<int> FastMultiplyAdd(Vector128<int> x, Vector128<int> y, Vector128<int> z) {
+      return x * y + z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector128<uint> FastMultiplyAdd(Vector128<uint> x, Vector128<uint> y, Vector128<uint> z) {
+      return x * y + z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector128<float> FastNegateMultiplyAdd(Vector128<float> x, Vector128<float> y, Vector128<float> z) {
       if (Fma.IsSupported) {
         // FMA is faster than Add-Mul where it compiles to the native instruction, but it is not exactly semantically equivalent

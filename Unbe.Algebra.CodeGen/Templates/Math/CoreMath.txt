@@ -6,6 +6,13 @@
     /// <returns>The horizontal sum of of components of the vector.</returns>
 		public static {2} csum({0} v) {{ return {1}.Sum(v.value); }}
 
+		/// <summary>Returns the result of a componentwise multiply-add operation (a * b + c) on 3 {0} vectors.</summary>
+    /// <param name="mulA">First value to multiply.</param>
+    /// <param name="mulB">Second value to multiply.</param>
+    /// <param name="addC">Third value to add to the product of a and b.</param>
+    /// <returns>The componentwise multiply-add of the inputs.</returns>
+		public static {0} mad({0} mulA, {0} mulB, {0} addC) {{ return {1}Ext.FastMultiplyAdd(mulA.value, mulB.value, addC.value); }}
+
 		/// <summary>Returns the componentwise minimum of two vectors.</summary>
     /// <param name="x">The first input value.</param>
     /// <param name="y">The second input value.</param>

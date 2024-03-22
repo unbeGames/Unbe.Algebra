@@ -74,6 +74,21 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<float> FastMultiplyAdd(Vector64<float> x, Vector64<float> y, Vector64<float> z) {
+      return x * y + z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<uint> FastMultiplyAdd(Vector64<uint> x, Vector64<uint> y, Vector64<uint> z) {
+      return x * y + z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector64<int> FastMultiplyAdd(Vector64<int> x, Vector64<int> y, Vector64<int> z) {
+      return x * y + z;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static Vector64<T> Select<T>(Vector64<T> falseVal, Vector64<T> trueVal, bool selector) where T : unmanaged {
       return selector ? trueVal : falseVal;
     }
