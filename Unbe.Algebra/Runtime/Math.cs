@@ -902,6 +902,56 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double dot(double x, double y) { return x * y; }
 
+    /// <summary>Returns the cross product of two Float3 vectors.</summary>
+    /// <param name="x">First vector to use in cross product.</param>
+    /// <param name="y">Second vector to use in cross product.</param>
+    /// <returns>The cross product of x and y.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 cross(Float3 x, Float3 y) { return (x * y.yzx - x.yzx * y).yzx; }
+
+    #endregion
+
+
+    #region Vector Operations Floating Point
+
+    /// <summary>Returns the result of linearly interpolating from start to end using the interpolation parameter t.</summary>
+    /// <remarks>
+    /// If the interpolation parameter is not in the range [0, 1], then this function extrapolates.
+    /// </remarks>
+    /// <param name="start">The start point, corresponding to the interpolation parameter value of 0.</param>
+    /// <param name="end">The end point, corresponding to the interpolation parameter value of 1.</param>
+    /// <param name="t">The interpolation parameter. May be a value outside the interval [0, 1].</param>
+    /// <returns>The interpolation from start to end.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float lerp(float start, float end, float t) { return start + t * (end - start); }
+
+    /// <summary>Returns the result of linearly interpolating from x to y using the interpolation parameter t.</summary>
+    /// <remarks>
+    /// If the interpolation parameter is not in the range [0, 1], then this function extrapolates.
+    /// </remarks>
+    /// <param name="start">The start point, corresponding to the interpolation parameter value of 0.</param>
+    /// <param name="end">The end point, corresponding to the interpolation parameter value of 1.</param>
+    /// <param name="t">The interpolation parameter. May be a value outside the interval [0, 1].</param>
+    /// <returns>The interpolation from x to y.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double lerp(double start, double end, double t) { return start + t * (end - start); }
+
+    /// <summary>Returns the result of normalizing a floating point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+    /// <param name="start">The start point of the range.</param>
+    /// <param name="end">The end point of the range.</param>
+    /// <param name="x">The value to normalize to the range.</param>
+    /// <returns>The interpolation parameter of x with respect to the input range [a, b].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static float unlerp(float start, float end, float x) { return (x - start) / (end - start); }
+
+    /// <summary>Returns the result of normalizing a floating point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+    /// <param name="start">The start point of the range.</param>
+    /// <param name="end">The end point of the range.</param>
+    /// <param name="x">The value to normalize to the range.</param>
+    /// <returns>The interpolation parameter of x with respect to the input range [a, b].</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static double unlerp(double start, double end, double x) { return (x - start) / (end - start); }
+
     #endregion
 
 

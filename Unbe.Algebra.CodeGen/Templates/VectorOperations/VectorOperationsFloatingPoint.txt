@@ -7,4 +7,52 @@
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
 
+		/// <summary>Returns the length of a {0} vector.</summary>
+		/// <param name="v">Vector to use when computing squared length.</param>
+    /// <returns>Length of vector v.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {2} length({0} v) {{ return sqrt(dot(v, v)); }}
+
+		/// <summary>Returns the squared length of a {0} vector.</summary>
+    /// <param name="v">Vector to use when computing squared length.</param>
+    /// <returns>Squared length of vector v.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {2} lengthsq({0} v) {{ return dot(v, v); }}
+
+		/// <summary>Returns the distance between two {0} vectors.</summary>
+    /// <param name="x">First vector to use in distance computation.</param>
+    /// <param name="y">Second vector to use in distance computation.</param>
+    /// <returns>The distance between x and y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {2} distance({0} x, {0} y) {{ return length(y - x); }}
+
+		/// <summary>Returns the squared distance between two {0} vectors.</summary>
+    /// <param name="x">First vector to use in distance computation.</param>
+    /// <param name="y">Second vector to use in distance computation.</param>
+    /// <returns>The squared distance between x and y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {2} distancesq({0} x, {0} y) {{ return lengthsq(y - x); }}
+
+		/// <summary>Returns the result of a componentwise linear interpolating from x to y using the interpolation parameter t.</summary>
+    /// <remarks>
+    /// If the interpolation parameter is not in the range [0, 1], then this function extrapolates.
+    /// </remarks>
+    /// <param name="start">The start point, corresponding to the interpolation parameter value of 0.</param>
+    /// <param name="end">The end point, corresponding to the interpolation parameter value of 1.</param>
+    /// <param name="t">The interpolation parameter. May be a value outside the interval [0, 1].</param>
+    /// <returns>The componentwise interpolation from x to y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} lerp({0} start, {0} end, {2} t) {{ return start + t * (end - start); }}
+
+		/// <summary>Returns the result of a componentwise linear interpolating from x to y using the interpolation parameter t.</summary>
+    /// <remarks>
+    /// If the interpolation parameter is not in the range [0, 1], then this function extrapolates.
+    /// </remarks>
+    /// <param name="start">The start point, corresponding to the interpolation parameter value of 0.</param>
+    /// <param name="end">The end point, corresponding to the interpolation parameter value of 1.</param>
+    /// <param name="t">The interpolation parameter. May be a value outside the interval [0, 1].</param>
+    /// <returns>The componentwise interpolation from x to y.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} lerp({0} start, {0} end, {0} t) {{ return start + t * (end - start); }}
+
 		#endregion
