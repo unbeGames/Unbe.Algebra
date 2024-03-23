@@ -10,12 +10,47 @@ namespace Unbe.Algebra.Tests {
       new [] { new Float4(Math.normalize(new Float3(0, 1, -1)), -Math.PI / 3) }
     };
 
+    public static readonly Float4x4[][] matrix = new[] {
+      new[] { new Float4x4(1, 2, 3, 4,  
+                           0, 1, 2, 3,  
+                           2, 3, 1, 4, 
+                           2, 3, 4, 1) }
+    };
+
     [Theory]
     [Category("Matrix4x4")]
     [TestCaseSource(nameof(quaternion))]
-    public void Test(Float4 axisAngle) {
+    public void AxisAngleTheory(Float4 axisAngle) {
       var actual = Float4x4.AxisAngle(axisAngle.xyz, axisAngle.w);
       var expected = Matrix4x4.CreateFromAxisAngle(-axisAngle.xyz, axisAngle.w);
+      Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
+    }
+
+
+    [Theory]
+    [Category("Matrix4x4")]
+    [TestCaseSource(nameof(matrix))]
+    public void VectorMulMatrixTheory(Float4x4 matrix) {
+      var expected = Vector4.Transform(matrix.c0, matrix);
+      var actual = Math.mul(matrix.c0, matrix);
+      Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
+    }
+
+    [Theory]
+    [Category("Matrix4x4")]
+    [TestCaseSource(nameof(matrix))]
+    public void MatrixMulVectorTheory(Float4x4 matrix) {
+      var expected = Vector4.Transform(matrix.c0, Matrix4x4.Transpose(matrix));
+      var actual = Math.mul(matrix, matrix.c0);
+      Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
+    }
+
+    [Theory]
+    [Category("Matrix4x4")]
+    [TestCaseSource(nameof(matrix))]
+    public void MatrixMulMatrixTheory(Float4x4 matrix) {
+      var expected = Matrix4x4.Multiply(matrix, matrix);
+      var actual = Math.mul(matrix, matrix);
       Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
     }
   }

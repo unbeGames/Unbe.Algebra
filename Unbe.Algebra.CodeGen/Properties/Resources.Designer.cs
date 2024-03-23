@@ -194,9 +194,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;returns&gt;The horizontal sum of of components of the vector.&lt;/returns&gt;
         ///		public static {2} csum({0} v) {{ return {1}.Sum(v.value); }}
         ///
-        ///		/// &lt;summary&gt;Returns the componentwise minimum of two vectors.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The first input value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The second input v [rest of string was truncated]&quot;;.
+        ///		/// &lt;summary&gt;Returns the result of a componentwise multiply-add operation (a * b + c) on 3 {0} vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;mulA&quot;&gt;First value to multiply.&lt;/para [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string CoreMath {
             get {
@@ -357,6 +356,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
         ///    public static readonly {0} Identity = new {0}(1, 0, 0,   0, 1, 0,   0, 0, 1);
+        ///
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Zero = new {0}();
         ///.
         /// </summary>
         internal static string Matrix3Props {
@@ -400,6 +402,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
         ///    public static readonly {0} Identity = new {0}(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1);
+        ///
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Zero = new {0}();
         ///.
         /// </summary>
         internal static string Matrix4Props {
@@ -424,13 +429,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Returns the {1}{2} element at a specified index.&lt;/summary&gt;
-        ///    public unsafe readonly {1}{2} this[int index] {{
+        ///    public unsafe ref {1}{2} this[int index] {{
         ///      get {{
         ///  #if !DISABLE_SAFETY_CHECKS
         ///        if ((uint)index &gt;= {3})
         ///          throw new System.ArgumentException(&quot;index must be between [0...{3})&quot;);
         ///  #endif
-        ///        fixed ({0}* array = &amp;this) {{ return (({1}{2}*)array)[index]; }}
+        ///        fixed ({0}* array = &amp;this) {{ return ref (({1}{2}*)array)[index]; }}
         ///      }}
         ///    }}
         ///.
@@ -438,6 +443,41 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string MatrixIndexer {
             get {
                 return ResourceManager.GetString("MatrixIndexer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Mul
+        ///    
+        ///    /// &lt;summary&gt;Returns the {1} row vector result of a matrix multiplication between a {1} row vector and a {0} matrix.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;a&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;b&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The computed vector-matrix multiplication.&lt;/returns&gt;
+        ///    public static {1} mul({1} v, {0} m) {{
+        ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2)); 
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MatrixMul3 {
+            get {
+                return ResourceManager.GetString("MatrixMul3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    #region Mul
+        ///    
+        ///    /// &lt;summary&gt;Returns the {1} row vector result of a matrix multiplication between a {1} row vector and a {0} matrix.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;a&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;b&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The computed vector-matrix multiplication.&lt;/returns&gt;
+        ///    public static {1} mul({1} v, {0} m) {{
+        ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2), csum [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MatrixMul4 {
+            get {
+                return ResourceManager.GetString("MatrixMul4", resourceCulture);
             }
         }
         
@@ -1042,8 +1082,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
         ///
-        ///		#endregion
-        ///.
+        ///    /// &lt;summary&gt;
+        ///    /// Returns a safe normalized version of the {0} vector v by scaling it by 1 / length(v).
+        ///    /// Ret [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string VectorOperationsFloatingPoint {
             get {

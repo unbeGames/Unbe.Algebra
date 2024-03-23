@@ -14,6 +14,7 @@ namespace Unbe.Algebra.CodeGen {
       AddIndexer();
       AddBaseMath();
       AddMath();
+      AddMatrixMath();
       AddEquality();
       AddStringMethods();
 
@@ -50,8 +51,8 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddMath() {
-      string template = string.Empty;
       if (IsSigned(numFlags)) {
+        string template = string.Empty;
         switch (dimensionY) {
           case 4:
             template = Resources.SignMathMatrix4;
@@ -62,6 +63,19 @@ namespace Unbe.Algebra.CodeGen {
         }
         sbMath.Append(string.Format(template, typeName, vectorPrefix));
       }
+    }
+
+    private void AddMatrixMath() {
+      string template = string.Empty;
+      switch (dimensionY) {
+        case 4:
+          template = Resources.MatrixMul4;
+          break;
+        case 3:
+          template = Resources.MatrixMul3;
+          break;
+      }
+      sbMath.Append(string.Format(template, typeName, underlyingType));
     }
 
     private void AddEquality() {
