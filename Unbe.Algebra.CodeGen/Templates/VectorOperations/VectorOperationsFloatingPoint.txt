@@ -7,6 +7,19 @@
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
 
+    /// <summary>
+    /// Returns a safe normalized version of the {0} vector v by scaling it by 1 / length(v).
+    /// Returns the given default value when 1 / length(v) does not produce a finite number.
+    /// </summary>
+    /// <param name="v">Vector to normalize.</param>
+    /// <param name="defaultvalue">Vector to return if normalized vector is not finite.</param>
+    /// <returns>The normalized vector or the default value if the normalized vector is not finite.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} normalizesafe({0} v, {0} defaultvalue = new {0}()) {{ 
+      var len = dot(v, v);
+      return select(defaultvalue, rsqrt(len) * v, len > FLT_MIN_NORMAL);
+    }}
+
 		/// <summary>Returns the length of a {0} vector.</summary>
 		/// <param name="v">Vector to use when computing squared length.</param>
     /// <returns>Length of vector v.</returns>

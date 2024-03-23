@@ -163,6 +163,7 @@ namespace Unbe.Algebra.CodeGen {
         // Vector 4 to 2
         ShuffleToVector2(shuffleReadonlyTemplate, shuffle4To2Names, 2);
       } else if(dimensionX == 3) {
+        ShuffleToVector4(shuffleReadonlyTemplate, shuffle3To4Names, 1);
         // Vector 3 to 2
         ShuffleToVector2(shuffleReadonlyTemplate, shuffle3To2Names, 1);
       }
@@ -170,6 +171,14 @@ namespace Unbe.Algebra.CodeGen {
 
       sb.AppendLine();
       sb.Append(string.Format(Resources.ShuffleBase, tmp.ToString()));
+    }
+
+    private void ShuffleToVector4(string shuffleReadonlyTemplate, string[] shuffleNames, int enlarge) {
+      var enlargedTypeName = $"{typeNameBase}{dimensionX + enlarge}";
+      for (int i = 0; i < shuffleNames.Length; i++) {
+        var shuffle = shuffleNames[i];
+        tmp.Append(string.Format(shuffleReadonlyTemplate, enlargedTypeName, shuffle, vectorPrefix, dimensionX + enlarge, shuffle));
+      }
     }
 
     private void ShuffleToVector2(string shuffleReadonlyTemplate, string[] shuffleNames, int reduce) {

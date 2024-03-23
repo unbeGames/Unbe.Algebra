@@ -76,6 +76,221 @@ namespace Unbe.Algebra {
       return quaternion(float4(axis * sina, cosa));
     }
 
+
+    #region Euler Angles
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-y-z order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerXYZ(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z - s.y * s.z * c.x,
+      // s.y * c.x * c.z + s.x * s.z * c.y,
+      // s.z * c.x * c.y - s.x * s.y * c.z,
+      // c.x * c.y * c.z + s.y * s.z * s.x
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(-1.0f, 1.0f, -1.0f, 1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-z-y order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerXZY(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z + s.y * s.z * c.x,
+      // s.y * c.x * c.z + s.x * s.z * c.y,
+      // s.z * c.x * c.y - s.x * s.y * c.z,
+      // c.x * c.y * c.z - s.y * s.z * s.x
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(1.0f, 1.0f, -1.0f, -1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-x-z order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerYXZ(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z - s.y * s.z * c.x,
+      // s.y * c.x * c.z + s.x * s.z * c.y,
+      // s.z * c.x * c.y + s.x * s.y * c.z,
+      // c.x * c.y * c.z - s.y * s.z * s.x
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(-1.0f, 1.0f, 1.0f, -1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-z-x order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerYZX(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z - s.y * s.z * c.x,
+      // s.y * c.x * c.z - s.x * s.z * c.y,
+      // s.z * c.x * c.y + s.x * s.y * c.z,
+      // c.x * c.y * c.z + s.y * s.z * s.x
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(-1.0f, -1.0f, 1.0f, 1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// This is the default order rotation order in Unity.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-x-y order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerZXY(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z + s.y * s.z * c.x,
+      // s.y * c.x * c.z - s.x * s.z * c.y,
+      // s.z * c.x * c.y - s.x * s.y * c.z,
+      // c.x * c.y * c.z + s.y * s.z * s.x
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(1.0f, -1.0f, -1.0f, 1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-y-x order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerZYX(Float3 xyz) {
+      sincos(0.5f * xyz, out var s, out var c);
+      // s.x * c.y * c.z + s.y * s.z * c.x,
+      // s.y * c.x * c.z - s.x * s.z * c.y,
+      // s.z * c.x * c.y + s.x * s.y * c.z,
+      // c.x * c.y * c.z - s.y * s.x * s.z
+      return quaternion(float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * float4(c.xyz, s.x) * float4(1.0f, -1.0f, 1.0f, -1.0f));
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-y-z order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerXYZ(float x, float y, float z) { return EulerXYZ(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in x-z-y order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerXZY(float x, float y, float z) { return EulerXZY(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-x-z order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerYXZ(float x, float y, float z) { return EulerYXZ(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in y-z-x order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerYZX(float x, float y, float z) { return EulerYZX(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// This is the default order rotation order in Unity.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-x-y order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerZXY(float x, float y, float z) { return EulerZXY(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in z-y-x order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion EulerZYX(float x, float y, float z) { return EulerZYX(float3(x, y, z)); }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing 3 rotations around the principal axes in a given order.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// When the rotation order is known at compile time, it is recommended for performance reasons to use specific
+    /// Euler rotation constructors such as EulerZXY(...).
+    /// </summary>
+    /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+    /// <param name="order">The order in which the rotations are applied.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in the specified order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion Euler(Float3 xyz, RotationOrder order = RotationOrder.zxy) {
+      switch (order) {
+        case RotationOrder.xyz:
+          return EulerXYZ(xyz);
+        case RotationOrder.xzy:
+          return EulerXZY(xyz);
+        case RotationOrder.yxz:
+          return EulerYXZ(xyz);
+        case RotationOrder.yzx:
+          return EulerYZX(xyz);
+        case RotationOrder.zxy:
+          return EulerZXY(xyz);
+        case RotationOrder.zyx:
+          return EulerZYX(xyz);
+        default:
+          return Quaternion.Identity;
+      }
+    }
+
+    /// <summary>
+    /// Returns a quaternion constructed by first performing 3 rotations around the principal axes in a given order.
+    /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
+    /// When the rotation order is known at compile time, it is recommended for performance reasons to use specific
+    /// Euler rotation constructors such as EulerZXY(...).
+    /// </summary>
+    /// <param name="x">The rotation angle around the x-axis in radians.</param>
+    /// <param name="y">The rotation angle around the y-axis in radians.</param>
+    /// <param name="z">The rotation angle around the z-axis in radians.</param>
+    /// <param name="order">The order in which the rotations are applied.</param>
+    /// <returns>The quaternion representing the Euler angle rotation in the specified order.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion Euler(float x, float y, float z, RotationOrder order = RotationOrder.standard) {
+      return Euler(float3(x, y, z), order);
+    }
+
+    #endregion
+
+
     /// <summary>Constructs a Quaternion from a System.Numerics.Quaternion.</summary>
     /// <param name="v">System.Numerics.Quaternion to convert to Quaternion.</param>
     /// <returns>Converted value.</returns>

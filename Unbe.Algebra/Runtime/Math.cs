@@ -56,6 +56,12 @@ namespace Unbe.Algebra {
     /// <summary>The square root 2. Approximately 1.41.</summary>
     public const float SQRT2 = (float)SQRT2_DBL;
 
+    /// <summary>The smallest positive normal number representable in a float.</summary>
+    public const float FLT_MIN_NORMAL = 1.175494351e-38F;
+
+    /// <summary>The smallest positive normal number representable in a double. This is a f64/double precision constant.</summary>
+    public const double DBL_MIN_NORMAL = 2.2250738585072014e-308;
+
     #region Conversions
 
     /// <summary>Returns the bit pattern of a uint as an int.</summary>

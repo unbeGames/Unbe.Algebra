@@ -12,6 +12,7 @@ namespace Unbe.Algebra.CodeGen {
 
   internal static partial class Utils {
     static Utils() {
+      GenerateShuffle3to4();
       GenerateShuffle4Inverse(shuffle4Names, 4);
       GenerateShuffle4Inverse(shuffle3Names, 3);
     }
@@ -27,7 +28,10 @@ namespace Unbe.Algebra.CodeGen {
 
     internal static readonly string[] shuffle3Names = new string[] { "xxx", "yxx", "zxx", "xyx", "yyx", "zyx", "xzx", "yzx", "zzx", "xxy", "yxy", "zxy", "xyy", "yyy", "zyy", "xzy", "yzy", "zzy", "xxz", "yxz", "zxz", "xyz", "yyz", "zyz", "xzz", "yzz", "zzz" };
     internal static readonly string[] shuffle3To2Names = new string[] { "xx", "yx", "zx", "xy", "yy", "zy", "xz", "yz", "zz" };
+    internal static string[] shuffle3To4Names;
 
+    public static readonly Dictionary<char, int> shufflePositions = new() { { 'x', 0 }, { 'y', 1 }, { 'z', 2 }, { 'w', 3 } };
+    private static readonly char[] xyzw = new[] { 'x', 'y', 'z', 'w' };
 
     internal static readonly Dictionary<string, string> typeAliases = new () {
       { "SByte", "sbyte" },
@@ -108,6 +112,15 @@ namespace Unbe.Algebra.CodeGen {
       return vectorPrefix[(type, dimensionX)];
     }
 
+    private static void GenerateShuffle3to4() {
+      shuffle3To4Names = new string[shuffle3Names.Length * 3];
+      for(int i = 0; i < shuffle3Names.Length; i++) {
+        for(int j = 0; j < 3; j++) {
+          shuffle3To4Names[i * 3 + j] = $"{shuffle3Names[i]}{xyzw[j]}";
+        }
+      }
+    }
+
     private static void GenerateShuffle4Inverse(string[] shuffleNames, int uniqueCount) {
       for(int i = 0; i < shuffleNames.Length; i++) {
         var shuffle = shuffleNames[i];
@@ -117,9 +130,6 @@ namespace Unbe.Algebra.CodeGen {
         }
       }
     }
-
-    public static readonly Dictionary<char, int> shufflePositions = new() { { 'x', 0 }, { 'y', 1 }, { 'z', 2 }, { 'w', 3 } };
-    private static readonly char[] xyzw = new[] { 'x', 'y', 'z', 'w' };
     
     private static string GenerateShuffle4Inverse(string shuffle) {
       var arr = shuffle.ToCharArray();  
