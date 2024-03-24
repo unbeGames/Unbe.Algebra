@@ -182,7 +182,6 @@ namespace Unbe.Algebra {
     /// <summary>
     /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
-    /// This is the default order rotation order in Unity.
     /// </summary>
     /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
     /// <returns>The quaternion representing the Euler angle rotation in z-x-y order.</returns>
@@ -259,7 +258,6 @@ namespace Unbe.Algebra {
     /// <summary>
     /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
     /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
-    /// This is the default order rotation order in Unity.
     /// </summary>
     /// <param name="x">The rotation angle around the x-axis in radians.</param>
     /// <param name="y">The rotation angle around the y-axis in radians.</param>
