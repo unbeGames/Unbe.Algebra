@@ -62,5 +62,14 @@ namespace Unbe.Algebra.Tests {
       var actual = Math.transpose(matrix);
       Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
     }
+
+    [Theory]
+    [Category("Matrix4x4")]
+    [TestCaseSource(nameof(matrix))]
+    public void InverseTheory(Float4x4 matrix) {
+      var a = Matrix4x4.Invert(matrix, out var expected);
+      var actual = Math.inverse(matrix);
+      Assert.That(AreApproxEqual(actual, expected, 1e-6f), $"{actual} {expected}");
+    }
   }
 }

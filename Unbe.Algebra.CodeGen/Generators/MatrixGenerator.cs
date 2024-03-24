@@ -80,7 +80,7 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddOperators(string template) {
-      sbMath.Append(string.Format(template, typeName));
+      sbMath.Append(string.Format(template, typeName, underlyingType));
     }
 
     private string Test() {
