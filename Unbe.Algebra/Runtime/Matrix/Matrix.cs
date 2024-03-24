@@ -58,5 +58,22 @@ namespace Unbe.Algebra {
         float4(0.0f, 0.0f, 0.0f, 1.0f)
       );
     }
+
+    /// <summary>
+    /// Returns a Float4x4 matrix representing a combined scale-, rotation- and translation transform.
+    /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform)).
+    /// </summary>
+    /// <param name="translation">The translation vector.</param>
+    /// <param name="rotation">The quaternion rotation.</param>
+    /// <param name="scale">The scaling factors of each axis.</param>
+    /// <returns>The Float4x4 matrix representing the translation, rotation, and scale by the inputs.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float4x4 TRS(Float3 translation, Quaternion rotation, Float3 scale) {
+      var r = new Float3x3(rotation);
+      return new Float4x4(float4(r.c0 * scale.x, 0.0f),
+                          float4(r.c1 * scale.y, 0.0f),
+                          float4(r.c2 * scale.z, 0.0f),
+                          float4(translation, 1.0f));
+    }
   }
 }

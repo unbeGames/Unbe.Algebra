@@ -62,6 +62,28 @@ namespace Unbe.Algebra {
       value = normalize(value);
     }
 
+    /// <summary>Constructs a unit quaternion from a Float3x3 rotation matrix. The matrix must be orthonormal.</summary>
+    /// <param name="m">The Float3x3 orthonormal rotation matrix.</param>
+    public Quaternion(Float3x3 m) {
+      var u = m.c0;
+      var v = m.c1;
+      var w = m.c2;
+
+      uint u_sign = (asuint(u.x) & 0x80000000);
+      float t = v.y + asfloat(asuint(w.z) ^ u_sign);
+      UInt4 u_mask = uint4((int)u_sign >> 31);
+      UInt4 t_mask = uint4(asint(t) >> 31);
+
+      float tr = 1.0f + abs(u.x);
+
+      UInt4 sign_flips = uint4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^ (u_mask & uint4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^ (t_mask & uint4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
+
+      value = float4(tr, u.y, w.x, v.z) + asfloat(asuint(float4(t, v.x, u.z, w.y)) ^ sign_flips);   // +---, +++-, ++-+, +-++
+
+      value = asfloat((asuint(value) & ~u_mask) | (asuint(value.zwxy) & u_mask));
+      value = asfloat((asuint(value.wzyx) & ~t_mask) | (asuint(value) & t_mask));
+      value = normalize(value);
+    }
 
     /// <summary>
     /// Returns a quaternion representing a rotation around a unit axis by an angle in radians.
@@ -74,6 +96,20 @@ namespace Unbe.Algebra {
     public static Quaternion AxisAngle(Float3 axis, float angle) {     
       sincos(0.5f * angle, out var sina, out var cosa);
       return quaternion(float4(axis * sina, cosa));
+    }
+
+    /// <summary>
+    /// Returns a quaternion view rotation given a unit length forward vector and a unit length up vector.
+    /// The two input vectors are assumed to be unit length and not collinear.
+    /// If these assumptions are not met use float3x3.LookRotationSafe instead.
+    /// </summary>
+    /// <param name="forward">The view forward direction.</param>
+    /// <param name="up">The view up direction.</param>
+    /// <returns>The quaternion view rotation.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion LookRotation(Float3 forward, Float3 up) {
+      var t = normalize(cross(up, forward));
+      return quaternion(new Float3x3(t, cross(forward, t), forward));
     }
 
 
@@ -321,18 +357,35 @@ namespace Unbe.Algebra {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Quaternion quaternion(Float4 value) { return new Quaternion(value); }
 
-    /// <summary>Returns a unit quaternion constructed from a float3x3 rotation matrix. The matrix must be orthonormal.</summary>
-    /// <param name="m">The float3x3 rotation matrix.</param>
+    /// <summary>Returns a unit quaternion constructed from a Float3x3 rotation matrix. The matrix must be orthonormal.</summary>
+    /// <param name="m">The Float3x3 rotation matrix.</param>
     /// <returns>The quaternion constructed from a float3x3 matrix.</returns>
-    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
-    //public static Quaternion quaternion(Float3x3 m) { return new Quaternion(m); }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion quaternion(Float3x3 m) { return new Quaternion(m); }
 
-    /// <summary>Returns a unit quaternion constructed from a float4x4 matrix. The matrix must be orthonormal.</summary>
-    /// <param name="m">The float4x4 matrix (must be orthonormal).</param>
-    /// <returns>The quaternion constructed from a float4x4 matrix.</returns>
+    /// <summary>Returns a unit quaternion constructed from a Float4x4 matrix. The matrix must be orthonormal.</summary>
+    /// <param name="m">The Float4x4 matrix (must be orthonormal).</param>
+    /// <returns>The Quaternion constructed from a float4x4 matrix.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Quaternion quaternion(Float4x4 m) { return new Quaternion(m); }
 
+    /// <summary>Returns the result of transforming the Quaternion b by the Quaternion a.</summary>
+    /// <param name="a">The quaternion on the left.</param>
+    /// <param name="b">The quaternion on the right.</param>
+    /// <returns>The result of transforming Quaternion b by the Quaternion a.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Quaternion mul(Quaternion a, Quaternion b) {
+      return quaternion(a.value.wwww * b.value + (a.value.xyzx * b.value.wwwx + a.value.yzxy * b.value.zxyy) * float4(1.0f, 1.0f, 1.0f, -1.0f) - a.value.zxyz * b.value.yzxz);
+    }
 
+    /// <summary>Returns the result of transforming a vector by a quaternion.</summary>
+    /// <param name="q">The quaternion transformation.</param>
+    /// <param name="v">The vector to transform.</param>
+    /// <returns>The transformation of vector v by quaternion q.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Float3 mul(Quaternion q, Float3 v) {
+      var t = 2 * cross(q.value.xyz, v);
+      return v + q.value.w * t + cross(q.value.xyz, t);
+    }       
   }
 }
