@@ -9,111 +9,63 @@ namespace Unbe.Algebra.CodeGen {
       typeNameBase = typeName.Replace($"{dimensionX}x{dimensionY}", string.Empty);
       underlyingType = $"{typeNameBase}{dimensionX}";
 
-      AddProps();
-      AddConstructors();
-      AddIndexer();
-      AddBaseMath();
-      AddMath();
-      AddMatrixMath();
-      AddEquality();
-      AddStringMethods();
+
+      if (dimensionY == 4) {
+        AddProps(Resources.PropsMatrix4);
+        AddConstructors(Resources.SimpleConstructorMatrix4);
+        AddIndexer();
+        AddBaseMath(Resources.BaseMathOperatorsMatrix4);
+        AddSignMath(Resources.SignMathMatrix4);
+        AddMatrixMath(Resources.MulMatrix4);
+        AddEquality(Resources.EqualsMethodsMatrix4);
+        if (dimensionX == 4) {
+          AddExtConstructors(Resources.SimpleConstructorMatrix4x4);
+          AddStringMethods(Resources.StringMethodsMatrix4x4);
+        }
+      } else if(dimensionY == 3) {
+        AddProps(Resources.PropsMatrix3);
+        AddConstructors(Resources.SimpleConstructorMatrix3);
+        AddIndexer();
+        AddBaseMath(Resources.BaseMathOperatorsMatrix3);
+        AddSignMath(Resources.SignMathMatrix3);
+        AddMatrixMath(Resources.MulMatrix3);
+        AddEquality(Resources.EqualsMethodsMatrix3);
+        if (dimensionX == 3) {
+          AddExtConstructors(Resources.SimpleConstructorMatrix3x3);
+          AddStringMethods(Resources.StringMethodsMatrix3x3);
+        }
+      }
 
       return string.Format(Resources.BaseTemplate, typeName, sb.ToString(), sbMath.ToString());
     }
 
-    private void AddProps() {
-      string propsTemplate = string.Empty;
-      switch (dimensionY) {
-        case 4:
-          propsTemplate = Resources.PropsMatrix4;
-          break;
-        case 3:
-          propsTemplate = Resources.PropsMatrix3;
-          break;
-      }
-      //sb.Append(string.Format(Resources.VectorProperties, typeName, T));
+    private void AddProps(string propsTemplate) {      
       sb.Append(string.Format(propsTemplate, typeName));
     }
 
-    private void AddConstructors() {
-      string template = string.Empty;
-      string extTemplate = string.Empty;
-
-      switch (dimensionY) {
-        case 4:
-          template = Resources.SimpleConstructorMatrix4;
-          if(dimensionX == 4) {
-            extTemplate = Resources.SimpleConstructorMatrix4x4;
-          }
-          break;
-        case 3:
-          template = Resources.SimpleConstructorMatrix3;
-          if(dimensionX == 3) {
-            extTemplate = Resources.SimpleConstructorMatrix3x3;
-          }
-          break;
-      }
-
+    private void AddConstructors(string template) {
       sb.Append(string.Format(template, typeName, underlyingType, T, vectorPrefix));
+    }
+
+    private void AddExtConstructors(string extTemplate) { 
       sb.Append(string.Format(extTemplate, typeName, underlyingType, T, vectorPrefix));
     }
 
-    private void AddMath() {
+    private void AddSignMath(string template) {
       if (IsSigned(numFlags)) {
-        string template = string.Empty;
-        switch (dimensionY) {
-          case 4:
-            template = Resources.SignMathMatrix4;
-            break;
-          case 3:
-            template = Resources.SignMathMatrix3;
-            break;
-        }
         sbMath.Append(string.Format(template, typeName, vectorPrefix));
       }
     }
 
-    private void AddMatrixMath() {
-      string template = string.Empty;
-      switch (dimensionY) {
-        case 4:
-          template = Resources.MulMatrix4;
-          break;
-        case 3:
-          template = Resources.MulMatrix3;
-          break;
-      }
+    private void AddMatrixMath(string template) {
       sbMath.Append(string.Format(template, typeName, underlyingType));
     }
 
-    private void AddEquality() {
-      string template = string.Empty;
-      switch (dimensionY) {
-        case 4:
-          template = Resources.EqualsMethodsMatrix4;
-          break;
-        case 3:
-          template = Resources.EqualsMethodsMatrix3;
-          break;
-      }
+    private void AddEquality(string template) {
       sb.Append(string.Format(template, typeName));
     }
 
-    private void AddStringMethods() {
-      string template = string.Empty;
-      if (dimensionX == 4) {
-        switch (dimensionY) {
-          case 4:
-            template = Resources.StringMethodsMatrix4x4;
-            break;
-        }
-      } else if(dimensionX == 3) {
-        switch (dimensionY) {
-          case 3:
-            template = Resources.StringMethodsMatrix3x3;
-            break;
-        }
-      }
+    private void AddStringMethods(string template) {
       sb.Append(string.Format(template, typeName));
     }
 
@@ -121,16 +73,7 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(Resources.MatrixIndexer, typeName, typeNameBase, dimensionX, dimensionY));
     }
 
-    private void AddBaseMath() {
-      string template = string.Empty;
-      switch (dimensionY) {
-        case 4:
-          template = Resources.BaseMathOperatorsMatrix4;
-          break;
-        case 3:
-          template = Resources.BaseMathOperatorsMatrix3;
-          break;
-      }
+    private void AddBaseMath(string template) {
       sb.Append(string.Format(template, typeName, T, vectorPrefix));
     }
 
