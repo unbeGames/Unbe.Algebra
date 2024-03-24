@@ -71,9 +71,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {0} opera [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string BaseMathMatrix3Operators {
+        internal static string BaseMathOperatorsMatrix3 {
             get {
-                return ResourceManager.GetString("BaseMathMatrix3Operators", resourceCulture);
+                return ResourceManager.GetString("BaseMathOperatorsMatrix3", resourceCulture);
             }
         }
         
@@ -88,9 +88,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {0} opera [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string BaseMathMatrix4Operators {
+        internal static string BaseMathOperatorsMatrix4 {
             get {
-                return ResourceManager.GetString("BaseMathMatrix4Operators", resourceCulture);
+                return ResourceManager.GetString("BaseMathOperatorsMatrix4", resourceCulture);
             }
         }
         
@@ -105,9 +105,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {0} op [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string BaseMathOperators {
+        internal static string BaseMathOperatorsVector {
             get {
-                return ResourceManager.GetString("BaseMathOperators", resourceCulture);
+                return ResourceManager.GetString("BaseMathOperatorsVector", resourceCulture);
             }
         }
         
@@ -144,9 +144,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///
         ///    /// &lt;summary&gt;Returns the result of a componentwise bitwise and ope [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string BitOperators {
+        internal static string BitOperatorsVector {
             get {
-                return ResourceManager.GetString("BitOperators", resourceCulture);
+                return ResourceManager.GetString("BitOperatorsVector", resourceCulture);
             }
         }
         
@@ -186,6 +186,71 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} false value.&lt;/summary&gt;
+        ///    public static readonly {0} True = new {0}(true);
+        ///    
+        ///    /// &lt;summary&gt;{0} false value.&lt;/summary&gt;
+        ///    public static readonly {0} False = new {0}(false);
+        ///.
+        /// </summary>
+        internal static string BooleanProps {
+            get {
+                return ResourceManager.GetString("BooleanProps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} x, {1} y) {{
+        ///      value = {2}.Create(x, y);
+        ///    }}    
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector f [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ConstructorVector2 {
+            get {
+                return ResourceManager.GetString("ConstructorVector2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({1} x, {1} [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ConstructorVector3 {
+            get {
+                return ResourceManager.GetString("ConstructorVector3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from argume [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ConstructorVector4 {
+            get {
+                return ResourceManager.GetString("ConstructorVector4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 		
         ///		#region Core Math
         ///
@@ -214,9 +279,145 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static Bool{3} operator &lt; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string EqualityOperators {
+        internal static string EqualityOperatorsVector {
             get {
-                return ResourceManager.GetString("EqualityOperators", resourceCulture);
+                return ResourceManager.GetString("EqualityOperatorsVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualsMethodsMatrix2 {
+            get {
+                return ResourceManager.GetString("EqualsMethodsMatrix2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualsMethodsMatrix3 {
+            get {
+                return ResourceManager.GetString("EqualsMethodsMatrix3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2) &amp;&amp; c3.Equals(other.c3);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} i [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualsMethodsMatrix4 {
+            get {
+                return ResourceManager.GetString("EqualsMethodsMatrix4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public readonly bool Equals({0} other) {{
+        ///      return value.Equals(other.value);
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
+        ///    /// &lt;pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EqualsMethodsVector {
+            get {
+                return ResourceManager.GetString("EqualsMethodsVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from a single {2} value.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{1} to convert to {0}&lt;/param&gt;
+        ///    /// &lt;returns&gt;Converted value.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} {1}{3}({2} v) {{ return new {0}(v); }}
+        ///.
+        /// </summary>
+        internal static string FactoryVector {
+            get {
+                return ResourceManager.GetString("FactoryVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from two {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} {1}{3}({1} x, {1} y) {{ return new {0}(x, y); }}   
+        ///
+        ///    /// &lt;summary&gt;Returns a {0} vector con [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FactoryVector2 {
+            get {
+                return ResourceManager.GetString("FactoryVector2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from three {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static { [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FactoryVector3 {
+            get {
+                return ResourceManager.GetString("FactoryVector3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
+        ///    /// &lt;returns&gt;{0} constructed from a [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FactoryVector4 {
+            get {
+                return ResourceManager.GetString("FactoryVector4", resourceCulture);
             }
         }
         
@@ -318,116 +519,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public readonly bool Equals({0} other) {{
-        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1);
-        ///    }}
-        ///
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summ [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Matrix2EqualsMethods {
-            get {
-                return ResourceManager.GetString("Matrix2EqualsMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public readonly bool Equals({0} other) {{
-        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2);
-        ///    }}
-        ///
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Matrix3EqualsMethods {
-            get {
-                return ResourceManager.GetString("Matrix3EqualsMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Identity = new {0}(1, 0, 0,   0, 1, 0,   0, 0, 1);
-        ///
-        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Zero = new {0}();
-        ///.
-        /// </summary>
-        internal static string Matrix3Props {
-            get {
-                return ResourceManager.GetString("Matrix3Props", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
-        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
-        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
-        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c0.y.ToString(format, formatProvider), c1.y.ToString(format, format [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Matrix3x3StringMethods {
-            get {
-                return ResourceManager.GetString("Matrix3x3StringMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public readonly bool Equals({0} other) {{
-        ///      return c0.Equals(other.c0) &amp;&amp; c1.Equals(other.c1) &amp;&amp; c2.Equals(other.c2) &amp;&amp; c3.Equals(other.c3);
-        ///    }}
-        ///
-        ///    /// &lt;summary&gt;Returns true if the {0} i [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Matrix4EqualsMethods {
-            get {
-                return ResourceManager.GetString("Matrix4EqualsMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Identity = new {0}(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1);
-        ///
-        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
-        ///    public static readonly {0} Zero = new {0}();
-        ///.
-        /// </summary>
-        internal static string Matrix4Props {
-            get {
-                return ResourceManager.GetString("Matrix4Props", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
-        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
-        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
-        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}},  {{4}}, {{5}}, {{6}}, {{7}},  {{8}}, {{9}}, {{10}}, {{11}},  {{12}}, {{13}}, {{14}}, {{15}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c3.x.ToStri [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Matrix4x4StringMethods {
-            get {
-                return ResourceManager.GetString("Matrix4x4StringMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Returns the {1}{2} element at a specified index.&lt;/summary&gt;
         ///    public unsafe ref {1}{2} this[int index] {{
         ///      get {{
@@ -458,9 +549,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2)); 
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string MatrixMul3 {
+        internal static string MulMatrix3 {
             get {
-                return ResourceManager.GetString("MatrixMul3", resourceCulture);
+                return ResourceManager.GetString("MulMatrix3", resourceCulture);
             }
         }
         
@@ -475,9 +566,154 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    public static {1} mul({1} v, {0} m) {{
         ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2), csum [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string MatrixMul4 {
+        internal static string MulMatrix4 {
             get {
-                return ResourceManager.GetString("MatrixMul4", resourceCulture);
+                return ResourceManager.GetString("MulMatrix4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Vector Operations Floating Point
+        ///
+        ///		/// &lt;summary&gt;Returns a normalized version of the vector v by scaling it by 1 / length(x).&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;Vector to normalize.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The normalized vector.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
+        ///
+        ///    /// &lt;summary&gt;
+        ///    /// Returns a safe normalized version of the {0} vector v by scaling it by 1 / length(v).
+        ///    /// Ret [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string OperationsFloatingPointVector {
+            get {
+                return ResourceManager.GetString("OperationsFloatingPointVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Vector Operations
+        ///
+        ///    /// &lt;summary&gt;Returns the dot product of two vectors.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;x&quot;&gt;The first vector.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;y&quot;&gt;The second vector.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The dot product of two vectors.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {2} dot({0} x, {0} y) {{ return {1}.Dot(x.value, y.value); }}
+        ///
+        ///		#endregion
+        ///.
+        /// </summary>
+        internal static string OperationsVector {
+            get {
+                return ResourceManager.GetString("OperationsVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
+        ///    public static readonly {0} Zero;
+        ///
+        ///    /// &lt;summary&gt;{0} min value.&lt;/summary&gt;
+        ///    public static readonly {0} MinValue = new {0}({1}.MinValue);
+        ///
+        ///    /// &lt;summary&gt;{0} max value.&lt;/summary&gt;
+        ///    public static readonly {0} MaxValue = new {0}({1}.MaxValue);
+        ///
+        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MinValue&quot; /&gt;
+        ///    static {0} IMinMaxValue&lt;{0}&gt;.MinValue =&gt; MinValue;
+        ///
+        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MaxValue&quot; /&gt;
+        ///    static {0} IMi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PropertiesVector {
+            get {
+                return ResourceManager.GetString("PropertiesVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Identity = new {0}(1, 0, 0,   0, 1, 0,   0, 0, 1);
+        ///
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Zero = new {0}();
+        ///.
+        /// </summary>
+        internal static string PropsMatrix3 {
+            get {
+                return ResourceManager.GetString("PropsMatrix3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Identity = new {0}(1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1);
+        ///
+        ///    /// &lt;summary&gt;{0} identity.&lt;/summary&gt;
+        ///    public static readonly {0} Zero = new {0}();
+        ///.
+        /// </summary>
+        internal static string PropsMatrix4 {
+            get {
+                return ResourceManager.GetString("PropsMatrix4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
+        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
+        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
+        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
+        ///
+        ///    /// &lt;summary&gt;Number of elements in the vector.&lt;/summary&gt;
+        ///    public readonly int count {{ get {{ return 2; }} }}
+        ///.
+        /// </summary>
+        internal static string PropsVector2 {
+            get {
+                return ResourceManager.GetString("PropsVector2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
+        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
+        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
+        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
+        ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
+        ///    public {1} z {{ readonly get {{ return this[2]; }} set {{ this[2] = value; }} }}
+        ///
+        ///    /// &lt;summary&gt;Number of elements in the vector.&lt;/summary&gt;
+        ///    public readonly int [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PropsVector3 {
+            get {
+                return ResourceManager.GetString("PropsVector3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
+        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
+        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
+        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
+        ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
+        ///    public {1} z {{ readonly get {{ return this[2]; }} set {{ this[2] = value; }} }}
+        ///    /// &lt;summary&gt;w component of the vector.&lt;/summary&gt;
+        ///    public {1} w {{ readonly get [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PropsVector4 {
+            get {
+                return ResourceManager.GetString("PropsVector4", resourceCulture);
             }
         }
         
@@ -491,9 +727,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///		public static {0} operator &lt;&lt; ({0} v, int n) {{ return new {0} ({1}.ShiftLeft(v.valu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ShiftOperators {
+        internal static string ShiftOperatorsVector {
             get {
-                return ResourceManager.GetString("ShiftOperators", resourceCulture);
+                return ResourceManager.GetString("ShiftOperatorsVector", resourceCulture);
             }
         }
         
@@ -638,6 +874,26 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({2}&lt;{1}&gt; v) {{
+        ///      value = v;
+        ///    }}
+        ///
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public uns [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleConstructorEvenVector {
+            get {
+                return ResourceManager.GetString("SimpleConstructorEvenVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} matrix from four {1} vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;c0&quot;&gt;The matrix column c0 will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;c1&quot;&gt;The matrix column c1 will be set to this value.&lt;/param&gt;
@@ -651,9 +907,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///
         ///    ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleMatrix3Constructor {
+        internal static string SimpleConstructorMatrix3 {
             get {
-                return ResourceManager.GetString("SimpleMatrix3Constructor", resourceCulture);
+                return ResourceManager.GetString("SimpleConstructorMatrix3", resourceCulture);
             }
         }
         
@@ -666,9 +922,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;m10&quot;&gt;The matrix at row 1, column 0 will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;m11&quot;&gt;The matrix at ro [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleMatrix3x3Constructor {
+        internal static string SimpleConstructorMatrix3x3 {
             get {
-                return ResourceManager.GetString("SimpleMatrix3x3Constructor", resourceCulture);
+                return ResourceManager.GetString("SimpleConstructorMatrix3x3", resourceCulture);
             }
         }
         
@@ -682,9 +938,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public {0}({1} c0, {1} c1, {1} c2, {1} c3){ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleMatrix4Constructor {
+        internal static string SimpleConstructorMatrix4 {
             get {
-                return ResourceManager.GetString("SimpleMatrix4Constructor", resourceCulture);
+                return ResourceManager.GetString("SimpleConstructorMatrix4", resourceCulture);
             }
         }
         
@@ -697,45 +953,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;m03&quot;&gt;The matrix at row 0, column 3 will be set to this value.&lt;/param&gt;
         ///    /// &lt;param name=&quot;m10&quot;&gt;The matrix at r [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleMatrix4x4Constructor {
+        internal static string SimpleConstructorMatrix4x4 {
             get {
-                return ResourceManager.GetString("SimpleMatrix4x4Constructor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Constructs a {0} vector from a {0} vector.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;vector&quot;&gt;The constructed vector&apos;s components will be set to this value.&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({0} vector) {{
-        ///      value = vector.value;
-        ///    }}
-        ///.
-        /// </summary>
-        internal static string SimpleVectorConstructor {
-            get {
-                return ResourceManager.GetString("SimpleVectorConstructor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Constructs a {0} vector from {2}&lt;{1}&gt;.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;{2}&lt;{1}&gt; to convert to {0}&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({2}&lt;{1}&gt; v) {{
-        ///      value = v;
-        ///    }}
-        ///
-        ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;bool to convert to {0}&lt;/param&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public uns [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string SimpleVectorConstructorEven {
-            get {
-                return ResourceManager.GetString("SimpleVectorConstructorEven", resourceCulture);
+                return ResourceManager.GetString("SimpleConstructorMatrix4x4", resourceCulture);
             }
         }
         
@@ -752,9 +972,25 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///
         ///    /// &lt;summary&gt;Constructs a {0} vector from a single bool value by converting it to {1} and assigning it to every component.&lt;/summar [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string SimpleVectorConstructorOdd {
+        internal static string SimpleConstructorOddVector {
             get {
-                return ResourceManager.GetString("SimpleVectorConstructorOdd", resourceCulture);
+                return ResourceManager.GetString("SimpleConstructorOddVector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} vector from a {0} vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;vector&quot;&gt;The constructed vector&apos;s components will be set to this value.&lt;/param&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public {0}({0} vector) {{
+        ///      value = vector.value;
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string SimpleConstructorVector {
+            get {
+                return ResourceManager.GetString("SimpleConstructorVector", resourceCulture);
             }
         }
         
@@ -808,73 +1044,27 @@ namespace Unbe.Algebra.CodeGen.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    #region Trigonometry
-        ///
-        ///    /// &lt;summary&gt;Returns the componentwise sine of a vector.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in radians.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The componentwise sine of the input.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} sin({0} v) {{ return new {0}({1}Ext.Sin(v.value)); }}
-        ///
-        ///    /// &lt;summary&gt;Returns the componentwise cosine of a vector.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in ra [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}},  {{3}}, {{4}}, {{5}},  {{6}}, {{7}}, {{8}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c0.y.ToString(format, formatProvider), c1.y.ToString(format, format [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Trigonometry {
+        internal static string StringMethodsMatrix3x3 {
             get {
-                return ResourceManager.GetString("Trigonometry", resourceCulture);
+                return ResourceManager.GetString("StringMethodsMatrix3x3", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({1} x, {1} y) {{
-        ///      value = {2}.Create(x, y);
-        ///    }}    
-        ///
-        ///    /// &lt;summary&gt;Constructs a {0} vector f [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
+        ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
+        ///    public readonly string ToString(string format, IFormatProvider formatProvider) {{
+        ///      return string.Format(&quot;{0}({{0}}, {{1}}, {{2}}, {{3}},  {{4}}, {{5}}, {{6}}, {{7}},  {{8}}, {{9}}, {{10}}, {{11}},  {{12}}, {{13}}, {{14}}, {{15}})&quot;, c0.x.ToString(format, formatProvider), c1.x.ToString(format, formatProvider), c2.x.ToString(format, formatProvider), c3.x.ToStri [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Vector2Constructor {
+        internal static string StringMethodsMatrix4x4 {
             get {
-                return ResourceManager.GetString("Vector2Constructor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from two {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} {1}{3}({1} x, {1} y) {{ return new {0}(x, y); }}   
-        ///
-        ///    /// &lt;summary&gt;Returns a {0} vector con [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector2Factory {
-            get {
-                return ResourceManager.GetString("Vector2Factory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
-        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
-        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
-        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
-        ///
-        ///    /// &lt;summary&gt;Number of elements in the vector.&lt;/summary&gt;
-        ///    public readonly int count {{ get {{ return 2; }} }}
-        ///.
-        /// </summary>
-        internal static string Vector2Props {
-            get {
-                return ResourceManager.GetString("Vector2Props", resourceCulture);
+                return ResourceManager.GetString("StringMethodsMatrix4x4", resourceCulture);
             }
         }
         
@@ -890,59 +1080,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;returns&gt;String representation of the value.&lt;/returns&gt;
         ///    [MethodImpl [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Vector2StringMethods {
+        internal static string StringMethodsVector2 {
             get {
-                return ResourceManager.GetString("Vector2StringMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public {0}({1} x, {1} [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector3Constructor {
-            get {
-                return ResourceManager.GetString("Vector3Constructor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from three {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from arguments.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static { [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector3Factory {
-            get {
-                return ResourceManager.GetString("Vector3Factory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
-        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
-        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
-        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
-        ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z {{ readonly get {{ return this[2]; }} set {{ this[2] = value; }} }}
-        ///
-        ///    /// &lt;summary&gt;Number of elements in the vector.&lt;/summary&gt;
-        ///    public readonly int [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector3Props {
-            get {
-                return ResourceManager.GetString("Vector3Props", resourceCulture);
+                return ResourceManager.GetString("StringMethodsVector2", resourceCulture);
             }
         }
         
@@ -957,56 +1097,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/summary&gt;
         ///    /// &lt;returns&gt;String representati [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Vector3StringMethods {
+        internal static string StringMethodsVector3 {
             get {
-                return ResourceManager.GetString("Vector3StringMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Constructs a {0} vector from four {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from argume [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector4Constructor {
-            get {
-                return ResourceManager.GetString("Vector4Constructor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from four {1} values.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The constructed vector&apos;s x component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The constructed vector&apos;s y component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;z&quot;&gt;The constructed vector&apos;s z component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;w&quot;&gt;The constructed vector&apos;s w component will be set to this value.&lt;/param&gt;
-        ///    /// &lt;returns&gt;{0} constructed from a [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector4Factory {
-            get {
-                return ResourceManager.GetString("Vector4Factory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///    /// &lt;summary&gt;x component of the vector.&lt;/summary&gt;
-        ///    public {1} x {{ readonly get {{ return this[0]; }} set {{ this[0] = value; }} }}
-        ///    /// &lt;summary&gt;y component of the vector.&lt;/summary&gt;
-        ///    public {1} y {{ readonly get {{ return this[1]; }} set {{ this[1] = value; }} }}
-        ///    /// &lt;summary&gt;z component of the vector.&lt;/summary&gt;
-        ///    public {1} z {{ readonly get {{ return this[2]; }} set {{ this[2] = value; }} }}
-        ///    /// &lt;summary&gt;w component of the vector.&lt;/summary&gt;
-        ///    public {1} w {{ readonly get [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Vector4Props {
-            get {
-                return ResourceManager.GetString("Vector4Props", resourceCulture);
+                return ResourceManager.GetString("StringMethodsVector3", resourceCulture);
             }
         }
         
@@ -1020,43 +1113,28 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///
         ///    /// &lt;summary&gt;Returns a string representation of the {0}.&lt;/sum [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Vector4StringMethods {
+        internal static string StringMethodsVector4 {
             get {
-                return ResourceManager.GetString("Vector4StringMethods", resourceCulture);
+                return ResourceManager.GetString("StringMethodsVector4", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;rhs&quot;&gt;Right hand side argument to compare equality with.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The result of the equality comparison.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public readonly bool Equals({0} other) {{
-        ///      return value.Equals(other.value);
-        ///    }}
+        ///    #region Trigonometry
         ///
-        ///    /// &lt;summary&gt;Returns true if the {0} is equal to a given {0}, false otherwise.&lt;/summary&gt;
-        ///    /// &lt;pa [rest of string was truncated]&quot;;.
+        ///    /// &lt;summary&gt;Returns the componentwise sine of a vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in radians.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The componentwise sine of the input.&lt;/returns&gt;
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///		public static {0} sin({0} v) {{ return new {0}({1}Ext.Sin(v.value)); }}
+        ///
+        ///    /// &lt;summary&gt;Returns the componentwise cosine of a vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Input vector containing angles in ra [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string VectorEqualsMethods {
+        internal static string Trigonometry {
             get {
-                return ResourceManager.GetString("VectorEqualsMethods", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;Returns a {0} vector constructed from a single {2} value.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;{1} to convert to {0}&lt;/param&gt;
-        ///    /// &lt;returns&gt;Converted value.&lt;/returns&gt;
-        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} {1}{3}({2} v) {{ return new {0}(v); }}
-        ///.
-        /// </summary>
-        internal static string VectorFactory {
-            get {
-                return ResourceManager.GetString("VectorFactory", resourceCulture);
+                return ResourceManager.GetString("Trigonometry", resourceCulture);
             }
         }
         
@@ -1079,69 +1157,6 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string VectorIndexer {
             get {
                 return ResourceManager.GetString("VectorIndexer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 		
-        ///		#region Vector Operations
-        ///
-        ///    /// &lt;summary&gt;Returns the dot product of two vectors.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;The first vector.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;y&quot;&gt;The second vector.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The dot product of two vectors.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {2} dot({0} x, {0} y) {{ return {1}.Dot(x.value, y.value); }}
-        ///
-        ///		#endregion
-        ///.
-        /// </summary>
-        internal static string VectorOperations {
-            get {
-                return ResourceManager.GetString("VectorOperations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 		
-        ///		#region Vector Operations Floating Point
-        ///
-        ///		/// &lt;summary&gt;Returns a normalized version of the vector v by scaling it by 1 / length(x).&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;x&quot;&gt;Vector to normalize.&lt;/param&gt;
-        ///    /// &lt;returns&gt;The normalized vector.&lt;/returns&gt;
-        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} normalize({0} v) {{ return rsqrt(dot(v, v)) * v; }}
-        ///
-        ///    /// &lt;summary&gt;
-        ///    /// Returns a safe normalized version of the {0} vector v by scaling it by 1 / length(v).
-        ///    /// Ret [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string VectorOperationsFloatingPoint {
-            get {
-                return ResourceManager.GetString("VectorOperationsFloatingPoint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to     
-        ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
-        ///    public static readonly {0} Zero;
-        ///
-        ///    /// &lt;summary&gt;{0} min value.&lt;/summary&gt;
-        ///    public static readonly {0} MinValue = new {0}({1}.MinValue);
-        ///
-        ///    /// &lt;summary&gt;{0} max value.&lt;/summary&gt;
-        ///    public static readonly {0} MaxValue = new {0}({1}.MaxValue);
-        ///
-        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MinValue&quot; /&gt;
-        ///    static {0} IMinMaxValue&lt;{0}&gt;.MinValue =&gt; MinValue;
-        ///
-        ///    /// &lt;inheritdoc cref=&quot;IMinMaxValue{{TSelf}}.MaxValue&quot; /&gt;
-        ///    static {0} IMi [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string VectorProperties {
-            get {
-                return ResourceManager.GetString("VectorProperties", resourceCulture);
             }
         }
         

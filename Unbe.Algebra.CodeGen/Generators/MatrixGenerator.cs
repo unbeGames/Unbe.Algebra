@@ -25,10 +25,10 @@ namespace Unbe.Algebra.CodeGen {
       string propsTemplate = string.Empty;
       switch (dimensionY) {
         case 4:
-          propsTemplate = Resources.Matrix4Props;
+          propsTemplate = Resources.PropsMatrix4;
           break;
         case 3:
-          propsTemplate = Resources.Matrix3Props;
+          propsTemplate = Resources.PropsMatrix3;
           break;
       }
       //sb.Append(string.Format(Resources.VectorProperties, typeName, T));
@@ -41,15 +41,15 @@ namespace Unbe.Algebra.CodeGen {
 
       switch (dimensionY) {
         case 4:
-          template = Resources.SimpleMatrix4Constructor;
+          template = Resources.SimpleConstructorMatrix4;
           if(dimensionX == 4) {
-            extTemplate = Resources.SimpleMatrix4x4Constructor;
+            extTemplate = Resources.SimpleConstructorMatrix4x4;
           }
           break;
         case 3:
-          template = Resources.SimpleMatrix3Constructor;
+          template = Resources.SimpleConstructorMatrix3;
           if(dimensionX == 3) {
-            extTemplate = Resources.SimpleMatrix3x3Constructor;
+            extTemplate = Resources.SimpleConstructorMatrix3x3;
           }
           break;
       }
@@ -77,10 +77,10 @@ namespace Unbe.Algebra.CodeGen {
       string template = string.Empty;
       switch (dimensionY) {
         case 4:
-          template = Resources.MatrixMul4;
+          template = Resources.MulMatrix4;
           break;
         case 3:
-          template = Resources.MatrixMul3;
+          template = Resources.MulMatrix3;
           break;
       }
       sbMath.Append(string.Format(template, typeName, underlyingType));
@@ -90,10 +90,10 @@ namespace Unbe.Algebra.CodeGen {
       string template = string.Empty;
       switch (dimensionY) {
         case 4:
-          template = Resources.Matrix4EqualsMethods;
+          template = Resources.EqualsMethodsMatrix4;
           break;
         case 3:
-          template = Resources.Matrix3EqualsMethods;
+          template = Resources.EqualsMethodsMatrix3;
           break;
       }
       sb.Append(string.Format(template, typeName));
@@ -104,13 +104,13 @@ namespace Unbe.Algebra.CodeGen {
       if (dimensionX == 4) {
         switch (dimensionY) {
           case 4:
-            template = Resources.Matrix4x4StringMethods;
+            template = Resources.StringMethodsMatrix4x4;
             break;
         }
       } else if(dimensionX == 3) {
         switch (dimensionY) {
           case 3:
-            template = Resources.Matrix3x3StringMethods;
+            template = Resources.StringMethodsMatrix3x3;
             break;
         }
       }
@@ -125,10 +125,10 @@ namespace Unbe.Algebra.CodeGen {
       string template = string.Empty;
       switch (dimensionY) {
         case 4:
-          template = Resources.BaseMathMatrix4Operators;
+          template = Resources.BaseMathOperatorsMatrix4;
           break;
         case 3:
-          template = Resources.BaseMathMatrix3Operators;
+          template = Resources.BaseMathOperatorsMatrix3;
           break;
       }
       sb.Append(string.Format(template, typeName, T, vectorPrefix));

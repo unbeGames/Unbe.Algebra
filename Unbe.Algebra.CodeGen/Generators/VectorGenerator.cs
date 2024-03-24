@@ -33,17 +33,17 @@ namespace Unbe.Algebra.CodeGen {
       string propsTemplate = string.Empty;
       switch (dimensionX) {
         case 4:
-          propsTemplate = Resources.Vector4Props;
+          propsTemplate = Resources.PropsVector4;
           break;
         case 3:
-          propsTemplate = Resources.Vector3Props;
+          propsTemplate = Resources.PropsVector3;
           break;
         case 2:
-          propsTemplate = Resources.Vector2Props;
+          propsTemplate = Resources.PropsVector2;
           break;
       }
       
-      sb.Append(string.Format(Resources.VectorProperties, typeName, T));
+      sb.Append(string.Format(Resources.PropertiesVector, typeName, T));
       sb.Append(string.Format(propsTemplate, typeName, T));
     }
 
@@ -55,24 +55,24 @@ namespace Unbe.Algebra.CodeGen {
       string vectorNConstructorTemplate = string.Empty;
       switch (dimensionX) {
         case 4:
-          vectorNConstructorTemplate = Resources.Vector4Constructor;
+          vectorNConstructorTemplate = Resources.ConstructorVector4;
           break;
         case 3:
-          vectorNConstructorTemplate = Resources.Vector3Constructor;
+          vectorNConstructorTemplate = Resources.ConstructorVector3;
           break;
         case 2:
-          vectorNConstructorTemplate = Resources.Vector2Constructor;
+          vectorNConstructorTemplate = Resources.ConstructorVector2;
           break;
       }
 
       sb.Append(string.Format(vectorNConstructorTemplate, typeName, T, vectorPrefix, typeNameBase));
 
-      sb.Append(string.Format(Resources.SimpleVectorConstructor, typeName, T, vectorPrefix));
+      sb.Append(string.Format(Resources.SimpleConstructorVector, typeName, T, vectorPrefix));
 
       if (dimensionX == 3) {
-        sb.Append(string.Format(Resources.SimpleVectorConstructorOdd, typeName, T, vectorPrefix));
+        sb.Append(string.Format(Resources.SimpleConstructorOddVector, typeName, T, vectorPrefix));
       } else {
-        sb.Append(string.Format(Resources.SimpleVectorConstructorEven, typeName, T, vectorPrefix));
+        sb.Append(string.Format(Resources.SimpleConstructorEvenVector, typeName, T, vectorPrefix));
       }
 
       sb.Append(SingleValueConstructor(typeName, T, vectorPrefix, T));
@@ -110,11 +110,11 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddBitOperators() {
-      sb.Append(string.Format(Resources.EqualityOperators, typeName, T, vectorPrefix, dimensionX));
+      sb.Append(string.Format(Resources.EqualityOperatorsVector, typeName, T, vectorPrefix, dimensionX));
       if (SupportsBitOps(numFlags)) {
         var rightOp = IsSigned(numFlags) ? "ShiftRightArithmetic" : "ShiftRightLogical";
-        sb.Append(string.Format(Resources.ShiftOperators, typeName, vectorPrefix, rightOp));
-        sb.Append(string.Format(Resources.BitOperators, typeName, T, vectorPrefix));
+        sb.Append(string.Format(Resources.ShiftOperatorsVector, typeName, vectorPrefix, rightOp));
+        sb.Append(string.Format(Resources.BitOperatorsVector, typeName, T, vectorPrefix));
       }
     }
 
@@ -198,7 +198,7 @@ namespace Unbe.Algebra.CodeGen {
     }
 
     private void AddBaseMath() {
-      sb.Append(string.Format(Resources.BaseMathOperators, typeName, T, vectorPrefix));
+      sb.Append(string.Format(Resources.BaseMathOperatorsVector, typeName, T, vectorPrefix));
     }
 
     private void AddMath() {
@@ -222,9 +222,9 @@ namespace Unbe.Algebra.CodeGen {
         sbMath.Append(string.Format(Resources.FloatingPointMath, typeName, vectorPrefix));
         sbMath.Append(string.Format(Resources.Trigonometry, typeName, vectorPrefix));
       }
-      sbMath.Append(string.Format(Resources.VectorOperations, typeName, vectorPrefix, T));
+      sbMath.Append(string.Format(Resources.OperationsVector, typeName, vectorPrefix, T));
       if (IsFloatingPoint(numFlags)) {
-        sbMath.Append(string.Format(Resources.VectorOperationsFloatingPoint, typeName, vectorPrefix, T));
+        sbMath.Append(string.Format(Resources.OperationsFloatingPointVector, typeName, vectorPrefix, T));
       }
       sbMath.Append(string.Format(Resources.BooleanMath, typeName, vectorPrefix, T, dimensionX));
     }
@@ -233,25 +233,25 @@ namespace Unbe.Algebra.CodeGen {
       string template = null;
       switch (dimensionX) {
         case 2:
-          template = Resources.Vector2Factory;
+          template = Resources.FactoryVector2;
           break;
         case 3:
-          template = Resources.Vector3Factory;
+          template = Resources.FactoryVector3;
           break;
         case 4:
-          template = Resources.Vector4Factory;
+          template = Resources.FactoryVector4;
           break;
       }
       sbMath.Append(string.Format(template, typeName, T, typeNameBase, dimensionX));
       for(int i = 0; i < conversionBaseTypes.Length; i++) {
-        sbMath.Append(string.Format(Resources.VectorFactory, typeName, T, conversionBaseTypes[i], dimensionX));
+        sbMath.Append(string.Format(Resources.FactoryVector, typeName, T, conversionBaseTypes[i], dimensionX));
       }
 
       var conversionVectorTypes = Utils.conversionVectorTypes[dimensionX];
       for (int i = 0; i < conversionVectorTypes.Length; i++) {
         var nextType = conversionVectorTypes[i];
         if (nextType != typeName) {
-          sbMath.Append(string.Format(Resources.VectorFactory, typeName, T, nextType, dimensionX));
+          sbMath.Append(string.Format(Resources.FactoryVector, typeName, T, nextType, dimensionX));
         }
       }
     }
@@ -264,16 +264,16 @@ $@"
     }
 
     private void AddEquality() {
-      sb.Append(string.Format(Resources.VectorEqualsMethods, typeName));
+      sb.Append(string.Format(Resources.EqualsMethodsVector, typeName));
     }
 
     private void AddStringMethods() {
       if (dimensionX == 4) {
-        sb.Append(string.Format(Resources.Vector4StringMethods, typeName));
+        sb.Append(string.Format(Resources.StringMethodsVector4, typeName));
       } else if (dimensionX == 3) {
-        sb.Append(string.Format(Resources.Vector3StringMethods, typeName));
+        sb.Append(string.Format(Resources.StringMethodsVector3, typeName));
       } else if (dimensionX == 2) {
-        sb.Append(string.Format(Resources.Vector2StringMethods, typeName));
+        sb.Append(string.Format(Resources.StringMethodsVector2, typeName));
       }
     }
 
