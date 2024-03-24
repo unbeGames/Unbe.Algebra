@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Unbe.Algebra.Json {
-
 	/// <summary>
 	/// Custom base <c>Newtonsoft.Json.JsonConverter</c> to filter serialized properties.
 	/// </summary>
@@ -22,30 +21,31 @@ namespace Unbe.Algebra.Json {
 	/// 	}
 	/// }
 	/// </code>
-	/// 
 	public abstract class PartialConverter<T> : JsonConverter {
-		#region Static Methods
+    /// <summary>
+    /// The stored property names with the member.
+    /// </summary>
+    private static Dictionary<string, MemberInfo> properties;
 
-		/// <summary>
-		/// Get the field or property of the specified <c>name</c>.
-		/// </summary>
-		/// <returns>The member.</returns>
-		/// <param name="name">Name.</param>
-		private static MemberInfo GetMember(string name) {
-			var _flag = BindingFlags.Instance | BindingFlags.Public;
+    /// <summary>
+    /// Get the field or property of the specified <c>name</c>.
+    /// </summary>
+    /// <returns>The member.</returns>
+    /// <param name="name">Name.</param>
+    private static MemberInfo GetMember(string name) {
+			var flag = BindingFlags.Instance | BindingFlags.Public;
 
-			var _field = typeof(T).GetField(name, _flag);
-			if (null != _field) return _field;
+			var field = typeof(T).GetField(name, flag);
+			if (null != field) return field;
 
-			var _property = typeof(T).GetProperty(name, _flag);
-			if (null == _property) Throw(name, "Public instance field or property {0} is not found.");
+			var property = typeof(T).GetProperty(name, flag);
+			if (null == property) Throw(name, "Public instance field or property {0} is not found.");
 
-			if (null == _property.GetGetMethod()) Throw(name, "Property {0} is not readable.");
-			if (null == _property.GetSetMethod()) Throw(name, "Property {0} is not writable.");
+			if (null == property.GetGetMethod()) Throw(name, "Property {0} is not readable.");
+			if (null == property.GetSetMethod()) Throw(name, "Property {0} is not writable.");
 
-			if (_property.GetIndexParameters().Any()) Throw(name, "Not support property {0} with indexes.");
-			return _property;
-
+			if (property.GetIndexParameters().Any()) Throw(name, "Not support property {0} with indexes.");
+			return property;
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace Unbe.Algebra.Json {
 		/// <param name="name">Name.</param>
 		/// <param name="format">Format.</param>
 		private static void Throw(string name, string format) {
-			throw new ArgumentException(string.Format(format, typeof(T).Name + "." + name), "name");
+			throw new ArgumentException(string.Format(format, $"{typeof(T).Name}.{name}"), nameof(name));
 		}
 
 		/// <summary>
@@ -64,10 +64,11 @@ namespace Unbe.Algebra.Json {
 		/// <param name="member">Member.</param>
 		/// <param name="target">Target.</param>
 		private static object GetValue(MemberInfo member, object target) {
-			if (member is FieldInfo) return (member as FieldInfo).GetValue(target);
-
-			else return (member as PropertyInfo).GetValue(target, null);
-
+			if (member is FieldInfo) {
+				return (member as FieldInfo).GetValue(target);
+			} else { 
+				return (member as PropertyInfo).GetValue(target, null);
+			} 
 		}
 
 		/// <summary>
@@ -77,10 +78,11 @@ namespace Unbe.Algebra.Json {
 		/// <param name="target">Target.</param>
 		/// <param name="value">Value.</param>
 		private static void SetValue(MemberInfo member, object target, object value) {
-			if (member is FieldInfo) (member as FieldInfo).SetValue(target, value);
-
-			else (member as PropertyInfo).SetValue(target, value, null);
-
+			if (member is FieldInfo) {
+				(member as FieldInfo).SetValue(target, value);
+			} else { 
+				(member as PropertyInfo).SetValue(target, value, null);
+			} 
 		}
 
 		/// <summary>
@@ -89,44 +91,30 @@ namespace Unbe.Algebra.Json {
 		/// <returns>The value type.</returns>
 		/// <param name="member">Member.</param>
 		private static Type GetValueType(MemberInfo member) {
-			if (member is FieldInfo) return (member as FieldInfo).FieldType;
-
-			else return (member as PropertyInfo).PropertyType;
-
+			if (member is FieldInfo) {
+				return (member as FieldInfo).FieldType;
+			} else { 
+				return (member as PropertyInfo).PropertyType;
+			}
 		}
-
-		#endregion
-
-
-		#region Fields
-
-		/// <summary>
-		/// The stored property names with the member.
-		/// </summary>
-		private static Dictionary<string, MemberInfo> _properties;
-
-		#endregion
-
-
-		#region Methods
 
 		/// <summary>
 		/// Gets the property names paired with the accessing member.
 		/// </summary>
 		/// <returns>The properties.</returns>
 		private Dictionary<string, MemberInfo> GetProperties() {
-			if (null != _properties) return _properties;
+			if (null != properties) return properties;
 
-			var _names = GetPropertyNames();
+			var names = GetPropertyNames();
 
-			if (null == _names || !_names.Any())
+			if (null == names || !names.Any())
 				throw new InvalidProgramException("GetPropertyNames() cannot return empty.");
 
-			if (_names.Any((name) => string.IsNullOrEmpty(name)))
+			if (names.Any((name) => string.IsNullOrEmpty(name)))
 				throw new InvalidProgramException("GetPropertyNames() cannot contain empty value.");
 
-			_properties = _names.Distinct().ToDictionary((name) => name, (name) => GetMember(name));
-			return _properties;
+			properties = names.Distinct().ToDictionary((name) => name, (name) => GetMember(name));
+			return properties;
 
 		}
 
@@ -165,26 +153,21 @@ namespace Unbe.Algebra.Json {
 		 * Force the instance as an object reference, otherwise this may reflect to a wrong copy if the T is struct.
 		 * But keep the CreateInstance() to return T for safer overriding.
 		 */
-		public override object ReadJson(
-			JsonReader reader,
-			Type objectType,
-			object existingValue,
-			JsonSerializer serializer
-		) {
+		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+			if (JsonToken.Null == reader.TokenType) 
+				return null;
 
-			if (JsonToken.Null == reader.TokenType) return null;
+			var obj = JObject.Load(reader);
+			var result = CreateInstance() as object;
 
-			var _object = JObject.Load(reader);
-			var _result = CreateInstance() as object;
-
-			foreach (var _pair in GetProperties()) {
-				if (_object[_pair.Key] != null) {
-					var _value = _object[_pair.Key].ToObject(GetValueType(_pair.Value), serializer);
-					SetValue(_pair.Value, _result, _value);
+			foreach (var pair in GetProperties()) {
+				if (obj[pair.Key] != null) {
+					var value = obj[pair.Key].ToObject(GetValueType(pair.Value), serializer);
+					SetValue(pair.Value, result, value);
 				}
 			}
 
-			return _result;
+			return result;
 		}
 
 		/// <summary>
@@ -194,16 +177,14 @@ namespace Unbe.Algebra.Json {
 		/// <param name="value">The value.</param>
 		/// <param name="serializer">The calling serializer.</param>
 		public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-			var _object = new JObject();
+			var obj = new JObject();
 
-			foreach (var _pair in GetProperties()) {
-				var _value = GetValue(_pair.Value, value);
-				_object[_pair.Key] = JToken.FromObject(_value, serializer);
+			foreach (var pair in GetProperties()) {
+				var val = GetValue(pair.Value, value);
+				obj[pair.Key] = JToken.FromObject(val, serializer);
 			}
 
-			_object.WriteTo(writer);
+			obj.WriteTo(writer);
 		}
-
-		#endregion
 	}
 }

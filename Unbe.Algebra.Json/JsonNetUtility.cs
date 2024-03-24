@@ -4,12 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Unbe.Algebra.Json {
-	
+namespace Unbe.Algebra.Json {	
 	/// <summary>
 	/// Custom <c>Newtonsoft.Json.JsonConverter</c> <a href="http://www.newtonsoft.com/json" target="_blank">Json.NET</a>.
 	/// </summary>
-	/// 
 	/// 
 	/// <example>
 	/// Now we can use Json.NET just like before:
@@ -30,11 +28,7 @@ namespace Unbe.Algebra.Json {
 	/// 	DefaultValueHandling = DefaultValueHandling.Populate
 	/// };
 	/// </code>
-	/// 
-	public static class JsonNetUtility{
-
-		#region Fields
-
+	public static class JsonNetUtility {
 		/// <summary>
 		/// The default <c>Newtonsoft.Json.JsonSerializerSettings</c>.
 		/// </summary>
@@ -46,21 +40,16 @@ namespace Unbe.Algebra.Json {
 		/// 	3. <c>Newtonsoft.Json.Converters.StringEnumConverter</c>.
 		/// 	4. <c>Newtonsoft.Json.Converters.VersionConverter</c>.
 		/// </remarks>
-		/// 
 		public static JsonSerializerSettings defaultSettings = new JsonSerializerSettings(){
 			Converters = CreateConverters()
 		};
-
-		#endregion
-
-
-		#region Methods
 
 		/// <summary>
 		/// Initialize when start up, set <c>Newtonsoft.Json.JsonConvert.DefaultSettings</c> if not yet.
 		/// </summary>
 		public static void Initialize(){
-			if(null == JsonConvert.DefaultSettings) JsonConvert.DefaultSettings = () => defaultSettings;
+			if(null == JsonConvert.DefaultSettings) 
+				JsonConvert.DefaultSettings = () => defaultSettings;
 		}
 
 		/// <summary>
@@ -68,13 +57,11 @@ namespace Unbe.Algebra.Json {
 		/// </summary>
 		/// <returns>The converters.</returns>
 		private static List<JsonConverter> CreateConverters(){
+			var customs = FindConverterTypes().Select(CreateConverter);
 
-			var _customs = FindConverterTypes().Select((type) => CreateConverter(type));
+			var builtins = new JsonConverter[]{ new StringEnumConverter(), new VersionConverter() };
 
-			var _builtins = new JsonConverter[]{new StringEnumConverter(), new VersionConverter()};
-
-			return _customs.Concat(_builtins).Where((converter) => null != converter).ToList();
-
+			return customs.Concat(builtins).Where((converter) => null != converter).ToList();
 		}
 
 		/// <summary>
@@ -82,37 +69,28 @@ namespace Unbe.Algebra.Json {
 		/// </summary>
 		/// <returns>The converter.</returns>
 		/// <param name="type">Type.</param>
-		private static JsonConverter CreateConverter(Type type){
-			
-			try{ return Activator.CreateInstance(type) as JsonConverter; }
-
-			catch(Exception exception){ Console.WriteLine("Can't create JsonConverter {0}:\n{1}", type, exception); }
-
+		private static JsonConverter CreateConverter(Type type){			
+			try { 
+				return Activator.CreateInstance(type) as JsonConverter; 
+			} catch(Exception exception) { 
+				Console.WriteLine("Can't create JsonConverter {0}:\n{1}", type, exception); 
+			}
 			return null;
-
 		}
 
 		/// <summary>
 		/// Find all the valid converter types.
 		/// </summary>
 		/// <returns>The types.</returns>
-		private static Type[] FindConverterTypes(){
-			
-			return AppDomain.CurrentDomain.GetAssemblies(
-
-				).SelectMany((dll) => dll.GetTypes()
-				).Where((type) => typeof(JsonConverter).IsAssignableFrom(type)
-
-				).Where((type) => (!type.IsAbstract && !type.IsGenericTypeDefinition)
-				).Where((type) => null != type.GetConstructor(new Type[0])
-
-				).Where((type) => !(null != type.Namespace && type.Namespace.StartsWith("Newtonsoft.Json"))
-				).OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("WanzyeeStudio")
-				
-			).ToArray();
-
+		private static Type[] FindConverterTypes(){			
+			return AppDomain.CurrentDomain.GetAssemblies()
+				.SelectMany((dll) => dll.GetTypes())
+				.Where((type) => typeof(JsonConverter).IsAssignableFrom(type))
+				.Where((type) => (!type.IsAbstract && !type.IsGenericTypeDefinition))
+				.Where((type) => null != type.GetConstructor(new Type[0]))
+				.Where((type) => !(null != type.Namespace && type.Namespace.StartsWith("Newtonsoft.Json")))
+				.OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("WanzyeeStudio"))
+				.ToArray();
 		}
-
-		#endregion
 	}
 }
