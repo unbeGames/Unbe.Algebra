@@ -211,6 +211,12 @@
   <data name="OperationsVector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Vector\VectorOperations\OperationsVector.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="OperatorsMatrix3x3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Matrix\Operators\OperatorsMatrix3x3.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="OperatorsMatrix4x4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Matrix\Operators\OperatorsMatrix4x4.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="PropertiesVector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Vector\Properties\PropertiesVector.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
@@ -237,6 +243,9 @@
   </data>
   <data name="ShuffleBase" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Vector\Properties\ShuffleBase.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="ShuffleOperator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Vector\VectorOperations\ShuffleOperator.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="ShuffleReadonly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Vector\Properties\ShuffleReadonly.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>

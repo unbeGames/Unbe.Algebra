@@ -1,0 +1,8 @@
+
+		/// <summary>Returns the result of specified shuffling of the components from two {0} vectors into an {0} vector.</summary>
+    /// <param name="left">int4 to use as the left argument of the shuffle operation.</param>
+    /// <param name="right">int4 to use as the right argument of the shuffle operation.</param>
+    /// <param name="control">Shuffle{2} to control shuffle to.</param>
+    /// <returns>int4 result of the shuffle operation.</returns>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static {0} shuffle({0} x, {0} y, Shuffle{2} control) {{ return {1}Ext.Shuffle(x.value, y.value, (byte)control); }}

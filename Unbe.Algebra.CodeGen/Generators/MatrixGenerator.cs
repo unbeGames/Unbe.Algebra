@@ -1,4 +1,5 @@
-﻿using Unbe.Algebra.CodeGen.Properties;
+﻿using System.Drawing;
+using Unbe.Algebra.CodeGen.Properties;
 using static Unbe.Algebra.CodeGen.Utils;
 
 namespace Unbe.Algebra.CodeGen {
@@ -8,7 +9,6 @@ namespace Unbe.Algebra.CodeGen {
     protected override string GenerateInternal() {
       typeNameBase = typeName.Replace($"{dimensionX}x{dimensionY}", string.Empty);
       underlyingType = $"{typeNameBase}{dimensionX}";
-
 
       if (dimensionY == 4) {
         AddProps(Resources.PropsMatrix4);
@@ -20,6 +20,7 @@ namespace Unbe.Algebra.CodeGen {
         AddEquality(Resources.EqualsMethodsMatrix4);
         if (dimensionX == 4) {
           AddExtConstructors(Resources.SimpleConstructorMatrix4x4);
+          AddOperators(Resources.OperatorsMatrix4x4);
           AddStringMethods(Resources.StringMethodsMatrix4x4);
         }
       } else if(dimensionY == 3) {
@@ -32,6 +33,7 @@ namespace Unbe.Algebra.CodeGen {
         AddEquality(Resources.EqualsMethodsMatrix3);
         if (dimensionX == 3) {
           AddExtConstructors(Resources.SimpleConstructorMatrix3x3);
+          AddOperators(Resources.OperatorsMatrix3x3);
           AddStringMethods(Resources.StringMethodsMatrix3x3);
         }
       }
@@ -51,16 +53,6 @@ namespace Unbe.Algebra.CodeGen {
       sb.Append(string.Format(extTemplate, typeName, underlyingType, T, vectorPrefix));
     }
 
-    private void AddSignMath(string template) {
-      if (IsSigned(numFlags)) {
-        sbMath.Append(string.Format(template, typeName, vectorPrefix));
-      }
-    }
-
-    private void AddMatrixMath(string template) {
-      sbMath.Append(string.Format(template, typeName, underlyingType));
-    }
-
     private void AddEquality(string template) {
       sb.Append(string.Format(template, typeName));
     }
@@ -75,6 +67,20 @@ namespace Unbe.Algebra.CodeGen {
 
     private void AddBaseMath(string template) {
       sb.Append(string.Format(template, typeName, T, vectorPrefix));
+    }
+
+    private void AddSignMath(string template) {
+      if (IsSigned(numFlags)) {
+        sbMath.Append(string.Format(template, typeName, vectorPrefix));
+      }
+    }
+
+    private void AddMatrixMath(string template) {
+      sbMath.Append(string.Format(template, typeName, underlyingType));
+    }
+
+    private void AddOperators(string template) {
+      sbMath.Append(string.Format(template, typeName));
     }
 
     private string Test() {

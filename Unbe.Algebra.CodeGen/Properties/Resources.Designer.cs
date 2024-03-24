@@ -613,6 +613,49 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to      
+        ///    /// &lt;summary&gt;Return the {0} transpose of a {0} matrix.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Value to transpose.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Transposed value.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} transpose({0} v) {{
+        ///      return new {0}(
+        ///        v.c0.x, v.c0.y, v.c0.z,
+        ///        v.c1.x, v.c1.y, v.c1.z,
+        ///        v.c2.x, v.c2.y, v.c2.z
+        ///      );
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string OperatorsMatrix3x3 {
+            get {
+                return ResourceManager.GetString("OperatorsMatrix3x3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to      
+        ///    /// &lt;summary&gt;Return the {0} transpose of a {0} matrix.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Value to transpose.&lt;/param&gt;
+        ///    /// &lt;returns&gt;Transposed value.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {0} transpose({0} v) {{
+        ///      return new {0}(
+        ///        v.c0.x, v.c0.y, v.c0.z, v.c0.w,
+        ///        v.c1.x, v.c1.y, v.c1.z, v.c1.w,
+        ///        v.c2.x, v.c2.y, v.c2.z, v.c2.w,
+        ///        v.c3.x, v.c3.y, v.c3.z, v.c3.w
+        ///      );
+        ///    }}
+        ///.
+        /// </summary>
+        internal static string OperatorsMatrix4x4 {
+            get {
+                return ResourceManager.GetString("OperatorsMatrix4x4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;{0} zero value.&lt;/summary&gt;
         ///    public static readonly {0} Zero;
@@ -760,6 +803,23 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string ShuffleBase {
             get {
                 return ResourceManager.GetString("ShuffleBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 		
+        ///		#region Vector Operations
+        ///
+        ///		/// &lt;summary&gt;Returns the result of specified shuffling of the components from two {0} vectors into an {0} vector.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;left&quot;&gt;int4 to use as the left argument of the shuffle operation.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;right&quot;&gt;int4 to use as the right argument of the shuffle operation.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;control&quot;&gt;Shuffle{2} to control shuffle to.&lt;/param&gt;
+        ///    /// &lt;returns&gt;int4 result of the shuffle operation.&lt;/returns&gt;
+        ///		[MethodImpl(Metho [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ShuffleOperator {
+            get {
+                return ResourceManager.GetString("ShuffleOperator", resourceCulture);
             }
         }
         

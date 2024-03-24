@@ -38,30 +38,42 @@ namespace Unbe.Algebra {
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<long> Shuffle(in Vector256<long> left, in Vector256<long> right, byte control) {
+      return Shuffle(left.AsDouble(), right.AsDouble(), control).AsInt64();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static Vector256<ulong> Shuffle(in Vector256<ulong> left, in Vector256<ulong> right, byte control) {
+      return Shuffle(left.AsDouble(), right.AsDouble(), control).AsUInt64();
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Vector256<double> Shuffle(in Vector256<double> left, in Vector256<double> right, byte control) {
       if (Avx.IsSupported) {
         return Avx.Shuffle(left, right, control);
       }
 
-      return ShuffleSoftware(left, right, control);
+      return ShuffleSoftware(left, right, control);      
+    }
 
-      static Vector256<double> ShuffleSoftware(in Vector256<double> left, in Vector256<double> right, byte control) {
-        const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
+    internal static Vector256<T> ShuffleSoftware<T>(in Vector256<T> left, in Vector256<T> right, byte control) where T : unmanaged {
+      const byte e0Mask = 0b_0000_0011, e1Mask = 0b_0000_1100, e2Mask = 0b_0011_0000, e3Mask = 0b_1100_0000;
 
-        int e0Selector = control & e0Mask;
-        double e0 = left.GetElement(e0Selector);
+      int e0Selector = control & e0Mask;
+      var e0 = left.GetElement(e0Selector);
 
-        int e1Selector = (control & e1Mask) >> 2;
-        double e1 = left.GetElement(e1Selector);
+      int e1Selector = (control & e1Mask) >> 2;
+      var e1 = left.GetElement(e1Selector);
 
-        int e2Selector = (control & e2Mask) >> 4;
-        double e2 = right.GetElement(e2Selector);
+      int e2Selector = (control & e2Mask) >> 4;
+      var e2 = right.GetElement(e2Selector);
 
-        int e3Selector = (control & e3Mask) >> 6;
-        double e3 = right.GetElement(e3Selector);
+      int e3Selector = (control & e3Mask) >> 6;
+      var e3 = right.GetElement(e3Selector);
 
-        return Vector256.Create(e0, e1, e2, e3);
-      }
+      ReadOnlySpan<T> array = stackalloc T[] { e0, e1, e2, e3 };
+
+      return Vector256.Create(array);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

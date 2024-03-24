@@ -227,6 +227,9 @@ namespace Unbe.Algebra.CodeGen {
         sbMath.Append(string.Format(Resources.OperationsFloatingPointVector, typeName, vectorPrefix, T));
       }
       sbMath.Append(string.Format(Resources.BooleanMath, typeName, vectorPrefix, T, dimensionX));
+      if(dimensionX == 3 || dimensionX == 4) {
+        sbMath.Append(string.Format(Resources.ShuffleOperator, typeName, vectorPrefix, dimensionX));
+      }
     }
 
     private void AddAdditionalConstructors() {
