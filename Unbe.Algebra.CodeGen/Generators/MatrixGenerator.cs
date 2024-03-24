@@ -37,17 +37,25 @@ namespace Unbe.Algebra.CodeGen {
 
     private void AddConstructors() {
       string template = string.Empty;
+      string extTemplate = string.Empty;
 
       switch (dimensionY) {
         case 4:
           template = Resources.SimpleMatrix4Constructor;
+          if(dimensionX == 4) {
+            extTemplate = Resources.SimpleMatrix4x4Constructor;
+          }
           break;
         case 3:
           template = Resources.SimpleMatrix3Constructor;
+          if(dimensionX == 3) {
+            extTemplate = Resources.SimpleMatrix3x3Constructor;
+          }
           break;
       }
 
       sb.Append(string.Format(template, typeName, underlyingType, T, vectorPrefix));
+      sb.Append(string.Format(extTemplate, typeName, underlyingType, T, vectorPrefix));
     }
 
     private void AddMath() {

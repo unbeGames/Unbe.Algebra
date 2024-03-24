@@ -220,8 +220,14 @@
   <data name="SimpleMatrix3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleMatrix3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
   </data>
+  <data name="SimpleMatrix3x3Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SimpleMatrix3x3Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
   <data name="SimpleMatrix4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleMatrix4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>
+  </data>
+  <data name="SimpleMatrix4x4Constructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Templates\Constructors\SimpleMatrix4x4Constructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="SimpleVectorConstructor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Templates\Constructors\SimpleVectorConstructor.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;koi8-r</value>

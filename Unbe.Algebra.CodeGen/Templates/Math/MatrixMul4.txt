@@ -12,7 +12,7 @@
     /// <summary>Returns the {1} column vector result of a matrix multiplication between a {0} matrix and a {1} column vector.</summary>
     /// <param name="m">Left hand side argument of the matrix multiply.</param>
     /// <param name="v">Right hand side argument of the matrix multiply.</param>
-    /// <returns>The computed matrix multiplication.</returns>
+    /// <returns>The computed matrix-vector multiplication.</returns>
     public static {1} mul({0} m, {1} v) {{
       return m.c0 * v.x + m.c1 * v.y + m.c2 * v.z + m.c3 * v.w; 
     }}
@@ -20,7 +20,7 @@
     /// <summary>Returns the {0} matrix result of a matrix multiplication between a {0} matrix and a {0} matrix.</summary>
     /// <param name="a">Left hand side argument of the matrix multiply.</param>
     /// <param name="b">Right hand side argument of the matrix multiply.</param>
-    /// <returns>The computed matrix multiplication.</returns>
+    /// <returns>The computed matrix-matrix multiplication.</returns>
     public static {0} mul({0} a, {0} b) {{
       return new {0}(
         a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,

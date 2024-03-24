@@ -1,0 +1,23 @@
+
+    /// <summary>Constructs a {0} matrix from 16 {2} values given in row-major order.</summary>
+    /// <param name="m00">The matrix at row 0, column 0 will be set to this value.</param>
+    /// <param name="m01">The matrix at row 0, column 1 will be set to this value.</param>
+    /// <param name="m02">The matrix at row 0, column 2 will be set to this value.</param>   
+    /// <param name="m10">The matrix at row 1, column 0 will be set to this value.</param>
+    /// <param name="m11">The matrix at row 1, column 1 will be set to this value.</param>
+    /// <param name="m12">The matrix at row 1, column 2 will be set to this value.</param>   
+    /// <param name="m20">The matrix at row 2, column 0 will be set to this value.</param>
+    /// <param name="m21">The matrix at row 2, column 1 will be set to this value.</param>
+    /// <param name="m22">The matrix at row 2, column 2 will be set to this value.</param>
+    /// <param name="m30">The matrix at row 3, column 0 will be set to this value.</param>
+    /// <param name="m31">The matrix at row 3, column 1 will be set to this value.</param>
+    /// <param name="m32">The matrix at row 3, column 2 will be set to this value.</param>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public {0}({2} m00, {2} m01, {2} m02,
+                    {2} m10, {2} m11, {2} m12,
+                    {2} m20, {2} m21, {2} m22)
+    {{
+        c0 = new {1}(m00, m10, m20);
+        c1 = new {1}(m01, m11, m21);
+        c2 = new {1}(m02, m12, m22);
+    }}

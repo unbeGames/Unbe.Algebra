@@ -469,8 +469,8 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    #region Mul
         ///    
         ///    /// &lt;summary&gt;Returns the {1} row vector result of a matrix multiplication between a {1} row vector and a {0} matrix.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;a&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
-        ///    /// &lt;param name=&quot;b&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;v&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
         ///    /// &lt;returns&gt;The computed vector-matrix multiplication.&lt;/returns&gt;
         ///    public static {1} mul({1} v, {0} m) {{
         ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2), csum [rest of string was truncated]&quot;;.
@@ -658,6 +658,21 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 
+        ///    /// &lt;summary&gt;Constructs a {0} matrix from 16 {2} values given in row-major order.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;m00&quot;&gt;The matrix at row 0, column 0 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m01&quot;&gt;The matrix at row 0, column 1 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m02&quot;&gt;The matrix at row 0, column 2 will be set to this value.&lt;/param&gt;   
+        ///    /// &lt;param name=&quot;m10&quot;&gt;The matrix at row 1, column 0 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m11&quot;&gt;The matrix at ro [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleMatrix3x3Constructor {
+            get {
+                return ResourceManager.GetString("SimpleMatrix3x3Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to     
         ///    /// &lt;summary&gt;Constructs a {0} matrix from four {1} vectors.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;c0&quot;&gt;The matrix column c0 will be set to this value.&lt;/param&gt;
@@ -670,6 +685,21 @@ namespace Unbe.Algebra.CodeGen.Properties {
         internal static string SimpleMatrix4Constructor {
             get {
                 return ResourceManager.GetString("SimpleMatrix4Constructor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     
+        ///    /// &lt;summary&gt;Constructs a {0} matrix from 16 {2} values given in row-major order.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;m00&quot;&gt;The matrix at row 0, column 0 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m01&quot;&gt;The matrix at row 0, column 1 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m02&quot;&gt;The matrix at row 0, column 2 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m03&quot;&gt;The matrix at row 0, column 3 will be set to this value.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m10&quot;&gt;The matrix at r [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SimpleMatrix4x4Constructor {
+            get {
+                return ResourceManager.GetString("SimpleMatrix4x4Constructor", resourceCulture);
             }
         }
         
