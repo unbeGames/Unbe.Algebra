@@ -5,6 +5,7 @@
     /// <param name="a">Left hand side argument of the matrix multiply.</param>
     /// <param name="b">Right hand side argument of the matrix multiply.</param>
     /// <returns>The computed vector-matrix multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {1} mul({1} v, {0} m) {{
       return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2)); 
     }}
@@ -13,6 +14,7 @@
     /// <param name="a">Left hand side argument of the matrix multiply.</param>
     /// <param name="b">Right hand side argument of the matrix multiply.</param>
     /// <returns>The computed matrix-vector multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {1} mul({0} m, {1} v) {{
       return m.c0 * v.x + m.c1 * v.y + m.c2 * v.z; 
     }}
@@ -21,6 +23,7 @@
     /// <param name="a">Left hand side argument of the matrix multiply.</param>
     /// <param name="b">Right hand side argument of the matrix multiply.</param>
     /// <returns>The computed matrix-matrix multiplication.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static {0} mul({0} a, {0} b) {{
       return new {0}(
         a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,

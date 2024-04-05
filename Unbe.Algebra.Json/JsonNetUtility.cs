@@ -48,7 +48,7 @@ namespace Unbe.Algebra.Json {
 		/// Initialize when start up, set <c>Newtonsoft.Json.JsonConvert.DefaultSettings</c> if not yet.
 		/// </summary>
 		public static void Initialize(){
-			if(null == JsonConvert.DefaultSettings) 
+			if(JsonConvert.DefaultSettings == null) 
 				JsonConvert.DefaultSettings = () => defaultSettings;
 		}
 
