@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Linq;
-using VYaml.Serialization;
 
 namespace Unbe.Algebra.VYaml {
   public static class VYamlUtility {
     public static void Initialize() {
       var types = FindConverterTypes();
-      Console.WriteLine($"FFFFF {types.Length}");
       foreach (var type in types) {
         RegisterConverters(type);
       }
