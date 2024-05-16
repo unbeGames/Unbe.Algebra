@@ -35,7 +35,7 @@ namespace Unbe.Algebra.VYaml {
         .Where((type) => (!type.IsAbstract && !type.IsGenericTypeDefinition))
         .Where((type) => null != type.GetConstructor(new Type[0]))
         .Where((type) => !(null != type.Namespace && type.Namespace.StartsWith("Newtonsoft.Json")))
-        .OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("WanzyeeStudio"))
+        .OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("Unbe.Algebra.VYaml"))
         .ToArray();
     }
   }
