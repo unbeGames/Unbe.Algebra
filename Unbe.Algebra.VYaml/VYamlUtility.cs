@@ -33,9 +33,8 @@ namespace Unbe.Algebra.VYaml {
         .SelectMany((dll) => dll.GetTypes())
         .Where((type) => typeof(YamlConverter).IsAssignableFrom(type))
         .Where((type) => (!type.IsAbstract && !type.IsGenericTypeDefinition))
-        .Where((type) => null != type.GetConstructor(new Type[0]))
-        .Where((type) => !(null != type.Namespace && type.Namespace.StartsWith("Newtonsoft.Json")))
-        .OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("Unbe.Algebra.VYaml"))
+        .Where((type) => type.GetConstructor(new Type[0]) != null)
+        .OrderBy((type) => type.Namespace != null && type.Namespace.StartsWith("Unbe.Algebra.VYaml"))
         .ToArray();
     }
   }

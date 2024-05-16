@@ -87,9 +87,9 @@ namespace Unbe.Algebra.Json {
 				.SelectMany((dll) => dll.GetTypes())
 				.Where((type) => typeof(JsonConverter).IsAssignableFrom(type))
 				.Where((type) => (!type.IsAbstract && !type.IsGenericTypeDefinition))
-				.Where((type) => null != type.GetConstructor(new Type[0]))
-				.Where((type) => !(null != type.Namespace && type.Namespace.StartsWith("Newtonsoft.Json")))
-				.OrderBy((type) => null != type.Namespace && type.Namespace.StartsWith("Unbe.Algebra.Json"))
+				.Where((type) => type.GetConstructor(Array.Empty<Type>()) != null)
+				.Where((type) => !(type.Namespace != null && type.Namespace.StartsWith("Newtonsoft.Json")))
+				.OrderBy((type) => type.Namespace != null && type.Namespace.StartsWith("Unbe.Algebra.Json"))
 				.ToArray();
 		}
 	}
