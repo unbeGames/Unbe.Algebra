@@ -9,7 +9,7 @@
 		/// </summary>
 		/// <returns>The property names.</returns>
 		protected override string[] GetPropertyNames(){
-			return new []{ "value" };
+			return new []{ "x", "y", "z", "w" };
 		}
 	}
 }

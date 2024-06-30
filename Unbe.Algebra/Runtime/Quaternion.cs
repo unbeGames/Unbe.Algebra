@@ -10,6 +10,15 @@ namespace Unbe.Algebra {
     /// <summary>A Quaternion representing the identity transform.</summary>
     public static readonly Quaternion Identity = new Quaternion(0.0f, 0.0f, 0.0f, 1.0f);
 
+    /// <summary>x component of the Quaternion.</summary>
+    public float x { readonly get { return value[0]; } set { this.value[0] = value; } }
+    /// <summary>y component of the Quaternion.</summary>
+    public float y { readonly get { return value[1]; } set { this.value[1] = value; } }
+    /// <summary>z component of the Quaternion.</summary>
+    public float z { readonly get { return value[2]; } set { this.value[2] = value; } }
+    /// <summary>w component of the Quaternion.</summary>
+    public float w { readonly get { return value[3]; } set { this.value[3] = value; } }
+
     /// <summary>Constructs a Quaternion from four float values.</summary>
     /// <param name="x">The quaternion x component.</param>
     /// <param name="y">The quaternion y component.</param>
