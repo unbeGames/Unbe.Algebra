@@ -6,21 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Unbe.Algebra.Json {
-	/// <summary>
-	/// Custom base <c>Newtonsoft.Json.JsonConverter</c> to filter serialized properties.
-	/// </summary>
-	/// 
-	/// <example>
-	/// It's very easy to make a custom converter, just inherit and override <c>GetPropertyNames()</c> as the filter:
-	/// </example>
-	/// 
-	/// <code>
-	/// public class SomeConverter : PartialConverter<SomeClass>{
-	/// 	protected override string[] GetPropertyNames(){
-	/// 		return new []{"someField", "someProperty", "etc"};
-	/// 	}
-	/// }
-	/// </code>
 	public abstract class PartialConverter<T> : JsonConverter {
     /// <summary>
     /// The stored property names with the member.
@@ -36,13 +21,14 @@ namespace Unbe.Algebra.Json {
 			var flag = BindingFlags.Instance | BindingFlags.Public;
 
 			var field = typeof(T).GetField(name, flag);
-			if (null != field) return field;
+			if (field != null) 
+				return field;
 
 			var property = typeof(T).GetProperty(name, flag);
-			if (null == property) Throw(name, "Public instance field or property {0} is not found.");
+			if (property == null) Throw(name, "Public instance field or property {0} is not found.");
 
-			if (null == property.GetGetMethod()) Throw(name, "Property {0} is not readable.");
-			if (null == property.GetSetMethod()) Throw(name, "Property {0} is not writable.");
+			if (property.GetGetMethod() == null) Throw(name, "Property {0} is not readable.");
+			if (property.GetSetMethod() == null) Throw(name, "Property {0} is not writable.");
 
 			if (property.GetIndexParameters().Any()) Throw(name, "Not support property {0} with indexes.");
 			return property;
@@ -103,19 +89,19 @@ namespace Unbe.Algebra.Json {
 		/// </summary>
 		/// <returns>The properties.</returns>
 		private Dictionary<string, MemberInfo> GetProperties() {
-			if (null != properties) return properties;
+			if (properties != null) 
+				return properties;
 
 			var names = GetPropertyNames();
 
-			if (null == names || !names.Any())
+			if (names == null || names.Length == 0)
 				throw new InvalidProgramException("GetPropertyNames() cannot return empty.");
 
-			if (names.Any((name) => string.IsNullOrEmpty(name)))
+			if (names.Any(string.IsNullOrEmpty))
 				throw new InvalidProgramException("GetPropertyNames() cannot contain empty value.");
 
-			properties = names.Distinct().ToDictionary((name) => name, (name) => GetMember(name));
+			properties = names.Distinct().ToDictionary((name) => name, GetMember);
 			return properties;
-
 		}
 
 		/// <summary>
@@ -123,14 +109,7 @@ namespace Unbe.Algebra.Json {
 		/// </summary>
 		/// <returns>The property names.</returns>
 		protected abstract string[] GetPropertyNames();
-
-		/// <summary>
-		/// Create the instance for <c>ReadJson()</c> to populate.
-		/// </summary>
-		/// <returns>The instance.</returns>
-		protected virtual T CreateInstance() {
-			return Activator.CreateInstance<T>();
-		}
+		
 
 		/// <summary>
 		/// Determine if the object type is <c>T</c>.
@@ -154,15 +133,16 @@ namespace Unbe.Algebra.Json {
 		 * But keep the CreateInstance() to return T for safer overriding.
 		 */
 		public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-			if (JsonToken.Null == reader.TokenType) 
+			if (reader.TokenType == JsonToken.Null) 
 				return null;
 
 			var obj = JObject.Load(reader);
-			var result = CreateInstance() as object;
+			var result = Activator.CreateInstance<T>() as object;
 
 			foreach (var pair in GetProperties()) {
 				if (obj[pair.Key] != null) {
-					var value = obj[pair.Key].ToObject(GetValueType(pair.Value), serializer);
+					var valueType = GetValueType(pair.Value);
+          var value = obj[pair.Key].ToObject(valueType, serializer);
 					SetValue(pair.Value, result, value);
 				}
 			}
