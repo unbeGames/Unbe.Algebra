@@ -545,9 +545,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;a&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
         ///    /// &lt;param name=&quot;b&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
         ///    /// &lt;returns&gt;The computed vector-matrix multiplication.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {1} mul({1} v, {0} m) {{
-        ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2)); 
-        ///  [rest of string was truncated]&quot;;.
+        ///      return new  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MulMatrix3 {
             get {
@@ -563,8 +563,9 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;v&quot;&gt;Left hand side argument of the matrix multiply.&lt;/param&gt;
         ///    /// &lt;param name=&quot;m&quot;&gt;Right hand side argument of the matrix multiply.&lt;/param&gt;
         ///    /// &lt;returns&gt;The computed vector-matrix multiplication.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
         ///    public static {1} mul({1} v, {0} m) {{
-        ///      return new {1}(csum(v * m.c0), csum(v * m.c1), csum(v * m.c2), csum [rest of string was truncated]&quot;;.
+        ///      return new  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MulMatrix4 {
             get {
@@ -615,17 +616,19 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to      
         ///    /// &lt;summary&gt;Return the {0} transpose of a {0} matrix.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;Value to transpose.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Value to transpose.&lt;/param&gt;
         ///    /// &lt;returns&gt;Transposed value.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} transpose({0} v) {{
+        ///    public static {0} transpose({0} m) {{
         ///      return new {0}(
-        ///        v.c0.x, v.c0.y, v.c0.z,
-        ///        v.c1.x, v.c1.y, v.c1.z,
-        ///        v.c2.x, v.c2.y, v.c2.z
+        ///        m.c0.x, m.c0.y, m.c0.z,
+        ///        m.c1.x, m.c1.y, m.c1.z,
+        ///        m.c2.x, m.c2.y, m.c2.z
         ///      );
         ///    }}
-        ///.
+        ///
+        ///    /// &lt;summary&gt;Returns the {0} full inverse of a {0} matrix.&lt;/summary&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Matrix to in [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string OperatorsMatrix3x3 {
             get {
@@ -636,22 +639,43 @@ namespace Unbe.Algebra.CodeGen.Properties {
         /// <summary>
         ///   Looks up a localized string similar to      
         ///    /// &lt;summary&gt;Return the {0} transpose of a {0} matrix.&lt;/summary&gt;
-        ///    /// &lt;param name=&quot;v&quot;&gt;Value to transpose.&lt;/param&gt;
+        ///    /// &lt;param name=&quot;m&quot;&gt;Value to transpose.&lt;/param&gt;
         ///    /// &lt;returns&gt;Transposed value.&lt;/returns&gt;
         ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///    public static {0} transpose({0} v) {{
-        ///      return new {0}(
-        ///        v.c0.x, v.c0.y, v.c0.z, v.c0.w,
-        ///        v.c1.x, v.c1.y, v.c1.z, v.c1.w,
-        ///        v.c2.x, v.c2.y, v.c2.z, v.c2.w,
-        ///        v.c3.x, v.c3.y, v.c3.z, v.c3.w
-        ///      );
-        ///    }}
-        ///.
+        ///    public static {0} transpose({0} m) {{
+        ///      // x1, y1, x2, y2
+        ///      var xAndY1 = shuffle(m.c0, m.c1, Shuffle4.xyxy);
+        ///
+        ///      // z1, w1, z2, w2
+        ///      var zAndW1 = shuffle(m.c0, m.c1, Shuffle4.zwzw);
+        ///
+        ///      // x3, y3, x4, y4
+        ///      var xAndY2 = shuffle(m.c2, m.c3, Shuffle4.xyxy);
+        ///
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string OperatorsMatrix4x4 {
             get {
                 return ResourceManager.GetString("OperatorsMatrix4x4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to      
+        ///    /// &lt;summary&gt;Return the result of transforming a {1}3 point by a {0} matrix&lt;/summary&gt;
+        ///    /// &lt;param name =&quot;m&quot;&gt;Left hand side matrix argument that specifies the transformation.&lt;/param&gt;
+        ///    /// &lt;param name =&quot;v&quot;&gt;Right hand side point argument to be transformed.&lt;/param&gt;
+        ///    /// &lt;returns&gt;The transformed point.&lt;/returns&gt;
+        ///    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        ///    public static {1}3 transform({0} m, {1}3 v) {{
+        ///      return (m.c0 * v.x + m.c1 * v.y + m.c2 * v.z + m.c3).xyz;
+        ///    }}
+        ///    
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string OperatorsMatrix4x4Additional {
+            get {
+                return ResourceManager.GetString("OperatorsMatrix4x4Additional", resourceCulture);
             }
         }
         
@@ -807,15 +831,13 @@ namespace Unbe.Algebra.CodeGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 		
-        ///		#region Vector Operations
-        ///
+        ///   Looks up a localized string similar to 
         ///		/// &lt;summary&gt;Returns the result of specified shuffling of the components from two {0} vectors into an {0} vector.&lt;/summary&gt;
         ///    /// &lt;param name=&quot;left&quot;&gt;int4 to use as the left argument of the shuffle operation.&lt;/param&gt;
         ///    /// &lt;param name=&quot;right&quot;&gt;int4 to use as the right argument of the shuffle operation.&lt;/param&gt;
         ///    /// &lt;param name=&quot;control&quot;&gt;Shuffle{2} to control shuffle to.&lt;/param&gt;
         ///    /// &lt;returns&gt;int4 result of the shuffle operation.&lt;/returns&gt;
-        ///		[MethodImpl(Metho [rest of string was truncated]&quot;;.
+        ///		[MethodImpl(MethodImplOptions.AggressiveInlining)] [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ShuffleOperator {
             get {

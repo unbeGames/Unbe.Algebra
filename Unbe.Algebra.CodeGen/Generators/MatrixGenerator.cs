@@ -21,6 +21,7 @@ namespace Unbe.Algebra.CodeGen {
         if (dimensionX == 4) {
           AddExtConstructors(Resources.SimpleConstructorMatrix4x4);
           AddOperators(Resources.OperatorsMatrix4x4);
+          AddAdditionalOperators(Resources.OperatorsMatrix4x4Additional);
           AddStringMethods(Resources.StringMethodsMatrix4x4);
         }
       } else if(dimensionY == 3) {
@@ -81,6 +82,10 @@ namespace Unbe.Algebra.CodeGen {
 
     private void AddOperators(string template) {
       sbMath.Append(string.Format(template, typeName, underlyingType));
+    }    
+    
+    private void AddAdditionalOperators(string template) {
+      sbMath.Append(string.Format(template, typeName, typeNameBase));
     }
 
     private string Test() {

@@ -1,0 +1,19 @@
+     
+    /// <summary>Return the result of transforming a {1}3 point by a {0} matrix</summary>
+    /// <param name ="m">Left hand side matrix argument that specifies the transformation.</param>
+    /// <param name ="v">Right hand side point argument to be transformed.</param>
+    /// <returns>The transformed point.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {1}3 transform({0} m, {1}3 v) {{
+      return (m.c0 * v.x + m.c1 * v.y + m.c2 * v.z + m.c3).xyz;
+    }}
+    
+    /// <summary>Return the result of rotating a {1}3 vector by a {0} matrix</summary>
+    /// <param name ="m">Left hand side matrix argument that specifies the rotation.</param>
+    /// <param name ="m">Right hand side vector argument to be rotated.</param>
+    /// <returns>The rotated vector.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static {1}3 rotate({0} m, {1}3 v) {{
+      return (m.c0 * v.x + m.c1 * v.y + m.c2 * v.z).xyz;
+    }}
+    
