@@ -12,9 +12,9 @@ namespace Unbe.Algebra {
   }
 
   public partial class Math {
-    /// <summary>Returns an orthonormalized version of a Rloat3x3 matrix.</summary>
-    /// <param name="m">The float3x3 to be orthonormalized.</param>
-    /// <returns>The orthonormalized float3x3 matrix.</returns>
+    /// <summary>Returns an orthonormalized version of a Float3x3 matrix.</summary>
+    /// <param name="m">The Float3x3 to be orthonormalized.</param>
+    /// <returns>The orthonormalized Float3x3 matrix.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Float3x3 orthonormalize(Float3x3 m) {
       Float3x3 o;
