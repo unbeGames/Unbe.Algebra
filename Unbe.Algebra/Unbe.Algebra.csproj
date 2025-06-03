@@ -6,6 +6,12 @@
     <Nullable>disable</Nullable>
 		<EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<Version>0.5.0</Version>
+		<Title>Unbe.Algebra</Title>
+		<Authors>Arugin</Authors>
+		<Description>Math library for NET 9 with a HLSL-like syntax.</Description>
+		<RepositoryUrl>https://github.com/unbeGames/Unbe.Algebra</RepositoryUrl>
+		<PackageTags>math,algebra,simd</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
