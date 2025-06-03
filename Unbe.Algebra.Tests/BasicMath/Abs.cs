@@ -10,10 +10,10 @@
     };
 
     [Theory]
-    [Category("Basic Math")]
+    [Category("Basic Maths")]
     [TestCaseSource(nameof(data))]
     public void AbsTheory(Float4 vector, Float4 expected) {
-      var result = Math.abs(vector);
+      var result = Maths.abs(vector);
 
       Assert.That(result, Is.EqualTo(expected), $"Expected {expected}, got {result}");
     }

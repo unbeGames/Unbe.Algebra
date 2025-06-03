@@ -6,18 +6,18 @@
     };
 
     [Theory]
-    [Category("Boolean Math")]
+    [Category("Boolean Maths")]
     [TestCaseSource(nameof(data))]
     public unsafe void SelectTrueTheory(Float4 vector1, Float4 vector2) {
-      var result = Math.select(vector1, vector2, true);
+      var result = Maths.select(vector1, vector2, true);
       Assert.That(result, Is.EqualTo(vector2));
     }
 
     [Theory]
-    [Category("Boolean Math")]
+    [Category("Boolean Maths")]
     [TestCaseSource(nameof(data))]
     public void SelectFalseTheory(Float4 vector1, Float4 vector2) {
-      var result = Math.select(vector1, vector2, false);
+      var result = Maths.select(vector1, vector2, false);
       Assert.That(result, Is.EqualTo(vector1));
     }
   }

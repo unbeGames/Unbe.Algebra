@@ -10,10 +10,10 @@
     };
 
     [Theory]
-    [Category("Basic Math")]
+    [Category("Basic Maths")]
     [TestCaseSource(nameof(data))]
     public void ClampTheory(Float4 vector, Float4 low, Float4 high, Float4 expected) {
-      var result = Math.clamp(vector, low, high);
+      var result = Maths.clamp(vector, low, high);
 
       Assert.That(result, Is.EqualTo(expected), $"Expected {expected}, got {result}");
     }

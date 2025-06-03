@@ -4,16 +4,16 @@ using System.Runtime.Intrinsics;
 #pragma warning disable 8981, IDE1006
 
 namespace Unbe.Algebra {
-  public static partial class Math {
+  public static partial class Maths {
     public const int TRUE = -1;
     public const int FALSE = 0;
 
     /// <summary> /// The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
-    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.degrees(double)"/>.</remarks>
+    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Maths.degrees(double)"/>.</remarks>
     public const double TO_DEGREES_DBL = 57.29577951308232;
 
     /// <summary> The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.</summary>
-    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(double)"/>.</remarks>
+    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Maths.radians(double)"/>.</remarks>
     public const double TO_RADIANS_DBL = 0.017453292519943296;
 
     /// <summary>The mathematical constant pi. Approximately 3.14. This is a double precision constant.</summary>
@@ -33,11 +33,11 @@ namespace Unbe.Algebra {
 
 
     /// <summary> The conversion constant used to convert radians to degrees. Multiply the radian value by this constant to get degrees.</summary>
-    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(float)" />.</ remarks >
+    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Maths.radians(float)" />.</ remarks >
     public const float TO_DEGREES = (float)TO_DEGREES_DBL;
 
     /// <summary> The conversion constant used to convert degrees to radians. Multiply the degree value by this constant to get radians.</summary>
-    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Math.radians(float)"/>.</remarks>
+    /// <remarks>Multiplying by this constant is equivalent to using <see cref = "Maths.radians(float)"/>.</remarks>
     public const float TO_RADIANS = (float)TO_RADIANS_DBL;
 
 
@@ -156,7 +156,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Core Math
+    #region Core Maths
 
     /// <summary>Returns the minimum of two byte values.</summary>
     /// <param name="x">The first input value.</param>
@@ -417,7 +417,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Integral Numerics Math
+    #region Integral Numerics Maths
 
     /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
     /// <param name="x">Input value.</param>
@@ -508,7 +508,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Sign Math
+    #region Sign Maths
 
     /// <summary>Returns the sign of a short value. -1 if it is less than zero, 0 if it is zero and 1 if it greater than zero.</summary>
     /// <param name="x">Input value.</param>
@@ -574,7 +574,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Floating Point Math
+    #region Floating Point Maths
 
     /// <summary>Returns the result of rounding a float value up to the nearest integral value less or equal to the original value.</summary>
     /// <param name="x">Input value.</param>
@@ -1019,7 +1019,7 @@ namespace Unbe.Algebra {
     #endregion
 
 
-    #region Boolean Math
+    #region Boolean Maths
 
     /// <summary>The selection between falseValue and trueValue according to bool test.</summary>
     /// <param name="falseValue">Value to use if test is false.</param>

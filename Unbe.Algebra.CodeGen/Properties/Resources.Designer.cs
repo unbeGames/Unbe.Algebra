@@ -926,7 +926,7 @@ namespace Unbe.Algebra.CodeGen.Properties {
         ///    /// &lt;param name=&quot;m&quot;&gt;Input value.&lt;/param&gt;
         ///    /// &lt;returns&gt;The componentwise sign of the input.&lt;/returns&gt;    
         ///		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-        ///		public static {0} sign({0} m) {{ return new {0}(Math.sign(m.c0), Math.sign(m.c1), Math.sign(m.c2)); }}
+        ///		public static {0} sign({0} m) {{ return new {0}(Maths.sign(m.c0), Maths.sign(m.c1), Maths.sign(m.c2)); }}
         ///
         ///    /// &lt;summary&gt;Returns the componentwise absolute value of a  [rest of string was truncated]&quot;;.
         /// </summary>

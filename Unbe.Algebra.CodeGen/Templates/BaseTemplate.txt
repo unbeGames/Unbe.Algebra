@@ -6,6 +6,6 @@ namespace Unbe.Algebra {{
 	public partial struct {0} {{{1}
 	}}
 
-	public static partial class Math {{{2}
+	public static partial class Maths {{{2}
 	}}
 }}

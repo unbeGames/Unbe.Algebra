@@ -1,11 +1,11 @@
 ﻿namespace Unbe.Algebra.Tests {
   internal static class TestHelpers {
     public static bool AreApproxEqual(Float4 left, Float4 right, float tolerance = 1e-7f) {
-      return IsAlmostZero(Math.abs(left - right), tolerance);
+      return IsAlmostZero(Maths.abs(left - right), tolerance);
     }
         
     public static bool AreApproxEqual(Float4x4 left, Float4x4 right, float tolerance = 1e-7f) {
-      return IsAlmostZero(Math.abs(left - right), tolerance);
+      return IsAlmostZero(Maths.abs(left - right), tolerance);
     }    
 
     public static bool IsAlmostZero(Float4 vector, float tolerance = 1e-7f) {

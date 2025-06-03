@@ -20,7 +20,7 @@ namespace Unbe.Algebra.Tests {
     [Category("VectorOperations")]
     [TestCaseSource(nameof(data))]
     public void NormalizeTheory(Float4 vector) {
-      Float4 result = Math.normalize(vector);
+      Float4 result = Maths.normalize(vector);
       Float4 expected = Vector4.Normalize(vector);
       Assert.That(AreApproxEqual(result, expected, 1e-7f), $"Expected {expected}, got {result}");
     }

@@ -2,7 +2,7 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
-using static Unbe.Algebra.Math;
+using static Unbe.Algebra.Maths;
 
 namespace Unbe.Algebra {
   [MathType(type: typeof(bool), dimensionX: 3)]

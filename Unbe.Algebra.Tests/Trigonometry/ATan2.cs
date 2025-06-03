@@ -15,7 +15,7 @@ namespace Unbe.Algebra.Tests {
     [Category("Trigonometry")]
     [TestCaseSource(nameof(data))]
     public void ATan2Theory(Float4 y, Float4 x) {
-      var result = Math.atan2(y, x);
+      var result = Maths.atan2(y, x);
       var expected = new Float4(MathF.Atan2(y.x, x.x), MathF.Atan2(y.y, x.y), MathF.Atan2(y.z, x.z), MathF.Atan2(y.w, x.w));
 
       Assert.That(AreApproxEqual(result, expected, 1e-5f), $"Expected {expected}, got {result}");

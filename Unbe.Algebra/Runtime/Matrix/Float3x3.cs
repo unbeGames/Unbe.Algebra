@@ -11,7 +11,7 @@ namespace Unbe.Algebra {
     public Float3 c2;
   }
 
-  public partial class Math {
+  public partial class Maths {
     /// <summary>Returns an orthonormalized version of a Float3x3 matrix.</summary>
     /// <param name="m">The Float3x3 to be orthonormalized.</param>
     /// <returns>The orthonormalized Float3x3 matrix.</returns>

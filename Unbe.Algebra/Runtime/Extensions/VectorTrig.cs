@@ -68,13 +68,13 @@ namespace Unbe.Algebra {
   }
 
   public static partial class Vector128Ext {
-    public static readonly Vector128<float> ONE_DIV_PI = Vector128.Create(1f / Math.PI);
-    public static readonly Vector128<float> ONE_DIV_PI2 = Vector128.Create(1f / Math.PI2);
-    public static readonly Vector128<float> PI2 = Vector128.Create(Math.PI2);
-    public static readonly Vector128<float> PI = Vector128.Create(Math.PI);
-    public static readonly Vector128<float> PI_HALF = Vector128.Create(Math.PI_HALF);
-    public static readonly Vector128<float> PI_QUARTER = Vector128.Create(Math.PI * 0.25f);
-    public static readonly Vector128<float> PI_THREE_QUARTERS = Vector128.Create(3 * Math.PI / 4);
+    public static readonly Vector128<float> ONE_DIV_PI = Vector128.Create(1f / Maths.PI);
+    public static readonly Vector128<float> ONE_DIV_PI2 = Vector128.Create(1f / Maths.PI2);
+    public static readonly Vector128<float> PI2 = Vector128.Create(Maths.PI2);
+    public static readonly Vector128<float> PI = Vector128.Create(Maths.PI);
+    public static readonly Vector128<float> PI_HALF = Vector128.Create(Maths.PI_HALF);
+    public static readonly Vector128<float> PI_QUARTER = Vector128.Create(Maths.PI * 0.25f);
+    public static readonly Vector128<float> PI_THREE_QUARTERS = Vector128.Create(3 * Maths.PI / 4);
 
     private static readonly Vector128<float> SinCoefficient0 = Vector128.Create(-0.16666667f, +0.0083333310f, -0.00019840874f, +2.7525562e-06f);
     private static readonly Vector128<float> SinCoefficient1 = Vector128.Create(-2.3889859e-08f, -0.16665852f, +0.0083139502f, -0.00018524670f);
@@ -433,7 +433,7 @@ namespace Unbe.Algebra {
       }
     }
 
-    private static readonly Vector128<float> ATan2Constants = Vector128.Create(Math.PI, Math.PI_HALF, Math.PI * 0.25f, Math.PI * 3.0f / 4.0f);
+    private static readonly Vector128<float> ATan2Constants = Vector128.Create(Maths.PI, Maths.PI_HALF, Maths.PI * 0.25f, Maths.PI * 3.0f / 4.0f);
 
     // Return the inverse tangent of Y / X in the range of -Pi to Pi with the following exceptions:
 
@@ -551,11 +551,11 @@ namespace Unbe.Algebra {
   }
 
   public static partial class Vector256Ext {
-    public static readonly Vector256<double> ONE_DIV_PI = Vector256.Create(1 / Math.PI_DBL);
-    public static readonly Vector256<double> ONE_DIV_PI2 = Vector256.Create(1f / Math.PI2_DBL);
-    public static readonly Vector256<double> PI2 = Vector256.Create(Math.PI2_DBL);
-    public static readonly Vector256<double> PI = Vector256.Create(Math.PI_DBL);
-    public static readonly Vector256<double> PI_HALF = Vector256.Create(Math.PI_HALF_DBL);
+    public static readonly Vector256<double> ONE_DIV_PI = Vector256.Create(1 / Maths.PI_DBL);
+    public static readonly Vector256<double> ONE_DIV_PI2 = Vector256.Create(1f / Maths.PI2_DBL);
+    public static readonly Vector256<double> PI2 = Vector256.Create(Maths.PI2_DBL);
+    public static readonly Vector256<double> PI = Vector256.Create(Maths.PI_DBL);
+    public static readonly Vector256<double> PI_HALF = Vector256.Create(Maths.PI_HALF_DBL);
 
     private static readonly Vector256<double> SinCoefficient0D = Vector256.Create(-0.16666667d, +0.0083333310d, -0.00019840874d, +2.7525562e-06d);
     private static readonly Vector256<double> SinCoefficient1D = Vector256.Create(-2.3889859e-08d, -0.16665852d, +0.0083139502d, -0.00018524670d);

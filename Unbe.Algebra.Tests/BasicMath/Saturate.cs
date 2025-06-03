@@ -9,10 +9,10 @@
     };
 
     [Theory]
-    [Category("Basic Math")]
+    [Category("Basic Maths")]
     [TestCaseSource(nameof(data))]
     public void SaturateTheory(Float4 vector, Float4 expected) {
-      var result = Math.saturate(vector);
+      var result = Maths.saturate(vector);
 
       Assert.That(result, Is.EqualTo(expected), $"Expected {expected}, got {result}");
     }

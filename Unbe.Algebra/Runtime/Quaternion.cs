@@ -1,7 +1,7 @@
 ﻿#pragma warning disable IDE1006
 
 using System.Runtime.CompilerServices;
-using static Unbe.Algebra.Math;
+using static Unbe.Algebra.Maths;
 
 namespace Unbe.Algebra {
   public partial struct Quaternion {
@@ -348,7 +348,7 @@ namespace Unbe.Algebra {
   }
 
 
-  public static partial class Math {
+  public static partial class Maths {
     /// <summary>Returns a quaternion constructed from four float values.</summary>
     /// <param name="x">The x component of the quaternion.</param>
     /// <param name="y">The y component of the quaternion.</param>

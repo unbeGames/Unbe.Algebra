@@ -5,12 +5,12 @@
     /// <param name="m">Input value.</param>
     /// <returns>The componentwise sign of the input.</returns>    
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static {0} sign({0} m) {{ return new {0}(Math.sign(m.c0), Math.sign(m.c1), Math.sign(m.c2)); }}
+		public static {0} sign({0} m) {{ return new {0}(Maths.sign(m.c0), Maths.sign(m.c1), Maths.sign(m.c2)); }}
 
     /// <summary>Returns the componentwise absolute value of a matrix.</summary>
     /// <param name="m">Input value.</param>
     /// <returns>The componentwise absolute value of the input.</returns>    
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static {0} abs({0} m) {{ return new {0}(Math.abs(m.c0), Math.abs(m.c1), Math.abs(m.c2)); }}
+		public static {0} abs({0} m) {{ return new {0}(Maths.abs(m.c0), Maths.abs(m.c1), Maths.abs(m.c2)); }}
 
     #endregion
