@@ -25,7 +25,7 @@ namespace Unbe.Algebra.VYaml {
         return default;
       }
 
-      int x = 0, y = 0, z = 0;
+      int x = 0, y = 0;
       parser.ReadWithVerify(ParseEventType.MappingStart);
       while (!parser.End && parser.CurrentEventType != ParseEventType.MappingEnd) {
         if (parser.CurrentEventType != ParseEventType.Scalar || !parser.TryGetScalarAsSpan(out var key)) {
