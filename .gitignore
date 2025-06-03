@@ -362,10 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-Library/*
-!Library/.gitkeep
-!Library/Shaders/
-Library/Shaders/*
-!Library/Shaders/.gitkeep
-
-!Packages/Unbe.Mathematics/
+.idea
+*.DotSettings.user
+*.DotSettings

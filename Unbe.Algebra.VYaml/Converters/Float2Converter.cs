@@ -5,7 +5,7 @@ using VYaml.Serialization;
 using static Unbe.Algebra.VYaml.Utils;
 
 namespace Unbe.Algebra.VYaml {
-  internal class Float2Converter : YamlConverter, IYamlFormatter<Float2> { 
+  internal class Float2Converter : IYamlConverter, IYamlFormatter<Float2> { 
     public void Register() {
       GeneratedResolver.Register(this);
     }
@@ -29,24 +29,19 @@ namespace Unbe.Algebra.VYaml {
       float x = 0, y = 0;
       parser.ReadWithVerify(ParseEventType.MappingStart);
       while (!parser.End && parser.CurrentEventType != ParseEventType.MappingEnd) {
-        if (parser.CurrentEventType != ParseEventType.Scalar) {
+        if (parser.CurrentEventType != ParseEventType.Scalar || !parser.TryGetScalarAsSpan(out var key)) {
           throw new YamlSerializerException(parser.CurrentMark, "Custom type deserialization supports only string key");
         }
 
-        if (!parser.TryGetScalarAsSpan(out var key)) {
-          throw new YamlSerializerException(parser.CurrentMark, "Custom type deserialization supports only string key");
-        }
-
-        if (key.SequenceEqual(xKeyUtf8Bytes)) {
+        if (key.SequenceEqual(XKeyUtf8Bytes)) {
           parser.Read(); // skip key
           x = context.DeserializeWithAlias<float>(ref parser);
-        } else if (key.SequenceEqual(yKeyUtf8Bytes)) {
+        } else if (key.SequenceEqual(YKeyUtf8Bytes)) {
           parser.Read(); // skip key
           y = context.DeserializeWithAlias<float>(ref parser);
         } else {
           parser.Read(); // skip key
           parser.SkipCurrentNode(); // skip value
-          continue;
         }
       }
       parser.ReadWithVerify(ParseEventType.MappingEnd);

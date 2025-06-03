@@ -88,7 +88,7 @@ namespace Unbe.Algebra.Json {
     /// </summary>
     /// <returns>The property names.</returns>
     protected virtual string[] GetPropertyNames() {
-      return Array.Empty<string>();
+      return [];
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ namespace Unbe.Algebra.Json {
     /// </summary>
     /// <returns>The property names.</returns>
     protected virtual string[] GetFieldNames() {
-      return Array.Empty<string>();
+      return [];
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ namespace Unbe.Algebra.Json {
     /// <returns>The member.</returns>
     /// <param name="name">Name.</param>
     private static FieldInfo GetField(string name) {
-      var flags = BindingFlags.Instance | BindingFlags.Public;
+      const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public;
 
       var field = typeof(T).GetField(name, flags);
       if (field == null)

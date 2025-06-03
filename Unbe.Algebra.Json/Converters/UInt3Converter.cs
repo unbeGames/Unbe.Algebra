@@ -4,11 +4,11 @@
   /// </summary>
   public class UInt3Converter : PartialConverter<UInt3> {
     /// <summary>
-    /// Get the property names include <c>x</c>, <c>y</c>, <c>z</c>, <c>w</c>.
+    /// Get the property names include <c>x</c>, <c>y</c>, <c>z</c>
     /// </summary>
     /// <returns>The property names.</returns>
     protected override string[] GetPropertyNames() {
-      return new[] { "x", "y", "z" };
+      return ["x", "y", "z"];
     }
   }
 }

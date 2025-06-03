@@ -1,5 +1,5 @@
 ﻿namespace Unbe.Algebra.VYaml {
-  internal interface YamlConverter {
+  internal interface IYamlConverter {
     public void Register();
   }
 }

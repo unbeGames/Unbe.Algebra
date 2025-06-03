@@ -5,7 +5,7 @@ using VYaml.Serialization;
 using static Unbe.Algebra.VYaml.Utils;
 
 namespace Unbe.Algebra.VYaml {
-  internal class Int4Converter : YamlConverter, IYamlFormatter<Int4> {
+  internal class Int4Converter : IYamlConverter, IYamlFormatter<Int4> {
     public void Register() {
       GeneratedResolver.Register(this);
     }
@@ -32,30 +32,25 @@ namespace Unbe.Algebra.VYaml {
       int x = 0, y = 0, z = 0, w = 0;
       parser.ReadWithVerify(ParseEventType.MappingStart);
       while (!parser.End && parser.CurrentEventType != ParseEventType.MappingEnd) {
-        if (parser.CurrentEventType != ParseEventType.Scalar) {
+        if (parser.CurrentEventType != ParseEventType.Scalar || !parser.TryGetScalarAsSpan(out var key)) {
           throw new YamlSerializerException(parser.CurrentMark, "Custom type deserialization supports only string key");
         }
 
-        if (!parser.TryGetScalarAsSpan(out var key)) {
-          throw new YamlSerializerException(parser.CurrentMark, "Custom type deserialization supports only string key");
-        }
-
-        if (key.SequenceEqual(xKeyUtf8Bytes)) {
+        if (key.SequenceEqual(XKeyUtf8Bytes)) {
           parser.Read(); // skip key
           x = parser.ReadScalarAsInt32();
-        } else if (key.SequenceEqual(yKeyUtf8Bytes)) {
+        } else if (key.SequenceEqual(YKeyUtf8Bytes)) {
           parser.Read(); // skip key
           y = parser.ReadScalarAsInt32();
-        } else if (key.SequenceEqual(zKeyUtf8Bytes)) {
+        } else if (key.SequenceEqual(ZKeyUtf8Bytes)) {
           parser.Read(); // skip key
           z = parser.ReadScalarAsInt32();
-        } else if (key.SequenceEqual(wKeyUtf8Bytes)) {
+        } else if (key.SequenceEqual(WKeyUtf8Bytes)) {
           parser.Read(); // skip key
           w = parser.ReadScalarAsInt32();
         } else {
           parser.Read(); // skip key
           parser.SkipCurrentNode(); // skip value
-          continue;
         }
       }
       parser.ReadWithVerify(ParseEventType.MappingEnd);

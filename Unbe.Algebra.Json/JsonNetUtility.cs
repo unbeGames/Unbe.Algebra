@@ -14,8 +14,8 @@ namespace Unbe.Algebra.Json {
 	/// </example>
 	/// 
 	/// <code>
-	/// Log.Info(JsonConvert.SerializeObject(Vector3.up));
-	/// var vec = JsonConvert.DeserializeObject<Vector2>("{'x':1.0,'y':0.0}");
+	/// Log.Info(JsonConvert.SerializeObject(new Float3(1)));
+	/// var vec = JsonConvert.DeserializeObject<Float2>("{'x':1.0,'y':0.0}");
 	/// </code>
 	/// 
 	/// <example>
@@ -40,7 +40,7 @@ namespace Unbe.Algebra.Json {
 		/// 	3. <c>Newtonsoft.Json.Converters.StringEnumConverter</c>.
 		/// 	4. <c>Newtonsoft.Json.Converters.VersionConverter</c>.
 		/// </remarks>
-		public static JsonSerializerSettings defaultSettings = new JsonSerializerSettings(){
+		public static readonly JsonSerializerSettings DefaultSettings = new JsonSerializerSettings(){
 			Converters = CreateConverters()
 		};
 
@@ -48,8 +48,7 @@ namespace Unbe.Algebra.Json {
 		/// Initialize when start up, set <c>Newtonsoft.Json.JsonConvert.DefaultSettings</c> if not yet.
 		/// </summary>
 		public static void Initialize(){
-			if(JsonConvert.DefaultSettings == null) 
-				JsonConvert.DefaultSettings = () => defaultSettings;
+			JsonConvert.DefaultSettings ??= () => DefaultSettings;
 		}
 
 		/// <summary>

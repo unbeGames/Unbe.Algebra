@@ -8,7 +8,7 @@
 		/// </summary>
 		/// <returns>The property names.</returns>
 		protected override string[] GetPropertyNames(){
-			return new []{"x", "y"};
+			return ["x", "y"];
 		}
 	}	
 }
