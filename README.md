@@ -4,14 +4,14 @@
 
 ## Usage
 
-```c#
+```C#
 using Unbe.Algebra;
 using static Unbe.Algebra.Maths;
 
 namespace MyNamespace {
   public class Example {
     public void Test() {
-      var vec1 = float3(2, 5, 3);[THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)
+      var vec1 = float3(2, 5, 3);
       var vec2 = float3(1, 2, 3);
       
       vec1 = normalizesafe(vec1);
