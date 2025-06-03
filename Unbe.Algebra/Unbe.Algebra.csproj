@@ -6,13 +6,21 @@
     <Nullable>disable</Nullable>
 		<EmitCompilerGeneratedFiles>True</EmitCompilerGeneratedFiles>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-		<Version>0.5.0</Version>
+		<Version>0.5.1</Version>
 		<Title>Unbe.Algebra</Title>
 		<Authors>Arugin</Authors>
 		<Description>Math library for NET 9 with a HLSL-like syntax.</Description>
 		<RepositoryUrl>https://github.com/unbeGames/Unbe.Algebra</RepositoryUrl>
 		<PackageTags>math,algebra,simd</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>$(DefineConstants);DISABLE_SAFETY_CHECKS</DefineConstants>

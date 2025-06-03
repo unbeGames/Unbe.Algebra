@@ -1,5 +1,8 @@
 ﻿# Unbe.Algebra
 
+[![NuGet Version](https://img.shields.io/nuget/v/Unbe.Algebra)](https://nuget.org/packages/Unbe.Algebra)
+[![Join our Discord](https://img.shields.io/badge/chat%20on-discord-7289DA)](https://discord.gg/unbeGames)
+
 **Unbe.Algebra** is a vector and matrix library written in C# that uses hardware intrinsics and have a shader-like syntax, similar to SIMD or HLSL.
 
 ## Usage
@@ -40,7 +43,7 @@ HLSL math library is a very well designed and have a great API which is very use
 While C# have a very performant VectorX* classes that use SIMD, they have an object-oriented API and only support float type.
 
 ### Why not Unity.Mathematics then?
-While it is great, but it was built for using with Burst only. The performance is not great when compiled using NET. It also have a restrictive license.
+While it is great, but it was built for using with Burst only. The performance is not great when compiled using NET. It also has a restrictive license.
 
 ### When to use?
 If you are brave enough to use a library in a very early stage of development and prefer HLSL-syntax for your math or want to use vectors and matrices not only of float type.
